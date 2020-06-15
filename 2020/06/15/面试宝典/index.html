@@ -1,94 +1,67 @@
-<!DOCTYPE html>
-<html>
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" 
+src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js">
+</script>
+<link href=  "/plugins/code-theme/tomorrow.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="/plugins/github-markdown.css">
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1">
   
-
+    
+    
+      <link rel="stylesheet" href="/css/legend.css">
+    
   
-  <title>面试宝典 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ZooKeeperCAP定理：一个分布式系统不可能同时满足以下三种,一致性（C:Consistency）,可用性（A:Available）,分区容错性（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集">
-<meta property="og:type" content="article">
-<meta property="og:title" content="面试宝典">
-<meta property="og:url" content="http://yoursite.com/2020/06/15/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ZooKeeperCAP定理：一个分布式系统不可能同时满足以下三种,一致性（C:Consistency）,可用性（A:Available）,分区容错性（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-15T01:45:34.330Z">
-<meta property="article:modified_time" content="2020-05-05T03:17:34.189Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+<body id="body-x">
+<div id="layout-content">
+  <div id="menu-outer-x">
+  <div id="menu-inner">
+    
+    
+    <div id="site-title">
+      Hexo
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-面试宝典" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/15/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/" class="article-date">
-  <time datetime="2020-06-15T01:45:34.330Z" itemprop="datePublished">2020-06-15</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      面试宝典
-    </h1>
-  
 
-      </header>
+     
+    <div>
     
-    <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><h3 id="CAP定理："><a href="#CAP定理：" class="headerlink" title="CAP定理："></a>CAP定理：</h3><p>一个分布式系统不可能同时满足以下三种,<strong>一致性</strong>（C:Consistency）<strong>,可用性</strong>（A:Available）<strong>,分区容错性</strong>（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）</p>
+      <a href="/">首页</a>
+      
+    
+      
+      <a href="/archives">归档</a>
+      
+    
+    </div>
+  </div>
+</div> 
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article class="markdown-body">
+    <h2 id="post-title">面试宝典
+       
+        <div id="post-time" datetime="2020-06-15T01:45:34.330Z">
+          2020-06-15
+        </div>
+      
+    </h2>
+    <h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><h3 id="CAP定理："><a href="#CAP定理：" class="headerlink" title="CAP定理："></a>CAP定理：</h3><p>一个分布式系统不可能同时满足以下三种,<strong>一致性</strong>（C:Consistency）<strong>,可用性</strong>（A:Available）<strong>,分区容错性</strong>（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）</p>
 <h3 id="ZAB协议："><a href="#ZAB协议：" class="headerlink" title="ZAB协议："></a>ZAB协议：</h3><p>ZAB协议包括两种基本的模式：<strong>崩溃恢复</strong>和<strong>消息广播</strong>。当整个 Zookeeper 集群刚刚启动或<strong>者Leader服务器宕机</strong>、<strong>重启</strong>或者网络故障导致<strong>少于过半的服务器与 Leader 服务器保持正常通信</strong>时，所有服务器进入崩溃恢复模式，首先选举产生新的 Leader 服务器，然后集群中 Follower 服务器开始与新的 Leader 服务器进行数据同步。当集群中超过<strong>半数机器与该 Leader 服务器完成数据同步</strong>之后，退出恢复模式进入消息广播模式，Leader 服务器开始接收客户端的事务请求生成事物提案来进行事务请求处理。</p>
 <h3 id="选举算法和流程："><a href="#选举算法和流程：" class="headerlink" title="选举算法和流程："></a>选举算法和流程：</h3><h3 id="LeaderElection-默认提供的选举算法"><a href="#LeaderElection-默认提供的选举算法" class="headerlink" title="LeaderElection(默认提供的选举算法)"></a>LeaderElection(默认提供的选举算法)</h3><p>目前有5台服务器，每台服务器均没有数据，它们的编号分别是1,2,3,4,5,按编号依次启动，它们的选择举过程如下：</p>
 <ol>
@@ -509,109 +482,136 @@
 
 
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/15/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/" data-id="ckbfua9wq0000ss9rblln90cb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
+  </article>
+
   
     
-<nav id="article-nav">
-  
-  
-    <a href="/2020/06/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
+    
+      <div id="page-prev-next">
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a href="/2020/06/15/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/">面试宝典</a>
-          </li>
+          <div></div> 
         
-          <li>
-            <a href="/2020/06/14/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
+        
+        
+          <a id="page-next-a" href="/2020/06/14/hello-world/"> Hello World → </a>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    
+    
+    
+    
+      
+      <div id="play-button"  style="background-color: #6d5aca; border: solid 2px #6d5aca;">
+  <img id="play-img" src="/images/playback_play.png"></img>
+</div>
+<audio id="bgaudio" loop="loop" preload="none"> 
+  <source src=http://cdn.calm.com/scenes/scene-Qqkzy9k7Eo.m4a?v=1418162240715 type="audio/mpeg">
+</audio>
+
+<script>
+$(document).ready(function(){
+  //播放按钮点击
+  var audio = $("#bgaudio")[0];
+  var img = $("#play-img")[0];
+  $("#play-button").click(function(){ 
+    if (audio.paused || audio.ended) {
+      audio.play();
+      img.src = "/images/playback_pause.png";
+    } else {
+      audio.pause();
+      img.src = "/images/playback_play.png";
+    }
+  });
+});
+</script>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
 
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div id="reward_comment">文章对我有帮助，打赏作者</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="John Doe WeChat Pay"/>
+          <p>微信</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="John Doe Alipay"/>
+          <p>支付宝</p>
+        </div> 
+      
+    </div>
   </div>
+
+
+  
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTI2MS81ODI5">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+<div id="bottom-outer">
+  
+  <div id="bottom-inner">
+    John Doe 
+    ©2020 |Powered by  
+    <a href="http://hexo.io" target="_blank">Hexo</a> with theme 
+    <a href="https://github.com/iHongRen/legend" target="_blank">legend</a>
+  </div>
+    
+    
+    
+      <a href="/atom.xml">
+      
+      <img src=/images/rss.png height="18" width="18">
+      
+</div> 
+
+
+  
+  
+    <script src="/js/legend.js"></script>
+  
+
+
 </body>
 </html>
+
+
+<script>
+$(window).on('load', function(){
+   $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+   prettyPrint();
+ });
+</script>
+
