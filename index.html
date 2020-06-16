@@ -184,6 +184,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hexo搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2020/06/16/hexo搭建博客/">hexo搭建博客</a>
+    </h1>
+  
+
+        
+        <a href="2020/06/16/hexo搭建博客/" class="archive-article-date">
+  	<time datetime="2020-06-16T02:54:49.734Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h2><p>很早之前呢也是写过博客系统，那时是顺便练习java web基础对于前端也是使用基础三剑客完成意思一下配合后端。真正的作为个人的博客使用起来还是不够舒服。这次选择直接使用hexo做一个长期日常使用的博客系统</p>
+<h3 id="Hexo是什么"><a href="#Hexo是什么" class="headerlink" title="Hexo是什么"></a>Hexo是什么</h3><p><strong>Hexo</strong>是基于<strong>nodejs</strong>的，那么我们需要知道<strong>nodejs</strong>是什么
+        
+          <a class="article-more-a" href="2020/06/16/hexo搭建博客/#more">...... >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="2020/06/16/hexo搭建博客/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-面试宝典" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -204,8 +281,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><h3 id="CAP定理："><a href="#CAP定理：" class="headerlink" title="CAP定理："></a>CAP定理：</h3><p>一个分布式系统不可能同时满足以下三种,<strong>一致性</strong>（C:Consistency）<strong>,可用性</strong>（A:Available）<strong>,分区容错性</strong>（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）</p>
-<h3 id="ZAB协议："><a href="#ZAB协议：" class="headerlink" title="ZAB协议："></a>ZAB协议：</h3><p>ZAB协议包括两种基本的模式：<strong>崩溃恢复</strong>和<strong>消息广播</strong>。当整个 Zookeeper 集群刚刚启动或<strong>者Leader服务器宕机</strong>、<strong>重启</strong>或者网络故障导致<strong>少于过半的服务器与 Leader 服务器保持正常通信</strong>时，所有服务器进入崩溃恢复模式，首先选举产生新的 Leader 服务器，然后集群中 Follower 服务器开始与新的 Leader 服务器进行数据同步。当集群中超过<strong>半数机器与该 Leader 服务器完成数据同步</strong>之后，退出恢复模式进入消息广播模式，Leader 服务器开始接收客户端的事务请求生成事物提案来进行事务请求处理。
+        <h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><h3 id="CAP定理："><a href="#CAP定理：" class="headerlink" title="CAP定理："></a>CAP定理：</h3><p>一个分布式系统不可能同时满足以下三种,<strong>一致性</strong>（C:Consistency）<strong>,可用性</strong>（A:Available）<strong>,分区容错性</strong>（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）
         
           <a class="article-more-a" href="2020/06/15/面试宝典/#more">...... >></a>
         
@@ -447,6 +523,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
