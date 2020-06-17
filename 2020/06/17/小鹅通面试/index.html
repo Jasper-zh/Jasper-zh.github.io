@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="//yoursite.com">
   <title>小鹅通面试 | 木瓜煲鸡脚的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有哪些进程调度算法？1.先进先出算法(FIFO)：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。 2.最短作业优先 shortest job first（SJF）:按估计运行时间最短的顺序进行调度。非抢占式，吞吐量高，开销可能较大，可能导致饥饿问题,对短进程提供好的响应时间，对长进程不利 3.最高响应比优先 : 响应比 &#x3D; 1+ 等待时间&#x2F;处理时间。同">
+  <meta name="description" content="有哪些进程调度算法？1.先进先出算法(FIFO)：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。 2.最短作业优先 shortest job first（SJF）:按估计运行时间最短的顺序进行调度。非抢占式，吞吐量高，开销可能较大，可能导致饥饿问题,对短进程提供好的响应时间，对长进程不利">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小鹅通面试">
 <meta property="og:url" content="2020/06/17/%E5%B0%8F%E9%B9%85%E9%80%9A%E9%9D%A2%E8%AF%95/index.html">
 <meta property="og:site_name" content="木瓜煲鸡脚的博客">
-<meta property="og:description" content="有哪些进程调度算法？1.先进先出算法(FIFO)：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。 2.最短作业优先 shortest job first（SJF）:按估计运行时间最短的顺序进行调度。非抢占式，吞吐量高，开销可能较大，可能导致饥饿问题,对短进程提供好的响应时间，对长进程不利 3.最高响应比优先 : 响应比 &#x3D; 1+ 等待时间&#x2F;处理时间。同">
+<meta property="og:description" content="有哪些进程调度算法？1.先进先出算法(FIFO)：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。 2.最短作业优先 shortest job first（SJF）:按估计运行时间最短的顺序进行调度。非抢占式，吞吐量高，开销可能较大，可能导致饥饿问题,对短进程提供好的响应时间，对长进程不利">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-17T08:27:54.102Z">
-<meta property="article:modified_time" content="2020-06-17T12:27:27.423Z">
+<meta property="article:modified_time" content="2020-06-17T12:29:35.628Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="有哪些进程调度算法？"><a href="#有哪些进程调度算法？" class="headerlink" title="有哪些进程调度算法？"></a>有哪些进程调度算法？</h2><p>1.<strong>先进先出算法(FIFO)</strong>：按照进程进入就绪队列的先后次序来选择。即每当进入进程调度，总是把就绪队列的队首进程投入运行。</p>
-<p>2.<strong>最短作业优先 shortest job first（SJF）</strong>:按估计运行时间最短的顺序进行调度。非抢占式，吞吐量高，开销可能较大，可能导致饥饿问题,对短进程提供好的响应时间，对长进程不利</p>
+<p>2.<strong>最短作业优先 shortest job first（SJF）</strong>:按估计运行时间最短的顺序进行调度。非抢占式，吞吐量高，开销可能较大，可能导致饥饿问题,对短进程提供好的响应时间，对长进程不利<a id="more"></a></p>
 <p>3.<strong>最高响应比优先</strong> : 响应比 = 1+ 等待时间/处理时间。同时考虑了等待时间的长短和估计需要的执行时间长短，很好的平衡了长短进程。非抢占，吞吐量高，开销可能较大，提供好的响应时间，无饥饿问题。</p>
 <p>4.<strong>时间片轮转算法(RR)</strong>：分时系统的一种调度算法。轮转的基本思想是，将CPU的处理时间划分成一个个的时间片，就绪队列中的进程轮流运行一个时间片。当时间片结束时，就强迫进程让出CPU，该进程进入就绪队列，等待下一次调度，同时，进程调度又去选择就绪队列中的一个进程，分配给它一个时间片，以投入运行。</p>
 <p>5.<strong>最高优先级算法(HPF)</strong>：进程调度每次将处理机分配给具有最高优先级的就绪进程。最高优先级算法可与不同的CPU方式结合形成可抢占式最高优先级算法和不可抢占式最高优先级算法。</p>
