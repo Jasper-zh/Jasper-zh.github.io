@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="//yoursite.com">
   <title>面试宝典 | 木瓜煲鸡脚的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ZooKeeperCAP定理：一个分布式系统不可能同时满足以下三种,一致性（C:Consistency）,可用性（A:Available）,分区容错性（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集">
+  <meta name="description" content="ZooKeeperCAP定理：一个分布式系统不可能同时满足以下三种,一致性（C:Consistency）,可用性（A:Available）,分区容错性（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试宝典">
 <meta property="og:url" content="2020/06/15/java%E9%9D%A2%E8%AF%95/index.html">
 <meta property="og:site_name" content="木瓜煲鸡脚的博客">
-<meta property="og:description" content="ZooKeeperCAP定理：一个分布式系统不可能同时满足以下三种,一致性（C:Consistency）,可用性（A:Available）,分区容错性（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集">
+<meta property="og:description" content="ZooKeeperCAP定理：一个分布式系统不可能同时满足以下三种,一致性（C:Consistency）,可用性（A:Available）,分区容错性（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-15T01:45:34.330Z">
-<meta property="article:modified_time" content="2020-06-19T03:11:19.260Z">
+<meta property="article:modified_time" content="2020-06-19T07:32:45.451Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -190,7 +190,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><h3 id="CAP定理："><a href="#CAP定理：" class="headerlink" title="CAP定理："></a>CAP定理：</h3><p>一个分布式系统不可能同时满足以下三种,<strong>一致性</strong>（C:Consistency）<strong>,可用性</strong>（A:Available）<strong>,分区容错性</strong>（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）<a id="more"></a></p>
+        <h2 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h2><h3 id="CAP定理："><a href="#CAP定理：" class="headerlink" title="CAP定理："></a>CAP定理：</h3><p>一个分布式系统不可能同时满足以下三种,<strong>一致性</strong>（C:Consistency）<strong>,可用性</strong>（A:Available）<strong>,分区容错性</strong>（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，<a id="more"></a>消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）</p>
 <h3 id="ZAB协议："><a href="#ZAB协议：" class="headerlink" title="ZAB协议："></a>ZAB协议：</h3><p>ZAB协议包括两种基本的模式：<strong>崩溃恢复</strong>和<strong>消息广播</strong>。当整个 Zookeeper 集群刚刚启动或<strong>者Leader服务器宕机</strong>、<strong>重启</strong>或者网络故障导致<strong>少于过半的服务器与 Leader 服务器保持正常通信</strong>时，所有服务器进入崩溃恢复模式，首先选举产生新的 Leader 服务器，然后集群中 Follower 服务器开始与新的 Leader 服务器进行数据同步。当集群中超过<strong>半数机器与该 Leader 服务器完成数据同步</strong>之后，退出恢复模式进入消息广播模式，Leader 服务器开始接收客户端的事务请求生成事物提案来进行事务请求处理。</p>
 <h3 id="选举算法和流程："><a href="#选举算法和流程：" class="headerlink" title="选举算法和流程："></a>选举算法和流程：</h3><h3 id="LeaderElection-默认提供的选举算法"><a href="#LeaderElection-默认提供的选举算法" class="headerlink" title="LeaderElection(默认提供的选举算法)"></a>LeaderElection(默认提供的选举算法)</h3><p>目前有5台服务器，每台服务器均没有数据，它们的编号分别是1,2,3,4,5,按编号依次启动，它们的选择举过程如下：</p>
 <ol>
