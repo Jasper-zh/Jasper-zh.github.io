@@ -1,7 +1,7 @@
 ---
 title: 面试宝典
+date: 2020-04-20
 tag: 面试
-type: "archives"
 ---
 
 
