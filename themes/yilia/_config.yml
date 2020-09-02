@@ -7,10 +7,14 @@ menu:
 # SubNav
 subnav:
   github: "https://github.com/Jasper-zh"
-  weibo: "http://weibo.com/e张浩"
+  zhihu: "https://www.zhihu.com/people/di-di-da-da-da-33"
+  oschina: "https://my.oschina.net/u/4225552"
+  jianshu: "https://www.jianshu.com/u/443eb21d1c17"
+  csdn: "https://blog.csdn.net/qq_37622378"
+
+  #weibo: "http://weibo.com/e张浩"
   #rss: /atom.xml
   #psn: "#"
-  zhihu: "#"
   #douban: "#"
   #segmentfault: "#"
   #bilibili: "#"
@@ -58,7 +62,7 @@ open_in_new: true
 # Miscellaneous
 baidu_analytics: 'a30844fa2bcbce0a9e001fe06cefeddf'
 google_analytics: false
-favicon: /assets/img/favicon.ico
+favicon: /assets/img/favicon64.ico
 
 #你的头像url
 avatar: /assets/img/hao.jpg
