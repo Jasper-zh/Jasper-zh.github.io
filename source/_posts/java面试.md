@@ -1,5 +1,5 @@
 ---
-title: 面试宝典
+title: 面试资料
 date: 2020-04-20
 tag: 面试
 ---
@@ -8,7 +8,7 @@ tag: 面试
 
 ### CAP定理：
 
-一个分布式系统不可能同时满足以下三种,**一致性**（C:Consistency）**,可用性**（A:Available）**,分区容错性**（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，<!--more-->消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）
+一个分布式系统不可能同时满足以下三种,**一致性**（C:Consistency）**,可用性**（A:Available）**,<!--more-->分区容错性**（P:Partition Tolerance）.在此ZooKeeper保证的是CP，ZooKeeper不能保证每次服务请求的可用性，在极端环境下，ZooKeeper可能会丢弃一些请求，<!--more-->消费者程序需要重新请求才能获得结果。另外在进行leader选举时集群都是不可用，所以说，ZooKeeper不能保证服务可用性。（Base理论CA强一致性和最终一致性）
 
 ### ZAB协议：
 
