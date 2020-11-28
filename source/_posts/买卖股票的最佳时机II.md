@@ -53,7 +53,7 @@ tags: LeetCode
 
 #### 思考
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/买卖股票的最佳时机 II/charts_udpwork_com.png)
+![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%20II/1.png)
 
 可多次买进卖出但必须交替保持一次交易，累计最大的场景实际就为波差之和。对于例1来说就是2-3天的差加上4-5天的差
 
@@ -65,7 +65,7 @@ tags: LeetCode
 解释：如下图2-4，5-6两段时间的价格差之和即位最高利润
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/买卖股票的最佳时机 II/2.png)
+![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%20II/2.png)
 
 那么也就是需要两个指针一个标记低位，一个往后扫描每次移动并与之前比较。当扫描指针当前比前一个要小则移动低位指针到当前扫描指针。
 
