@@ -6,6 +6,8 @@ tags: LeetCode
 
 #### 两个数组的交集 II
 
+题目地址：https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/
+
 给定两个数组，编写一个函数来计算它们的交集。<!--more-->
 
 **示例 1：**
