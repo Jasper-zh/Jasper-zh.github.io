@@ -1,7 +1,7 @@
 ---
-title: LeetCode初级算法-字符串-字符串转换整数 (atoi)
+title: LeetCode初级算法之字符串：8.字符串转换整数 (atoi)
 date: 2020-12-04 20:33:57
-tags: LeetCode
+tags: LeetCode日常
 ---
 
 #### 字符串转换整数 (atoi)

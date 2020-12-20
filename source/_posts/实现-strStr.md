@@ -1,7 +1,7 @@
 ---
-title: LeetCode初级算法-字符串-实现 strStr()
+title: LeetCode初级算法之字符串：28.实现 strStr()
 date: 2020-12-06 16:29:28
-tags: LeetCode
+tags: LeetCode日常
 ---
 
 ### 实现 strStr() 函数

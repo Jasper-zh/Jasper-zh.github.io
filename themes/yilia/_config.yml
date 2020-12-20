@@ -7,10 +7,12 @@ menu:
 # SubNav
 subnav:
   github: "https://github.com/Jasper-zh"
-  zhihu: "https://www.zhihu.com/people/di-di-da-da-da-33"
   oschina: "https://my.oschina.net/u/4225552"
   jianshu: "https://www.jianshu.com/u/443eb21d1c17"
   csdn: "https://blog.csdn.net/qq_37622378"
+  juejin: "https://juejin.cn/user/3377343299064590"
+  rss: "https://cnblogs.com/jasper-zh"
+  
 
   #weibo: "http://weibo.com/e张浩"
   #rss: /atom.xml
@@ -116,3 +118,9 @@ friends:
 
 
 aboutme: <b>木瓜煲鸡脚<b>，<br><br>胆小认生，<br>不易相处。
+
+# 网易云音乐插件
+music:
+  enable: true
+  #id: 1332647902  # 网易云分享的ID
+  autoplay: true  # 是否开启自动播放

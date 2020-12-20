@@ -1,7 +1,7 @@
 ---
-title: LeetCode初级算法-数组-买卖股票的最佳时机II
+title: LeetCode初级算法之数组：122.买卖股票的最佳时机II
 date: 2020-09-10 12:32:43
-tags: LeetCode
+tags: LeetCode日常
 ---
 
 #### 买卖股票的最佳时机 II
