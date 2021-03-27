@@ -12,7 +12,7 @@ keywords: "开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,De
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: //yournotes.cn
+url: http://yournotes.cn
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
