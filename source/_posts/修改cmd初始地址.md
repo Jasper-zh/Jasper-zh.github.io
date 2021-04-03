@@ -1,7 +1,7 @@
 ---
 title: 修改cmd初始地址
 date: 2021-03-24 12:32:30
-tags: 每日问题
+tags: 日常问题
 ---
 
 > 由于自己平时hexo使用的还是比较频繁总是切换麻烦，所以更改一下cmd的默认地址为hexo地址就随便记录下<!--more-->
@@ -27,3 +27,6 @@ win+r 输入 regedit
 保存后关掉cmd，重新打开就已经更改了地址了
 
 ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210324125223.png)
+
+
+

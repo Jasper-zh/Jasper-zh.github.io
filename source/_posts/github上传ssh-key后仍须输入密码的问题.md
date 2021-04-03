@@ -1,7 +1,7 @@
 ---
 title: github上传ssh-key后仍须输入密码的问题
 date: 2020-09-06 13:54:35
-tags: 每日问题
+tags: 日常问题
 ---
 
 #### github上传ssh-key后仍须输入密码的问题

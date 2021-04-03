@@ -1,7 +1,7 @@
 ---
 title: hexo搭建博客
 date: 2020-01-13
-tag: 博客
+tag: Hexo
 ---
 
 
