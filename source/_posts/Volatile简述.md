@@ -1,7 +1,7 @@
 ---
 title: Volatile简述
 date: 2020-08-10 11:22:01
-tags: Java SE
+tags: Java
 ---
 
 #### Volatile概念

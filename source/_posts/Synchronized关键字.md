@@ -1,7 +1,7 @@
 ---
 title: Synchronized简述
 date: 2020-07-20
-tags: Java SE
+tags: Java
 ---
 
 #### Synchronized概念

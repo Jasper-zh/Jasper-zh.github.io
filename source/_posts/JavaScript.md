@@ -2,6 +2,7 @@
 title: JavaScript详解
 date: 2021-04-05 08:50:39
 tags: 总结文档
+copyright: false
 ---
 
 ### 1. JavaScript介绍
