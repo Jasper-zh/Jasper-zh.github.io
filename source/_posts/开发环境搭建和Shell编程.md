@@ -1,6 +1,6 @@
 ---
 title: 开发环境搭建和Shell编程
-date: 2021-04-12 13:19:43
+date: 2020-01-12 13:19:43
 tags: 总结文档
 copyright: false
 ---

@@ -122,9 +122,17 @@ hexo s //开启服务
 
 ## 部署到github
 
-现在本地可以访问了，由于他只是一个静态项目把它部署在github上就可以做一个公开访问了。或者说码云也可以开在服务器上，这里就用github演示。没有就注册一个然后创建库，作为个人博客部署一定要用  *(你的github用户名).github.io*  来作为库名创建就可以。我的是Jasper-zh.github.io
+现在本地可以访问了，由于他只是一个静态项目把它部署在github上就可以做一个公开访问了。或者说码云也可以开在服务器上，这里就用github演示。没有就注册一个然后创建库，作为个人博客部署一定要用  *(你的github用户名).github.io*  来作为库名创建就可以。我的是Jasper-zh.github.io 
 
 ![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/12.png)
+
+这一步设置username.github.io是为了开启静态服务，页面项目上传到仓库要想直接访问这些静态资源需要开启静态服务。如果是不是github是码云的话仓库名随便取，之后按下面方式开启静态服务
+
+![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628180409.png)
+
+开启后得到网址，通过这个网址访问内容
+
+![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628180640.png)
 
 接下来在blog目录下安装hexo的git部署插件
 

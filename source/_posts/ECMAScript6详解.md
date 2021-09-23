@@ -1,6 +1,6 @@
 ---
 title: ECMAScript6详解
-date: 2021-04-05 18:00:26
+date: 2020-01-05 18:00:26
 tags: 总结文档
 copyright: false
 ---
