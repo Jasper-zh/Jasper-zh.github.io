@@ -111,25 +111,6 @@ feed:
   path: atom.xml
   limit: 100
 
-# jsonContent:
-#   meta: false
-#   pages: false
-#   posts:
-#     title: true
-#     date: true
-#     path: true
-#     text: false
-#     raw: false
-#     content: false
-#     slug: false
-#     updated: false
-#     comments: false
-#     link: false
-#     permalink: false
-#     excerpt: false
-#     categories: false
-#     tags: true
-
 #aplayer
 aplayer:
   script_dir: js # Public 目录下脚本目录路径，默认: 'assets/js'
@@ -160,3 +141,8 @@ douban:
     top_img: /assets/img/page/4.jpg
     aside: true
   timeout: 10000
+
+search:
+  path: search.xml
+  field: post
+  content: true
