@@ -1,0 +1,13 @@
+# 评论
+comments:
+  use:
+    - Twikoo          # 使用的评论系统，最多两个页面进行切换展示
+  text: true          #是否显示评论服务商的名字
+  lazyload: false     #是否懒加载，滑到评论区才加载评论（无法显示评论数）
+  count: true         #是否在文章顶部显示评论数
+  card_post_count: true #是否在首页文章卡片显示评论数
+twikoo:
+  envId: cloudbase-prepaid-2eyc4ddfbbb75e
+  region:
+  visitor: false
+  option:
