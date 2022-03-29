@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-09-24T07:26:10.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.542Z">
+<meta property="article:modified_time" content="2022-03-28T09:41:30.891Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-03-28 17:41:30'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -152,7 +152,7 @@
 </blockquote>
 <p>按照这个定义的描述，好像是和工厂方法模式没有啥不同的。同样是提供一个抽象类或者接口，里面提供一个方法用于创建对象且不需要指明具体类。——关于工厂方法模式看这篇<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/BiCKzGzVxTgwMVoKZxhKTg">《轻松理解设计模式（创建型）2、工厂方法模式》</a></p>
 <p>这里画一个抽象工厂大概的UML图：</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/2021-9-22/1632298582291-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20(1).png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-9-22/1632298582291-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20(1).png"></p>
 <p>就图的区别而言，工厂方法模式只提供一个创建实例的方法。而对于图上的结构一个具体工厂需要实现接口规定的多个创建实例方法。</p>
 <p>客户代码最终获取的一系列产品的具体实例，取决于注入的具体工厂</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    FoodFactory factory = <span class="keyword">new</span> 徐老师早餐店();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获取食物</span></span><br><span class="line">        Food 老徐炒面 = factory.ceate面条(<span class="string">&quot;炒面&quot;</span>);</span><br><span class="line">        Food 老徐粉包 = factory.ceate包子(<span class="string">&quot;粉包&quot;</span>);</span><br><span class="line">        <span class="comment">// 吃</span></span><br><span class="line">        System.out.println(<span class="string">&quot;我开吃啦&quot;</span>+老徐炒面+老徐粉包);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -169,10 +169,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">Object <span class="title">getBean</span><span class="params">(String beanName)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Spring的BeanFactory就是简单工厂模式，通过getBean方法传入bean名称获取对应实例。具体实例是由一开始扫描配置时创建的并加载到map当中的，当getBean时取出返回。采用简单工厂的Map实现方式。</p>
 <p><strong>工厂方法</strong></p>
-<p>同样在Spring当中也有工厂方法模式的体现AbstractFactoryBean<br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/2021-9-23/1632403489417-image.png"><br>对象的其他操作都由其他方法完成，而具体的创建由其各个子类实现createInstance抽象方法。这些子类它们不需要管对象后续或者前置操作仅仅完成创建。而其他操作均可保证按照固定的流程，只是创建的对象具有多样性。</p>
+<p>同样在Spring当中也有工厂方法模式的体现AbstractFactoryBean<br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-9-23/1632403489417-image.png"><br>对象的其他操作都由其他方法完成，而具体的创建由其各个子类实现createInstance抽象方法。这些子类它们不需要管对象后续或者前置操作仅仅完成创建。而其他操作均可保证按照固定的流程，只是创建的对象具有多样性。</p>
 <p><strong>抽象工厂</strong></p>
 <p>比如在Java.sql包下有一个接口叫做Connection（工厂接口）也就是数据库连接对象应该都不陌生。需要各个数库厂商提供实现像MySQL、Oracle等</p>
-<p>如下图所示：<br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/2021-9-22/1632301666462-image.png"></p>
+<p>如下图所示：<br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-9-22/1632301666462-image.png"></p>
 <p>这个接口它明确的指定了要创建的各个产品的方法，MySQL或者Oracle都对其有一套的实现来创建这一套产品家族的具体类的实例。且它们也对产品类也有一套具体的实现。当换成工厂实例是MySQL提供，那么创建的Statement（抽象的产品）就是MySQL的对于这个产品的具体类。而代码中永远使用的是抽象的，工厂只出现Connection这样的接口而没有具体的实现类，而代码中获取的产品Blob、Clob、Statement也是由这些接口接收。</p>
 <p>当具体使用的一套产品的类型需要变化时，只需要配置新工厂生产现在要使用的一套产品即可。整个代码流程都是抽象的固定的。不需要具体的更改而改代码。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>回顾整个工厂模式是用来封装对对象的创建，从而减少程序与具体类的耦合。它符合我们的<strong>依赖倒置原则</strong>——避免依赖具体类型，尽量依赖抽象。而工厂方法与抽象工厂各有不同，前者将类的实例化延迟到子类进行，后者更侧重于在接口规范一组产品类型，每个实现类或者子类是对其一套产品的创建进行实现。可以说工厂模式是面向抽象编程的一个最佳实践。</p>

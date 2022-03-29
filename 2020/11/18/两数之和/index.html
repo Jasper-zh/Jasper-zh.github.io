@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2020-11-18T12:15:55.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.522Z">
+<meta property="article:modified_time" content="2022-03-28T10:05:52.659Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="LeetCode日常">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-03-28 18:05:52'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -151,11 +151,11 @@
 
 
 <h4 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h4><p>这里想必大家很快就能得到思路也就是双指针遍历所有两两相加判断是否与目标值相等</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/1.gif"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/1.gif"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h4><p>但实际上按照上面我们去到数组当中找两个数相加为目标值的方式也就是在确定nums[i]的情况下与遍历找target - nums[i].既然是这样子那我们直接遍历一次记下所有的target-nums[i]再看数组当中存在taget-nums[i]不。若存在即返回下标为i与taget-nums[i]这个值的下标。那么我们就使用hash表去记录数组值为key下标为value</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/2.gif"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/2.gif"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; hashtable = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hashtable.containsKey(target - nums[i])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;hashtable.get(target - nums[i]), i&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        hashtable.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>前者比起哈希表的解法未添加缓存信息因此需要花O(n^2)的时间复杂度来匹配,采用hash表记录增加了空间消耗时间复杂度O(n)因为配对的过程转为hash表查找。</p>

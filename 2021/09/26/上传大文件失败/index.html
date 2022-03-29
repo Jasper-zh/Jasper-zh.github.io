@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-09-26T06:17:02.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.521Z">
+<meta property="article:modified_time" content="2022-03-28T09:36:35.267Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="日常问题">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-03-28 17:36:35'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -147,7 +147,7 @@
 </blockquote>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">413</span> Entity Too Large</span><br></pre></td></tr></table></figure>
 
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210926142615079.png" alt="image-20210926142615079"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210926142615079.png" alt="image-20210926142615079"></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先锁定在Nginx上面，部署后是nginx反向代理后台，web前端与nginx直接交互。且发现确实nginx默认是限制1M的请求实体。</p>
 <p>因此就先配置下Nginx的大小限制</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client_max_body_size 1024M; <span class="comment">// 我这里配成1024M也就是1G</span></span><br></pre></td></tr></table></figure>
