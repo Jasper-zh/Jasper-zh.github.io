@@ -131,7 +131,7 @@ douban:
     quote: 'This is my book quote'
     meta: true
     comments: true
-    top_img: https://cccccc.png
+    top_img: /assets/img/page/4.jpg
     aside: true
   movie:
     title: '看过的电影'
