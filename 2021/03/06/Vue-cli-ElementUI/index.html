@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-03-06T12:17:44.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.516Z">
+<meta property="article:modified_time" content="2022-04-07T05:23:25.859Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="总结文档">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:23:25'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -148,14 +148,14 @@
 </ul>
 <h2 id="2-安装Vue-cli步骤"><a href="#2-安装Vue-cli步骤" class="headerlink" title="2. 安装Vue-cli步骤"></a>2. 安装Vue-cli步骤</h2><p>在安装vue-cli前，要确认自己的电脑是否安装了nodejs和npm.</p>
 <h3 id="2-1-安装Node-js"><a href="#2-1-安装Node-js" class="headerlink" title="2.1 安装Node.js"></a>2.1 安装Node.js</h3><p>安装了node.js才有使用npm ，才能安装vue-cli</p>
-<h4 id="2-1-1-什么是node-js"><a href="#2-1-1-什么是node-js" class="headerlink" title="2.1.1 什么是node.js"></a>2.1.1 什么是node.js</h4><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416204738.png"><br>为什么会有node.js？</p>
+<h4 id="2-1-1-什么是node-js"><a href="#2-1-1-什么是node-js" class="headerlink" title="2.1.1 什么是node.js"></a>2.1.1 什么是node.js</h4><p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416204738.png"><br>为什么会有node.js？</p>
 <blockquote>
 <p>传统意义上的 JavaScript 运行在浏览器上，Chrome 使用的 JavaScript 引擎是 V8，Node.js 是一个运行在服务端 的框架，它的底层就使用了 V8 引擎，这样就可以使用javascript去编写一些服务端的程序，这样也就实现了用 javaScript去开发 Apache + PHP 以及 Java Servlet所开发的服务端功能，这样做的好处就是前端和后端都采用 javascript，即开发一份js程序即可以运行在前端也可以运行的服务端，这样比一个应用使用多种语言在开发效率上 要高，不过node.js属于新兴产品，一些公司也在尝试使用node.js完成一些业务领域，node.js基于V8引擎，基于 事件驱动机制，在特定领域性能出色，比如用node.js实现消息推送、状态监控等的业务功能非常合适。</p>
 </blockquote>
 <h4 id="2-1-2-安装node-js"><a href="#2-1-2-安装node-js" class="headerlink" title="2.1.2 安装node.js"></a>2.1.2 安装node.js</h4><ul>
 <li>下载对应你系统的Node.js版本:</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416204949.png"></p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a><br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416204949.png"></p>
 <ul>
 <li><p>选安装目录进行安装, 我选择安装在了E盘: E:\Program Files\nodejs</p>
 </li>
@@ -167,7 +167,7 @@
 <h3 id="2-2-安装NPM"><a href="#2-2-安装NPM" class="headerlink" title="2.2 安装NPM"></a>2.2 安装NPM</h3><p>npm全称Node Package Manager，他是node包管理和分发的工具，使用NPM可以对应用的依赖进行管理，NPM 的功能和服务端项目构建工具maven的依赖管理功能差不多，我们通过npm 可以很方便地下载js库，打包js文件。</p>
 <h4 id="2-2-1-自动安装NPM"><a href="#2-2-1-自动安装NPM" class="headerlink" title="2.2.1 自动安装NPM"></a>2.2.1 自动安装NPM</h4><p>node.js已经集成了npm工具<br>在命令提示符输入 npm -v 可查看当前npm版本</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416205247.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416205247.png"></p>
 <h4 id="2-2-2-查看包管理路径"><a href="#2-2-2-查看包管理路径" class="headerlink" title="2.2.2 查看包管理路径"></a>2.2.2 查看包管理路径</h4><p>包路径就是npm从远程下载的js包所存放的路径。 使用 npm config ls 查询NPM管理包路径（NPM下载的依赖包所存放的路径）</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
 <p>我们发现NPM默认的管理包路径在:</p>
@@ -179,7 +179,7 @@
 <li><p>在 H:\software\nodejs_package 下再创建 npm_modules 文件夹 和 npm_cache 文件夹:</p>
 </li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416205548.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416205548.png"></p>
 <ul>
 <li>执行下边的命令,设置为自定义的包管理路径：</li>
 </ul>
@@ -187,12 +187,12 @@
 <ul>
 <li>此时再使用 npm config ls 查询NPM管理包路径发现路径已更改</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416205653.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416205653.png"></p>
 <h4 id="2-2-4-NPM环境变量配置"><a href="#2-2-4-NPM环境变量配置" class="headerlink" title="2.2.4 NPM环境变量配置"></a>2.2.4 NPM环境变量配置</h4><ul>
 <li>查看npm的全局路径是什么</li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get prefix</span><br></pre></td></tr></table></figure>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416210101.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210101.png"></p>
 <ul>
 <li>配置PATH环境变量</li>
 </ul>
@@ -210,50 +210,50 @@
 <ul>
 <li>输入 vue命令</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416210439.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210439.png"></p>
 <ul>
 <li>输入 vue -V 查看版本</li>
 </ul>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vue -v</span></span><br></pre></td></tr></table></figure>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416210527.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210527.png"></p>
 <h2 id="3-快速构建Vue项目"><a href="#3-快速构建Vue项目" class="headerlink" title="3. 快速构建Vue项目"></a>3. 快速构建Vue项目</h2><h3 id="3-1-步骤说明"><a href="#3-1-步骤说明" class="headerlink" title="3.1 步骤说明"></a>3.1 步骤说明</h3><p>我们使用vue-cli 快速构建项目,步骤如下:</p>
 <ul>
 <li>桌面创建一个空的文件夹</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416210612.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210612.png"></p>
 <ul>
 <li>以管理员身份运行cmd , 进入到vueTest文件夹</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416210642.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210642.png"></p>
 <ul>
 <li>执行下面的命令</li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//<span class="number">1</span>.基于交互式命令方式,创建项目 </span><br><span class="line">//文件名 不支持驼峰（含大写字母）使用短横线方式 </span><br><span class="line">vue create my<span class="literal">-project</span></span><br></pre></td></tr></table></figure>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211212.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211212.png"></p>
 <ul>
 <li>选择自定义安装,点击回车</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211302.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211302.png"></p>
 <ul>
 <li>在这列表中,选择我们要安装的组件,使用空格键选择,选好后回车</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211333.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211333.png"></p>
 <ul>
 <li>按回车之后,提示选择什么模式的路由,我们输入 n (表示选择hash模式)</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211417.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211417.png"></p>
 <ul>
 <li>选择项目配置文件单独存放</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211443.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211443.png"></p>
 <ul>
 <li>是否保存模板,选择n 不创建</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211510.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211510.png"></p>
 <ul>
 <li>安装完成,提示输入执行下面这两个命令</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211549.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211549.png"></p>
 <ul>
 <li>首先进入项目目录</li>
 </ul>
@@ -262,11 +262,11 @@
 <li>启动项目</li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211652.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211652.png"></p>
 <ul>
 <li>访问项目: <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a></li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210416211757.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211757.png"></p>
 <ul>
 <li>停止项目 ctr+c或者关闭命令行窗口就可以</li>
 </ul>
@@ -278,7 +278,7 @@
 <li><p>打开项目,可以看到如下项目结构</p>
 </li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420193436.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420193436.png"></p>
 <h3 id="3-3-项目结构介绍"><a href="#3-3-项目结构介绍" class="headerlink" title="3.3 项目结构介绍"></a>3.3 项目结构介绍</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">|<span class="type">--- my</span>-project 项目名称 </span><br><span class="line">	|<span class="type">--- node_modules</span> 存放依赖包的目录 </span><br><span class="line">	|<span class="type">--- public</span> 静态资源管理目录 </span><br><span class="line">	|<span class="type">--- src</span> 组件源码目录(我们写的代码) </span><br><span class="line">		|<span class="type">--- assets</span> 存放静态图片资源(CSS也可以放在这里) </span><br><span class="line">		|<span class="type">--- components</span> 存放各种组件(一个页面可以看做一个组件)，各个组件联系在一起组成一个 完整的项目</span><br><span class="line">		|<span class="type">--- router</span> 存放了项目路由文件 </span><br><span class="line">		|<span class="type">--- views</span> 放置的为公共组件(主要还是各个主要页面) </span><br><span class="line">		|<span class="type">--- App</span>.vue app.vue可以当做是网站首页，是一个vue项目的主组件，页面入口文件 </span><br><span class="line">		|<span class="type">--- main</span>.js 打包运行的入口文件，引入了vue模块和app.vue组件以及路由route 	</span><br><span class="line">	|<span class="type">--- babel</span>.config.js babel配置文件, 对源代码进行转码(把es6=&gt;es5) </span><br><span class="line">	|<span class="type">--- package</span>.json 项目及工具的依赖配置文件 </span><br><span class="line">	|<span class="type">--- paxkage</span>-lock.json 依赖配置文件 </span><br><span class="line">	|<span class="type">--- README</span>.md 项目说明</span><br></pre></td></tr></table></figure>
 
 
@@ -299,7 +299,7 @@
 <ul>
 <li>在VSCode中选择项目,右键在终端打开</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420194223.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420194223.png"></p>
 <ul>
 <li>输入命令</li>
 </ul>
@@ -308,7 +308,7 @@
 <ul>
 <li>运行后发现端口号改为 8888,并且在打包完成后自动打开浏览器</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420194335.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420194335.png"></p>
 <p>注意: 不推荐这种方式,因为package.json 主要是用来管理包的配置信息.为了方便维护,我们将Vue脚手架相关的配置单独定义到 <strong>vue.confifig.js</strong> 配置文件中</p>
 <h4 id="3-4-3-单独的配置文件配置项目"><a href="#3-4-3-单独的配置文件配置项目" class="headerlink" title="3.4.3 单独的配置文件配置项目"></a>3.4.3 单独的配置文件配置项目</h4><ul>
 <li>在项目的根目录创建文件 vue.config.js</li>
@@ -321,7 +321,7 @@
 
 <h3 id="3-5-Vue-组件化开发"><a href="#3-5-Vue-组件化开发" class="headerlink" title="3.5 Vue 组件化开发"></a>3.5 Vue 组件化开发</h3><h4 id="3-5-1-组件化开发"><a href="#3-5-1-组件化开发" class="headerlink" title="3.5.1 组件化开发"></a>3.5.1 组件化开发</h4><p>组件化是Vue的精髓，Vue项目就是由一个一个的组件构成的。 我们主要的工作就是开发的组件.</p>
 <h4 id="3-5-2-组件介绍"><a href="#3-5-2-组件介绍" class="headerlink" title="3.5.2 组件介绍"></a>3.5.2 组件介绍</h4><p>1）我们用 vue-cli 脚手架搭建的项目，里面有很多，如 index.vue 或者 App.vue 这一类的文件.每一个**.vue 文件都是一个组件 ，是一个自定义的文件类型**, 比如 App.vue 就是整个项目的根组件。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420194800.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420194800.png"></p>
 <p>2）常见的组件：</p>
 <ul>
 <li>页面级别的组件<ul>
@@ -361,7 +361,7 @@
 <h3 id="4-4-Home-vue组件"><a href="#4-4-Home-vue组件" class="headerlink" title="4.4 Home.vue组件"></a>4.4 Home.vue组件</h3><ul>
 <li>默认访问的是Home.vue 首页</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420200637.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420200637.png"></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt; template&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span> </span>= <span class="string">&quot;home&quot;</span>&gt; 首页的logo </span><br><span class="line">		&lt; img alt = <span class="string">&quot;Vue logo&quot;</span> src = <span class="string">&quot;../assets/logo.png&quot;</span> &gt; </span><br><span class="line">		&lt; HelloWorld msg = <span class="string">&quot;Welcome to Your Vue.js App&quot;</span> / &gt; </span><br><span class="line">	&lt;/div&gt; </span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt; </span><br><span class="line"><span class="comment">//导入了一个组件 HelloWorld.vue @符号表示 src这个目录 </span></span><br><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">&#x27;@/components/HelloWorld.vue&#x27;</span> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; </span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>, </span><br><span class="line">    components: &#123; </span><br><span class="line">        HelloWorld </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>HelloWorld.vue 组件页面</p>
@@ -374,7 +374,7 @@
 <h2 id="5-组件的使用案例"><a href="#5-组件的使用案例" class="headerlink" title="5. 组件的使用案例"></a>5. 组件的使用案例</h2><h3 id="5-1-创建Header-vue组件"><a href="#5-1-创建Header-vue组件" class="headerlink" title="5.1 创建Header.vue组件"></a>5.1 创建Header.vue组件</h3><ul>
 <li>在components 目录下创建 Header.vue</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420201834.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420201834.png"></p>
 <ul>
 <li>编写Header.vue</li>
 </ul>
@@ -398,7 +398,7 @@
 <li>当前项目下打开终端, 安装依赖包 ,执行下面的命令</li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i element<span class="literal">-ui</span> <span class="literal">-S</span></span><br></pre></td></tr></table></figure>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420203004.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420203004.png"></p>
 <ul>
 <li>打开 main.js , 导入Element-UI 相关资源.<ul>
 <li>main.js是工程的入口文件，在此文件中加载了很多第三方组件，如：Element-UI、Base64、 VueRouter等。</li>
@@ -407,7 +407,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入组件库 </span></span><br><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//导入组件相关样式 </span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">//配置Vue插件 将El安装到Vue上 </span></span><br><span class="line">Vue.use(ElementUI);</span><br></pre></td></tr></table></figure>
 
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420203205.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420203205.png"></p>
 <ul>
 <li>复制Element 按钮样式 到app.vue文件的 template下</li>
 </ul>
@@ -416,7 +416,7 @@
 <ul>
 <li>启动项目 npm run serve, 查看页面</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420203522.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420203522.png"></p>
 <h3 id="7-2-Vue-CLI工程改造"><a href="#7-2-Vue-CLI工程改造" class="headerlink" title="7.2 Vue-CLI工程改造"></a>7.2 Vue-CLI工程改造</h3><ul>
 <li>删除components 目录下的 HelloWord.vue组件</li>
 <li>删除App.vue中的部分内容,只保留如下部分</li>
@@ -443,7 +443,7 @@
 
 
 
-<h2 id="8-用户登录界面制作"><a href="#8-用户登录界面制作" class="headerlink" title="8. 用户登录界面制作"></a>8. 用户登录界面制作</h2><h3 id="8-1-Dialog对话框组件"><a href="#8-1-Dialog对话框组件" class="headerlink" title="8.1  Dialog对话框组件"></a>8.1  Dialog对话框组件</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420204252.png"><br><strong>我们可以用Dialog制作一个登陆弹窗,选择自定义内容</strong><br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420204323.png"></p>
+<h2 id="8-用户登录界面制作"><a href="#8-用户登录界面制作" class="headerlink" title="8. 用户登录界面制作"></a>8. 用户登录界面制作</h2><h3 id="8-1-Dialog对话框组件"><a href="#8-1-Dialog对话框组件" class="headerlink" title="8.1  Dialog对话框组件"></a>8.1  Dialog对话框组件</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420204252.png"><br><strong>我们可以用Dialog制作一个登陆弹窗,选择自定义内容</strong><br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420204323.png"></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-dialog</span> <span class="attr">title</span>=<span class="string">&quot;收货地址&quot;</span> <span class="attr">:visible.sync</span>=<span class="string">&quot;dialogFormVisible&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">el-form</span> <span class="attr">:model</span>=<span class="string">&quot;form&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;活动名称&quot;</span> <span class="attr">:label-width</span>=<span class="string">&quot;formLabelWidth&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">&quot;form.name&quot;</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;活动区域&quot;</span> <span class="attr">:label-width</span>=<span class="string">&quot;formLabelWidth&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">el-select</span> <span class="attr">v-model</span>=<span class="string">&quot;form.region&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请选择活动区域&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">el-option</span> <span class="attr">label</span>=<span class="string">&quot;区域一&quot;</span> <span class="attr">value</span>=<span class="string">&quot;shanghai&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">el-option</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">el-option</span> <span class="attr">label</span>=<span class="string">&quot;区域二&quot;</span> <span class="attr">value</span>=<span class="string">&quot;beijing&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">el-option</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">el-select</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">&quot;footer&quot;</span> <span class="attr">class</span>=<span class="string">&quot;dialog-footer&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">&quot;dialogFormVisible = false&quot;</span>&gt;</span></span><br><span class="line">			取 消</span><br><span class="line">		<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;dialogFormVisible = false&quot;</span>&gt;</span></span><br><span class="line">			确 定</span><br><span class="line">			<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-dialog</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
@@ -504,14 +504,14 @@
 <ul>
 <li>使用postman模拟出一个server</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420205719.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420205719.png"></p>
 <ul>
 <li>打开如下窗体，创建一个伪服务</li>
 </ul>
 <p>第一步</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420205758.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420205758.png"></p>
 <p>第二步</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210420205932.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420205932.png"></p>
 <p>第三步</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">&quot;复制上面的地址/login&quot;</span>; </span><br></pre></td></tr></table></figure>
 
@@ -528,14 +528,14 @@
 <ul>
 <li>已被CORS策略阻止：请求的资源上没有’ Access-Control-Allow-Origin’标头（跨域请求失败）</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210423112514.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210423112514.png"></p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Access</span> <span class="keyword">to</span> XMLHttpRequest at <span class="string">&#x27;http://localhost:8080/lagou_edu_home/course? methodName=findCourseList&#x27;</span> <span class="keyword">from</span> origin <span class="string">&#x27;http://localhost:8088&#x27;</span> has been blocked <span class="keyword">by</span> CORS <span class="keyword">policy</span>: <span class="keyword">No</span> <span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span> <span class="keyword">header</span> <span class="keyword">is</span> present <span class="keyword">on</span> the requested resource.</span><br></pre></td></tr></table></figure>
 
 <h3 id="9-2-什么是跨域"><a href="#9-2-什么是跨域" class="headerlink" title="9.2 什么是跨域"></a>9.2 什么是跨域</h3><p>跨域是指通过JS在不同的域之间进行数据传输或通信，比如用ajax向一个不同的域请求数据，只要协议、域名、端口有任何一个不同，都被当作是不同的域,浏览器就不允许跨域请求。</p>
 <ul>
 <li>跨域的几种常见情</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210423112637.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210423112637.png"></p>
 <h3 id="9-3-解决跨域问题"><a href="#9-3-解决跨域问题" class="headerlink" title="9.3 解决跨域问题"></a>9.3 解决跨域问题</h3><p>跨域的允许主要由服务器端控制。服务器端通过在响应的 header 中设置 Access-Control-Allow- Origin 及相关一系列参数，提供跨域访问的允许策略</p>
 <ul>
 <li>设置响应头中的参数来允许跨域域请求:</li>

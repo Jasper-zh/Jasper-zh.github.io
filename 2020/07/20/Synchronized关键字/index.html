@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2020-07-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.515Z">
+<meta property="article:modified_time" content="2022-04-07T05:21:34.466Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:21:34'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -153,7 +153,7 @@
 
 
 <h4 id="对象的内存结构"><a href="#对象的内存结构" class="headerlink" title="对象的内存结构"></a>对象的内存结构</h4><p>了解对象加锁原理那么首先需要了解在JVM（hotspot）当中一个对象的内存结构</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png"></p>
 <blockquote>
 <p>1.对象头</p>
 <p>对象头分为MarkWord与Class对象指针，其中MarkWord标识了对象运行时的各种属性与状态值。哈希码、GC分代 年状 态标志、线程持有的锁、偏向线程ID、偏向时间戳等。（哈希，GC信息，锁信息）<br>Class对象指针：这段空间是用来保存自己的父类通过类加载器加载到内存后生成的类的Class对象的地址，这样就可以通过对象知道它是属于哪个类的。</p>
@@ -163,15 +163,15 @@
 <p>因为hotspot虚拟机64位的内存管理系统要求内存的起始地址必须是8个字节的整数倍，所以这段填充就是为了保证地址是8个字节的整数倍。</p>
 </blockquote>
 <p><strong>markword</strong>在这里就是记录着各种信息64位的二进制串其中三位标记着锁信息</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/%E5%AF%B9%E8%B1%A1%E5%A4%B4.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/%E5%AF%B9%E8%B1%A1%E5%A4%B4.png"></p>
 <h4 id="自旋锁CAS"><a href="#自旋锁CAS" class="headerlink" title="自旋锁CAS"></a>自旋锁CAS</h4><p>CAS：Compare and Swap，即比较再交换。</p>
 <p>jdk5增加了并发包java.util.concurrent.*,其下面的类使用CAS算法实现了区别于synchronouse同步锁的一种乐观锁。JDK 5之前Java语言是靠synchronized关键字保证同步的，这是一种独占锁，也是是悲观锁。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/CAS.png"></p>
-<h4 id="Synchronized锁升级"><a href="#Synchronized锁升级" class="headerlink" title="Synchronized锁升级"></a>Synchronized锁升级</h4><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/%E9%94%81%E5%8D%87%E7%BA%A7.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/CAS.png"></p>
+<h4 id="Synchronized锁升级"><a href="#Synchronized锁升级" class="headerlink" title="Synchronized锁升级"></a>Synchronized锁升级</h4><p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/%E9%94%81%E5%8D%87%E7%BA%A7.png"></p>
 <p>给对象加锁，实际上是改变的是对象的markword内容。通过标志位的一些记录来判断当前的锁信息，从下面例子打印结果可以看到锁标记位（第一个字节后三位）由001变为000，对象创建没有开启偏向锁进而加锁直接升级自旋锁。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object()；</span><br><span class="line">System.out.println(ClassLayout.parselnstonce(o).toPrintable())； </span><br><span class="line">    </span><br><span class="line"><span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">	System.out.println(ClassLayout.porselnstonce(o).toPrintable())； </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/markword.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/markword.png"></p>
 <p>早期synchronized属于重量级锁申请和注销必须得向内核层申请。但有些需要同步的地方大多数情况下也确实只有一个线程访问。这样的情况下仍然去找操作系统申请锁资源浪费比例大。所以1.6之后对Synchronized进行了优化有偏移锁与自旋锁。</p>
 <p><strong>偏向锁</strong>：这个锁会偏向于第一个获得它的线程，在接下来的执行过程中，假如该锁没有被其他线程所获取，没有其他线程来竞争该锁，那么持有偏向锁的线程将永远不需要进行同步操作。也就是说:在此线程之后的执行过程中，如果再次进入或者退出同一段同步块代码，并不再需要去进行<strong>加锁</strong>或者<strong>解锁</strong>操作，而是会做以下的步骤：</p>
 <ol>

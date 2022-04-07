@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-03-27T02:58:44.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.537Z">
+<meta property="article:modified_time" content="2022-04-07T05:38:58.657Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:38:58'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -154,7 +154,7 @@
 <li>_config.yml 页面的各种通用属性配置（头像等等）</li>
 <li>README.md 仓库的说明，不是关键的我这边留着 </li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327110241.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110241.png"></p>
 <h3 id="准备新hexo"><a href="#准备新hexo" class="headerlink" title="准备新hexo"></a>准备新hexo</h3><p>安装14版本node</p>
 <p>配置依赖库镜像</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
@@ -165,31 +165,31 @@
 <p> 查看版本信息</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo -v</span></span><br></pre></td></tr></table></figure>
 
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327090400.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327090400.png"></p>
 <p>初始化博客</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog</span><br><span class="line">cd myblog</span><br></pre></td></tr></table></figure>
 
 <p>安装依赖后测试一下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327110827.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110827.png"></p>
 <h3 id="填充原博客"><a href="#填充原博客" class="headerlink" title="填充原博客"></a>填充原博客</h3><p>没有问题，那现在就相当于把我们的备份全都复制过来就可以了</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327110931.png"></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327110939.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110931.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110939.png"></p>
 <h3 id="再次使用出错"><a href="#再次使用出错" class="headerlink" title="再次使用出错"></a>再次使用出错</h3><p>这时候就出了问题，也是我当时使用命令更新后的问题，因此才采用了重新下载新版hexo初始化这样的方法，既然还是躲不掉这个问题就去解决这个问题呗</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111137.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111137.png"></p>
 <p>一开始发现只要不放_config.yml进去，其他的没问题</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111145.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111145.png"></p>
 <p>也就是问题在配置文件上，再看错误信息，我们找到js的那一行看看，看这个config.url是什么于是我把它拼接在错误信息后面</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111155.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111155.png"></p>
 <p>再次启动看错误信息，这不就是在_config.yml中配置的url么</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111205.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111205.png"></p>
 <p>尝试去在地址前加上 <code>http:</code> 就好了，奇了怪了以前的hexo配置不用加http所以使用正常，更新新的版本后url就不能这么配置了，要写全</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111817.png"></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111824.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111817.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111824.png"></p>
 <p>完美， <code>.git</code> 文件夹也复制过去了所以直接push到我们的源文件备份分支。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>最后还没完，初始的hexo-cli是不会自带git部署插件的，还有其他。可以对比原博客的package.json看自己以前用了哪些要装上的</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210327111832.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111832.png"></p>
 <p>我这边要给新的hexo装上，以下三个也是以前的hexo有用到</p>
 <ul>
 <li><p>git部署 <code>npm install hexo-deployer-git --save</code></p>

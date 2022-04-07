@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2020-08-10T03:22:01.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.515Z">
+<meta property="article:modified_time" content="2022-04-07T05:21:56.791Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:21:56'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -147,7 +147,7 @@
 </blockquote>
 <p>所以呢它主要是两个作用：一个是<strong>线程可见</strong>（保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。），一个是防止<strong>指令重排序</strong>。要理解这些首先呢需要了解我们java的一个内存模型（Java Memory Model，JMM）</p>
 <h4 id="Java-Memory-Model"><a href="#Java-Memory-Model" class="headerlink" title="Java Memory Model"></a>Java Memory Model</h4><p>我们知道在java中，实例域、静态域和数组元素都存储在堆内存中，堆内存是线程共享，而其他的一些虚拟机栈等它们的的一些内容是线程独占不会有内存可见的问题也不受内存模型影响。<br>Java线程之间的通信由Java内存模型控制，JMM决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。Java内存模型的抽象示意图如下：</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Volatile/JMM.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Volatile/JMM.png"></p>
 <p>线程从主内存拿取到某以变量到自己本地内存进行操作，完毕之后再将新的值覆盖到主内存。之后再有其他线程拿到此变量得到一个新的值。通过这样的方式达到了一个不同线程之间的通讯，而且这个通信过程必须要经过主内存。JMM通过控制主内存与每个线程的本地内存之间的交互，来为java程序员提供内存可见性保证。</p>
 <h4 id="线程可见"><a href="#线程可见" class="headerlink" title="线程可见"></a>线程可见</h4><p>当一个线程修改了共享变量的值，其他线程能够立即得知这个修改，这样的方式来保证单次读写操作的同步性。</p>
 <p><strong>例子1：</strong>j的值会是多少呢？</p>
@@ -160,7 +160,7 @@
 <p>答案是不会，新线程的本地内存拿到的flag是true，它一直使用的就是true。即使主线程已经将flag更改并同步到了主内存。新线程的本地空间已经有了flag也不会再去主内存取了。这时使用volatitle关键字修饰该变量就可以保证变量更改进行立刻同步，并且其他地方使用该变量每次都要重新从主内存拿取。</p>
 <p>通过两个例子大概可以知道的是volatile修饰的变量，变动会及时更新并且线程都会去主内存取而不是到本地</p>
 <h4 id="指令重排序"><a href="#指令重排序" class="headerlink" title="指令重排序"></a>指令重排序</h4><p>实际上就是在执行程序时为了提高性能，编译器和处理器常常会对指令做重排序。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Volatile/%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Volatile/%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F.png"></p>
 <blockquote>
 <ol>
 <li>编译器优化的重排序。编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序。</li>

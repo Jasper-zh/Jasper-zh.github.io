@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-04-04T06:51:54.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.508Z">
+<meta property="article:modified_time" content="2022-04-07T05:15:36.786Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="总结文档">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:15:36'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -197,12 +197,12 @@
 <p>像大多数的持久化框架一样，Mybatis也提供了缓存策略，通过缓存策略来减少数据库的查询次数，从而提高性能。 Mybatis中缓存分为一级缓存，二级缓存。</p>
 <h3 id="2-2-一级缓存"><a href="#2-2-一级缓存" class="headerlink" title="2.2 一级缓存"></a>2.2 一级缓存</h3><h4 id="2-2-1-介绍"><a href="#2-2-1-介绍" class="headerlink" title="2.2.1 介绍"></a>2.2.1 介绍</h4><p>一级缓存是SqlSession级别的缓存，是默认开启的</p>
 <p>所以在参数和SQL完全一样的情况下，我们使用同一个SqlSession对象调用一个Mapper方法，往往只执行一次SQL，因为使用SelSession第一次查询后，MyBatis会将其放在缓存中，以后再查询的时候，如果没有声明需要刷新，并且缓存没有超时的情况下，SqlSession都会取出当前缓存的数据，而不会再次发送SQL到数据库。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422150625.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422150625.png"></p>
 <h4 id="2-2-2-验证"><a href="#2-2-2-验证" class="headerlink" title="2.2.2 验证"></a>2.2.2 验证</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOneCache</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	SqlSession sqlSession = MyBatisUtils.openSession();</span><br><span class="line">	UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">	User user1 = userMapper.findById(<span class="number">1</span>);</span><br><span class="line">	System.out.println(<span class="string">&quot;第一次查询的用户：&quot;</span> + user1);</span><br><span class="line">	User user2 = userMapper.findById(<span class="number">1</span>);</span><br><span class="line">	System.out.println(<span class="string">&quot;第二次查询的用户：&quot;</span> + user2);</span><br><span class="line">	sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们可以发现，虽然在上面的代码中我们查询了两次，但最后只执行了一次数据库操作，这就是Mybatis提供给我们的一级缓存在起作用了。因为一级缓存的存在，导致第二次查询id为1的记录时，并没有发出sql语句从数据库中查询数据，而是从一级缓存中查询。</p>
 <h4 id="2-2-3-分析"><a href="#2-2-3-分析" class="headerlink" title="2.2.3 分析"></a>2.2.3 分析</h4><p>一级缓存是SqlSession范围的缓存，执行SqlSession的C（增加）U（更新）D（删除）操作，或者调用clearCache()、commit()、close()方法，都会清空缓存。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422150807.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422150807.png"></p>
 <div class="note info no-icon flat"><ol>
 <li>第一次发起查询用户id为41的用户信息，先去找缓存中是否有id为41的用户信息，如果没有，从数据库 查询用户信息。</li>
 <li>得到用户信息，将用户信息存储到一级缓存中。</li>
@@ -219,7 +219,7 @@
 
 <h3 id="2-3-二级缓存"><a href="#2-3-二级缓存" class="headerlink" title="2.3 二级缓存"></a>2.3 二级缓存</h3><h4 id="2-3-1-介绍"><a href="#2-3-1-介绍" class="headerlink" title="2.3.1 介绍"></a>2.3.1 介绍</h4><p>二级缓存是namspace级别（跨sqlSession）的缓存，是默认不开启的</p>
 <p>二级缓存的开启需要进行配置，实现二级缓存的时候，MyBatis要求返回的POJO必须是可序列化的。也就是要求实现Serializable接口，配置方法很简单，只需要在映射XML文件配置 <code>&lt;cache/&gt;</code> 就可以开启二级缓存了。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422151445.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422151445.png"></p>
 <h3 id="2-3-2-验证"><a href="#2-3-2-验证" class="headerlink" title="2.3.2 验证"></a>2.3.2 验证</h3><p><strong>1）核心配置文件</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">		因为cacheEnabled的取值默认就为true，所以这一步可以省略不配置。 </span></span><br><span class="line"><span class="comment">		为true代表开启二级缓存；为false代表不开启二级缓存。 </span></span><br><span class="line"><span class="comment">	--&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -241,7 +241,7 @@
 
 
 <h4 id="2-3-3-分析"><a href="#2-3-3-分析" class="headerlink" title="2.3.3 分析"></a>2.3.3 分析</h4><p>二级缓存是mapper映射级别的缓存，多个SqlSession去操作同一个Mapper映射的sql语句，多个SqlSession可以共用二级缓存，二级缓存是跨SqlSession的。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422152141.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422152141.png"></p>
 <div class="note info no-icon flat"><ol>
 <li>映射语句文件中的所有select语句将会被缓存。</li>
 <li>映射语句文件中的所有insert、update和delete语句会刷新缓存。</li>
@@ -285,7 +285,7 @@
 
 <h3 id="3-3-使用注解实现复杂映射开发"><a href="#3-3-使用注解实现复杂映射开发" class="headerlink" title="3.3 使用注解实现复杂映射开发"></a>3.3 使用注解实现复杂映射开发</h3><p>之前我们在映射文件中通过配置 <code>&lt;resultMap&gt;、&lt;association&gt;、&lt;collection&gt; </code>来实现复杂关系映射。</p>
 <p>使用注解开发后，我们可以使用 @Results、@Result，@One、@Many 注解组合完成复杂关系的配置。</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422160251.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422160251.png"></p>
 <h3 id="3-4-一对一查询"><a href="#3-4-一对一查询" class="headerlink" title="3.4 一对一查询"></a>3.4 一对一查询</h3><h4 id="3-4-1-介绍"><a href="#3-4-1-介绍" class="headerlink" title="3.4.1 介绍"></a>3.4.1 介绍</h4><p>需求：查询一个订单，与此同时查询出该订单所属的用户</p>
 <p><strong>一对一查询语句</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders; </span><br><span class="line">SELECT * FROM `user` WHERE id = #&#123;订单的uid&#125;;</span><br></pre></td></tr></table></figure>

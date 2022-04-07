@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-06-15T03:44:21.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.503Z">
+<meta property="article:modified_time" content="2022-04-07T02:21:45.337Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="总结文档">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 10:21:45'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -147,7 +147,7 @@
 <li>用户访问量大又如何保证下载速度？分布式文件系统就是解决这些问题的！</li>
 </ul>
 <h3 id="1-1-什么是文件系统"><a href="#1-1-什么是文件系统" class="headerlink" title="1.1 什么是文件系统"></a>1.1 什么是文件系统</h3><ul>
-<li>文件数据是如何存储的？？<br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210624115126.png"><br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210624115146.png"></li>
+<li>文件数据是如何存储的？？<br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624115126.png"><br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624115146.png"></li>
 </ul>
 <h3 id="1-2-分布式文件系统"><a href="#1-2-分布式文件系统" class="headerlink" title="1.2 分布式文件系统"></a>1.2 分布式文件系统</h3><ul>
 <li>一台电脑存储量有限，并且并发吞吐量也有限，如何提高性能？</li>
@@ -181,7 +181,7 @@
 </ul>
 <h4 id="1-3-3-FastDFS"><a href="#1-3-3-FastDFS" class="headerlink" title="1.3.3.FastDFS"></a>1.3.3.FastDFS</h4><ul>
 <li><p>由淘宝资深架构师余庆编写并开源；</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210624120316.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120316.png"></p>
 </li>
 <li><p>专为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务；</p>
 </li>
@@ -195,7 +195,7 @@
 <h3 id="1-4-工作原理"><a href="#1-4-工作原理" class="headerlink" title="1.4 工作原理"></a>1.4 工作原理</h3><ul>
 <li>fastDFS包含Tracker Server和Storage Server；</li>
 <li>客户端请求Tracker Server进行文件的上传与下载；</li>
-<li>Tracker Server调度Storage Server最终完成上传与下载。<br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210624120525.png"></li>
+<li>Tracker Server调度Storage Server最终完成上传与下载。<br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120525.png"></li>
 <li>Tracker （译：追踪者）<ul>
 <li>作用是负载均衡和调度，它管理着存储服务（Storage Server），可以理解为：“大管家，追踪者，调度员”；</li>
 <li>Tracker Server可以集群，实现高可用，策略为“轮询”。</li>
@@ -209,8 +209,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-5-上传-下载-原理"><a href="#1-5-上传-下载-原理" class="headerlink" title="1.5 上传/下载 原理"></a>1.5 上传/下载 原理</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210624120844.png"></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210624120854.png"></p>
+<h3 id="1-5-上传-下载-原理"><a href="#1-5-上传-下载-原理" class="headerlink" title="1.5 上传/下载 原理"></a>1.5 上传/下载 原理</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120844.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120854.png"></p>
 <ul>
 <li>客户端上传文件后，storage会将文件id返回给客户端</li>
 <li>group1/M00/02/11/aJxAeF21O5wAAAAAAAAGaEIOA12345.sh<ul>

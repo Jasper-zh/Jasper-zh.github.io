@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-03-27T03:09:54.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.509Z">
+<meta property="article:modified_time" content="2022-04-07T05:16:14.713Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="总结文档">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:16:14'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -380,7 +380,7 @@
 <h3 id="4-2-一对一（多对一）"><a href="#4-2-一对一（多对一）" class="headerlink" title="4.2 一对一（多对一）"></a>4.2 一对一（多对一）</h3><h4 id="4-2-1-介绍"><a href="#4-2-1-介绍" class="headerlink" title="4.2.1 介绍"></a>4.2.1 介绍</h4><p><strong>一对一查询模型</strong></p>
 <p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
 <p>一对一查询的需求：查询所有订单，与此同时查询出每个订单所属的用户</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422123844.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422123844.png"></p>
 <p><strong>一对一查询语句</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders o <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">USER</span> u <span class="keyword">ON</span> o.`uid`<span class="operator">=</span>u.`id`;</span><br></pre></td></tr></table></figure>
 
@@ -402,7 +402,7 @@
 <h3 id="4-3-一对多"><a href="#4-3-一对多" class="headerlink" title="4.3 一对多"></a>4.3 一对多</h3><h4 id="4-3-1-介绍"><a href="#4-3-1-介绍" class="headerlink" title="4.3.1 介绍"></a>4.3.1 介绍</h4><p><strong>一对多查询模型</strong></p>
 <p>用户表和订单表的关系为，一个用户有多个订单，一个订单只从属于一个用户</p>
 <p>一对一查询的需求：查询所有订单，与此同时查询出每个订单所属的用户</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422124458.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422124458.png"></p>
 <p><strong>一对多查询语句</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span>,o.id oid <span class="keyword">FROM</span> <span class="keyword">USER</span> u <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> orders o <span class="keyword">ON</span> u.`id` <span class="operator">=</span> o.`uid`;</span><br></pre></td></tr></table></figure>
 
@@ -422,7 +422,7 @@
 
 
 <h3 id="4-4-多对多"><a href="#4-4-多对多" class="headerlink" title="4.4 多对多"></a>4.4 多对多</h3><h3 id="4-4-1-介绍"><a href="#4-4-1-介绍" class="headerlink" title="4.4.1 介绍"></a>4.4.1 介绍</h3><p><strong>多对多查询的模型</strong></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210422125345.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422125345.png"></p>
 <p><strong>多对多查询语句</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> FROMUSER </span><br><span class="line">u <span class="comment">-- 用户表 </span></span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> user_role ur <span class="comment">-- 左外连接中间表 </span></span><br><span class="line"><span class="keyword">ON</span> u.`id` <span class="operator">=</span> ur.`uid` <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> role r <span class="comment">-- 左外连接中间表 </span></span><br><span class="line"><span class="keyword">ON</span> ur.`rid` <span class="operator">=</span> r.`id` ;</span><br></pre></td></tr></table></figure>
 

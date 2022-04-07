@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2020-08-29T08:08:13.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.514Z">
+<meta property="article:modified_time" content="2022-04-07T05:18:18.898Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="java框架">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 13:18:18'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -164,7 +164,7 @@
 <p>像上面两个属性username与age就是不能通过autowired或者awrare完成赋值的。spring提供InitializingBean初始化接口，当bean的生成从新建到依赖注入再到aware判断处理之后若有实现InitializingBean接口则去调用初始化方法afterPropertiesSet()在这里进行自定义的属性赋值，或者其他操作。</p>
 <p>到此为止（class——新生对象——依赖注入——aware——初始化），bean从新建到最后属性都是完善的。但最终存在单例池中当中的对象可能是代理对象而不是原对象，否则做的那些切面都是无意义的。得到一个bean然后调用其方法，它可能是真正那个bean的代理对象其方法比原方法做了扩展。因此在初始化之后还会有一步就是aop判断是否要生成代理对象最终才得到的bean放入单例池</p>
 <p>这里就出来了<strong>狭义的生命周期</strong></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Spring-bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/1.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Spring-bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/1.png"></p>
 <h5 id="广义的生命周期"><a href="#广义的生命周期" class="headerlink" title="广义的生命周期"></a>广义的生命周期</h5><p>实际上上面的生命周期还是存在问题的，aop之后得到最终的bean它是直接返回还是存进单例池是取决于这个bean它的作用域scope</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;user&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.hao.User&quot;</span> <span class="attr">scope</span>=<span class="string">&quot;prototype&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -172,7 +172,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BeanDefinition</span><br><span class="line">    <span class="number">1.</span>scope</span><br><span class="line">    <span class="number">2.</span>initMethod</span><br><span class="line">    <span class="number">3.</span>byName byType</span><br><span class="line">    <span class="number">4.</span>dependsOn</span><br><span class="line">    <span class="number">5.</span>beanClass</span><br><span class="line">    ....  </span><br></pre></td></tr></table></figure>
 
 <p>bean的创建初始化到最终根据这些信息来完成的，因此我们并不是直接通过class得到新生对象，而是先有BeanDefinition。根据BeanDefinition里的beanClass属性完成创建新生bean，而新建对象需要工厂所以有了该bean的BeanDefinition后再由BeanFactory完成创建bean对象</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/blogImage/raw/master/Spring-bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/2.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Spring-bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/2.png"></p>
 <p>那么BeanDefinition的beanClass就是配置信息中的class，在生成新生对象之前如果去改变了BeanDefinition的beanClass属性那么之后新建对象就不是以前那个class的实例了。BeanFactory也是提供了后置处理器BeanFactoryPostProcessor就可以完成在对象创建前做一些操作。BeanFactory组建完毕里面有所有的BeanDefinition在通过这些BeanDefinition创建各个bean对象存在Spring容器中。在创建之前就会判断有没有后置处理器BeanFactoryPostProcessor。没有就直接创建对象，有则执行完后置处理器中的方法再创建</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanFactoryPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanFactoryPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 主要是用来自定义修改持有的bean</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> beanFactory</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> BeansException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postProcessBeanFactory</span><span class="params">(ConfigurableListableBeanFactory beanFactory)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        String[] names = beanFactory.getBeanDefinitionNames();</span><br><span class="line">        <span class="comment">// 获取了所有的bean名称列表</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;names.length; i++)&#123;</span><br><span class="line">            String name = names[i];</span><br><span class="line">            BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);</span><br><span class="line">            System.out.println(name + <span class="string">&quot; bean properties: &quot;</span> + beanDefinition.getPropertyValues().toString());</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

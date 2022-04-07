@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2021-09-03T11:08:58.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.499Z">
+<meta property="article:modified_time" content="2022-04-07T02:11:17.035Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 10:11:17'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -181,8 +181,8 @@
 <h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>对于单例的饿汉与懒汉大家也应该都清楚，一个是这个类加载的时候实例就创建了，另一个是等去调用getSingle()才去new，就像下面这样</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single single;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getSingle</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(single == <span class="keyword">null</span>)&#123;</span><br><span class="line">            single = <span class="keyword">new</span> Single();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> single;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>好处就是避免了一开始的空间占用。问题就在于创建对象需要两步，一步是判断第二步是创建。因此存在线程安全问题导致多次创建<strong>违背了单例</strong>，如下：</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210905182509558.png" alt="image-20210905182509558"></p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210905181938236.png" alt="image-20210905181938236"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210905182509558.png" alt="image-20210905182509558"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210905181938236.png" alt="image-20210905181938236"></p>
 <p>可以看的到在前几个结果已经出现,新实例的情况.所以这个获取的这个操作是存在<strong>线程安全</strong>问题的。</p>
 <p>那解决也很简单比如:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single single;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> Single <span class="title">getSingle</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(single == <span class="keyword">null</span>)&#123;</span><br><span class="line">            single = <span class="keyword">new</span> Single();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> single;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -198,7 +198,7 @@
 <li>初始化对象到空间</li>
 <li>将空间地址进行引用</li>
 </ol>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210909182308932.png" alt="image-20210909182308932"><br>当2与3步骤进行调换，也就是图上的字节码，21与24的地方。当完成字段赋值，判断则不为空，但如果21与24的指令<strong>交换了顺序</strong>，那么字段不为空时对象并没初始化。由于双重检测锁的实现<strong>第一个判断是开放的</strong>，也就是在一个线程在创建对象的过程中，另一个线程可以经过判断如果不为空直接返回.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210909182308932.png" alt="image-20210909182308932"><br>当2与3步骤进行调换，也就是图上的字节码，21与24的地方。当完成字段赋值，判断则不为空，但如果21与24的指令<strong>交换了顺序</strong>，那么字段不为空时对象并没初始化。由于双重检测锁的实现<strong>第一个判断是开放的</strong>，也就是在一个线程在创建对象的过程中，另一个线程可以经过判断如果不为空直接返回.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Single single;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>在后面疑问章节，可以不使用volatile达到同样的目的么？</p>
@@ -234,7 +234,7 @@
 <p>如果使用反射的话是确实可以去破坏，通过反射可以获取构造器来创建新对象，比如像下面：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.获取无参构造器</span></span><br><span class="line">Constructor&lt;Single&gt; constructor = Single.class.getDeclaredConstructor();</span><br><span class="line"><span class="comment">// 2.关闭私有访问</span></span><br><span class="line">constructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">// 3.调用两次构造器获取对象</span></span><br><span class="line">Single single1 = constructor.newInstance();</span><br><span class="line">Single single2 = constructor.newInstance();</span><br><span class="line"><span class="comment">// 4.测试</span></span><br><span class="line">System.out.println(single1);</span><br><span class="line">System.out.println(single2);</span><br></pre></td></tr></table></figure>
 <p>反射能去随意的使用单例类的构造器，因此确实可以破坏。但我们可以去点开newInstance方法</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210907212626845.png" alt="image-20210907212626845"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210907212626845.png" alt="image-20210907212626845"></p>
 <p>可以很惊喜的发现，如果是枚举类型就不允许通过反射来执行构造器，会抛出异常</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Cannot reflectively create enum objects&quot;</span>);</span><br></pre></td></tr></table></figure>
 
@@ -254,11 +254,11 @@
 <p>其实我们大概都知道，进行序列化与反序列化它是一个深拷贝的过程，是产生另外一个属性内容都相同的新对象，所以如果一个单例类它可以被序列化，那么确实可以打破单例得到新对象。因此对于任何对象按照下面结果都是false</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 进行序列化</span></span><br><span class="line">ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">&quot;tempFile&quot;</span>));</span><br><span class="line">out.writeObject(Single.getSingle());</span><br><span class="line">File file = <span class="keyword">new</span> File(<span class="string">&quot;tempFile&quot;</span>);</span><br><span class="line"><span class="comment">// 还原</span></span><br><span class="line">ObjectInputStream input =  <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(file));</span><br><span class="line">Object newInstance = input.readObject();</span><br><span class="line"><span class="comment">//判断是否是同一个对象</span></span><br><span class="line">System.out.println(newInstance == Single.getSingle());</span><br></pre></td></tr></table></figure>
 <p>但经过测试发现枚举是与众不同的</p>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210908223340198.png" alt="image-20210908223340198"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210908223340198.png" alt="image-20210908223340198"></p>
 <blockquote>
 <p>Java规范字规定，每个枚举类型及其定义的枚举变量在JVM中都是唯一的，因此在枚举类型的序列化和反序列化上，Java做了特殊的规定。在序列化的时候Java仅仅是将枚举对象的name属性输到结果中，反序列化的时候则是通过java.lang.Enum的valueOf()方法来根据名字查找枚举对象。也就是说，序列化的时候只将DATASOURCE这个名称输出，反序列化的时候再通过这个名称，查找对应的枚举类型，因此反序列化后的实例也会和之前被序列化的对象实例相同 —— 《Java编程思想》</p>
 </blockquote>
-<p>抱着一探究竟的想法看了跟着看了readObject如下图，就想上面描述的一样，通过枚举的name属性获取到枚举类里存在的实例。<br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210908225725870.png" alt="image-20210908225725870"><br><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/image-20210908225810282.png" alt="image-20210908225810282"></p>
+<p>抱着一探究竟的想法看了跟着看了readObject如下图，就想上面描述的一样，通过枚举的name属性获取到枚举类里存在的实例。<br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210908225725870.png" alt="image-20210908225725870"><br><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210908225810282.png" alt="image-20210908225810282"></p>
 <blockquote>
 <ol start="5">
 <li>DCL实现可以不使用volatile么？</li>

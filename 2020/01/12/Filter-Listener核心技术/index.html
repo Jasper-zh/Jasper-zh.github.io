@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2020-01-12T02:54:23.000Z">
-<meta property="article:modified_time" content="2022-02-21T06:20:33.503Z">
+<meta property="article:modified_time" content="2022-04-07T02:25:12.574Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="总结文档">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-02-21 14:20:33'
+  postUpdate: '2022-04-07 10:25:12'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -147,7 +147,7 @@
 <li>过滤器是向 Web 应用程序的请求和响应处理添加功能的 Web 服务组件。</li>
 <li>过滤器相当于浏览器与Web资源之间的一道过滤网，在访问资源之前通过一系列的过滤器对请求进行修改、判断以及拦截等，也可以对响应进行修改、判断以及拦截等。</li>
 </ul>
-<h3 id="1-2-工作方式"><a href="#1-2-工作方式" class="headerlink" title="1.2 工作方式"></a>1.2 工作方式</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210412110002.png"></p>
+<h3 id="1-2-工作方式"><a href="#1-2-工作方式" class="headerlink" title="1.2 工作方式"></a>1.2 工作方式</h3><p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412110002.png"></p>
 <h3 id="1-3-使用方式"><a href="#1-3-使用方式" class="headerlink" title="1.3 使用方式"></a>1.3 使用方式</h3><ul>
 <li><p>自定义类实现Filter接口并重写doFilter方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123; </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, </span></span></span><br><span class="line"><span class="function"><span class="params">                         FilterChain chain)</span> <span class="keyword">throws</span> </span></span><br><span class="line"><span class="function">        IOException,ServletException </span>&#123;		</span><br><span class="line">        <span class="comment">//TODO 处理逻辑，必须调用下面的方法 </span></span><br><span class="line">        chain.doFilter(request,response); </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -212,7 +212,7 @@
 <h3 id="1-6-多个过滤器的使用"><a href="#1-6-多个过滤器的使用" class="headerlink" title="1.6 多个过滤器的使用"></a>1.6 多个过滤器的使用</h3><ul>
 <li>如果有多个过滤器都满足过滤的条件，则容器依据映射的先后顺序来调用各个过滤器。</li>
 </ul>
-<p><img src= "/img/loading.gif" data-lazy-src="https://gitee.com/Jasper-zh/image_host/raw/master/20210412112508.png"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412112508.png"></p>
 <h3 id="1-7-过滤器的优点"><a href="#1-7-过滤器的优点" class="headerlink" title="1.7 过滤器的优点"></a>1.7 过滤器的优点</h3><ul>
 <li>实现代码的“可插拔性”，即增加或减少某个功能模块，不会影响程序的正常执行。</li>
 <li>可以将多个相同处理逻辑的模块集中写在过滤器里面，可实现重复利用、也方便代码的维护。</li>
