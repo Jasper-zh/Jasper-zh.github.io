@@ -109,7 +109,7 @@ Element 元素: 是XML文档中最重要的组成部分
 
 #### 2.5 使用XML描述数据表中的数据
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210403124651.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210403124651.png)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -145,7 +145,7 @@ Element 元素: 是XML文档中最重要的组成部分
   * 会引入
   * 不用自己编写
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210403125233.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210403125233.png)
 
 #### 3.1 DTD约束
 
@@ -244,7 +244,7 @@ DTD（Document Type Defifinition），文档类型定义，用来约束XML文档
 
 **Xml Schema元素**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210403143856.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210403143856.png)
 
 ##### 3.2.3 XML引入Schema约束
 
@@ -349,7 +349,7 @@ DTD（Document Type Defifinition），文档类型定义，用来约束XML文档
   * 优点：占用内存少 处理速度快，可以处理大文件
   * 缺点：只能读，逐行后将释放资源。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210403145412.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210403145412.png)
 
 #### 4.3 XML常见的解析器
 
@@ -525,11 +525,11 @@ XPath 是一门在 XML 文档中查找信息的**语言**。 可以是使用xpat
 
 由于DOM4J在解析XML时只能一层一层解析，所以当XML文件层数过多时使用会很不方便，结合XPATH就可以直接获取到某个元素
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210403152755.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210403152755.png)
 
 1）需要再导入 jaxen-1.1-beta-6.jar
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210403152828.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210403152828.png)
 
 ##### 4.5.2 XPath基本语法介绍
 

@@ -9,7 +9,7 @@ copyright: false
 
 #### 1.1 什么是CSS？<!--more-->
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404141951.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404141951.png)
 
 * CSS是指层叠样式表 cascading style sheets
 * 通过CSS可以让我们定义HTML元素如何显示。
@@ -24,7 +24,7 @@ copyright: false
 优点:简单方便 ；
 缺点:只能对一个标签进行修饰。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404142743.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404142743.png)
 
 #### 2.2 内部样式表
 
@@ -34,7 +34,7 @@ copyright: false
 缺点: 它只能在本页面上进行修饰
 语法： 选择器 {属性:值;属性:值}
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404143139.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404143139.png)
 
 #### 2.3 外部样式表
 
@@ -42,7 +42,7 @@ copyright: false
 在项目根目录下，创建css目录，在css目录中创建css文件name.css
 在`<head>`中使用`<link>`标签引用外部的css文件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404143835.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404143835.png)
 
 还可以使用另一种引入css文件的方式：
 
@@ -71,20 +71,20 @@ copyright: false
 
 它可以对页面上相同的标签进行统一的设置，它描述的就是标签的名称.
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404144810.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404144810.png)
 
 ##### 3.1.2 类选择器
 
 类选择器在使用时使用"."来描述，它描述的是元素上的class属性值
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404145132118.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404145132118.png)
 
 ##### 3.1.3 id选择器
 
 它只能选择一个元素，使用 "#" 引入，引用的是元素的id属性值。
 id选择器值不能重复，比类选择器更具有唯一性
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404145424285.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404145424285.png)
 
 #### 3.1.4 选择器组
 
@@ -98,7 +98,7 @@ id选择器值不能重复，比类选择器更具有唯一性
 }
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404145830.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404145830.png)
 
 ##### 3.1.5 派生选择器
 
@@ -106,10 +106,10 @@ id选择器值不能重复，比类选择器更具有唯一性
 * 后代：父子孙，曾孙，从孙... `父 后代`
 
 div>p 只影响div的子标签p 孙标签不影响
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404150635100.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404150635100.png)
 
 div p 后代都影响
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404150917221.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404150917221.png)
 
 ##### 3.1.6 CSS伪类
 
@@ -133,7 +133,7 @@ a:hover {color: #FF00FF} /* 鼠标移动到链接上 */
 a:active {color: #0000FF} /* 选定的链接 */
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404151841.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404151841.png)
 
 #### 3.2 CSS基本属性
 
@@ -157,7 +157,7 @@ a:active {color: #0000FF} /* 选定的链接 */
 
 * 首行文本缩进：text-indent : value （2em）;
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404152354355.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404152354355.png)
 
 ##### 3.2.2 背景属性
 
@@ -220,15 +220,15 @@ CSS列表属性作用如下：
 * lower-alpha：小写英文字母The marker is lower-alpha (a, b, c, d, e,等。)
 * upper-alpha：大写英文字母The marker is upper-alpha (A, B, C, D, E,等。) 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404154411.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404154411.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404_155654.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404_155654.gif)
 
 ##### 3.2.4 边框属性
 
 CSS边框属性允许你指定一个元素边框的样式和颜色。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404155858.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404155858.png)
 
 ```html
 <style>
@@ -245,7 +245,7 @@ CSS边框属性允许你指定一个元素边框的样式和颜色。
 
 **border-style**取值：
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404160111.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404160111.png)
 
 ##### 3.2.5 轮廓属性
 
@@ -257,7 +257,7 @@ CSS边框属性允许你指定一个元素边框的样式和颜色。
 
 CSS outline 属性规定元素轮廓的样式、颜色和宽度。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404160509.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404160509.png)
 
 ##### 3.2.6 盒子模型
 
@@ -267,16 +267,16 @@ CSS盒子模型本质上是一个盒子，封装周围的HTML元素，它包括�
 盒子模型允许我们在其它元素和周围元素边框之间的空间放置元素。
 下面的图片说明了盒子模型(Box Model)：
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404160720.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404160720.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404160730.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404160730.png)
 
 * margin(外边距) - 盒子与盒子之间的距离
 * border(边框) - 盒子的保护壳
 * padding(内边距/填充) - 内填充，盒子边与内容之间的距离
 * content(内容) - 盒子的内容，显示的文本或图像
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404161257.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404161257.png)
 
 #### 3.3 CSS定位
 
@@ -284,15 +284,15 @@ CSS盒子模型本质上是一个盒子，封装周围的HTML元素，它包括�
 
 * 块级元素：h1~h6，p, div 等，自上而下，垂直排列（自动换行）；可以改变宽高
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404161759.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404161759.png)
 
 * 行内元素：a,b,span,等，从左向右，水平排列（不会换行）；不能改变宽高
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404162213.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404162213.png)
 
 * 行内块元素：input,img等，从左向右，水平排列（自动换行）；可以改变宽高
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404162407.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404162407.png)
 
 ##### 3.3.2 浮动定位
 
@@ -303,13 +303,13 @@ CSS盒子模型本质上是一个盒子，封装周围的HTML元素，它包括�
   * left：贴着左边 浮动
   * right：贴着右边 浮动
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404163141629.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404163141629.png)
 
 ##### 3.3.3 相对定位
 
 和原来的位置进行比较，进行移动定位（偏移）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404163225.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404163225.png)
 
 ##### 3.3.4 绝对定位
 
@@ -333,11 +333,11 @@ CSS盒子模型本质上是一个盒子，封装周围的HTML元素，它包括�
 
 * 以**父节点**作为参照物
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404163615.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404163615.png)
 
 * 以**爷爷节点**作为参照物
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404163808.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404163808.png)
 
 ##### 3.3.5 固定定位
 
@@ -345,13 +345,13 @@ CSS盒子模型本质上是一个盒子，封装周围的HTML元素，它包括�
 
 `position:fixed`
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404_164329.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404_164329.gif)
 
 ##### 3.3.6 z-index
 
 如果有重叠元素，使用z轴属性，定义上下层次。大的在上面
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404164927667.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404164927667.png)
 
 注意：
 * z轴属性，要配合相对或绝对定位来使用。
@@ -367,7 +367,7 @@ border-radius：四个角;
 
 border-radius：50%; 圆形；
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404165100.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404165100.png)
 
 #### 4.2 盒子阴影
 
@@ -379,7 +379,7 @@ box-shadow：1 2 3 4 5;
 4：扩张半径
 5：颜色
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404165351603.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404165351603.png)
 
 #### 4.3 渐变
 
@@ -533,7 +533,7 @@ transition｛1 2 3 4｝
 
 3：过渡函数...
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404170726.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404170726.png)
 
 4：过渡开始出现的延迟时间
 
@@ -543,7 +543,7 @@ transition: width 2s ease 1s;
 
 目前，css3只开发出部分的过渡属性，下图所示：
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404170834.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404170834.png)
 
 ```html
 <style> 
@@ -599,7 +599,7 @@ transition: width 2s ease 1s;
 </body>
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404_172112.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404_172112.gif)
 
 需求2：一个 元素从左向右移动，3秒内执行完成。无限次交替执行
 infinite：无限次
@@ -636,4 +636,4 @@ alternate：来回执行（交替，一去一回）
 </body>
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404_172311.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404_172311.gif)

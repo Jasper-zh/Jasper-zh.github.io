@@ -26,7 +26,7 @@ tags: 总结文档
 
 在数据库中搜索很容易实现，通常都是使用 sql语句进行查询，而且能很快的得到查询结果
 
-![image-20220316100525323](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316100525323-16481072835511.png)
+![image-20220316100525323](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316100525323-16481072835511.png)
 
 为什么数据库搜索很容易？
 
@@ -40,7 +40,7 @@ tags: 总结文档
 
 所谓顺序扫描，比如要找内容包含某一个字符串的文件，就是一个文档一个文档的看，对于每一个文档，从头看到尾，如果此文档包含此字符串，则此文档为我们要找的文件，接着看下一个文件，直到扫描完所有的文件。如利用 windows 的搜索也可以搜索文件内容，只是相当的慢。
 
-![image-20220316101249074](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316101249074.png)
+![image-20220316101249074](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316101249074.png)
 
 ### 1.3.2 全文检索（Full-text Search）
 
@@ -100,13 +100,13 @@ tags: 总结文档
 
 **Lucene架构：**
 
-![image-20220316102654969](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316102654969-16481073622166.png)
+![image-20220316102654969](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316102654969-16481073622166.png)
 
 
 
-![image-20220316102659981](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316102659981-164810743086511.png)
+![image-20220316102659981](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316102659981-164810743086511.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316102705798.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316102705798.png)
 
 
 
@@ -123,7 +123,7 @@ tags: 总结文档
 
 ## 2.1 索引和搜索流程图
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316103027700.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316103027700.png)
 
 1、绿色表示索引过程，对要搜索的原始内容进行索引构建一个索引库，索引过程包括：
 	确定原始内容即要搜索的内容-->采集文档-->创建文档-->分析文档-->索引文档
@@ -197,13 +197,13 @@ tags: 总结文档
 
 lucene首先对原始文档数据进行编号（DocID），形成列表，就是一个文档列表
 
-![image-20220316105029246](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316105029246.png)
+![image-20220316105029246](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316105029246.png)
 
 **2）创建倒排索引列表**
 
 对文档中数据进行分词，得到词条（分词后的一个又一个词）。对词条进行编号，以词条创建索引。然后记录下包含该词条的所有文档编号（及其它信息）。
 
-![image-20220316105112156](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316105112156.png)
+![image-20220316105112156](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316105112156.png)
 
 搜索的过程：
 
@@ -223,7 +223,7 @@ lucene首先对原始文档数据进行编号（DocID），形成列表，就是
 
 第四步：渲染结果 （结果内容显示到页面上 关键字需要高亮）
 
-![image-20220316111709233](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316111709233.png)
+![image-20220316111709233](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316111709233.png)
 
 
 
@@ -422,7 +422,7 @@ public class TestApplication {
 }
 ```
 
-![image-20220316132527196](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316132527196.png)
+![image-20220316132527196](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316132527196.png)
 
 
 
@@ -476,7 +476,7 @@ public void testCreateIndex() throws Exception {
   * 如上图，具有相同前缀文件的属同一个段，图中共一个段 "_0" 。
   * segments.gen和segments_1是段的元数据文件，也即它们保存了段的属性信息。
 
-![image-20220316135140165](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316135140165.png)
+![image-20220316135140165](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316135140165.png)
 
 **Field的特性：**
 
@@ -494,7 +494,7 @@ Document(文档)是Field(域)的承载体, 一个Document由多个Field组成. F
 
 **常用的Field类型**
 
-![image-20220316140249457](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316140249457.png)
+![image-20220316140249457](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316140249457.png)
 
 ## 3.4 查询索引
 
@@ -554,11 +554,11 @@ public void testQueryIndex() throws Exception {
 
 **3）创建索引时使用IKanalyzer**
 
-![image-20220316142055731](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316142055731.png)
+![image-20220316142055731](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316142055731.png)
 
 把原来的索引数据删除，将标准分词器换成IK分词器再重新生产索引文件，再使用关键字“北京”就可以查询到结果了
 
-![image-20220316142628993](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316142628993.png)
+![image-20220316142628993](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316142628993.png)
 
 {% note info simple  %}
 
@@ -576,7 +576,7 @@ Elasticsearch是一个需要安装配置的软件。
 
 Elastic有一条完整的产品线：Elasticsearch、Logstash、Kibana等，前面说的三个就是大家常说的ELK技术栈（开源实时日志分析平台）。
 
-![image-20220316142819109](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316142819109.png)
+![image-20220316142819109](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316142819109.png)
 
 Logstash 的作用就是一个数据收集器，将各种格式各种渠道的数据通过它收集解析之后格式化输出到Elasticsearch ，最后再由 Kibana 提供的比较友好的 Web 界面进行汇总、分析、搜索。
 
@@ -588,17 +588,17 @@ ELK 内部实际就是个管道结构，数据从 Logstash 到 Elasticsearch 再
 
 Elastic官网：https://www.elastic.co/cn/
 
-![image-20220316143113179](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316143113179.png)
+![image-20220316143113179](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316143113179.png)
 
 Elastic公司有一条完整的产品线：Elasticsearch、Logstash、Kibana等，前面说的三个就是大家常说的ELK技术栈。
 
-![image-20220316143130020](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316143130020.png)
+![image-20220316143130020](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316143130020.png)
 
 ### 4.1.2 Elasticsearch
 
 Elasticsearch官网：https://www.elastic.co/cn/products/elasticsearch
 
-![image-20220316143328346](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316143328346.png)
+![image-20220316143328346](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316143328346.png)
 
 **功能：**
 
@@ -622,7 +622,7 @@ Elasticsearch官网：https://www.elastic.co/cn/products/elasticsearch
 我这边直接用比较新的8.0.0
 https://www.elastic.co/cn/downloads/past-releases/elasticsearch-8-0-0
 
-![image-20220316143855837](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316143855837.png)
+![image-20220316143855837](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316143855837.png)
 
 
 
@@ -632,7 +632,7 @@ https://www.elastic.co/cn/downloads/past-releases/elasticsearch-8-0-0
 
 **1）下载解压**
 
-![image-20220316144839161](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316144839161.png)
+![image-20220316144839161](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316144839161.png)
 
 
 
@@ -642,23 +642,23 @@ https://www.elastic.co/cn/downloads/past-releases/elasticsearch-8-0-0
 
 * 修改索引数据和日志数据存储的路径
 
-  ![image-20220316144938526](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316144938526.png)
+  ![image-20220316144938526](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316144938526.png)
 
-  ![image-20220316145053516](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316145053516.png)
+  ![image-20220316145053516](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316145053516.png)
 
   打开注释 修改索引数据存储路径，以及日志路径
 
-  ![image-20220316145308973](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316145308973.png)
+  ![image-20220316145308973](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316145308973.png)
 
 **3）进入bin目录启动bat**
 
-![image-20220316145614613](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316145614613.png)
+![image-20220316145614613](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316145614613.png)
 
 如果启动的失败的话，很大可能是需要修改虚拟机内存的大小，不过新版本应该不会出现这个问题默认的就可以。`-Xms启动时分配的内存越大相对来说快当然也要结合你自身机器的内存情况，-Xmx运行期间最大也只给它分配的空间，实际超过了就会内存溢出`
 
 到config中找到jvm.options进行修改
 
-![image-20220316150519205](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316150519205.png)
+![image-20220316150519205](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316150519205.png)
 
 
 
@@ -666,7 +666,7 @@ https://www.elastic.co/cn/downloads/past-releases/elasticsearch-8-0-0
 
 ## 4.3 访问
 
-![image-20220316151058887](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316151058887.png)
+![image-20220316151058887](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316151058887.png)
 
 可以看到绑定了两个端口:
 
@@ -678,21 +678,21 @@ https://www.elastic.co/cn/downloads/past-releases/elasticsearch-8-0-0
 
 然后发现一直访问不了localhost:9200，是因为首次启动会开启一些配置。如下是从官网截图，那么我们可以去关掉或者使用https访问。
 
-![image-20220316160945363](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316160945363.png)
+![image-20220316160945363](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316160945363.png)
 
 ```powershell
 received plaintext http traffic on an https channel, closing connection Netty4HttpChannel{localAddress=/[0:0:0:0:0:0:0:1]:9200, remoteAddress=/[0:0:0:0:0:0:0:1]:59093}
 ```
 
-![image-20220316155002908](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316155002908.png)
+![image-20220316155002908](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316155002908.png)
 
 第二就是elastic的密码在控制台需要找到，然后发现死活找不到（因为只有第一次才会有）。
 
-![image-20220316165241998](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316165241998.png)
+![image-20220316165241998](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316165241998.png)
 
 访问 https://127.0.0.1:9200 用户名：elastic 密码：ma9Uxd7nRUycKSBxFGbC （控制台上的）
 
-![image-20220316165651719](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316165651719.png)
+![image-20220316165651719](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316165651719.png)
 
 
 
@@ -702,7 +702,7 @@ received plaintext http traffic on an https channel, closing connection Netty4Ht
 
 https://www.elastic.co/cn/kibana/
 
-![image-20220316170804295](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316170804295.png)
+![image-20220316170804295](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316170804295.png)
 
 Kibana是一个基于Node.js的Elasticsearch索引库数据统计工具，可以利用Elasticsearch的聚合功能，生成各种图表，如柱形图，线状图，饼图等。
 
@@ -712,7 +712,7 @@ Kibana是一个基于Node.js的Elasticsearch索引库数据统计工具，可以
 
 因为Kibana依赖于node，需要在windows下先安装Node.js。我自己的node版本16.13.0
 
-![image-20220316170958366](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316170958366.png)
+![image-20220316170958366](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316170958366.png)
 
 然后下载kibana，版本和elasticsearch保持一致。我就用8.0.0
 
@@ -722,11 +722,11 @@ https://www.elastic.co/cn/downloads/past-releases#kibana
 
 进入安装目录下的config目录，配置kibana.yml 当中的 elasticsearch.hosts 为自己的elasticsearch服务地址
 
-![image-20220316172942208](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316172942208.png)
+![image-20220316172942208](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316172942208.png)
 
 在安装目录bin下，使用kibana.bat启动。
 
-![image-20220316173151894](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316173151894.png)
+![image-20220316173151894](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316173151894.png)
 
 
 
@@ -736,23 +736,23 @@ https://www.elastic.co/cn/downloads/past-releases#kibana
 
 去访问看看 http://localhost:5601
 
-![image-20220316173310244](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316173310244.png)
+![image-20220316173310244](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316173310244.png)
 
 访问进去之后，它是要进行一个与elasticsearch的认证的配置，要输入token，也就是首次启动elasticsearch终端生成的
 
-![image-20220316173419653](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316173419653.png)
+![image-20220316173419653](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316173419653.png)
 
 填入token确定之后，弹出个验证码。这时这个验证码会在kibana的控制台显示输出，也可以向上面提示的使用 `kibana-verification-code.bat`获取
 
-![image-20220316173611495](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316173611495.png)
+![image-20220316173611495](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316173611495.png)
 
-![image-20220316174242888](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316174242888.png)
+![image-20220316174242888](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316174242888.png)
 
 我这边有个是token失效了，所以就通过手动配置登录
 
-![image-20220316181115312](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316181115312.png)
+![image-20220316181115312](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316181115312.png)
 
-![image-20220316181214276](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316181214276.png)
+![image-20220316181214276](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316181214276.png)
 
 需要先通过elasticsearch生成一个kibnana_system的密码
 
@@ -760,21 +760,21 @@ https://www.elastic.co/cn/downloads/past-releases#kibana
 bin/elasticsearch-reset-password -u kibana_system
 ```
 
-![image-20220316181403644](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316181403644.png)
+![image-20220316181403644](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316181403644.png)
 
 可以将这个密码配置到，kibana当中
 
-![image-20220316181543254](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316181543254.png)
+![image-20220316181543254](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316181543254.png)
 
 填入密码之后就可以配置通过了，然后正式进入到了登录界面，终于可以使用管理员elastic用户进行登录了。
 
-![image-20220316184543654](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316184543654.png)
+![image-20220316184543654](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316184543654.png)
 
-![image-20220316182835326](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316182835326.png)
+![image-20220316182835326](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316182835326.png)
 
 这时也可以把elastic的密码改掉了
 
-![image-20220316183546969](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220316183546969.png)
+![image-20220316183546969](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220316183546969.png)
 
 
 
@@ -790,9 +790,9 @@ https://github.com/medcl/elasticsearch-analysis-ik/releases
 
 下载解压到elasticsearch的plugs当中并重命名为ik
 
-![image-20220317094452296](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317094452296.png)
+![image-20220317094452296](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317094452296.png)
 
-![image-20220317094511770](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317094511770.png)
+![image-20220317094511770](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317094511770.png)
 
 重新启动elasticsearch即可
 
@@ -916,13 +916,13 @@ es-head主要有三个方面的操作：
 
 https://chrome.google.com/webstore/category/extensions
 
-![image-20220317100742395](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317100742395.png)
+![image-20220317100742395](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317100742395.png)
 
 **界面如下**
 
-![image-20220317101005283](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317101005283.png)
+![image-20220317101005283](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317101005283.png)
 
-![image-20220317101128771](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317101128771.png)
+![image-20220317101128771](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317101128771.png)
 
 总之和kibana一样都是作为Elasticsearch的控制面板，不过这个可以更方便的查看集群状态。
 
@@ -1085,7 +1085,7 @@ Elasticsearch采用Rest风格API，因此其API就是一次http请求，你可�
 
 kibana的控制台，可以对http请求进行简化，示例：
 
-![image-20220317105016689](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317105016689.png)
+![image-20220317105016689](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317105016689.png)
 
 相当于是省去了elasticsearch的服务器地址，而且还有语法提示，非常舒服。
 
@@ -1099,7 +1099,7 @@ Get请求可以帮我们查看索引信息，格式：
 GET /索引名
 ```
 
-![image-20220317105438324](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317105438324.png)
+![image-20220317105438324](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317105438324.png)
 
 ## 5.4 删除索引
 
@@ -1109,19 +1109,19 @@ GET /索引名
 DELETE /索引名
 ```
 
-![image-20220317105708155](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317105708155.png)
+![image-20220317105708155](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317105708155.png)
 
 再次查看就找不到了
 
-![image-20220317105931939](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317105931939.png)
+![image-20220317105931939](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317105931939.png)
 
 我们也可以用head插件来发个请求玩下
 
-![image-20220317110202182](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317110202182.png)
+![image-20220317110202182](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317110202182.png)
 
 这个查询索引的接口是GET请求，我们直接用浏览器都可以发送
 
-![image-20220317110408425](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317110408425.png)
+![image-20220317110408425](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317110408425.png)
 
 
 
@@ -1147,7 +1147,7 @@ DELETE /索引名
 
 请求方式依然是PUT
 
-![image-20220317112623310](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317112623310.png)
+![image-20220317112623310](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317112623310.png)
 
 如果版本是6版本，那么如上图，给指定索引创建一个类型，且定义类型当中有哪些字段，字段的约束等等。其实在6版本当中虽然可以指定类型名，但一个索引也只能有一个类型。在7版本之后将这个类型完全取消。即使是古老版本多类型映射字段也是属于索引（因为第二个类型不能创建已经存在的字段），也就是索引相当于表，类型只不过是按列分表而已，完全的不同结构的实体应分别创建索引。 
 
@@ -1175,7 +1175,7 @@ PUT /goods
 }
 ```
 
-![image-20220317132827616](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317132827616.png)
+![image-20220317132827616](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317132827616.png)
 
 
 
@@ -1194,11 +1194,11 @@ PUT /goods/_mapping
 }
 ```
 
-![image-20220317133455903](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317133455903.png)
+![image-20220317133455903](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317133455903.png)
 
-![image-20220317134237387](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317134237387.png)
+![image-20220317134237387](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317134237387.png)
 
-![image-20220317133919215](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317133919215.png)
+![image-20220317133919215](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317133919215.png)
 
 ## 6.2 查询映射关系
 
@@ -1220,7 +1220,7 @@ GET /索引名/_mapping/类型名
 GET /jasper/_mapping
 ```
 
-![image-20220317134622781](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317134622781.png)
+![image-20220317134622781](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317134622781.png)
 
 ## 6.3 映射属性详解
 
@@ -1471,7 +1471,7 @@ POST /索引名/_doc
 }
 ```
 
-![image-20220317150552716](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317150552716.png)
+![image-20220317150552716](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317150552716.png)
 
 ## 7.2 查看文档
 
@@ -1483,7 +1483,7 @@ POST /索引名/_doc
 GET /索引/_doc/文档id
 ```
 
-![image-20220317150940527](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317150940527.png)
+![image-20220317150940527](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317150940527.png)
 
 * _source ：源文档信息，所有的数据都在里面。
 * _id ：这条文档的唯一标示
@@ -1503,7 +1503,7 @@ POST /索引名/_doc/文档id
 
 **示例：**
 
-![image-20220317151447589](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317151447589.png)
+![image-20220317151447589](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317151447589.png)
 
 ## 7.4 修改数据
 
@@ -1520,13 +1520,13 @@ POST：新增文档
 
 指定文档id 002不存在，则PUT会新增
 
-![image-20220317151812383](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317151812383.png)
+![image-20220317151812383](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317151812383.png)
 
 **示例2：**
 
 指定的002存在则是修改
 
-![image-20220317152019602](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317152019602.png)
+![image-20220317152019602](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317152019602.png)
 
 
 
@@ -1540,7 +1540,7 @@ DELETE /索引名/类型名/id值
 
 **示例**
 
-![image-20220317152209986](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317152209986.png)
+![image-20220317152209986](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317152209986.png)
 
 ## 7.6 智能判断
 
@@ -1550,13 +1550,13 @@ DELETE /索引名/类型名/id值
 
 **测试一下：**
 
-![image-20220317152617955](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317152617955.png)
+![image-20220317152617955](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317152617955.png)
 
 desc与date都是没有在映射里配置过的
 
 看下现在goods索引的映射情况
 
-![image-20220317152920099](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317152920099.png)
+![image-20220317152920099](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317152920099.png)
 
 添加了两条映射，且连类型都自动识别了。一般会选择同类型中最大的，比如你的字段值是整型，那么自动添加映射时会配置成long类型
 
@@ -1580,7 +1580,7 @@ desc与date都是没有在映射里配置过的
 
 ## 7.7 动态映射模板
 
-![image-20220317153459219](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317153459219.png)
+![image-20220317153459219](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317153459219.png)
 
 1）模板名称，随便起
 
@@ -1590,7 +1590,7 @@ desc与date都是没有在映射里配置过的
 
 举例，我们可以把所有未映射的string类型数据自动映射为keyword类型：
 
-![image-20220317154410407](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317154410407.png)
+![image-20220317154410407](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317154410407.png)
 
 ```json
 PUT /goods/_mapping
@@ -1614,9 +1614,9 @@ PUT /goods/_mapping
 
 **测试**
 
-![image-20220317154844714](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317154844714.png)
+![image-20220317154844714](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317154844714.png)
 
-![image-20220317155003557](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317155003557.png)
+![image-20220317155003557](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317155003557.png)
 
 新增文档产生的新字段，配自动添加映射且和我们设定的一样而不是默认的text与keyword共存
 
@@ -1659,7 +1659,7 @@ GET /goods/_search
 * query：代表查询对象
 * match_all：代表查询所有
 
-![image-20220317160841370](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317160841370.png)
+![image-20220317160841370](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317160841370.png)
 
 
 
@@ -1706,11 +1706,11 @@ GET /goods/_search
 }
 ```
 
-![image-20220317162052485](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317162052485.png)
+![image-20220317162052485](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317162052485.png)
 
 匹配good_name”小米“很显然是可以匹配到之前的两条数据。但不能体系分词匹配最后在or的关系。我们这次匹配`小米pro`看效果
 
-![image-20220317162405009](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317162405009.png)
+![image-20220317162405009](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317162405009.png)
 
 小米匹配到了两条，pro匹配到了一条。一共三条数据
 
@@ -1734,7 +1734,7 @@ GET /goods/_search
 
 这样也就是一条文档的good_name字段的值分词后得同时拥有`小米`以及`pro`词条才能被检索，当前是没有的
 
-![image-20220317163020705](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317163020705.png)
+![image-20220317163020705](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317163020705.png)
 
 ### 8.1.3 词条匹配（term）
 
@@ -1755,9 +1755,9 @@ GET /goods/_search
 }
 ```
 
-![image-20220317165154794](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317165154794.png)
+![image-20220317165154794](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317165154794.png)
 
-![image-20220317165239689](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317165239689.png)
+![image-20220317165239689](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317165239689.png)
 
 因此如果我用term查询是不分词的，那么文档的字段内容是分词的就没有意义。所以才说一般用这个查的字段都是不分词的比如数字或者keyword这种字段
 
@@ -1790,7 +1790,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317170144150](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317170144150.png)
+![image-20220317170144150](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317170144150.png)
 
 匹配到`小米`的是必须的，匹配`手机`词条的必须没有，`pro` 有和没有都可以。最后得到的就是`数码小米12`而不会有`手机小米`
 
@@ -1812,7 +1812,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317170930624](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317170930624.png)
+![image-20220317170930624](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317170930624.png)
 
 range查询允许的操作符
 
@@ -1858,7 +1858,7 @@ GET /goods/_search
 
 和term一样不分词查询，也就是查`小米1`，词条里面没有但最相似的是`小米`,误差是1可以算，那就是匹配到具有`小米`的document
 
-![image-20220317171813378](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317171813378.png)
+![image-20220317171813378](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317171813378.png)
 
 
 
@@ -1882,7 +1882,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317172202745](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317172202745.png)
+![image-20220317172202745](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317172202745.png)
 
 ### 8.2.2 指定includes和excludes
 
@@ -1942,7 +1942,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317173935474](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317173935474.png)
+![image-20220317173935474](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317173935474.png)
 
 ### 8.3.2 无条件查询，直接过滤
 
@@ -1963,7 +1963,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317174342467](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317174342467.png)
+![image-20220317174342467](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317174342467.png)
 
 ## 8.4 排序
 
@@ -1983,7 +1983,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317175027854](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317175027854.png)
+![image-20220317175027854](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317175027854.png)
 
 ### 8.4.2 多字段排序
 
@@ -2004,7 +2004,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317180410609](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317180410609.png)
+![image-20220317180410609](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317180410609.png)
 
 ## 8.5 分页
 
@@ -2026,7 +2026,7 @@ GET /goods/_search
 }
 ```
 
-![image-20220317180822159](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317180822159.png)
+![image-20220317180822159](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317180822159.png)
 
 ## 8.6 高亮
 
@@ -2038,7 +2038,7 @@ GET /goods/_search
 
 elasticsearch中实现高亮的语法比较简单：
 
-![image-20220317181552809](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220317181552809.png)
+![image-20220317181552809](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220317181552809.png)
 
 在使用match查询的同时，在查询外加上一个highlight属性：
 
@@ -2138,7 +2138,7 @@ POST /car/_bulk
 { "price" : 25000, "color" : "蓝", "make" : "福特", "sold" : "2020-02-12" }
 ```
 
-![image-20220318094933134](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318094933134.png)
+![image-20220318094933134](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318094933134.png)
 
 
 
@@ -2161,7 +2161,7 @@ GET /car/_search
 
 > 示例
 
-![image-20220318095951520](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318095951520.png)
+![image-20220318095951520](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318095951520.png)
 
 size： 查询条数，这里设置为0，因为我们不关心搜索到的数据，只关心聚合结果，提高效率
 
@@ -2215,7 +2215,7 @@ GET /car/_search
 }
 ```
 
-![image-20220318101122506](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318101122506.png)
+![image-20220318101122506](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318101122506.png)
 
 **aggs：**我们在上一个aggs(popular_colors)中添加新的aggs。可见度量也是一个聚合
 
@@ -2253,7 +2253,7 @@ GET /car/_search
 
 没错，我们可以把数据拆分成多份，每一份存储到不同机器节点（node），从而实现减少每个节点数据量的目的。这就是数据的分布式存储，也叫做： 数据分片（Shard） 。 
 
-![image-20220318102112241](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318102112241.png)
+![image-20220318102112241](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318102112241.png)
 
 假如只有三个分片，可以将每一个分片放在不同的集群节点，以此实现存储
 
@@ -2272,7 +2272,7 @@ GET /car/_search
 
 这样可以大大减少所需要的服务节点数量，如图，我们以3分片，每个分片备份一份为例：
 
-![image-20220318102533434](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318102533434.png)
+![image-20220318102533434](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318102533434.png)
 
 三个分片0、1、2分别存在三个节点上，第一个节点存的分片0的备份在节点2也存一个。节点2存的分片1的备份在节点3存一份，节点3存的分片2的备份在节点1存一份。
 
@@ -2300,7 +2300,7 @@ tcp：集群间的各个节点进行通讯的端口，默认9300
 
 **1）复制三个ES出来**
 
-![image-20220318103632854](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318103632854.png)
+![image-20220318103632854](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318103632854.png)
 
 **2）修改每个节点配置**
 
@@ -2324,13 +2324,13 @@ cluster.initial_master_nodes: ["ES01","ES02","ES03"]
 
 使用head插件查看：
 
-![image-20220318145225387](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318145225387.png)
+![image-20220318145225387](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318145225387.png)
 
 ## 10.4 测试集群中创建索引库
 
 可以通过head插件界面创建，也可以用上面学习的命令。我们创建一个分片数为3副本为1的索引即可
 
-![image-20220318145414296](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318145414296.png)
+![image-20220318145414296](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318145414296.png)
 
 ```json
 PUT /hao
@@ -2344,7 +2344,7 @@ PUT /hao
 
 通过chrome浏览器的head查看，我们可以查看到分片的存储结构：
 
-![image-20220318145929127](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318145929127.png)
+![image-20220318145929127](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318145929127.png)
 
 可以看到，ES01保存了0分片以及1分片的副本，ES02保存了2分片以及0分片的副本，ES03保存了1分片以及2分片的副本
 
@@ -2404,11 +2404,11 @@ https://github.com/Jasper-zh/Elasticsearch_Client_Test
 
 在elasticsearch官网中提供了各种语言的客户端：https://www.elastic.co/guide/en/elasticsearch/client/index.html
 
-![image-20220318151422778](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318151422778.png)
+![image-20220318151422778](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318151422778.png)
 
 进去选下其他版本，我是8.0.0
 
-![image-20220318155836309](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318155836309.png)
+![image-20220318155836309](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318155836309.png)
 
 现在的版本是已经不推荐使用 High Level REST Client，而支持 Java_API_Client。我这里就使用Java_API_Client的方式（High Level REST Client市面上也有很多教程了）
 
@@ -2481,7 +2481,7 @@ client.indices().create(c -> c.index("user"));
 
 **head插件查看**
 
-![image-20220318182747404](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220318182747404.png)
+![image-20220318182747404](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220318182747404.png)
 
 成功创建索引，默认的不分片和1个副本。
 那这是简单的创建索引，当然也可以去创建索引时配置field域与setting设置。就和数据库创建表同时配置字段和其他设置信息。虽然不会一般用程序创建但还是演示记录下。顺便记录下找接口的过程
@@ -2496,15 +2496,15 @@ client.indices().create(c -> c.index("user"));
 
 `第二个方法就是为了让第一个方法可以写的更方便提供了函数式接口直接使用lambda表达式`
 
-![image-20220322114337577](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220322114337577.png)
+![image-20220322114337577](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220322114337577.png)
 
-![carbon20220322](https://gitee.com/Jasper-zh/image_host/raw/master/carbon20220322.png)
+![carbon20220322](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/carbon20220322.png)
 
 也就是通过构造器CreateIndexRequestBuilder调用index(“user”)创建的CreateIndexRequest
 
 看看构造器是怎么创建的CreateIndexRequest对象
 
-![carbon20220322 (2)](https://gitee.com/Jasper-zh/image_host/raw/master/carbon20220322 (2).png)
+![carbon20220322 (2)](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/carbon20220322 (2).png)
 
 就是一个再简化版也是最常用的一种构造器的写法，从这个构造器的代码中也能知道除了指定index名的属性之外还有各种各样的属性包括映射或者设置等等。
 
@@ -2512,7 +2512,7 @@ client.indices().create(c -> c.index("user"));
 
 那么TypeMapping也是通过它的构造器进行构建且提供了函数式接口的方法
 
-![image-20220322135234768](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220322135234768.png)
+![image-20220322135234768](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220322135234768.png)
 
 构建项中其中这三个是配置字段信息的。包含两个参数其中一个是字段名String类型另一个是这个字段的一些配置是Property类型。
 
@@ -2524,13 +2524,13 @@ Property它也是一个复杂对象，也提供了构造器。直接使用Proper
 client.indices().create(c -> c.index("product").mappings(t -> t.properties("name", p -> p.text(text -> text.index(true)))));
 ```
 
-![carbon20220322 (3)](https://gitee.com/Jasper-zh/image_host/raw/master/carbon20220322 (3)-16479309196482.png)
+![carbon20220322 (3)](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/carbon20220322 (3)-16479309196482.png)
 
 这种形式用的少的话写起来会有点绕，实际上就是先索引库名以及映射，然后在映射里面配置typeMappings实际是包含各个property，对于property里面除了字段名称还有字段的配置对象，text设置完index还可以继续设置分词器analyzer.... 
 
 除了添加还有删除以及索引其他的配置操作也都可以在官方Java文档中`ElasticsearchIndicesClient类`找到看就不一一演示了
 
-![carbon20220323](https://gitee.com/Jasper-zh/image_host/raw/master/carbon20220323.png)
+![carbon20220323](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/carbon20220323.png)
 
 `基本上它提供的接口对象基本上都是完全应用了lambda以及构造器。因为之前写过一篇设计模式当中的构造器，因此代码看的还是比较舒适的，能够get到它的一个代码设计`
 
@@ -2540,11 +2540,11 @@ client.indices().create(c -> c.index("product").mappings(t -> t.properties("name
 
 实际上不是的，就是ElasticsearchClient提供的操作
 
-![image-20220323104831108](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323104831108.png)
+![image-20220323104831108](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323104831108.png)
 
 它这上面有很多，我就把关于添加、删除、获取、更新以及批量列出来演示下。
 
-![image-20220323104732853](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323104732853.png)
+![image-20220323104732853](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323104732853.png)
 
 
 
@@ -2554,7 +2554,7 @@ client.indices().create(c -> c.index("product").mappings(t -> t.properties("name
 
 那么就看下IndexRequest有哪些属性需要提供，看下构造器提供的属性方法。
 
-![image-20220323105601912](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323105601912.png)
+![image-20220323105601912](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323105601912.png)
 
 没有多少，项上面我们使用Kibana去添加文档就是使用POST请求然后接索引名然后`（_doc 类型没有了）`还有指定文档id，最后就请求体了也就是实体
 
@@ -2566,7 +2566,7 @@ client.index(indexRequestBuild -> indexRequestBuild.index("product").id("001").d
 
 head插件查看，已经成功插入数据
 
-![image-20220323114322292](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323114322292.png)
+![image-20220323114322292](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323114322292.png)
 
 
 
@@ -2580,7 +2580,7 @@ GetResponse<Product> response = client.get(getRequestBuild -> getRequestBuild.in
 System.out.println(response.source());
 ```
 
-![image-20220323125605372](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323125605372.png)
+![image-20220323125605372](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323125605372.png)
 
 
 
@@ -2594,11 +2594,11 @@ client.index(indexRequestBuild -> indexRequestBuild.index("product").id("001").d
 
 成功完成更新
 
-![image-20220323131514590](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323131514590.png)
+![image-20220323131514590](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323131514590.png)
 
 **也提供了update方法专为修改操作**
 
-![image-20220323132501270](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323132501270.png)
+![image-20220323132501270](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323132501270.png)
 
 对于index()方法而言是它的更新是全量更新，对于update方法它提供了多种更新配置：普通的doc()是提供了部分更新也可以设置docAsUpsert等等。当文档id不存在会抛出异常，不过也可以使用upset()方法就可以更新或添加了。
 
@@ -2610,7 +2610,7 @@ client.index(indexRequestBuild -> indexRequestBuild.index("product").id("001").d
 client.update(updateRequestBuild -> updateRequestBuild.index("product").id("001").doc(new Product(2999)), Product.class);
 ```
 
-![image-20220323133051988](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323133051988.png)
+![image-20220323133051988](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323133051988.png)
 
 ### 11.4.4 删除文档
 
@@ -2625,15 +2625,15 @@ client.delete(b -> b.index("product").id("001"));
 
 ### 11.4.5 批量操作
 
-![image-20220323134400765](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323134400765.png)
+![image-20220323134400765](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323134400765.png)
 
 对于BulkRequest来说主要就是操作一个哪个索引index(String)，二是请求体哪些内容也就是operations
 
-![image-20220323134513202](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323134513202.png)
+![image-20220323134513202](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323134513202.png)
 
 那么operations里面就是各个BulkOperation，也就是批量里面每个实体的信息是在BulkOperation。那就看看它呗：
 
-![image-20220323134856188](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323134856188.png)
+![image-20220323134856188](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323134856188.png)
 
 BulkOperation内部的属性是包含各种增删改对象，而增删改对象里面就是实体。
 
@@ -2641,7 +2641,7 @@ BulkOperation内部的属性是包含各种增删改对象，而增删改对象�
 
 我先准备3条数据，然后完成批量进行5个BulkOperation操作，分为3个添加2个删除1个修改
 
-![image-20220323135742057](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323135742057.png)
+![image-20220323135742057](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323135742057.png)
 
 
 
@@ -2665,17 +2665,17 @@ public static void bulkDoc() throws IOException {
 
 head插件查看：与预期一致
 
-![image-20220323152411082](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323152411082.png)
+![image-20220323152411082](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323152411082.png)
 
 ## 11.5 查询数据
 
 client的search方法用来进行查询
 
-![image-20220323153310107](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323153310107.png)
+![image-20220323153310107](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323153310107.png)
 
 主要是构建查询请求对象SearchRequest，看下它的一些构建参数
 
-![image-20220323154434658](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323154434658.png)
+![image-20220323154434658](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323154434658.png)
 
 ### 11.5.1 查询所有match_all
 
@@ -2696,7 +2696,7 @@ GET /goods/_search
 
 我们可以看下query实体构建的属性，以下有非常多，其中就有matchAll
 
-![image-20220323155238402](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323155238402.png)
+![image-20220323155238402](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323155238402.png)
 
 它里面是MatchQuery这些也都可以再去看。对于查询全部来说它里面的MatchQuery就两个属性可以指定一个是查询名称queryName还有个是权重boost
 
@@ -2711,7 +2711,7 @@ public static void queryAll() throws IOException {
 }
 ```
 
-![image-20220323161707522](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323161707522.png)
+![image-20220323161707522](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323161707522.png)
 
 ### 11.5.2 关键词匹配match
 
@@ -2719,7 +2719,7 @@ public static void queryAll() throws IOException {
 
 Query是具备两个属性一个是 _kind 一个是 _value，构造器的不同构建方法指定Quey查询类型（match、match_all、term等等），而参数对象指定这个查询下的多个配置所以对象包裹。
 
-![image-20220323163458414](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323163458414.png)
+![image-20220323163458414](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323163458414.png)
 
 ```java
 public static void queryMatch() throws IOException {
@@ -2732,7 +2732,7 @@ public static void queryMatch() throws IOException {
 }
 ```
 
-![image-20220323172149904](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220323172149904.png)
+![image-20220323172149904](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220323172149904.png)
 
 ### 11.5.3 Term查询
 
@@ -2768,7 +2768,7 @@ public static void queryRange() throws IOException {
 }
 ```
 
-![image-20220324095645444](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324095645444.png)
+![image-20220324095645444](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324095645444.png)
 
 ### 11.5.5 _source过滤
 
@@ -2790,15 +2790,15 @@ GET /goods/_search
 
 看文档：
 
-![image-20220324100726526](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324100726526.png)
+![image-20220324100726526](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324100726526.png)
 
 那么source的主要内容配置在SourceConfig，查看SourceConfig，最终是配置在SourceFilter
 
-![image-20220324101022084](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324101022084.png)
+![image-20220324101022084](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324101022084.png)
 
 查看SourceFilter，到这个地方我们就可以直接进行配置了也就是之前学的_source的excludes和includes
 
-![image-20220324101144284](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324101144284.png)
+![image-20220324101144284](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324101144284.png)
 
 **测试**
 
@@ -2819,7 +2819,7 @@ public static void queryFilter() throws IOException {
 }
 ```
 
-![image-20220324102119613](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324102119613.png)
+![image-20220324102119613](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324102119613.png)
 
 
 
@@ -2843,19 +2843,19 @@ GET /goods/_search
 
 看下文档searchRequest下，其中就是与sort() ，且传入的就是一个列表每个项是一个SortOptions对象。那么这个对象肯定应该包含字段名以及排序方式
 
-![image-20220324103337597](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324103337597.png)
+![image-20220324103337597](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324103337597.png)
 
 看下SortOptions的构造，可以知道它的结构完全和上面REST请求例子一样。还分一个（字段）类型的对象里面包含排序方式order
 
-![image-20220324103617279](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324103617279.png)
+![image-20220324103617279](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324103617279.png)
 
 看下面FieldSort的构造，里面就包含field和SortOrder，所以得再看下SortOrder
 
-![image-20220324103919485](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324103919485.png)
+![image-20220324103919485](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324103919485.png)
 
 那么SortOrder就是个枚举，包含降序与升序
 
-![image-20220324104044119](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324104044119.png)
+![image-20220324104044119](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324104044119.png)
 
 **测试**
 
@@ -2878,7 +2878,7 @@ public static void querySort() throws IOException {
 
 sort是可以传List的或者多个的，我这里只传了一个
 
-![image-20220324104852922](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324104852922.png)
+![image-20220324104852922](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324104852922.png)
 
 ## 11.7 分页
 
@@ -2899,7 +2899,7 @@ GET /goods/_search
 
 果然在SearchRequest对象下这两个属性直接传整数型，而是向上面嵌套很多对象。
 
-![image-20220324105403389](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324105403389.png)
+![image-20220324105403389](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324105403389.png)
 
 **测试**
 
@@ -2919,7 +2919,7 @@ public static void queryPage() throws IOException {
 }
 ```
 
-![image-20220324105804165](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324105804165.png)
+![image-20220324105804165](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324105804165.png)
 
 
 
@@ -2945,7 +2945,7 @@ Spring Data Elasticsearch的页面：https://spring.io/projects/spring-data-elas
 
 
 
-![image-20220324150935841](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220324150935841.png)
+![image-20220324150935841](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220324150935841.png)
 
 {% note info simple %}
 

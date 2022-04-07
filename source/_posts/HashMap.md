@@ -44,13 +44,13 @@ hashMap.put("约翰","cookie");
 
 假如和ArrayList一样初始化一个index变量值为0作为下标，当arrayList.add("a")时将元素存在内置数组array[index]再index自增。即每次往后添加元素。至到数组满了再依次从第一个往后添加链。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/HashMap1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap1.png)
 
 在这种情况下我们去hashMap.get("约翰")，怎么去找到。很显然没办法定位。只能从数组第一位开始找比较entry的key值如不同再下一个比较直到找到相同的key。那么数量很多而且对应的entry位置比较偏后查找是及其费时的。虽然添加没毛病速度也快但查找是遍历比较所以是不合理的。
 
 在HashMap当中实际上存储时它会去给key进行类似hash得到的hashCode与数组的容量取模的得到的就是数组的位置在这样的位置存下。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/HashMap2.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap2.png)
 
 在使用key查找时也是对查找的key进行相同的hash直接定位到当初存的位置。这样的一个位置在数组是随机的，不同的code取模有可能会出现相同的位置即形成链表。然后在链表当中找到对应key的entry返回。下面伪代码描述了它的get方法的一个大概意思。直接找到数组所在的entry如果不是就是该entry的next。如果还不是就是next的next直到找到对应key的entry。
 
@@ -66,11 +66,11 @@ get(key){
 
 那么在这里所谓的链表就是在逻辑上理解为它们在数组同一个位置，实际上就是先找到数组的这个位置得到了一个entry1然后这个entry1里的next属性引用的就是一个entry2，通过这个entry2的next就能找到entry3。这样的一个链表，基于找到第一个（数组中的entry）然后通过next字段一个一个的引用。下图与上图相对应
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/HashMap3 .png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap3 .png)
 
 上图数组存的entry3变量引用堆中的0x003的一个entry对象，这个对象里的next属性引用了地址0x004的entry对象。put时它是去怎样去插入的。当发生碰撞是找到这个链表的最下的entry把它的next=null换成当前插入的entry地址，还是把当前插入的entry的next改为第一个就是数组中的table[index]。也就是头插还是尾插。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/HashMap4.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap4.png)
 
 那么怎样去存下面使用伪代码说明大概流程（实际源码还有判断空判断key是否重复先忽略）
 
@@ -253,49 +253,49 @@ put时当达到阈值后进行扩容也就是执行resize方法创建新数组�
 
 **扩容流程**
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/1.png)
 
 假设上图数组正在扩容，首先循环到null != e的时候才能执行while的内容，e是遍历table数组的元素所以e = first，next = e.next这时代码中的next = sec。
 
 然后求e.hash重新计算使用indexFor得到新数组的下标i（假设为3，第4个位置），让e.next改为newTable[i]的引用，再将newTable[i]改为当前e也就是fist，也就是头插法
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/2.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/2.png)
 
 代码第三步e = next 将变量e的引用原先是fist改为next的引用也就是e = sec。因此while里面就是遍历链表的元素赋值给e，在判断e是否为空当前e是sec，再进行同样的操作（定位，头插，移位）
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/3.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/3.png)
 
 现在新数组就变成图中右下的样子了，可以看到就是sec的next变成first，first的next为空比起原先数组的关系就是反过来的。因为头插嘛第一个先插过去后面的插过去就更靠前第一个就是最下面。接下来e就是sec的next也就是遍历到第三个了然后没有下一个while结束，for循环下一个数组元素。就这样循环往复遍历所有的元素转移到新数组。
 
 **死环**问题就是在并发的情况下做这些扩容步骤出现的问题，通过上述演示单线程的一个扩容流程。假设现在两个线程同时对一个hashmap扩容。那么同时访问resize方法两个线程里面都创建了一个自己线程里的新数组，然后再执行transfer方法共同执行到while里的第一句next = e.next时的情况如下图。两个线程里都有自己的e与next还有新数组。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/4.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/4.png)
 
 这时线程1停在这里。线程2继续全部执行完（while循环两次直到e为空），这时线程2的新数组已经移完原来的两个元素
 
 第一次循环
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/5.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/5.png)
 
 第二次循环
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/6.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/6.png)
 
 这时候线程1又往后开始执行了。其实问题就在于此时堆中的fisrt对象和sec已经被改了。first对象里的next属性现在其实是空，然后sec里的next值为first。按照步骤
 
 第一步完成后e（first）到新数组，之后e改为next（sec）。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/7.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/7.png)
 
 
 
 到这一步问题就来了，处理完first之后现在e引用sec，再次while循环 得next = e.next。现在e.next = first而不是null，就出现循环了。处理完sec到时候e再引用first再循环一遍之后e才为空
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/8.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/8.png)
 
 将sec移过去然后next为first（其实它的next本来就是first了因为开始那个线程已经改了因此前面next就不等于null，而是first）。导致接下来e 不是null，是first。然后再进while循环e =first，next=null。这时first就要插在sec上就是first的next改为sec。就形成了死循环 
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/HashMap/9.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/9.png)
 
 总结这个问题产生就是因为头插法导致从旧数组到新数组的时候链表方向会反过来，再因为并发的问题开始读取的是first并且next是sec。但中途却被别的线程改了因为扩容next反过来。它还拿着之前的循环一次再取就是有问题了本来应该链表结束了为0，结果可以连到fisrt。
 

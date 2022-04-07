@@ -29,7 +29,7 @@ tags: LeetCode日常
 
 暴力解法（BF）就依次扫描如果有相同的同步继续，出现不同就中断了，模式串回到起点主串回到下个开头点。也就是说主串的长度会遍历完，剩下的看模式串扫到什么时候中断。在最差的情况下每次模式串遍历到最后一个中断主串最末端才匹配到那就是O(n*m)
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AE%9E%E7%8E%B0%20strStr()/1.gif)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AE%9E%E7%8E%B0%20strStr()/1.gif)
 
 **边界**
 
@@ -63,7 +63,7 @@ public int strStr(String haystack, String needle) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AE%9E%E7%8E%B0%20strStr()/1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AE%9E%E7%8E%B0%20strStr()/1.png)
 
 ### 解法二：截取子串
 
@@ -82,7 +82,7 @@ public int strStr(String haystack, String needle) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AE%9E%E7%8E%B0%20strStr()/2.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AE%9E%E7%8E%B0%20strStr()/2.png)
 
 其实这种解法和解法一是一模一样只不过前者把截取和比较直接写了出来，它比解法一优的点只是少遍历了后面短的部分一个是h * (?)另一个是（h-n+1）* (?)，是因为两层遍历分开写可以这样做。外面遍历子串的开头，里面再遍历子串与模式串是否相等。而解法一放到了一个循环也做到了这个逻辑
 

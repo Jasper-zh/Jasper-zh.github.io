@@ -46,11 +46,11 @@ copyright: false
 
 * 早期的B/S架构:
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407154509.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407154509.png)
 
 * 后来的B/S架构
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407154551.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407154551.png)
 
 ## 2. HTTP协议（熟悉）
 
@@ -62,7 +62,7 @@ copyright: false
 
 * HTTP默认的端口号为80，HTTPS默认的端口号为443。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407154642.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407154642.png)
 
 
 
@@ -134,7 +134,7 @@ Date: Thu, 08 Sep 2021 12:59:54 GMT
 
 * 下载地址：http://tomcat.apache.org/
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407155442.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407155442.png)
 
 ### 3.3 目录结构
 
@@ -284,7 +284,7 @@ http://localhost:8080/工程路径/url-pattern的内容
 
 ### 4.6 Servlet的生命周期
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407161333.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407161333.png)
 
 * 构造方法只被调用一次，当第一次请求Servlet时调用构造方法来创建Servlet的实例。
 * init方法只被调用一次，当创建好Servlet实例后立即调用该方法实现Servlet的初始化。

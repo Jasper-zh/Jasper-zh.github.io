@@ -150,7 +150,7 @@ if (a === b)
 * 逻辑非（!）、逻辑与（&&）、逻辑或（||）
 * 逻辑运算的操作数均为 boolean 表达式
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405092400.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405092400.png)
 
 * 我要吃两碗拉面**或者**10个包子才能吃饱！问题是，我只吃两碗面，饱了！ 我只吃10个包子，饱了
 * 我要吃两碗拉面**并且**10个包子才能吃饱！问题是，我只吃两碗面，没饱！ 我只吃10个包子，没饱
@@ -344,7 +344,7 @@ for (var i = 0; i < arr1.length; i++) {
 * 没有构造函数 Math()
 * 无需创建，直接把 Math 作为对象使用就可以调用其所有属性和方法
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405100336.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405100336.png)
 
 ```java
 // 返回0-9之间任意一个随机数字 
@@ -374,7 +374,7 @@ var reg1 = /^\d{3,6}$/; // 匹配纯数字3-6个
 var reg2 = new RegExp(“^\\d{3,6}$");
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405100929.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405100929.png)
 
 ```javascript
 // 方式1 
@@ -960,7 +960,7 @@ HTML 事件的例子：
 * onmouseout 当鼠标指针**移出**某元素时执行脚本
 * onmouseover 当鼠标指针**悬停**于某元素之上时执行脚本
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405_113223.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405_113223.gif)
 
 ```html
 <style> 
@@ -1163,7 +1163,7 @@ user.say();
 
 #### 5.1 window对象
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405115609.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405115609.png)
 
 ```html
 <button onclick="Jasper()">看看更多技术文章</button> 
@@ -1354,7 +1354,7 @@ setInterval(1,2)：周期性触发代码exp （常用）
     </script> 
 </body>
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405_141135.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405_141135.gif)
 
 * 案例：在闪烁字体的基础上扩展，闪烁的电子时钟
 
@@ -1380,7 +1380,7 @@ setInterval(1,2)：周期性触发代码exp （常用）
   </script>
 </body>
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405_141553.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405_141553.gif)
 ##### 5.2.2 停止定时器clearInterval
 
 案列：模拟年会抽奖
@@ -1406,7 +1406,7 @@ setInterval(1,2)：周期性触发代码exp （常用）
   </script> 
 </body>
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/1617604375381.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/1617604375381.gif)
 
 ##### 5.2.3 一次性定时器setTimeout
 

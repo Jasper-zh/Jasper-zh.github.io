@@ -14,7 +14,7 @@ copyright: false
 * 安装方式：直接一路点击下一步即可，安装过程选择免费版。
 
 **（2）使用方式**
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412132552.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412132552.png)
 
 
 
@@ -37,9 +37,9 @@ copyright: false
 
 {% endnote %}
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210425195244.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425195244.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210425195328.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425195328.png)
 
 
 
@@ -56,13 +56,13 @@ copyright: false
 
 {% endnote %}
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210425195829.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425195829.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210425201458.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425201458.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210425202315.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425202315.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210425202126.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425202126.png)
 
 * 使用root用户打开/etc/sysconfig/network-scripts/ifcfg-eno16777736文件，添加内容如下（根据自己的地址填）：
 
@@ -82,6 +82,7 @@ DNS1=114.114.114.114
 
 ### 1.2 JDK的下载和安装
 **（1）下载和安装方式**
+
 * 下载地址：https://www.oracle.com/java/technologies/javase-downloads.html
 * 安装方式：将下载好的jdk安装包通过Xftp工具传输到CentOS系统中，使用tar命令解压即可。
 
@@ -139,7 +140,7 @@ startup.sh
 
 **（2）远程连接**
 安装配置完成后使用管理工具去连接我们的远端Mysql可能会遇到如下问题：
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412135526.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412135526.png)
 
 **（3）解决方案**
 * 使用root权限登录数据库后选择mysql库
@@ -190,11 +191,11 @@ select User,Host from user;
 ### 2.5 常用运算符
 **（1）算术运算符**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412141223.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412141223.png)
 
 **（2）关系运算符**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412141235.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412141235.png)
 
 ### 2.6 流程控制语句
 **（1）if判断**

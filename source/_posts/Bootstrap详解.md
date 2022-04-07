@@ -30,11 +30,11 @@ copyright: false
 中文官网：https://www.bootcss.com/    
 英文官网：http://getbootstrap.com
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405181312.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405181312.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405181319.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405181319.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405181326.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405181326.png)
 
 下载好的，压缩包解压出来。就得到了bootstrap的资源文件了。
 分别是css、js、font字体，全部放在项目的根目录即可
@@ -59,7 +59,7 @@ copyright: false
 </html>
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210406101947.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210406101947.png)
 
 ## 2.Bootstrap的使用
 
@@ -147,7 +147,7 @@ copyright: false
 
 **默认布局**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405181550.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405181550.png)
 
 ```html
 <body style="padding:100px;">
@@ -172,7 +172,7 @@ copyright: false
 - 让所有表单元素居于一行
 - <b style="color:Red">注意</b>：当小于768px时,会自动还原成移动端样式.
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405181817.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405181817.png)
 
 ```html
 <form class="form-inline">
@@ -182,7 +182,7 @@ copyright: false
 
 **输入框**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182004.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182004.png)
 
 ```html
 <form>
@@ -195,7 +195,7 @@ copyright: false
 
 **文本框**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182323.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182323.png)
 
 ```html
 <div class="form-group">
@@ -209,7 +209,7 @@ copyright: false
 - checkbox 默认
 - checkbox-inline 内联
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182359.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182359.png)
 
 ```html
 <div class="checkbox">
@@ -237,7 +237,7 @@ copyright: false
 
 **复选按钮**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182450.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182450.png)
 
 ```html
 <form>        
@@ -264,7 +264,7 @@ copyright: false
 
 **单选框**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182539.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182539.png)
 
 ```html
 <label class="radio">
@@ -287,7 +287,7 @@ copyright: false
 
 **单选按钮**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182753.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182753.png)
 
 ```html
 <div class="btn-group" data-toggle="buttons">
@@ -305,7 +305,7 @@ copyright: false
 
 ### 2.3 按钮
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182818.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182818.png)
 
 ```html
 <button class="btn btn-default">默认按钮</button>
@@ -319,7 +319,7 @@ copyright: false
 
 - 按钮大小
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182825.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182825.png)
 
 ```html
 <button class="btn btn-primary btn-lg">超大按钮（高清大屏台式机）</button>
@@ -332,7 +332,7 @@ copyright: false
   - 激活状态：按钮在激活时将呈现为被按压的外观（深色的背景、深色的边框、阴影）;
   - 禁用状态：当您禁用一个按钮时，它的颜色会变淡 50%，并失去渐变;
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405182831.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405182831.png)
 
 ```html
 <button class="btn btn-default">默认按钮</button>
@@ -348,7 +348,7 @@ copyright: false
 - .img-circle：添加 border-radius:50% 来让整个图片变成圆形。
 - .img-thumbnail：添加一些内边距（padding）和一个灰色的边框
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210406102636.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210406102636.png)
 
 ```html
 <img src="img/1.jpg" class="img-rounded" width="33%">
@@ -366,7 +366,7 @@ copyright: false
 
 ### 2.5 下拉菜单组件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405183030.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405183030.png)
 
 ```html
 <div class="dropdown">
@@ -390,7 +390,7 @@ copyright: false
 
 ### 2.6 分页组件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405183037.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405183037.png)
 
 ```html
 <ul class="pagination">
@@ -402,7 +402,7 @@ copyright: false
 </ul>
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405183044.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405183044.png)
 
 ```html
  <ul class="pager">
@@ -413,11 +413,11 @@ copyright: false
 - bootstrap的栅格系统会将整个页面水平方向上平均分成12个小格子
 - 当浏览器大小发生变化的时候，我们可以控制每行的元素占用几个格子，从而达到响应式的效果
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405183052.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405183052.png)
 
 - 显示屏幕的扩大和缩小. 实现如下效果
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405183146.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405183146.png)
 
 ```html
 <style>
@@ -461,9 +461,9 @@ copyright: false
 
 - 配合响应式的栅格系统
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210406110913.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210406110913.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210406111042.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210406111042.png)
 
 ```html
 <div class="container">
@@ -495,7 +495,7 @@ copyright: false
 
 - 自定义内容
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210406112003.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210406112003.png)
 
 ```html
 <div class="container">
@@ -525,7 +525,7 @@ copyright: false
 
 ### 2.9 模态框组件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405183229.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405183229.png)
 
 - data-toggle="modal"     触发类型:模态框modal
 - data-target="#myModal" 触发的节点
@@ -571,7 +571,7 @@ copyright: false
 
 ### 3.1 首页轮播大图
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/1617680538768.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/1617680538768.gif)
 
 1. 大小屏幕自动适应,扩大缩小浏览器
 2. 滚动数字区点击左右切换图片
@@ -622,7 +622,7 @@ data 属性解释：
 
 ### 3.2 响应式导航条
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/1617682299271.gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/1617682299271.gif)
 
 ```html
 <!-- 默认的导航条样式 -->

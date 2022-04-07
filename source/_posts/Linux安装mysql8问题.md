@@ -12,7 +12,7 @@ tags: 日常问题
 
 但昨天遇到了新问题
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210324025242.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210324025242.png)
 
 图上是已经解决得时候（主要问题不是图上的端口前面先解决了后面才会有），开启mysql.server时问题提示就是这个
 
@@ -53,7 +53,7 @@ Starting MySQL.Logging to '/etc/mysql/localhost.localdomain.err'.
 
 花了两三个小时主要是google都翻了几页然后都尝试了不够也就上面这七种。最后才想起来去看localhost.localdmain.err文件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210324133642.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210324133642.png)
 
 我这边问题的根源就是temp下的mysql.sock、mysql.sock.lock、mysqlx.sock、mysql.sock.lock，删除完事成功启动服务重新生成。应该是之前服务残留。开始初始化安装mysql初始化密码没记录但又不能像以前版本可通过配置文件查那个随机密码。只能重新初始化这就是问题的根源，之前初始化的已经启动过了生成了这些。
 

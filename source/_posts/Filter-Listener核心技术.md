@@ -12,7 +12,7 @@ copyright: false
 * 过滤器相当于浏览器与Web资源之间的一道过滤网，在访问资源之前通过一系列的过滤器对请求进行修改、判断以及拦截等，也可以对响应进行修改、判断以及拦截等。
 
 ### 1.2 工作方式
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412110002.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412110002.png)
 
 ### 1.3 使用方式
 * 自定义类实现Filter接口并重写doFilter方法。
@@ -103,7 +103,7 @@ public class LoginFilter implements Filter {
 
 * 如果有多个过滤器都满足过滤的条件，则容器依据映射的先后顺序来调用各个过滤器。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412112508.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412112508.png)
 
 ### 1.7 过滤器的优点
 

@@ -176,7 +176,7 @@ public class RestFulController {
 * 表单的提交方式 method="POST"
 * 表单的enctype属性是多部分表单形式 enctype=“multipart/form-data"
 
-![image-20210516154004057](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516154004057.png)
+![image-20210516154004057](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516154004057.png)
 
 
 
@@ -186,7 +186,7 @@ public class RestFulController {
 * 当form表单的enctype取值为 application/x-www-form-urlencoded 时，form表单的正文内容格式是： name=value&name=value 
 * 当form表单的enctype取值为 mutilpart/form-data 时，请求正文内容就变成多部分形式：
 
-![image-20210516154209294](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516154209294.png)
+![image-20210516154209294](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516154209294.png)
 
 ### 3.3 单文件上传
 
@@ -287,7 +287,7 @@ public String filesUpload(String username, MultipartFile[] filePic) throws IOExc
 
 系统的dao、service、controller出现都通过throws Exception向上抛出，最后由springmvc**前端控制器**交由**异常处理器**进行异常处理，如下图：
 
-![image-20210516155111158](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516155111158.png)
+![image-20210516155111158](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516155111158.png)
 
 
 
@@ -395,7 +395,7 @@ Spring MVC 的**拦截器**类似于 Servlet 开发中的**过滤器 Filter**，
 
 关于interceptor和filter的区别，如图所示：
 
-![image-20210516155902161](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516155902161.png)
+![image-20210516155902161](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516155902161.png)
 
 
 
@@ -515,4 +515,4 @@ public class TargetController {
 
 拦截器中的方法说明如下：
 
-![image-20210516160533962](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516160533962.png)
+![image-20210516160533962](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516160533962.png)

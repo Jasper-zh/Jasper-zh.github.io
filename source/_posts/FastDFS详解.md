@@ -11,8 +11,8 @@ copyright: false
 
 ### 1.1 什么是文件系统
 * 文件数据是如何存储的？？
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624115126.png)
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624115146.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624115126.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624115146.png)
 
 ### 1.2 分布式文件系统
 * 一台电脑存储量有限，并且并发吞吐量也有限，如何提高性能？
@@ -44,7 +44,7 @@ copyright: false
 #### 1.3.3.FastDFS
 * 由淘宝资深架构师余庆编写并开源；
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624120316.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120316.png)
 
 * 专为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务；
 * HDFS，GFS等都是通用的文件系统，他们的优点是开发体验好，但是系统的复杂度较高，性能也一般；
@@ -55,7 +55,7 @@ copyright: false
 * fastDFS包含Tracker Server和Storage Server；
 * 客户端请求Tracker Server进行文件的上传与下载；
 * Tracker Server调度Storage Server最终完成上传与下载。
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624120525.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120525.png)
 * Tracker （译：追踪者）
   * 作用是负载均衡和调度，它管理着存储服务（Storage Server），可以理解为：“大管家，追踪者，调度员”；
   * Tracker Server可以集群，实现高可用，策略为“轮询”。
@@ -67,9 +67,9 @@ copyright: false
 
 ### 1.5 上传/下载 原理
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624120844.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120844.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624120854.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624120854.png)
 
 * 客户端上传文件后，storage会将文件id返回给客户端
 * group1/M00/02/11/aJxAeF21O5wAAAAAAAAGaEIOA12345.sh

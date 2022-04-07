@@ -21,11 +21,11 @@ copyright: false
 
 * 普通JDBC方式
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323073745.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323073745.png)
 
 * 连接池方式
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323073813.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323073813.png)
 
 #### 1.3 如何使用数据库连接池
 
@@ -71,11 +71,11 @@ DBCP也是一个开源的连接池，是Apache成员之一，在企业开发中�
 
 1）将这两个 jar包添加到 myJar文件夹中 （jar包在资料里的软件文件夹中）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323074504.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323074504.png)
 
 2） 添加myJar库 到项目的依赖中
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323074513.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323074513.png)
 
 ##### 1.5.2 编写工具类
 
@@ -191,7 +191,7 @@ C3P0是一个开源的JDBC连接池,支持JDBC3规范和JDBC2的标准扩展。�
 
 1) 将jar包 复制到myJar文件夹即可,IDEA会自动导入
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323090207.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323090207.png)
 
 2) 导入配置文件 c3p0-confifig.xml
 
@@ -232,15 +232,15 @@ C3P0是一个开源的JDBC连接池,支持JDBC3规范和JDBC2的标准扩展。�
 
 3) 在项目下创建一个resource文件夹(专门存放资源文件)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323090659.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323090659.png)
 
 4) 选择文件夹,右键 将resource文件夹指定为资源文件夹
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323090719.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323090719.png)
 
 5) 将文件放在resource目录下即可,创建连接池对象的时候会去加载这个配置文件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323090810.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323090810.png)
 
 ##### 1.6.2 编写C3P0工具类
 
@@ -328,7 +328,7 @@ public class TestC3P0 {
 
 ##### 1.6.4 常见配置
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323092846.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323092846.png)
 
 #### 1.7 Druid 连接池
 
@@ -338,7 +338,7 @@ Druid（德鲁伊）是阿里巴巴开发的号称为监控而生的数据库连
 
 1) 导入 jar包
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323093512.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323093512.png)
 
 2) 导入配置文件
 
@@ -346,7 +346,7 @@ Druid（德鲁伊）是阿里巴巴开发的号称为监控而生的数据库连
 
 * 可以叫任意名称，可以放在任意目录下,我们统一放到 resources资源目录
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323093859.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323093859.png)
 
 ```properties
 driverClassName=com.mysql.jdbc.Driver 
@@ -463,7 +463,7 @@ Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源�
 * 使用方式:
   * DBUtils就是JDBC的简化开发工具包。需要项目导入commons-dbutils-1.6.jar。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323095316.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323095316.png)
 
 ##### 2.1.1 DBUtils核心功能介绍
 
@@ -481,7 +481,7 @@ Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源�
 
 * 表中的一列,对应类中的一个成员属性
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323095611.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323095611.png)
 
 ##### 2.2.2 JavaBean组件
 
@@ -496,7 +496,7 @@ Commons DbUtils是Apache组织提供的一个对JDBC进行简单封装的开源�
 
 * 我们可以创建一个 entity包,专门用来存放 JavaBean类
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323095818.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323095818.png)
 
 ```java
 public class Employee implements Serializable { 
@@ -878,19 +878,19 @@ public class TestBatch {
 
 * select version(); 获取mysql服务器的版本信息
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323103912.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323103912.png)
 
 * show status; 查看服务器的状态信息
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323103941.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323103941.png)
 
 * show columns from table_name; 显示表的字段信息等，和desc table_name一样
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323104011.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323104011.png)
 
 * show index from table_name; 显示数据表的详细索引信息，包括PRIMARY KEY（主键）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210323104036.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210323104036.png)
 
 * show databases:列出所有数据库
 

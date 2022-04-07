@@ -19,11 +19,17 @@ copyright: false
 
 {% note info no-icon %}
 1. 创建java项目，导入坐标
+
 2. 编写Account实体类
+
 3. 编写AccountDao接口和实现类
+
 4. 编写AccountService接口和实现类
+
 5. 编写spring核心配置文件
+
 6. 编写测试代码
+
 {% endnote %}
 
 **1）创建java项目，导入坐标**
@@ -355,7 +361,7 @@ JDK 代理 : 基于接口的动态代理技术·：利用拦截器（必须实�
 
 CGLIB代理：基于父类的动态代理技术：动态生成一个要代理的子类，子类重写要代理的类的所有不是final的方法。在子类中采用方法拦截技术拦截所有的父类方法的调用，顺势织入横切逻辑，对方法进行增强
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210429175131.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210429175131.png)
 
 ### 2.1 JDK动态代理方式
 

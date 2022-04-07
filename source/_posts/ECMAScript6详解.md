@@ -70,14 +70,14 @@ node hello.js
 ```
 
 第一次运行，可能会报错！
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405174837.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405174837.png)
 兼容性的问题，以管理员身份运行即可
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405174953.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405174953.png)
 
 这样，没有使用浏览器，我们也可以运行js程序了
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405180525.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405180525.png)
 
 #### 2.1.4 服务器端应用开发（了解）
 
@@ -191,7 +191,7 @@ npm install jquery
 - 安装会自动在项目目录下添加 package-lock.json文件，这个文件帮助锁定安装包的版本
 - 同时package.json 文件中，依赖包会被添加到dependencies节点下，类似maven中的 \<dependencies>
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405175235.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405175235.png)
 
 - jQuery版本有很多，上述命令下载的什么版本的？ 最新版
 - 如果我的项目使用1.9.1版本进行开发的，通过npm安装的3.5.1版本太新，会导致项目失效，如何**安装指定版本库**？
@@ -686,7 +686,7 @@ babel --version
 
 如果报错2：（win10系统中）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405175839.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405175839.png)
 
 windows10默认禁止运行有危险的脚本，修改一下系统策略就好了
 
@@ -696,7 +696,7 @@ windows10默认禁止运行有危险的脚本，修改一下系统策略就好�
 set-ExecutionPolicy RemoteSigned
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405175624.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405175624.png)
 
 现在，就可以看版本号了。
 

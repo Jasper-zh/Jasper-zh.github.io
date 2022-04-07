@@ -57,11 +57,11 @@ https://code.visualstudio.com/
 
 安装vscode之后，在界面的左侧，选择安装中文插件。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404102602.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404102602.png)
 
 点击安装后，右下角会弹出重启的窗口
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404102657.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404102657.png)
 
 重启就可以了
 
@@ -79,11 +79,11 @@ vscode本身没有新建项目的选项，所以要先创建一个空的文件�
 
 需要安装插件 “open in browser ”
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404102858.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404102858.png)
 
 安装完插件，右键想要运行的页面文件，或者 使用快捷键 alt+b
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404102926.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404102926.png)
 
 这里推荐使用chrome谷歌浏览器，精简，速度快。
 
@@ -91,9 +91,9 @@ vscode本身没有新建项目的选项，所以要先创建一个空的文件�
 
 修改默认的浏览器：首页的设置
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404103013.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404103013.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404103032.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404103032.png)
 
 添加代码
 
@@ -119,13 +119,13 @@ vscode本身没有新建项目的选项，所以要先创建一个空的文件�
 * bgcolor 用于设置页面的背景色
 * background 用于设置页面的背景图片
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404103843.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404103843.png)
 
 #### 2.2 排版标签
 
 ##### 2.2.1 HTML注释
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404104219.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404104219.png)
 
 #####  2.2.2换行标签
 
@@ -139,7 +139,7 @@ vscode本身没有新建项目的选项，所以要先创建一个空的文件�
 
 常用属性 `align` 它的作用是设置段落中的内容对齐方式 可取值有 `left` `right` `center`
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404104750.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404104750.png)
 
 ##### 2.2.4 水平线标签
 
@@ -155,7 +155,7 @@ vscode本身没有新建项目的选项，所以要先创建一个空的文件�
 
 * color：水平线的颜色
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404105621.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404105621.png)
 
 单位：size="5"，5是默认的单位，为"像素"/"像素点"，像素就是构成计算机图片的最小单位！也可以使用百分比，size="50%"
 
@@ -175,7 +175,7 @@ div与span都是“容器”的作用，具体区别:
 
 * span：局部划分
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404110045902.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404110045902.png)
 
 两个div的区别是显而易见的，后面我们再具体学习css语法
 
@@ -213,11 +213,11 @@ div与span都是“容器”的作用，具体区别:
 
 （在线颜色选择器： http://www.86y.org/code/colorpicker/color.html ）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404112232.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404112232.png)
 
 查看电脑已有的字体才能显示，这里使用仿宋
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404112127.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404112127.png)
 
 也可下载别的，百度搜索：字魂网，下载一个免费的字体，并安装到计算机中。在我们的网页中显示出来！
 
@@ -233,7 +233,7 @@ h1最大 h6最小，它们代表的是标题（和word文档是一样的）
 
 注意:在HTML中允许标签进行嵌套的，但是一般都包裹嵌套，而不可以进行交叉嵌套
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404112805.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404112805.png)
 
 ##### 2.3.3 格式化标签
 
@@ -245,7 +245,7 @@ h1最大 h6最小，它们代表的是标题（和word文档是一样的）
 
 * `<u>`：下划线
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404113707.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404113707.png)
 
 #### 2.4 列表标记
 
@@ -261,7 +261,7 @@ h1最大 h6最小，它们代表的是标题（和word文档是一样的）
 
 * **li：列表项**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210404114202855.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210404114202855.png)
 
 #### 2.5 图像标签
 
@@ -287,7 +287,7 @@ h1最大 h6最小，它们代表的是标题（和word文档是一样的）
   * top：把图像与顶部对齐
   * bottom：把图像与底部对齐（默认）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/Snipaste_2021-04-04_11-55-42.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/Snipaste_2021-04-04_11-55-42.png)
 
 #### 2.6 超链接标签
 
@@ -302,7 +302,7 @@ h1最大 h6最小，它们代表的是标题（和word文档是一样的）
 * _blank在**新窗口**中打开页面
 * _self 默认。在**本窗口**打开页面
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/1.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/1.png)
 
 功能性连接：
 
@@ -398,7 +398,7 @@ h1最大 h6最小，它们代表的是标题（和word文档是一样的）
 
 常见的 登录页面、注册页面 都离不开表单的应用
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404124024.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404124024.png)
 
 
 
@@ -509,7 +509,7 @@ method：表单提交的方式
 
 注意：框架标签和body标签不共存。“有你没我，有我没你”
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404125757.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404125757.png)
 
 ```html
 <!DOCTYPE html> 
@@ -583,9 +583,9 @@ top.html、left.html、right.html、foot.html 四个页面内容一样，稍微�
 
 ##### 2.10.3 特殊字符
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404134411.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404134411.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404134428.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404134428.png)
 
 ### 3. HTML5 新特性
 
@@ -593,7 +593,7 @@ top.html、left.html、right.html、foot.html 四个页面内容一样，稍微�
 
 H5包含H4
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404134555.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404134555.png)
 
 1.大小写不敏感
 
@@ -639,7 +639,7 @@ H5包含H4
 
 * foot：页脚，页面的底部
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210404135030.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210404135030.png)
 
 
 

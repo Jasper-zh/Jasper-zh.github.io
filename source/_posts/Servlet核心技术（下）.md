@@ -13,7 +13,7 @@ copyright: false
 
 * 为了方便重用和便于维护等目的，经常会采用DAO（Data Access Object）模式对数据库操作进行独立封装。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407170449.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407170449.png)
 
 * DAO工厂（工厂模式）
   工厂类：封装了对象的创建细节，为调用者提供符合要求的对象。
@@ -36,7 +36,7 @@ copyright: false
 
 #### （3）重定向的原理
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407170825.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407170825.png)
 
 #### （4）重定向的特点
 
@@ -79,7 +79,7 @@ copyright: false
 
 #### （4）重定向和转发的比较
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210407171306.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210407171306.png)
 
 ## 3. Servlet线程安全（重点）
 

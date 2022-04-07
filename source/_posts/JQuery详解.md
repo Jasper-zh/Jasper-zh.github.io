@@ -12,7 +12,7 @@ copyright: false
 - 它的设计思想是write less,do more
 - 实现隔行变色效果，JavaScript要循环加判断，而jQuery只需一句关键代码
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405171029.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405171029.png)
 
 ```javascript
 $("tr:even").css("background-color","#ccc");
@@ -42,9 +42,9 @@ jQuery能做的JavaScript也都能做，但使用jQuery能大幅提高开发效�
 
 进入jQuery官网：http://jQuery.com
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405171403.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405171403.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405171607.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405171607.png)
 
 我们使用压缩版就可以。体积更小，内容已经通过算法进行压缩， 不会浪费资源空间！
 而开发版就针对修改jQuery源码的专业前端开发者的。
@@ -981,7 +981,7 @@ $(".del").on('click mouseover', function() {
 
 ### 3.2 购物车结算
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210405172632.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210405172632.png)
 
 ```html
 <style>

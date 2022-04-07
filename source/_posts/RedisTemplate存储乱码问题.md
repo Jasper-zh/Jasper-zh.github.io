@@ -12,9 +12,9 @@ tags: 日常问题
 
 比如像下面，存值存一个字符串类型
 
-![image-20210828155129033](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210828155129033.png)
+![image-20210828155129033](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210828155129033.png)
 
-![image-20210828155105000](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210828155105000.png)
+![image-20210828155105000](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210828155105000.png)
 
 出现这个问题的原因是两边序列化不一致。
 

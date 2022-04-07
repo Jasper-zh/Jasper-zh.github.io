@@ -22,7 +22,7 @@ tags: Hexo
 
 首先到官网安装nodejs
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/01.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/01.png)
 
 安装完成后查看nodejs和其包管理器npm的版本
 
@@ -31,7 +31,7 @@ node -v
 npm -v
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/02.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/02.png)
 
 我们通过包管理器npm来安装hexo,但由于源是国外的访问很慢。在之前先添加国内镜像再安装
 
@@ -39,7 +39,7 @@ npm -v
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/03.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/03.png)
 
 执行完出现如图所示即添加完成，我们再安装时使用cnpm就是使用的国内源
 
@@ -55,7 +55,7 @@ cnpm install -g hexo-cli
 hexo -v
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/04.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/04.png)
 
 
 
@@ -73,17 +73,17 @@ F:\blog>hexo init
 
 在blog下就会完成初始化生成初始工程
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/05.png)这样一个静态的博客项目就生成了，可以本地启动看一下初始状态
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/05.png)这样一个静态的博客项目就生成了，可以本地启动看一下初始状态
 
 ```
 hexo s
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/06.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/06.png)
 
 服务开启成功，在浏览器访问一下本地的4000端口。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/07.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/07.png)
 
 
 
@@ -95,11 +95,11 @@ hexo s
 hexo new post "文章名"
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/09.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/09.png)
 
 写文章通过markdown语法，就简单的写了一点
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/10.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/10.png)
 
 编辑完重新生成静态项目，每次变更都要重新生成一下
 
@@ -114,7 +114,7 @@ hexo s //开启服务
 
 重新访问，在Hello World文章上面就是我们刚刚写的文章。基本博客功能完成了，接下来部署到github上面随时访问
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/11.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/11.png)
 
 
 
@@ -124,7 +124,7 @@ hexo s //开启服务
 
 现在本地可以访问了，由于他只是一个静态项目把它部署在github上就可以做一个公开访问了。或者说码云也可以开在服务器上，这里就用github演示。没有就注册一个然后创建库，作为个人博客部署一定要用  *(你的github用户名).github.io*  来作为库名创建就可以。我的是Jasper-zh.github.io 
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/12.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/12.png)
 
 这一步设置username.github.io是为了开启静态服务，页面项目上传到仓库要想直接访问这些静态资源需要开启静态服务。如果是不是github是码云的话仓库名随便取，之后按下面方式开启静态服务
 
@@ -149,7 +149,7 @@ deploy:
   branch: master
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/13.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/13.png)
 
 部署工具和部署配置都完成后就可以通过你的库名访问了，基本上呢没有什么问题。一些自定义个性化的配置可以在之后慢慢的改造
 
@@ -163,9 +163,9 @@ deploy:
 
 ### 我的hexo博客展示
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/14.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/14.png)
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/15.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/15.png)
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/hexo搭建博客/16.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/16.png)
 

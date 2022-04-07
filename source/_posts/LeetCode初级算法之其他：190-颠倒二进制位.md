@@ -67,7 +67,7 @@ public int reverseBits(int n) {
 for(int i=31; i >= 0 && n ！= 0; i--)
 ```
 。加上n != 0 的条件，固定的32位数字可能实际只有几位，高位之后全都是补0的就没必要管了。
-![](https://gitee.com/Jasper-zh/image_host/raw/master/2021-10-21/1634785721003-image.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634785721003-image.png)
 
 ## 题解二：分治法
 
@@ -77,11 +77,11 @@ for(int i=31; i >= 0 && n ！= 0; i--)
 
 **问题划分：**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/2021-10-21/1634796844228-202110211.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634796844228-202110211.png)
 
 **解决问题：**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/2021-10-21/1634802301467-gif%20(2).gif)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634802301467-gif%20(2).gif)
 动图偷懒一点，主要是表示如下过程：
 ```java
 1 2 3 4 5 6 7 8
@@ -144,7 +144,7 @@ public class Solution {
 }
 ```
 两个解法效率差不多因为范围限制在32,一个计算次数小于等于32一个计算次数是log2(32)=5.
-![](https://gitee.com/Jasper-zh/image_host/raw/master/2021-10-21/1634813549636-image.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634813549636-image.png)
 
 ## 总结
 

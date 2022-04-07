@@ -17,7 +17,7 @@ tags: Java
 我们知道在java中，实例域、静态域和数组元素都存储在堆内存中，堆内存是线程共享，而其他的一些虚拟机栈等它们的的一些内容是线程独占不会有内存可见的问题也不受内存模型影响。
 Java线程之间的通信由Java内存模型控制，JMM决定一个线程对共享变量的写入何时对另一个线程可见。从抽象的角度来看，JMM定义了线程和主内存之间的抽象关系：线程之间的共享变量存储在主内存（main memory）中，每个线程都有一个私有的本地内存（local memory），本地内存中存储了该线程以读/写共享变量的副本。Java内存模型的抽象示意图如下：
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Volatile/JMM.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Volatile/JMM.png)
 
 线程从主内存拿取到某以变量到自己本地内存进行操作，完毕之后再将新的值覆盖到主内存。之后再有其他线程拿到此变量得到一个新的值。通过这样的方式达到了一个不同线程之间的通讯，而且这个通信过程必须要经过主内存。JMM通过控制主内存与每个线程的本地内存之间的交互，来为java程序员提供内存可见性保证。
 
@@ -68,7 +68,7 @@ public class Test {
 
 实际上就是在执行程序时为了提高性能，编译器和处理器常常会对指令做重排序。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Volatile/指令重排序.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Volatile/指令重排序.png)
 
 >1. 编译器优化的重排序。编译器在不改变单线程程序语义的前提下，可以重新安排语句的执行顺序。
 >2. 指令级并行的重排序。现代处理器采用了指令级并行技术（Instruction-Level Parallelism， ILP）来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序。

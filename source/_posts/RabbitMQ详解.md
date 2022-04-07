@@ -24,7 +24,7 @@ copyright: false
 
 * 将注册信息写入数据库，发送验证邮件，发送手机，三个步骤全部完成后，返回给客户端
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624154939.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624154939.png)
 
 #### 1.1.2 应用解耦
 
@@ -34,7 +34,7 @@ copyright: false
 
   * 原因：订单系统和库存系统**耦合度太高**
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624155029.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624155029.png)
 
 * 订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户，下单成功；
 
@@ -54,7 +54,7 @@ copyright: false
 
 * 因为流量过大，暴增会导致应用挂掉，为解决这个问题，在前端加入消息队列
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624155207.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624155207.png)
 
 * 用户的请求，服务器接收后，首先写入消息队列，如果超过队列的长度，就抛弃，甩一个秒杀结束的页面！
 
@@ -99,7 +99,7 @@ copyright: false
 
 ### 1.4 RabbitMQ各组件功能
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624155732.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624155732.png)
 
 * **Broker**：消息队列服务器实体
 
@@ -153,7 +153,7 @@ copyright: false
 
 * 查看匹配的版本：https://www.rabbitmq.com/which-erlang.html
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624160204.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624160204.png)
 
 ### 2.1 RabbitMQ安装启动
 
@@ -236,7 +236,7 @@ rpm -ivh rabbitmq-server-3.8.6-1.el7.noarch.rpm
      [root@localhost opt]# rabbitmqctl change_password laosun 123123
      ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624161108.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624161108.png)
 
 **管理界面介绍**
 
@@ -293,7 +293,7 @@ log4j.rootLogger=debug, stdout,file
 
 先创建好**虚拟主机**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624161520.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624161520.png)
 
 ```java
 package util;
@@ -332,7 +332,7 @@ public class ConnectionUtil {
 
 * 在线手册：https://www.rabbitmq.com/getstarted.html
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624161801.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624161801.png)
 
 * 5种消息模型，大体分为两类：
 
@@ -374,7 +374,7 @@ RabbitMQ本身只是接收，存储和转发消息，并不会对信息进行处
 
 类似邮局，处理信件的应该是收件人而不是邮局！
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624162301.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624162301.png)
 
 * 生产者P
 
@@ -422,7 +422,7 @@ RabbitMQ本身只是接收，存储和转发消息，并不会对信息进行处
 
   启动生产者，即可前往管理端查看队列中的信息，会有一条信息没有处理和确认
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624162645.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624162645.png)
 
 * 消费者C
 
@@ -461,7 +461,7 @@ RabbitMQ本身只是接收，存储和转发消息，并不会对信息进行处
 
 启动消费者，前往管理端查看队列中的信息，所有信息都已经处理和确认，显示0
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624163005.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624163005.png)
 
 * 消息确认机制ACK
 
@@ -489,7 +489,7 @@ RabbitMQ本身只是接收，存储和转发消息，并不会对信息进行处
 
 * 结果如下
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624163356.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624163356.png)
 
 * 解决问题
 
@@ -522,7 +522,7 @@ RabbitMQ本身只是接收，存储和转发消息，并不会对信息进行处
 
 #### 2.3.2 工作队列模式
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624163625.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624163625.png)
 
 * 之前我们学习的简单模式，一个消费者来处理消息，如果生产者生产消息过快过多，而消费者的能力有限，就会产生消息在队列中堆积（生活中的滞销）
 * 一个烧烤师傅，一次烤50支羊肉串，就一个人吃的话，烤好的肉串会越来越多，怎么处理？
@@ -619,7 +619,7 @@ public class MessageReceiver2 {
 
   * 看下面官网是如何给出解决思路的：
 
-    ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624164605.png)
+    ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624164605.png)
 
     >公平的分配
     >
@@ -672,13 +672,13 @@ public class MessageReceiver2 {
 
 **生活中的案例：就是玩抖音快手，众多粉丝关注一个视频主，视频主发布视频，所有粉丝都可以得到视频通知**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624165340.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624165340.png)
 
 * 上图中，X就是视频主，红色的队列就是粉丝。binding是绑定的意思（关注）
 
 * P生产者发送信息给X路由，X将信息转发给绑定X的队列
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624180939.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624180939.png)
 
 * X队列将信息通过信道发送给消费者，从而进行消费
 
@@ -744,7 +744,7 @@ public class Recer1 {
 
 #### 2.3.4 路由模式
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624180913.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624180913.png)
 
 * 路由会根据类型进行**定向分发**消息给不同的队列，如图所示
 * 可以理解为是快递公司的分拣中心，整个小区，东面的楼小张送货，西面的楼小王送货
@@ -828,7 +828,7 @@ public class Recer2 {
 
 #### 2.3.5 通配符模式
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624170909.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624170909.png)
 
 * 和路由模式90%是一样的。
 
@@ -1332,7 +1332,7 @@ public class Recer {
 
 * 生产10条堆积未处理的消息
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624180827.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624180827.png)
 
 * 消费者进行限流处理
 
@@ -1378,7 +1378,7 @@ public class Recer {
 
 * 每次确认接收3条消息
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624174934.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624174934.png)
 
 ### 2.8 过期时间TTL
 
@@ -1401,11 +1401,11 @@ public class Recer {
   </rabbit:queue>
   ```
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624175144.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624175144.png)
 
 * 5秒之后，消息自动删除
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624175207.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624175207.png)
 
 #### 2.8.2 设置消息TTL
 
@@ -1459,7 +1459,7 @@ public class Recer {
   * 消息超时未消费
   * 达到最大队列长度
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624175500.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624175500.png)
 
 * spring-rabbitmq-producer-dlx.xml
 
@@ -1604,7 +1604,7 @@ rabbitmq有3种模式，但集群模式是2种。详细如下：
    ```
    [root@A opt]# scp /var/lib/rabbitmq/.erlang.cookie 192.168.204.142:/var/lib/rabbitmq
    ```
-**修改cookie文件，要重启服务器，reboot**
+   **修改cookie文件，要重启服务器，reboot**
    
 3. 停止防火墙，启动rabbitmq服务
 
@@ -1641,7 +1641,7 @@ rabbitmq有3种模式，但集群模式是2种。详细如下：
 
    * 注意：当节点脱离集群还原成单一结构后，交换机，队列和用户等数据 都会重新回来
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210624180619.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210624180619.png)
 
 此时，集群搭建完毕，但是默认采用的模式**“普通模式”**，**可靠性**不高
 
@@ -1679,7 +1679,7 @@ rabbitmq有3种模式，但集群模式是2种。详细如下：
 
 * 通过管理端设置镜像策略
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628163613.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628163613.png)
 
 
 
@@ -1696,7 +1696,7 @@ rabbitmq有3种模式，但集群模式是2种。详细如下：
 * HAProxy可以支持数以万计的并发连接
 * HAProxy可以简单又安全的整合进架构中，同时还保护web服务器不被暴露到网络上
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628163909.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628163909.png)
 
 #### 3.3.2 HAProxy与Nginx
 
@@ -1735,7 +1735,7 @@ HAProxy下载：http://www.haproxy.org/download/1.8/src/haproxy-1.8.12.tar.gz
 
 * 根据内核版本选择编译参数：
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628165246.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628165246.png)
 
 * 进入目录，编译和安装
 
@@ -1843,7 +1843,7 @@ HAProxy下载：http://www.haproxy.org/download/1.8/src/haproxy-1.8.12.tar.gz
 
   记得关闭防火墙： systemctl stop firewalld
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628170340.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628170340.png)
 
 * 项目发消息，只需要将服务器地址修改为143即可，其余不变
 
@@ -1861,7 +1861,7 @@ HAProxy下载：http://www.haproxy.org/download/1.8/src/haproxy-1.8.12.tar.gz
 * 两台主机之间生成一个虚拟的ip，我们称漂移ip，漂移ip由主服务器承担，一但主服务器宕机，备份服务器就会抢夺漂移ip，继续工作，有效的解决了群集中的单点故障
 * 说白了，将多台路由器设备**虚拟**成一个设备，对外提供统一ip（VIP）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628170534.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628170534.png)
 
 #### 3.4.2 安装KeepAlived
 
@@ -1981,13 +1981,13 @@ HAProxy下载：http://www.haproxy.org/download/1.8/src/haproxy-1.8.12.tar.gz
   [root@C etc]# ip a
   ```
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628172305.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628172305.png)
 
 * 此时，安装完毕，按照上面的步骤就可以安装第二台了（服务器hostname和ip注意要修改）
 
 * 常见的网络错误：子网掩码、网关等信息要一致
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628172420.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628172420.png)
 
 #### 3.4.3 测试ip漂移的规则
 
@@ -1995,19 +1995,19 @@ HAProxy下载：http://www.haproxy.org/download/1.8/src/haproxy-1.8.12.tar.gz
 
 * 目前，C节点是主机，所以虚拟ip在C节点
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628172507.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628172507.png)
 
 * 停止C的keepalived，虚拟ip漂移到D节点
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628172528.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628172528.png)
 
 * 重新启动C节点keepalived，虚拟ip依旧在D节点，并不会由于C的回归而回归
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628172621.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628172621.png)
 
 * 停止D的keepalived，虚拟ip再漂移回C节点
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628172610.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628172610.png)
 
 * 测试vip+端口是否提供服务（在141，A服务器上测试）
 

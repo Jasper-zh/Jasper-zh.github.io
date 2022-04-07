@@ -21,7 +21,7 @@ tags: Hexo
 * _config.yml 页面的各种通用属性配置（头像等等）
 * README.md 仓库的说明，不是关键的我这边留着 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327110241.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110241.png)
 
 ### 准备新hexo
 
@@ -45,7 +45,7 @@ npm install -g hexo-cli
 hexo -v
 ````
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327090400.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327090400.png)
 
 初始化博客
 
@@ -62,7 +62,7 @@ hexo g
 hexo s
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327110827.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110827.png)
 
 
 
@@ -70,33 +70,33 @@ hexo s
 
 没有问题，那现在就相当于把我们的备份全都复制过来就可以了
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327110931.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110931.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327110939.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327110939.png)
 
 ### 再次使用出错
 
 这时候就出了问题，也是我当时使用命令更新后的问题，因此才采用了重新下载新版hexo初始化这样的方法，既然还是躲不掉这个问题就去解决这个问题呗
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111137.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111137.png)
 
 一开始发现只要不放_config.yml进去，其他的没问题
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111145.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111145.png)
 
 也就是问题在配置文件上，再看错误信息，我们找到js的那一行看看，看这个config.url是什么于是我把它拼接在错误信息后面
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111155.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111155.png)
 
 再次启动看错误信息，这不就是在_config.yml中配置的url么
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111205.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111205.png)
 
 尝试去在地址前加上 `http:` 就好了，奇了怪了以前的hexo配置不用加http所以使用正常，更新新的版本后url就不能这么配置了，要写全
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111817.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111817.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111824.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111824.png)
 
 完美， `.git` 文件夹也复制过去了所以直接push到我们的源文件备份分支。
 
@@ -106,7 +106,7 @@ hexo s
 
 最后还没完，初始的hexo-cli是不会自带git部署插件的，还有其他。可以对比原博客的package.json看自己以前用了哪些要装上的
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327111832.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327111832.png)
 
 我这边要给新的hexo装上，以下三个也是以前的hexo有用到
 

@@ -8,7 +8,7 @@ tags: 日常问题
 
 > 写项目用到了sessionStorage来存sessionid，之前一直都是用的cookie。调试又看到了还有localStorage。之前没有了解过好奇查了查，顺便在这里记录一下。
 
-![image-20211018160818104](https://gitee.com/Jasper-zh/image_host/raw/master/image-20211018160818104.png)
+![image-20211018160818104](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20211018160818104.png)
 
 
 

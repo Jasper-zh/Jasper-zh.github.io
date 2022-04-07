@@ -95,7 +95,7 @@ class User implements InitializingBean{
 
 这里就出来了**狭义的生命周期**
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Spring-bean生命周期/1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Spring-bean生命周期/1.png)
 
 
 
@@ -123,7 +123,7 @@ BeanDefinition
 
 bean的创建初始化到最终根据这些信息来完成的，因此我们并不是直接通过class得到新生对象，而是先有BeanDefinition。根据BeanDefinition里的beanClass属性完成创建新生bean，而新建对象需要工厂所以有了该bean的BeanDefinition后再由BeanFactory完成创建bean对象
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Spring-bean生命周期/2.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Spring-bean生命周期/2.png)
 
 那么BeanDefinition的beanClass就是配置信息中的class，在生成新生对象之前如果去改变了BeanDefinition的beanClass属性那么之后新建对象就不是以前那个class的实例了。BeanFactory也是提供了后置处理器BeanFactoryPostProcessor就可以完成在对象创建前做一些操作。BeanFactory组建完毕里面有所有的BeanDefinition在通过这些BeanDefinition创建各个bean对象存在Spring容器中。在创建之前就会判断有没有后置处理器BeanFactoryPostProcessor。没有就直接创建对象，有则执行完后置处理器中的方法再创建
 

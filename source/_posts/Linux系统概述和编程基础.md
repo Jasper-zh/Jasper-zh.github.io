@@ -8,7 +8,7 @@ copyright: false
 ## 1. Linux系统概述（常识）
 ### 1.1 计算机的体系结构
 * 计算机由计算机硬件和计算机软件两个部分组成，其中计算机软件(Computer Software)可分为系统软件和应用软件，系统软件就是操作系统，是其他软件的基础。
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412120843.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412120843.png)
 * 目前主流的操作系统有：Windows系列、Unix系列、Linux系列、Android系列、IOS系列、...
 
 ### 1.2 Linux系统的概述
@@ -17,7 +17,7 @@ copyright: false
 * Linux能运行主要的Unix工具软件、应用程序和网络协议，支持32位和64位硬件。
 
 ### 1.3 主要发行版本
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412121116.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412121116.png)
 * Redhat：目前最大的Linux发行商，功能全面并且稳定，于2018年10月被IBM以340亿美元的价格收购。
 * Ubuntu：目前最好的Linux桌面版，拥有很人性化的亮丽的交互界面，强大的软件源支持。
 * CentOS：是RHEL的克隆版本，可以认为是免费版本的Redhat系统。
@@ -33,7 +33,7 @@ copyright: false
 
 ## 3. 目录结构（熟悉）
 ### 3.1 框架结构
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412121418.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412121418.png)
 
 ### 3.2 目录详解
 
@@ -417,7 +417,7 @@ copyright: false
 * vi和vim是Linux系统命令行下的文本编辑器，通常格式为：vi 文件名 或 vim 文件名。
 
 ### 5.2 三种模式
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210412125737.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412125737.png)
 ### 5.3 使用方式
 **（1）命令模式的编辑命令**
 ```
@@ -474,4 +474,4 @@ vim ~/.vimrc
 set nu
 ```
 行号效果
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210424100221.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210424100221.png)

@@ -27,7 +27,7 @@ copyright: false
   * 从而实现集群中类似Master/Slave管理模式
 * Zookeeper = 文件系统 + 通知机制
 
-![image-20210516205429611](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516205429611.png)
+![image-20210516205429611](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516205429611.png)
 
 1. 商家营业并入驻
 2. 获取到当前营业的饭店列表
@@ -46,13 +46,13 @@ copyright: false
   * 分布式：招聘1个厨师，1个服务员，1个前台，**三个人负责的工作不一样**，但是最终目的都是为饭店工作
   * 集群：招聘3个服务员，**3个人的工作一样**
 
-![image-20210516205643857](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516205643857.png)
+![image-20210516205643857](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516205643857.png)
 
 
 
 ### 1.4  数据结构
 
-![image-20210516205730553](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516205730553.png)
+![image-20210516205730553](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516205730553.png)
 
 * ZooKeeper数据模型的结构与linux文件系统很类似，整体上可以看作是一棵树，每个节点称做一个ZNode（ZookeeperNode）。
 * 每一个ZNode默认能够存储1MB的数据（元数据），每个ZNode的路径都是唯一的
@@ -69,14 +69,14 @@ copyright: false
 * 在分布式环境下，通常需要对应用或服务进行统一的命名，便于识别
 * 例如：服务器的IP地址不容易记，但域名相比之下却是很容易记住
 
-![image-20210516214926425](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516214926425.png)
+![image-20210516214926425](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516214926425.png)
 
 #### 1.5.2 统一配置管理
 
 * 分布式环境下，配置文件做同步是必经之路
 * 1000台服务器，如果配置文件作出修改，那一台一台的修改，运维人员肯定会疯，如何做到修改一处就快速同步到每台服务器上
 
-![image-20210516215320217](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516215320217.png)
+![image-20210516215320217](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516215320217.png)
 
 * 将配置管理交给Zookeeper
   1. 将配置信息写入到Zookeeper的某个节点上
@@ -88,14 +88,14 @@ copyright: false
 * 客户端能实时获取服务器上下线的变化
 * 在美团APP上实时可以看到商家是否正在营业或打样
 
-![image-20210516220459449](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516220459449.png)
+![image-20210516220459449](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220459449.png)
 
 #### 1.5.4 软负载均衡
 
 * Zookeeper会记录每台服务器的访问数，让访问数最少的服务器去处理最新的客户请求（雨露均沾）
 * 都是自己的孩子，得一碗水端平
 
-![image-20210516220552779](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516220552779.png)
+![image-20210516220552779](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220552779.png)
 
 
 
@@ -103,9 +103,9 @@ copyright: false
 
 镜像库地址：http://archive.apache.org/dist/zookeeper/
 
-![image-20210516220616483](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516220616483.png)
+![image-20210516220616483](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220616483.png)
 
-![image-20210516220627655](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516220627655.png)
+![image-20210516220627655](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220627655.png)
 
 * apache-zookeeper-3.6.0.tar.gz需要安装maven，然后再运行mvn clean install 和mvnjavadoc:aggregate，前一个命令会下载安装好多jar包，不知道要花多长时间
 * apache-zookeeper-3.6.0-bin.tar.gz已经自带所需要的各种jar包
@@ -229,7 +229,7 @@ Zookeeper中的配置文件zoo.cfg中参数含义解读如下：
 * 虽然在配置文件中并没有指定Master和Slave。但是，Zookeeper工作时，是有一个节点为
   Leader，其他则为Follower，Leader是通过内部的选举机制临时产生的
 
-![image-20210516222202025](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516222202025.png)
+![image-20210516222202025](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516222202025.png)
 
 1. Server1先投票，**投给自己**，自己为1票，没有超过半数，根本无法成为leader，顺水推舟将票数投给了id比自己大的Server2
 
@@ -256,7 +256,7 @@ Zookeeper中的配置文件zoo.cfg中参数含义解读如下：
 
 ### 3.3 监听器原理（面试重点）
 
-![image-20210516222523741](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516222523741.png)
+![image-20210516222523741](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516222523741.png)
 
 1.  在main方法中创建Zookeeper客户端的同时就会创建两个线程，一个负责网络连接通信，一个负责监听
 2.  监听事件就会通过网络通信发送给zookeeper
@@ -270,7 +270,7 @@ Zookeeper中的配置文件zoo.cfg中参数含义解读如下：
 
 ### 3.4 写数据流程
 
-![image-20210516222720702](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516222720702.png)
+![image-20210516222720702](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516222720702.png)
 
 1. Client 想向 ZooKeeper 的 Server1 上写数据，必须的先发送一个写的请求
 2. 如果Server1不是Leader，那么Server1 会把接收到的请求进一步转发给Leader。 
@@ -840,7 +840,7 @@ delete /meituan/baozi
 
 4）运行商家服务类（以main方法带参数的形式运行）
 
-![image-20210516233148488](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516233148488.png)
+![image-20210516233148488](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516233148488.png)
 
 
 
@@ -852,11 +852,11 @@ delete /meituan/baozi
 * 在zookeeper中使用传统的锁引发的 “羊群效应” ：1000个人创建节点，只有一个人能成功，999人需要等待！
 * 羊群是一种很散乱的组织，平时在一起也是盲目地左冲右撞，但一旦有一只头羊动起来，其他的羊也会不假思索地一哄而上，全然不顾旁边可能有的狼和不远处更好的草。羊群效应就是比喻人都有一种从众心理，从众心理很容易导致盲从，而盲从往往会陷入骗局或遭到失败。
 
-![image-20210516233343552](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516233343552.png)
+![image-20210516233343552](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516233343552.png)
 
 * 避免“羊群效应”，zookeeper采用分布式锁
 
-![image-20210516233403992](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516233403992.png)
+![image-20210516233403992](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516233403992.png)
 
 1. 所有请求进来，在/lock下创建 **临时顺序节点** ，放心，zookeeper会帮你编号排序
 2. 判断自己是不是/lock下**最小的节点**
@@ -895,7 +895,7 @@ create table `order`(
 
 搭建ssm框架，对库存表-1，对订单表+1
 
-![image-20210516234016596](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516234016596.png)
+![image-20210516234016596](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234016596.png)
 
 ```xml
 <packaging>war</packaging>
@@ -1145,13 +1145,13 @@ server {
 
 * 使用 JMeter 模拟1秒内发出10个http请求
 
-![image-20210516234845489](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516234845489.png)
+![image-20210516234845489](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234845489.png)
 
 * 下载地址：http://jmeter.apache.org/download_jmeter.cgi
 
-![image-20210516234905622](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516234905622.png)
+![image-20210516234905622](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234905622.png)
 
-![image-20210516234912088](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516234912088.png)
+![image-20210516234912088](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234912088.png)
 
 * 查看测试结果，10次请求全部成功
 * 查看数据库，stock库存变成 -5 （并发导致的数据结果错误）

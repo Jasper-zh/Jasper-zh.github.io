@@ -20,7 +20,7 @@ MVC是软件工程中的一种软件架构模式，它是一种分离业务逻�
 
 {% endnote %}
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210430182358.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210430182358.png)
 
 ### 1.2 SpringMVC概述
 
@@ -28,7 +28,7 @@ SpringMVC 是一种基于 Java 的实现 MVC 设计模式的轻量级 Web 框架
 
 SpringMVC 已经成为目前最主流的MVC框架之一，并且随着Spring3.0 的发布，全面超越 Struts2，成为最优秀的 MVC 框架。它通过一套注解，让一个简单的 Java 类成为处理请求的控制器，而无须实现任何接口。同时它还支持 RESTful 编程风格的请求。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210430182450.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210430182450.png)
 
 **总结**
 
@@ -172,7 +172,7 @@ public class UserController {
 
 ### 1.4 web工程执行流程
 
-![image-20210516133225620](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516133225620.png)
+![image-20210516133225620](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516133225620.png)
 
 
 ### 1.5 知识小结
@@ -197,7 +197,7 @@ public class UserController {
 
 ### 2.1 SpringMVC的执行流程
 
-![image-20210516133511175](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516133511175.png)
+![image-20210516133511175](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516133511175.png)
 
 {% note info no-icon %}
 

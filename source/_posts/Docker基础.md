@@ -7,7 +7,7 @@ copyright: false
 
 ## 一、Docker简介
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628183659.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628183659.png)
 
 ### 1.1 虚拟化技术
 
@@ -20,7 +20,7 @@ copyright: false
 
 在一台主机上实现多个操作系统，关键技术就是硬件的虚拟化。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628183755.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628183755.png)
 
 ### 1.2 什么是Docker
 
@@ -40,7 +40,7 @@ copyright: false
 
 > 官网地址：https://www.Docker.com
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628184322.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628184322.png)
 
 > Debug your app，not your environment！
 >
@@ -66,7 +66,7 @@ Docker通俗的讲是**服务器中高性能的虚拟机**，可以将一台物�
 
 我来到一片空地，想建个房子，于是我搬石头、砍木头、画图纸，一顿操作，终于把这个房子盖好了。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628184614.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628184614.png)
 
 结果，我住了一段时间，想搬到另一片空地去。这时候，按以往的办法，我只能再次搬石头、砍木头、画图纸、盖房子。
 
@@ -74,11 +74,11 @@ Docker通俗的讲是**服务器中高性能的虚拟机**，可以将一台物�
 
 这种魔法，可以把我盖好的房子复制一份，做成“镜像”，放在我的背包里。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628184706.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628184706.png)
 
 等我到了另一片空地，就用这个“镜像”，复制一套房子，摆在那边，拎包入住。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629113815.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629113815.png)
 
 怎么样？是不是很神奇？
 
@@ -96,15 +96,15 @@ Docker 是一个开源的应用容器引擎，让开发者可以打包他们的�
 
 * 隔离性：容器化的应用程序，具备隔离性，这样多团队可以共享同一Linux系统资源
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628185200.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210628185200.png)
 
 ### 1.3 容器与虚拟机比较
 
 下面的图片比较了 Docker 和传统虚拟化方式的不同之处，可见Docker是在操作系统层面上实现虚拟化，直接复用本地主机的操作系统，而传统方式则是在硬件层面实现。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629101724.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629101724.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629101736.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629101736.png)
 
 <table>
     <tr>
@@ -150,9 +150,9 @@ Docker 是一个开源的应用容器引擎，让开发者可以打包他们的�
 
 ### 1.4 Docker基本概念
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629102139.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629102139.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629102148.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629102148.png)
 
 **宿主机：**安装Docker守护进程的Linux服务器，称之为宿主机；
 
@@ -176,7 +176,7 @@ Docker 是一个开源的应用容器引擎，让开发者可以打包他们的�
 
 这么一来，我们可以交换镜像，你用我的，我用你的，是不是就很爽。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629102515.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629102515.png)
 
 于是乎，就变成了一个大的公共仓库。
 
@@ -208,27 +208,27 @@ Docker需要从镜像仓库下载镜像，需要联网。
 
      其中这个仅主机模式能够保障我们在拔掉网线的情况下继续连接我们的虚拟机，不依靠公网连接，而是依靠物理机和虚拟机的关系连接。在断网的情况下，利用这个模式，我们可以继续连接虚拟机，实现我们的操作。
 
-     ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629103528.png)
+     ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629103528.png)
 
 2. VMware Network Adapter VMnet8网卡设置
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629103916.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629103916.png)
 
 3. 打开虚拟机文件：
 
    提供的虚拟机文件已经安装了CentOS7，并且在CentOS7上已经安装了Docker环境，IP地址：192.168.200.128
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629103954.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629103954.png)
 
 4. 连接到虚拟机
 
    SSH、SecureCRT
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629104018.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629104018.png)
 
 ### 2.1 安装
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629104035.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629104035.png)
 
 Docker官方建议在Ubuntu中安装Docker软件。因为Docker基于Ubuntu发布，而且Docker出现问题时，Ubuntu系统版本的一般是先打补丁。很多版本在CentOS中，是不支持更新最新补丁包的。没有好的解决方案。
 
@@ -307,7 +307,7 @@ docker -v
   docker info
   ```
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629104813.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629104813.png)
 
   查看docker帮助文档
 
@@ -364,7 +364,7 @@ sudo systemctl restart docker
 
 ## 三、Docker常用命令
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629105108.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629105108.png)
 
 ### 3.1 镜像相关命令
 
@@ -383,9 +383,9 @@ sudo systemctl restart docker
   docker images
   ```
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629105406.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629105406.png)
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629105432.png)
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629105432.png)
 
   这些镜像都是存储在Docker宿主机的/var/lib/docker目录下
 
@@ -397,7 +397,7 @@ sudo systemctl restart docker
 docker search 镜像名称
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629105546.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629105546.png)
 
 #### 3.1.3 拉取镜像
 
@@ -451,7 +451,7 @@ docker rmi `docker images -q` #批量删除镜像
 docker ps
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629105923.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629105923.png)
 
 查看所有容器（查看正在运行的和已经停止运行的）
 
@@ -474,7 +474,7 @@ docker ps -f status=exited
 
 #### 3.2.2 创建与启动容器
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629110031.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629110031.png)
 
 创建容器命令：
 
@@ -515,7 +515,7 @@ docker run -it --name=容器名称 镜像名称:标签 /bin/bash
 
 这时我们通过ps命令查看，发现可以看到启动的容器，状态为启动状态
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629110246.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629110246.png)
 
 退出当前容器
 
@@ -602,9 +602,9 @@ docker run -di -v /usr/local/myhtml:/usr/local/myhtml --name=mycentos3 centos:7
 docker inspect 容器名称（容器ID）
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629110837.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629110837.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629110852.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629110852.png)
 
 也可以直接执行下面的命令直接输出IP地址
 
@@ -670,7 +670,7 @@ docker pull centos:7
 docker run -di --name=c1 -v /root/host_data1:/root/c1_data centos:7 /bin/bash
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629111229.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629111229.png)
 
 #### （2）查看容器已挂载的数据集
 
@@ -680,7 +680,7 @@ docker run -di --name=c1 -v /root/host_data1:/root/c1_data centos:7 /bin/bash
 docker inspect 容器名称（容器ID）
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629111257.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629111257.png)
 
 #### （3）1个容器挂载多个数据卷
 
@@ -699,7 +699,7 @@ docker run -di --name=c2 -v /root/host_data_common:/root/c2_data centos:7
 docker run -di --name=c3 -v /root/host_data_common:/root/c3_data centos:7
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629111403.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629111403.png)
 
 多个容器挂载1个容器(这个容器挂载1个数据卷) 
 
@@ -711,7 +711,7 @@ docker run -di --name=c1 --volumes-from c3 centos:7 /bin/bash
 docker run -di --name=c2 --volumes-from c3 centos:7 /bin/bash
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629111459.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629111459.png)
 
 
 
@@ -747,7 +747,7 @@ docker run -di --name=c2 --volumes-from c3 centos:7 /bin/bash
    docker run -di --name=mysql -p 3307:3306 -v /root/mysql/logs:/logs -v /root/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
    ```
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629111726.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629111726.png)
 
    **参数说明：**
 
@@ -798,7 +798,7 @@ docker run -di --name=c2 --volumes-from c3 centos:7 /bin/bash
    docker run -di --name=c_tomcat -p 8080:8080 -v /root/tomcat/webapps:/usr/local/tomcat/webapps tomcat:8-jdk8
    ```
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629112152.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629112152.png)
 
    **参数说明：**
 

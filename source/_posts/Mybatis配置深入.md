@@ -742,7 +742,7 @@ INSERT INTO `sys_user_role` VALUES ('2', '2');
 
 一对一查询的需求：查询所有订单，与此同时查询出每个订单所属的用户
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422123844.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422123844.png)
 
 **一对一查询语句**
 
@@ -815,7 +815,7 @@ public void testOrderWithUser() throws Exception {
 
 一对一查询的需求：查询所有订单，与此同时查询出每个订单所属的用户
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422124458.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422124458.png)
 
 **一对多查询语句**
 
@@ -888,7 +888,7 @@ public void testUserWithOrder() throws Exception {
 
 **多对多查询的模型**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422125345.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422125345.png)
 
 **多对多查询语句**
 

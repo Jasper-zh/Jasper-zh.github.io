@@ -26,7 +26,7 @@ copyright: false
 
 #### 1.3 体系结构
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/IO%E6%B5%81/1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/IO%E6%B5%81/1.png)
 
 ### 2. 相关流的详解
 

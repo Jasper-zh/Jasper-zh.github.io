@@ -113,7 +113,7 @@ public int myAtoi(String str) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/1.png)
 
 **解法二：正则表达式**
 
@@ -136,7 +136,7 @@ public int myAtoi(String str) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/2.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/2.png)
 
 **解法三：有限状态自动机**
 
@@ -153,15 +153,15 @@ public int myAtoi(String str) {
 
 答案中给出的示例图是这样的：
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/4.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/4.png)
 
 用图表来表示：
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/3.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/3.png)
 
 我又画了下面一张图和上面两个同义。（0表示状态start，1表示状态signed，2表示状态int_number，3表示状态end，'其他'表示除[空格、正负号、数字]之外的字符）
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/5.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/5.png)
 
 意思就是说依次输入字符。首先字符是进入状态0（start）如果字符是空格那么下个仍然进入状态0.如果是其他则进入状态3（end）结束处理。那我们就可以实现这样一个自动机
 
@@ -211,7 +211,7 @@ public int myAtoi(String str) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/6.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/6.png)
 
 或者state为3这边也直接结束不去掉用空方法
 
@@ -228,7 +228,7 @@ public int myAtoi(String str) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/7.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%20(atoi)/7.png)
 
 #### 总结
 

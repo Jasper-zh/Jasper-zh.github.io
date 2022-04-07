@@ -124,7 +124,7 @@ copyright: false
 
 所以在参数和SQL完全一样的情况下，我们使用同一个SqlSession对象调用一个Mapper方法，往往只执行一次SQL，因为使用SelSession第一次查询后，MyBatis会将其放在缓存中，以后再查询的时候，如果没有声明需要刷新，并且缓存没有超时的情况下，SqlSession都会取出当前缓存的数据，而不会再次发送SQL到数据库。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422150625.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422150625.png)
 
 #### 2.2.2 验证
 
@@ -147,7 +147,7 @@ public void testOneCache() throws Exception {
 
 一级缓存是SqlSession范围的缓存，执行SqlSession的C（增加）U（更新）D（删除）操作，或者调用clearCache()、commit()、close()方法，都会清空缓存。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422150807.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422150807.png)
 
 {% note info no-icon %}
 1. 第一次发起查询用户id为41的用户信息，先去找缓存中是否有id为41的用户信息，如果没有，从数据库 查询用户信息。
@@ -188,7 +188,7 @@ public void testClearOneCache() throws Exception {
 
 二级缓存的开启需要进行配置，实现二级缓存的时候，MyBatis要求返回的POJO必须是可序列化的。也就是要求实现Serializable接口，配置方法很简单，只需要在映射XML文件配置 `<cache/>` 就可以开启二级缓存了。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422151445.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422151445.png)
 
 ### 2.3.2 验证
 
@@ -266,7 +266,7 @@ public void testTwoCache() throws Exception {
 
 二级缓存是mapper映射级别的缓存，多个SqlSession去操作同一个Mapper映射的sql语句，多个SqlSession可以共用二级缓存，二级缓存是跨SqlSession的。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422152141.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422152141.png)
 
 {% note info no-icon %}
 1. 映射语句文件中的所有select语句将会被缓存。
@@ -398,7 +398,7 @@ public class TestUser extends TestBaseMapper {
 
 使用注解开发后，我们可以使用 @Results、@Result，@One、@Many 注解组合完成复杂关系的配置。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210422160251.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210422160251.png)
 
 
 

@@ -11,11 +11,11 @@ copyright: false
 
 1) 方式1: 使用第三方客户端来访问 MySQL：SQLyog、Navicat等等<!--more-->
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322130520.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322130520.png)
 
 2) 方式2: 使用命令行
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322130606.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322130606.png)
 
 3) 我们今天要学习的是通过 Java程序 来访问 MySQL 数据库
 
@@ -27,7 +27,7 @@ copyright: false
 
  JDBC是接口，驱动是接口的实现，没有驱动将无法完成数据库连接，从而不能操作数据库！每个数据库厂商都需要提供自己的驱动，用来连接自己公司的数据库，也就是说驱动一般都由数据库生成厂商提供。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322130814.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322130814.png)
 
 **总结：**
 
@@ -60,17 +60,17 @@ VALUES
 
 1. 将MySQL驱动包添加到jar包库文件夹中，Myjar文件夹,用于存放当前项目需要的所有jar包 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322131247.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322131247.png)
 
 2. 在 idea中 配置jar包库的位置
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322131333.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322131333.png)
 
 3. 创建一个新的项目jdbc_task01, 配置jar包库
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322131418.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322131418.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322131439.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322131439.png)
 
 #### 2.3 API使用：1.注册驱动
 
@@ -152,7 +152,7 @@ jdbc:mysql://localhost:3306/db4?characterEncoding=UTF-8
   * 第二部分是子协议，就是数据库名称，连接mysql数据库，第二部分当然是mysql了；
   * 第三部分是由数据库厂商规定的，我们需要了解每个数据库厂商的要求，mysql的第三部分分别由数据库服务器的IP地址（localhost）、端口号（3306），以及要使用的 数据库名称 组成。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322132903.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322132903.png)
 
 3) 代码示例
 
@@ -251,7 +251,7 @@ public class JDBCDemo04 {
 | boolean next()             | 1) 游标向下一行<br>2) 返回 boolean 类型，如果还有下一条记录，返回 true，否则返回 false |
 | xxx getXxx( String or int) | 1) 通过列名，参数是 String 类型。返回不同的类型<br>2) 通过列号，参数是整数，从 1 开始。返回不同的类型 |
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322134659.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322134659.png)
 
 代码示例
 
@@ -299,7 +299,7 @@ public class JDBCDemo04 {
 
 * 与IO流一样，使用后的东西都需要关闭！关闭的顺序是先开后关, 先得到的后关闭，后得到的先关闭
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322135349.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322135349.png)
 
 代码示例
 
@@ -626,7 +626,7 @@ name='abc' and password='abc' 为假 '1'='1' 真
 相当于 select * from user where true=true; 查询了所有记录
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322142908.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322142908.png)
 
 3) 如何解决
 
@@ -690,7 +690,7 @@ SELECT * FROM jdbc_user WHERE username=? AND password=?
 
 * 使用 PreparedStatement 预处理对象,可以有效的避免SQL注入
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322144454.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322144454.png)
 
 * 步骤：
   * 1.获取数据库连接对象 
@@ -785,7 +785,7 @@ public class TestPS {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210322145248.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210322145248.png)
 
 #### 5.8 Statement 与 PreparedStatement的区别
 

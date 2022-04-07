@@ -22,11 +22,11 @@ tags: 总结文档
 
 这里我选择的通用包不同版本的都可以用下面方式安装，也可以对应自己linux系统进行选择。当然这里在deepin下安装也可以选择debian9的版本直接安装deb包
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/82cb95b4e70442223fb62f3c0d0ac9a0.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/82cb95b4e70442223fb62f3c0d0ac9a0.png)
 
 或者直接下debian的，如果是红帽系列就是rpm
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/c6b6c862f7c10a7e9030ad9c175b0680.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/c6b6c862f7c10a7e9030ad9c175b0680.png)
 
 下面只介绍使用通用压缩包的安装方式
 
@@ -73,7 +73,7 @@ sudo chown -R mysql:mysql ./
 sudo ./bin/mysqld --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --initialize
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/9ca73aa525dbaa37123e3fb91629aac7.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/9ca73aa525dbaa37123e3fb91629aac7.png)
 
 {% note warning simple %}
 千万在这里记下初始化密码，8.2几版本没有查看初始密码的地方（虽然有配置可以越过密码）
@@ -88,7 +88,7 @@ sudo ./mysql.server start
 
 使用初始密码已经可以登陆了
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/b8ad30123bee4eb4bf545b30fcd73df9.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/b8ad30123bee4eb4bf545b30fcd73df9.png)
 
 * 设置密码
 

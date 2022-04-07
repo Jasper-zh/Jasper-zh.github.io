@@ -145,19 +145,19 @@ public class HelloController {
 
 ​	本质上说，Spring Initializr是一个Web应用，它提供了一个基本的项目结构，能够帮助我们快速构建一个基础的Spring Boot项目
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629145656.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629145656.png)
 
-![image-20210629145730147](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629145730147.png)
+![image-20210629145730147](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629145730147.png)
 
 Project SDK”用于设置创建项目使用的JDK版本，这里，使用之前初始化设置好的JDK版本即可；在`Choose Initializr Service` URL（选择初始化服务地址）”下使用默认的初始化服务地址`https://start.spring.io`进行Spring Boot项目创建（注意使用快速方式创建Spring Boot项目时，所在主机须在联网状态下） 
 
-![image-20210629145809559](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629145809559.png)
+![image-20210629145809559](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629145809559.png)
 
-![image-20210629145837409](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629145837409.png)
+![image-20210629145837409](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629145837409.png)
 
 Spring Boot项目就创建好了。创建好的Spring Boot项目结构如图： 
 
-![image-20210629145855722](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629145855722.png)
+![image-20210629145855722](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629145855722.png)
 
 ​	使用Spring Initializr方式构建的Spring Boot项目会默认生成项目启动类、存放前端静态资源和页面的文件夹、编写项目配置的配置文件以及进行项目单元测试的测试类 
 
@@ -181,7 +181,7 @@ public class DemoController {
 
 运行主程序启动类SpringbootDemoApplication，项目启动成功后，在控制台上会发现SpringBoot项目默认启动的端口号为8080，此时，可以在浏览器上访问“http://localhost:8080/hello” 
 
-![image-20210629150148241](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629150148241.png)
+![image-20210629150148241](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629150148241.png)
 
 页面输出的内容是“hello Spring Boot”，至此，构建Spring Boot项目就完成了
 
@@ -244,7 +244,7 @@ public class DemoController {
 
    上述代码中，先使用@Autowired注解注入了DemoController实例对象，然后在contextLoads()方法中调用了DemoController类中对应的请求控制方法contextLoads()，并输出打印结果
 
-   ![image-20210629165537415](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629165537415.png)
+   ![image-20210629165537415](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629165537415.png)
 
 #### 1.5.2 热部署
 
@@ -280,7 +280,7 @@ public class DemoController {
 
    选择IDEA工具界面的【File】->【Settings】选项，打开Compiler面板设置页面 
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629172146.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629172146.png)
 
    选择Build下的Compiler选项，在右侧勾选“Build project automatically”选项将项目设置为自动编译，单击【Apply】→【OK】按钮保存设置 
 
@@ -292,13 +292,13 @@ public class DemoController {
 
    启动chapter01http://localhost:8080/hello
 
-   ![image-20210629172256347](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629172256347.png)
+   ![image-20210629172256347](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629172256347.png)
 
    页面原始输出的内容是“hello Spring Boot”。
 
    为了测试配置的热部署是否有效，接下来，在不关闭当前项目的情况下，将DemoController 类中的请求处理方法hello()的返回值修改为“你好，Spring Boot”并保存，查看控制台信息会发现项目能够自动构建和编译，说明项目热部署生效 
 
-   ![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629172320.png)
+   ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629172320.png)
 
    可以看出，浏览器输出了“你好，Spring Boot”，说明项目热部署配置成功 
 
@@ -392,7 +392,7 @@ SpringbootDemoApplicationTests {
 
 打印结果：
 
-![image-20210629173536891](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629173536891.png)
+![image-20210629173536891](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629173536891.png)
 
 可以看出，测试方法configurationTest()运行成功，同时正确打印出了Person实体类对象。至此，说明application.properties配置文件属性配置正确，并通过相关注解自动完成了属性注入 
 
@@ -400,7 +400,7 @@ SpringbootDemoApplicationTests {
 
 调整文件编码格式：
 
-![image-20210629173635500](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210629173635500.png)
+![image-20210629173635500](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210629173635500.png)
 
  设置Tomcat及Http编码
 
@@ -423,7 +423,7 @@ YAML文件格式是Spring Boot支持的一种JSON文件格式，相较于传统�
 
 **SpringBoot的三种配置文件是可以共存的：**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210629173817.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210629173817.png)
 
 这里，针对不同数据类型的属性值，介绍一下YAML
 
@@ -623,7 +623,7 @@ public class Person {
 
    打印结果：
 
-   ![image-20210704222037661](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210704222037661.png)
+   ![image-20210704222037661](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210704222037661.png)
 
    可以看出，测试方法studentTest()运行成功，同时正确打印出了Student实体类对象。需要说明的是，本示例中只是使用@Value注解对实例中Student对象的普通类型属性进行了赋值演示，而@Value注解对于包含Map集合、对象以及YAML文件格式的行内式写法的配置文件的属性注入都不支持，如果赋值会出现错误 
 
@@ -677,7 +677,7 @@ public class Person {
 
    打印结果：
 
-   ![image-20210704222647248](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210704222647248.png)
+   ![image-20210704222647248](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210704222647248.png)
 
 #### 1.8.2 使用@Configuration编写自定义配置类
 
@@ -728,7 +728,7 @@ public class Person {
 
    执行测试方法iocTest() ，查看控制台输出效果，结果如下：
 
-   ![image-20210704223121582](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210704223121582.png)
+   ![image-20210704223121582](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210704223121582.png)
 
    从测试结果可以看出，测试方法iocTest()运行成功，显示运行结果为true，表示Spirng的IOC容器中也已经包含了id为myService的实例对象组件，说明使用自定义配置类的形式完成了向Spring容器进行组件的添加和配置 
 
@@ -758,7 +758,7 @@ public class Person {
    </parent>
    ```
 
-   ![image-20210704223559582](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210704223559582.png)
+   ![image-20210704223559582](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210704223559582.png)
 
    上述代码中，将spring-boot-starter-parent依赖作为Spring Boot项目的统一父项目依赖管理，并将项目版本号统一为2.2.2.RELEASE，该版本号根据实际开发需求是可以修改的 
 
@@ -798,7 +798,7 @@ public class Person {
    </properties>
    ```
 
-   ![image-20210704223912290](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210704223912290.png)
+   ![image-20210704223912290](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210704223912290.png)
 
    从spring-boot-dependencies底层源文件可以看出，该文件通过标签对一些常用技术框架的依赖文件进行了统一版本号管理，例如activemq、spring、tomcat等，都有与Spring Boot 2.2.2版本相匹配的版本，这也是pom.xml引入依赖文件不需要标注依赖文件版本号的原因。
 
@@ -870,7 +870,7 @@ public class Person {
 
    Spring Boot除了提供有上述介绍的Web依赖启动器外，还提供了其他许多开发场景的相关依赖，我们可以打开Spring Boot官方文档，搜索“Starters”关键字查询场景依赖启动器
 
-   ![image-20210704224312886](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210704224312886.png)
+   ![image-20210704224312886](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210704224312886.png)
 
    列出了Spring Boot官方提供的部分场景依赖启动器，这些依赖启动器适用于不同的场景开发，使用时只需要在pox.xml文件中导入对应的依赖启动器即可。
 
@@ -989,7 +989,7 @@ public @interface EnableAutoConfiguration {
 
    从上述源码可以看出，@AutoConfigurationPackage注解的功能是由@Import注解实现的，它是spring框架的底层注解，它的作用就是给容器中导入某个组件类，例如@Import(AutoConfigurationPackages.Registrar.class)，它就是将Registrar这个组件类导入到容器中，可查看Registrar类中registerBeanDefinitions方法，这个方法就是导入组件类的具体实现 :
 
-   ![image-20210720184842496](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210720184842496.png)
+   ![image-20210720184842496](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210720184842496.png)
 
    从上述源码可以看出，在Registrar类中有一个registerBeanDefinitions()方法，使用Debug模式启动项目，可以看到选中的部分就是com.lagou。也就是说，@AutoConfigurationPackage注解的主要作用就是将主程序类所在包及所有子包下的组件到扫描到spring容器中。
 
@@ -1001,11 +1001,11 @@ public @interface EnableAutoConfiguration {
 
    继续研究**AutoConfigurationImportSelector**这个类，通过源码分析这个类中是通过selectImports这个方法告诉springboot都需要导入那些组件：
 
-   ![image-20210720185224816](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210720185224816.png)
+   ![image-20210720185224816](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210720185224816.png)
 
    **深入研究loadMetadata方法**
 
-   ![image-20210720185316714](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210720185316714.png)
+   ![image-20210720185316714](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210720185316714.png)
    
    **AutoConfigurationImportSelector类 getAutoConfigurationEntry方法**
    
@@ -1037,7 +1037,7 @@ public @interface EnableAutoConfiguration {
    
    这个方法中有一个重要方法loadFactoryNames，这个方法是让SpringFactoryLoader去加载一些组件的名字。
    
-   ![image-20210720185831137](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210720185831137.png)
+   ![image-20210720185831137](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210720185831137.png)
    
    继续点开loadFactory方法
    
@@ -1090,9 +1090,9 @@ public @interface EnableAutoConfiguration {
    
    它其实是去加载一个外部的文件，而这文件是在
    
-   ![image-20210720190308951](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210720190308951.png)
+   ![image-20210720190308951](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210720190308951.png)
    
-   ![image-20210720190237480](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210720190237480.png)
+   ![image-20210720190237480](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210720190237480.png)
    
    @EnableAutoConfiguration就是从classpath中搜寻META-INF/spring.factories配置文件，并将其中org.springframework.boot.autoconfigure.EnableutoConfiguration对应的配置项通过反射（JavaRefletion）实例化为对应的标注了@Configuration的JavaConfig形式的配置类，并加载到IOC容器中 
    
@@ -1175,7 +1175,7 @@ MyBatis 是一款优秀的持久层框架，Spring Boot官方虽然没有对MyBa
 
 2. **创建项目，引入相应的启动器**
 
-   ![image-20210721100205505](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721100205505.png)
+   ![image-20210721100205505](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721100205505.png)
 
 3. **编写与数据库表t_comment和t_article对应的实体类Comment和Article**
 
@@ -1252,7 +1252,7 @@ MyBatis 是一款优秀的持久层框架，Spring Boot官方虽然没有对MyBa
 
 4. **打印结果**
 
-   ![image-20210721101052878](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721101052878.png)
+   ![image-20210721101052878](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721101052878.png)
 
    控制台中查询的Comment的aId属性值为null，没有映射成功。这是因为编写的实体类Comment中使用了驼峰命名方式将t_comment表中的a_id字段设计成了aId属性，所以无法正确映射查询结果。
 
@@ -1267,7 +1267,7 @@ MyBatis 是一款优秀的持久层框架，Spring Boot官方虽然没有对MyBa
 
    再次打印
 
-   ![image-20210721101233268](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721101233268.png)
+   ![image-20210721101233268](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721101233268.png)
 
    
 
@@ -1275,7 +1275,7 @@ MyBatis 是一款优秀的持久层框架，Spring Boot官方虽然没有对MyBa
 
 第一、二步骤使用**Free Mybatis plugin**插件生成
 
-![image-20210721101308902](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721101308902.png)
+![image-20210721101308902](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721101308902.png)
 
 1. **创建一个用于对数据库表t_article数据操作的接口ArticleMapper**
 
@@ -1322,7 +1322,7 @@ MyBatis 是一款优秀的持久层框架，Spring Boot官方虽然没有对MyBa
 
 5. **打印结果**
 
-   ![image-20210721101720952](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721101720952.png)
+   ![image-20210721101720952](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721101720952.png)
 
 ### 3.2 SpringBoot整合Redis
 
@@ -1483,7 +1483,7 @@ Thymeleaf是一种现代的基于服务器端的Java模板引擎技术，也是�
    </html>
    ```
 
-   ![image-20210721102947403](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721102947403.png)
+   ![image-20210721102947403](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721102947403.png)
 
    上述代码中，“xmlns:th="http://www.thymeleaf.org"“ 用于引入Thymeleaf模板引擎标签，使用关键字“th”标注标签是Thymeleaf模板提供的标签，其中，`th:href`用于引入外联样式文件，`th:text`用于动态显示标签文本内容。
 
@@ -1672,7 +1672,7 @@ Thymeleaf是一种现代的基于服务器端的Java模板引擎技术，也是�
 
 1. **创建Spring Boot项目，引入Thymeleaf依赖**
 
-   ![image-20210721105916885](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721105916885.png)
+   ![image-20210721105916885](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721105916885.png)
 
 2. **编写配置文件** 
 
@@ -1759,7 +1759,7 @@ Thymeleaf是一种现代的基于服务器端的Java模板引擎技术，也是�
 
 ### （1）创建SpringBoot工程
 
-![image-20210721111037458](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721111037458.png)
+![image-20210721111037458](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721111037458.png)
 
 ### （2）导入pom.xml
 
@@ -1972,11 +1972,11 @@ public class Springbootdemo5Application {
 
 ### （9）测试
 
-![image-20210721112322155](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721112322155.png)
+![image-20210721112322155](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721112322155.png)
 
-![image-20210721112259866](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721112259866.png)
+![image-20210721112259866](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721112259866.png)
 
-![image-20210721112309525](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210721112309525.png)
+![image-20210721112309525](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721112309525.png)
 
 
 

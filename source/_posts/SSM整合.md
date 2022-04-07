@@ -420,7 +420,7 @@ public class AccountServiceImpl implements AccountService {
 
 ### 6.2 导入页面资源
 
-![image-20210516163844055](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210516163844055.png)
+![image-20210516163844055](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516163844055.png)
 
 
 
@@ -837,7 +837,6 @@ void deleteBatch(Integer[] ids);
     </where>
 </delete>
 ```
-
 
 
 

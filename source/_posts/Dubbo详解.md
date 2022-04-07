@@ -22,7 +22,7 @@ copyright: false
 * 此时，用于简化 增删改查 工作量的数据访问框架 （**ORM**）是关键；
 * 例如：某个超市的收银系统，某个公司的员工管理系统
 
-![image-20210518160245963](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518160245963.png)
+![image-20210518160245963](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518160245963.png)
 
 ORM：对象关系映射（Object Relational Mapping）
 
@@ -42,7 +42,7 @@ ORM：对象关系映射（Object Relational Mapping）
 * 大模块按照mvc分层模式，进行拆分成多个互不相关的小模块，并且每个小模块都有独立的服务器
 * 此时，用于加速前端页面开发的web框架（**MVC**）是关键；因为每个小应用都有独立的页面
 
-![image-20210518160436455](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518160436455.png)
+![image-20210518160436455](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518160436455.png)
 
 MVC：模型视图控制器 （Model View Controller）
 
@@ -54,7 +54,7 @@ MVC：模型视图控制器 （Model View Controller）
 * 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的业务，逐渐形成稳健的服务中心，使前端应用能更快速的响应多变的市场需求；
 * 此时，用户提高业务复用及整合的分布式服务框架（**RPC**）远程调用是关键；
 
-![image-20210518160546278](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518160546278.png)
+![image-20210518160546278](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518160546278.png)
 
 RPC：独立的应用服务器之间，要依靠RPC（Romote Procedure Call）才能调用
 
@@ -66,7 +66,7 @@ RPC：独立的应用服务器之间，要依靠RPC（Romote Procedure Call）�
 * 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐呈现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率；
 * 此时，用于提高机器利用率的资源调度和治理中心（SOA）是关键；
 
-![image-20210518160650753](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518160650753.png)
+![image-20210518160650753](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518160650753.png)
 
 SOA：面向服务架构（Service-Oriented Architecture），简单理解就是“服务治理”，例如：公交车站的“调度员”
 
@@ -88,7 +88,7 @@ SOA：面向服务架构（Service-Oriented Architecture），简单理解就是
   4. 对象数据操作完毕，将新的对象序列化，再通过服务提供方的socket返回给客户端
   5. 客户端获得序列化数据，再反序列化，得到最新的数据对象，至此，完成一次请求
 
-![image-20210518160911492](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518160911492.png)
+![image-20210518160911492](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518160911492.png)
 
 * RPC两个核心模块：**通讯**（socket），**序列化**。
 
@@ -122,7 +122,7 @@ SOA：面向服务架构（Service-Oriented Architecture），简单理解就是
     </tr>
 </table>
 
-![image-20210518162507187](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518162507187.png)
+![image-20210518162507187](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518162507187.png)
 
 #### 1.2.3 调用关系
 
@@ -138,7 +138,7 @@ SOA：面向服务架构（Service-Oriented Architecture），简单理解就是
 ## 二、快速入门
 http://dubbo.apache.org/
 
-![image-20210518162659643](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518162659643.png)
+![image-20210518162659643](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518162659643.png)
 
 ### 2.1 注册中心
 
@@ -405,17 +405,17 @@ public interface HelloService {
 
 2. 修改配置文件
 
-   ![image-20210518164649779](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164649779.png)
+   ![image-20210518164649779](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164649779.png)
 
-   ![image-20210518164701961](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164701961.png)
+   ![image-20210518164701961](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164701961.png)
 
 3. 返回到项目根目录，使用maven打包：**mvn clean package**
 
-   ![image-20210518164724447](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164724447.png)
+   ![image-20210518164724447](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164724447.png)
 
 4. 在dos下运行target目录中的jar文件：**java -jar dubbo-admin-0.0.1-SNAPSHOT.jar**
 
-   ![image-20210518164800802](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164800802.png)
+   ![image-20210518164800802](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164800802.png)
 
 5. 此时打开浏览器输入：http://localhost:7001/ ；
 
@@ -425,23 +425,23 @@ public interface HelloService {
 
 1. 启动服务方，将服务注册到zookeeper
 
-   ![image-20210518164917687](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164917687.png)
+   ![image-20210518164917687](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164917687.png)
 
 2. 启动dubbo-server服务方后，刷新管理端，服务注册成功，只是没有消费者
 
-   ![image-20210518164938663](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164938663.png)
+   ![image-20210518164938663](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164938663.png)
 
 3. 点击服务名，进入服务提供者页面
 
-   ![image-20210518164957766](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518164957766.png)
+   ![image-20210518164957766](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518164957766.png)
 
 4. 把消费者也运行起来，刷新服务，显示正常
 
-   ![image-20210518165022398](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518165022398.png)
+   ![image-20210518165022398](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518165022398.png)
 
 5. 查看消费者
 
-   ![image-20210518165038801](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518165038801.png)
+   ![image-20210518165038801](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518165038801.png)
 
 
 
@@ -453,7 +453,7 @@ Monitor：**统计**中心 ，记录服务被调用多少次等
 
 2. 修改dubbo-monitor-simple-2.5.3\conf\dubbo.properties
 
-   ![image-20210518165122865](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518165122865.png)
+   ![image-20210518165122865](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518165122865.png)
 
 3. 双击运行dubbo-monitor-simple-2.5.3\bin\start.bat
 
@@ -464,7 +464,7 @@ Monitor：**统计**中心 ，记录服务被调用多少次等
    <dubbo:monitor protocol="registry"/>
    ```
 
-   ![image-20210518165201894](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518165201894.png)
+   ![image-20210518165201894](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518165201894.png)
 
 
 
@@ -474,7 +474,7 @@ Monitor：**统计**中心 ，记录服务被调用多少次等
 
 #### 4.1.1 启动时检查
 
-![image-20210518165300810](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518165300810.png)
+![image-20210518165300810](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518165300810.png)
 
 * 启动时会在注册中心检查依赖的服务是否可用，不可用时会抛出异常
 * 在消费方编写初始化容器的main方法启动（tomcat启动方式，必须访问一次action才能初始化spring）
@@ -721,7 +721,7 @@ public class HelloServiceStub implements HelloService {
 * 简单的说，好多台服务器，不能总是让一台服务器干活，应该“雨露均沾”
 * dubbo一共提供4种策略，缺省为 random 随机分配调用
 
-![image-20210518171148525](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518171148525.png)
+![image-20210518171148525](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518171148525.png)
 
 * 修改提供者配置并启动3个提供者，让消费者对其进行访问
 
@@ -754,7 +754,7 @@ public class HelloServiceStub implements HelloService {
 
 * 最好使用管理端修改权重
 
-![image-20210518171425292](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518171425292.png)
+![image-20210518171425292](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518171425292.png)
 
 
 
@@ -792,7 +792,7 @@ public class HelloServiceStub implements HelloService {
 * **屏蔽**：mock=force:return+null 表示消费方对该服务的方法调用都 **直接返回** **null** **值**，不发起远程调用。用来屏蔽不重要服务不可用时对调用方的影响。
 * **容错**：mock=fail:return+null 表示消费方对该服务的方法调用在 **失败后，再返回** **null** **值**，不抛异常。用来容忍不重要服务不稳定时对调用方的影响。
 
-![image-20210518171803605](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518171803605.png)
+![image-20210518171803605](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518171803605.png)
 
 
 

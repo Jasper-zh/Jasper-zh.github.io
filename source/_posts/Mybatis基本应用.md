@@ -16,7 +16,7 @@ copyright: false
 三层架构之间调用关系为:表现层调用业务层，业务层调用持久层。
 各层之间必然要进行数据交互，我们一般使用java实体对象来传递数据
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421200140.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421200140.png)
 
 ### 1.2 框架
 #### 1.2.1 什么是框架？
@@ -41,7 +41,7 @@ Java世界中的框架非常的多，每一个框架都是为了解决某一部�
 
 ## 2. Mybatis简介
 ### 2.1 原始jdbc操作（查询数据）
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421200531.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421200531.png)
 
 ### 2.2 原始jdbc操作的分析
 原始jdbc开发存在的问题如下：
@@ -63,8 +63,8 @@ MyBatis是一个优秀的基于ORM的半自动轻量级持久层框架，它对j
 
 Github地址：https://github.com/mybatis/mybatis-3/
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421200838.png)
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421200854.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421200838.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421200854.png)
 
 ### 2.4 ORM思想
 **ORM（Object Relational Mapping）对象关系映射**
@@ -84,7 +84,7 @@ Github地址：https://github.com/mybatis/mybatis-3/
 	* 再让实体类属性和表里面字段对应
 * 不需要直接操作数据库表，直接操作表对应的实体类对象
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421201134.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421201134.png)
 
 **ORM作为是一种思想**
 帮助我们跟踪实体的变化,并将实体的变化翻译成sql脚本,执行到数据库中去,也就是将实体的变化映射到了表的变化。
@@ -93,7 +93,7 @@ mybatis采用**ORM**思想解决了实体和数据库映射的问题，对jdbc �
 ## 3. Mybatis快速入门
 ### 3.1 MyBatis开发步骤
 MyBatis官网地址：http://www.mybatis.org/mybatis-3/
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421201254.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421201254.png)
 
 案例需求：通过mybatis查询数据库user表的所有记录，封装到User对象中，打印到控制台上
 步骤分析：
@@ -258,7 +258,7 @@ public void testFindAll() throws Exception {
 ```
 
 ## 4. Mybatis映射文件概述
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421203207.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421203207.png)
 
 ## 5. Mybatis增删改查
 ### 5.1 新增
@@ -405,7 +405,7 @@ public void testDelete() throws Exception {
 
 ### **5.4** 知识小结
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421204834.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421204834.png)
 
 
 
@@ -414,12 +414,12 @@ public void testDelete() throws Exception {
 ### 6.1 MyBatis核心配置文件层级关系
 MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息。
 配置文档的顶层结构如下：
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421204941.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421204941.png)
 
 ### 6.2 MyBatis常用配置解析
 **1）environments标签**
 数据库环境的配置，支持多环境配置
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421205242.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421205242.png)
 ```
 1.其中，事务管理器（transactionManager）类型有两种： 
 	- JDBC： 这个配置就是直接使用了JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务作用域。 
@@ -444,7 +444,7 @@ jdbc.username=root
 jdbc.password=root
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421205515.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421205515.png)
 
 **3）typeAliases标签**
 
@@ -452,15 +452,15 @@ jdbc.password=root
 
 为了简化映射文件 Java 类型设置，mybatis框架为我们设置好的一些常用的类型的别名：
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421205619.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421205619.png)
 
 原来的类型名称配置如下：
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421205640.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421205640.png)
 
 配置typeAliases，为com.lagou.domain.User定义别名为user： 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421205848.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421205848.png)
 
 **4）mappers标签**
 
@@ -531,7 +531,7 @@ SqlSessionFactory factory = builder.build(inputStream);
 
 ### 7.2 SqlSession工厂对象SqlSessionFactory
 SqlSessionFactory 有多个个方法创建SqlSession 实例。常用的有如下两个：
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421210658.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421210658.png)
 
 ### 7.3 SqlSession会话对象
 SqlSession 实例在 MyBatis 中是非常强大的一个类。在这里你会看到所有执行语句、提交或回滚事务和获取映射器实例的方法。
@@ -558,7 +558,7 @@ void rollback()
 ```
 
 ### 7.4 基本流程
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421210941.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421210941.png)
 
 ## 8. Mybatis的dao层开发使用
 ### 8.1 传统开发方式
@@ -631,7 +631,7 @@ public void testFindAll() throws Exception {
 **1）介绍**
 采用 Mybatis 的基于接口代理方式实现 持久层 的开发，这种方式是我们后面进入企业的主流。基于接口代理方式的开发只需要程序员编写 Mapper 接口，Mybatis 框架会为我们动态生成实现类的对象。
 **这种开发方式要求我们遵循一定的规范：**
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421212021.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421212021.png)
 * Mapper.xml映射文件中的namespace与mapper接口的全限定名相同
 * Mapper接口方法名和Mapper.xml映射文件中定义的每个statement的id相同
 * Mapper接口方法的输入参数类型和mapper.xml映射文件中定义的每个sql的parameterType的类型相同
@@ -686,7 +686,7 @@ public void testFindAll() throws Exception {
 
 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421212416.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421212416.png)
 
 
 
@@ -694,7 +694,7 @@ public void testFindAll() throws Exception {
 
 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421212445.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421212445.png)
 
 
 
@@ -702,4 +702,4 @@ public void testFindAll() throws Exception {
 
 
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210421212507.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210421212507.png)

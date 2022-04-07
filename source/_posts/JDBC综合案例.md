@@ -11,7 +11,7 @@ copyright: false
 
 ### 1.1 表关系分析
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/01.jpg) 
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/01.jpg) 
 
 ### 1.2 建库,建表
 
@@ -142,7 +142,7 @@ com.lagou.entity 实体包 保存根据数据库表 对应创建的JavaBean类
 com.lagou.utils 工具包
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/03.jpg) 
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/03.jpg) 
 
 ### 2.2 导入所需Jar包
 
@@ -150,11 +150,11 @@ com.lagou.utils 工具包
 我们只需要导入myjar仓库到项目中就可以了
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/04.jpg) 
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/04.jpg) 
 
 ### 2.3 导入配置文件及工具类
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/05.jpg)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/05.jpg)
 
  
 
@@ -173,7 +173,7 @@ com.lagou.utils 工具包
 
 - 一个用户拥有多个订单,所以 用户是一的一方, 订单是多的一方
 
-  ![](https://gitee.com/Jasper-zh/image_host/raw/master/06.jpg) 
+  ![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/06.jpg) 
 
 #### 3.1.2 User类
 
@@ -284,7 +284,7 @@ public class Orders {
 
 分类与商品 同样是一对多关系,  我们可以在多的一方进行操作 添加一个成员变量 类型是一的一方的类型
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/07.jpg) 
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/07.jpg) 
 
 #### 3.2.1 Category类
 
@@ -329,7 +329,7 @@ public class Product {
 
 多对多建表原则 需要一张中间表,中间表中至少有两个字段,作为中间表的外键分别指向另外两张表的主键
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/11.jpg)  
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/11.jpg)  
 
 #### 3.3.2 创建OrderItem
 
@@ -589,13 +589,13 @@ public class TestProductDao {
 
 OrderItem表与Orders表的关系是 多对一
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/09.jpg) 
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/09.jpg) 
 
 之前我们一直是在描述一对多,那么我们再反向描述一下 多对一
 
 方式是在Orders中应该有一个 集合用来保存订单中的订单项信息
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/10.jpg) 
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/10.jpg) 
 
 在Orders类中添加 订单项的集合
 

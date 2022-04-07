@@ -49,12 +49,12 @@ public ListNode removeNthFromEnd(ListNode head, int n){
     return head;
 }
 ```
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/1.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/1.png)
 现在我们是完成了这样一个思路，但有个地方可以做一个调整，也是要养成的一个习惯。对于一个链表如下图：
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/2.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/2.png)
 它是按某种应用逻辑存储的内容，内容都会有操作有修改的时候，因此为了方便操作以及操作的安全性。通常都会在真正存储数据的链头之前加一个节点它的值和内容无关，用这个额外的节点来做真正的链表节点。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/3.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/3.png)
 
 我们第三步删除操作之所以这样分开操作就是因为，我们拿到的是删除节点之前的节点因此删除是头结点的话需要单独处理，这下就不需要了。最后我们去返回数据链的头，也就是真正头的next
 ```java
@@ -83,13 +83,13 @@ public ListNode removeNthFromEnd(ListNode head, int n){
 ### 解法二：栈
 无论是倒序啊还是倒数都可以想到栈这样一个东西，上个解法我们完整遍历一次统计长度，把倒数转为正数再进行正数次数的next取被删除节点的前驱节点，这次一样进行完整遍历都放到我们的栈里面。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/1.gif)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/1.gif)
 
 之后再进行倒数次数的出栈操作，之后剩下的栈顶即是被删除节点的前驱节点
 
 
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/2.gif)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/2.gif)
 
 ```java
 public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -120,11 +120,11 @@ public ListNode removeNthFromEnd(ListNode head, int n) {
 
 两个解法都用到了两次遍历，那么我们有没有方法可以在一次遍历中完成呢？
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/1.jpg)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/1.jpg)
 
 它就是我们处理链表的经典方式快慢指针,我们用两个指针，快指针领先n次（倒数次数），慢指针在起点，同时迭代。当快指针到了终点，那慢指针岂不是到了倒数第n个。fast起点可以取后一格那么slow就能拿到倒数第n个的前一个节点
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/3.gif)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/3.gif)
 
 ```java
 public ListNode removeNthFromEnd(ListNode head, int n) {

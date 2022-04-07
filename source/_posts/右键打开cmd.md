@@ -16,7 +16,7 @@ tags: 日常问题
 
 按shift右键只有Powershell，所以需要自己配置cmd的
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210327135055.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210327135055.png)
 
 新建文件cmd.txt键入下列内容，@=为右键显示文字
 
@@ -54,20 +54,20 @@ Windows Registry Editor Version 5.00
 
 之后修改后缀为.reg 双击确定 ，注意文本编码是ANSI ，否则提示语乱码。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210327140159456.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210327140159456.png)
 
 ### 更正乱码
 
 当然提示乱不乱码都可以使用，已经注册完了是乱码需要改的话也可以。win+r打开注册表
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210327140843526.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210327140843526.png)
 
 打开这个地址：`HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere`
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210327141018722.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210327141018722.png)
 
 右键修改即可
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210327141117525.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210327141117525.png)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210327141246386.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210327141246386.png)

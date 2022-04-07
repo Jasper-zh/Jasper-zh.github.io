@@ -18,13 +18,13 @@ tags: 日常折腾
 
 在上面看的到有结合Github的安装向导，打开就可以按照上面进行。
 
-![image-20210730104140059](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730104140059.png)
+![image-20210730104140059](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730104140059.png)
 
 
 
 
 
-![image-20210730104530255](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730104530255.png)
+![image-20210730104530255](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730104530255.png)
 
 
 
@@ -45,7 +45,7 @@ tags: 日常折腾
 yum list installed | grep docker
 ```
 
-![image-20210730105925424](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730105925424.png)
+![image-20210730105925424](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730105925424.png)
 
 我这边已经安装了，没安装使用下面命令进行安装
 
@@ -56,7 +56,7 @@ yum -y install docker
 docker -v
 ```
 
-![image-20210730110128790](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730110128790.png)
+![image-20210730110128790](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730110128790.png)
 
 其他关于docker的了解，可以看这篇 https://yournotes.cn/2021/08/01/Docker%E5%9F%BA%E7%A1%80/
 
@@ -66,7 +66,7 @@ docker -v
 
 地址：https://github.com/docker/compose/releases
 
-![image-20210730110953041](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730110953041.png)
+![image-20210730110953041](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730110953041.png)
 
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -87,7 +87,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 #### 4.1 配置Drone服务域名
 
-![image-20210730113950852](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730113950852.png)
+![image-20210730113950852](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730113950852.png)
 
 我这边就添加个drone.yournotes.cn的解析。
 
@@ -95,27 +95,27 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 在设置里面有个开发者设置选中，
 
-![image-20210730114424028](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730114424028.png)
+![image-20210730114424028](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730114424028.png)
 
 在OAuth Apps当中即可配置认证应用，我这边已经添加了
 
-![image-20210730114526670](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730114526670.png)
+![image-20210730114526670](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730114526670.png)
 
 打开New OAuth App里面就几样东西
 
-![image-20210730115229870](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730115229870.png)
+![image-20210730115229870](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730115229870.png)
 
 
 
 注册之后会有Client ID与Client secrets，复制保存下来之后在配置Drone会用
 
-![image-20210730115402287](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730115402287.png)
+![image-20210730115402287](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730115402287.png)
 
 #### 4.3 配置RPC密钥
 
 这个是Drone的runner与server交互需要配置的，通过`openssl rand -hex 16`指令生成密钥，在之后两边配置一样即可
 
-![image-20210730120101158](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730120101158.png)
+![image-20210730120101158](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730120101158.png)
 
 
 
@@ -125,15 +125,15 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 **Server安装**
 
-![image-20210730141634508](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730141634508.png)
+![image-20210730141634508](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730141634508.png)
 
-![image-20210730141659777](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730141659777.png)
+![image-20210730141659777](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730141659777.png)
 
 **Runner安装**
 
-![image-20210730142249483](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730142249483.png)
+![image-20210730142249483](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730142249483.png)
 
-![image-20210730142320113](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730142320113.png)
+![image-20210730142320113](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730142320113.png)
 
 按照文档上这样也可以，分别用docker启动配置好服务地址、密钥等必备的参数。
 
@@ -217,33 +217,33 @@ networks:
 
 #### 六、简单测试
 
-![image-20210730144252616](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730144252616.png)
+![image-20210730144252616](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730144252616.png)
 
 按照上面成功启动Drone，接下来就可以访问看看了。我这边配置的http是10081端口。所以得加上端口号，注意阿里云上的安全组也要把这些端口放开。
 
-![image-20210730144612574](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730144612574.png)
+![image-20210730144612574](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730144612574.png)
 
 
 
 首次访问应该是如上图，再选中继续就可进行GitHub认证，GitHub认证后会返回到之前在GitHub上填写的地址
 
-![image-20210730145152743](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730145152743.png)
+![image-20210730145152743](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730145152743.png)
 
 因为我这边是10081端口，因此这里得写成 `drone.yournotes.cn:10081/login` ，否则就找不到了
 
-![image-20210730145349542](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210730145349542.png)
+![image-20210730145349542](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210730145349542.png)
 
 
 
 这里选一个项目开启自动流水线，点击一个项目，进入如下页面点保存即可，它将在code仓库配置webhook，当代码仓库更新时会自动执行.drone.yml下的指令
 
-![image-20210802095938681](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802095938681.png)
+![image-20210802095938681](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802095938681.png)
 
 
 
 保存后，我们在代码仓库添加一个.drone.yml的文件，做一个简单的在控制台打印hello world的操作
 
-![image-20210802100545869](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802100545869.png)
+![image-20210802100545869](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802100545869.png)
 
 steps下就是安排的步骤，使用的镜像是alpine（一个轻量的Linux），使用这个linux执行了echo指令。
 
@@ -251,6 +251,6 @@ steps下就是安排的步骤，使用的镜像是alpine（一个轻量的Linux�
 
 不出意外的话我们把文件提交，drone流水线就开始自动进行了
 
-![image-20210802101239461](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802101239461.png)
+![image-20210802101239461](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802101239461.png)
 
 第一步就是clone代码，第二步就是在steps的第一个步骤greeting（alpine执行两个echo）

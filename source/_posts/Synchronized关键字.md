@@ -32,7 +32,7 @@ synchronized (this) {
 
 了解对象加锁原理那么首先需要了解在JVM（hotspot）当中一个对象的内存结构
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/对象内存结构.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/对象内存结构.png)
 
 >1.对象头
 >
@@ -49,7 +49,7 @@ synchronized (this) {
 
 **markword**在这里就是记录着各种信息64位的二进制串其中三位标记着锁信息
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/对象头.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/对象头.png)
 
 
 
@@ -59,13 +59,13 @@ CAS：Compare and Swap，即比较再交换。
 
 jdk5增加了并发包java.util.concurrent.*,其下面的类使用CAS算法实现了区别于synchronouse同步锁的一种乐观锁。JDK 5之前Java语言是靠synchronized关键字保证同步的，这是一种独占锁，也是是悲观锁。
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/CAS.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/CAS.png)
 
 
 
 #### Synchronized锁升级
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/锁升级.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/锁升级.png)
 
 给对象加锁，实际上是改变的是对象的markword内容。通过标志位的一些记录来判断当前的锁信息，从下面例子打印结果可以看到锁标记位（第一个字节后三位）由001变为000，对象创建没有开启偏向锁进而加锁直接升级自旋锁。
 
@@ -78,7 +78,7 @@ synchronized (o) {
 }
 ```
 
-![](https://gitee.com/Jasper-zh/blogImage/raw/master/Synchronized/markword.png)
+![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/Synchronized/markword.png)
 
 早期synchronized属于重量级锁申请和注销必须得向内核层申请。但有些需要同步的地方大多数情况下也确实只有一个线程访问。这样的情况下仍然去找操作系统申请锁资源浪费比例大。所以1.6之后对Synchronized进行了优化有偏移锁与自旋锁。
 

@@ -17,7 +17,7 @@ copyright: false
 安装了node.js才有使用npm ，才能安装vue-cli
 
 #### 2.1.1 什么是node.js
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416204738.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416204738.png)
 为什么会有node.js？
 >传统意义上的 JavaScript 运行在浏览器上，Chrome 使用的 JavaScript 引擎是 V8，Node.js 是一个运行在服务端 的框架，它的底层就使用了 V8 引擎，这样就可以使用javascript去编写一些服务端的程序，这样也就实现了用 javaScript去开发 Apache + PHP 以及 Java Servlet所开发的服务端功能，这样做的好处就是前端和后端都采用 javascript，即开发一份js程序即可以运行在前端也可以运行的服务端，这样比一个应用使用多种语言在开发效率上 要高，不过node.js属于新兴产品，一些公司也在尝试使用node.js完成一些业务领域，node.js基于V8引擎，基于 事件驱动机制，在特定领域性能出色，比如用node.js实现消息推送、状态监控等的业务功能非常合适。
 
@@ -25,7 +25,7 @@ copyright: false
 * 下载对应你系统的Node.js版本:
 
 https://nodejs.org/en/download/
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416204949.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416204949.png)
 
 * 选安装目录进行安装, 我选择安装在了E盘: E:\Program Files\nodejs
 
@@ -44,7 +44,7 @@ node.js已经集成了npm工具
 ```powershell
 npm -v
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416205247.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416205247.png)
 
 #### 2.2.2 查看包管理路径
 包路径就是npm从远程下载的js包所存放的路径。 使用 npm config ls 查询NPM管理包路径（NPM下载的依赖包所存放的路径）
@@ -61,7 +61,7 @@ C:\Users\hao\AppData\Roaming\npm
 
 * 在 H:\software\nodejs_package 下再创建 npm_modules 文件夹 和 npm_cache 文件夹:
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416205548.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416205548.png)
 
 * 执行下边的命令,设置为自定义的包管理路径：
 
@@ -71,7 +71,7 @@ npm config set cache "H:\software\nodejs_package\npm_cache"
 ```
 * 此时再使用 npm config ls 查询NPM管理包路径发现路径已更改
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416205653.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416205653.png)
 
 #### 2.2.4 NPM环境变量配置
 * 查看npm的全局路径是什么
@@ -79,7 +79,7 @@ npm config set cache "H:\software\nodejs_package\npm_cache"
 ```powershell
 npm config get prefix
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416210101.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210101.png)
 * 配置PATH环境变量
 
 #### 2.2.5 安装cnpm
@@ -103,23 +103,23 @@ npm install -g @vue/cli
 ```
 * 输入 vue命令
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416210439.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210439.png)
 * 输入 vue -V 查看版本
 
 ```
 vue -v
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416210527.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210527.png)
 
 ## 3. 快速构建Vue项目
 ### 3.1 步骤说明
 我们使用vue-cli 快速构建项目,步骤如下:
 * 桌面创建一个空的文件夹
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416210612.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210612.png)
 * 以管理员身份运行cmd , 进入到vueTest文件夹
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416210642.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416210642.png)
 * 执行下面的命令
 
 ```powershell
@@ -127,28 +127,28 @@ vue -v
 //文件名 不支持驼峰（含大写字母）使用短横线方式 
 vue create my-project
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211212.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211212.png)
 * 选择自定义安装,点击回车
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211302.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211302.png)
 * 在这列表中,选择我们要安装的组件,使用空格键选择,选好后回车
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211333.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211333.png)
 
 * 按回车之后,提示选择什么模式的路由,我们输入 n (表示选择hash模式)
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211417.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211417.png)
 
 * 选择项目配置文件单独存放
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211443.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211443.png)
 
 * 是否保存模板,选择n 不创建
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211510.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211510.png)
 * 安装完成,提示输入执行下面这两个命令
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211549.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211549.png)
 * 首先进入项目目录
 
 ```powershell
@@ -159,10 +159,10 @@ cd my-project
 ```powershell
 npm run serve
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211652.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211652.png)
 * 访问项目: http://localhost:8080/
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210416211757.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210416211757.png)
 * 停止项目 ctr+c或者关闭命令行窗口就可以
 
 ### 3.2 导入Vue项目到VSCode
@@ -173,7 +173,7 @@ npm run serve
 
 * 打开项目,可以看到如下项目结构
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420193436.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420193436.png)
 
 ### 3.3 项目结构介绍
 
@@ -250,7 +250,7 @@ npm run serve
 
 * 在VSCode中选择项目,右键在终端打开
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420194223.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420194223.png)
 
 * 输入命令
 
@@ -260,7 +260,7 @@ npm run serve
 
 * 运行后发现端口号改为 8888,并且在打包完成后自动打开浏览器
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420194335.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420194335.png)
 
 注意: 不推荐这种方式,因为package.json 主要是用来管理包的配置信息.为了方便维护,我们将Vue脚手架相关的配置单独定义到 **vue.confifig.js** 配置文件中
 
@@ -289,7 +289,7 @@ module.exports = {
 
 1）我们用 vue-cli 脚手架搭建的项目，里面有很多，如 index.vue 或者 App.vue 这一类的文件.每一个**.vue 文件都是一个组件 ，是一个自定义的文件类型**, 比如 App.vue 就是整个项目的根组件。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420194800.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420194800.png)
 
 2）常见的组件：
 * 页面级别的组件
@@ -421,7 +421,7 @@ export default router
 
 * 默认访问的是Home.vue 首页
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420200637.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420200637.png)
 
 ```js
 < template>
@@ -482,7 +482,7 @@ HelloWorld.vue 组件页面
 
 * 在components 目录下创建 Header.vue
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420201834.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420201834.png)
 
 * 编写Header.vue
 
@@ -587,7 +587,7 @@ https://element.eleme.cn/#/zh-CN
 ```powershell
 npm i element-ui -S
 ```
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420203004.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420203004.png)
 
 * 打开 main.js , 导入Element-UI 相关资源.
 	* main.js是工程的入口文件，在此文件中加载了很多第三方组件，如：Element-UI、Base64、 VueRouter等。
@@ -603,7 +603,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI);
 ```
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420203205.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420203205.png)
 
 * 复制Element 按钮样式 到app.vue文件的 template下
 
@@ -631,7 +631,7 @@ Vue.use(ElementUI);
 
 * 启动项目 npm run serve, 查看页面
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420203522.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420203522.png)
 
 
 
@@ -689,9 +689,9 @@ Vue.prototype.axios = axios;
 
 ### 8.1  Dialog对话框组件
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420204252.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420204252.png)
 **我们可以用Dialog制作一个登陆弹窗,选择自定义内容**
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420204323.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420204323.png)
 
 ```html
 <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
@@ -887,17 +887,17 @@ postman模拟出一个server 步骤:
 
 * 使用postman模拟出一个server
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420205719.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420205719.png)
 
 * 打开如下窗体，创建一个伪服务
 
 第一步
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420205758.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420205758.png)
 
 第二步
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210420205932.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210420205932.png)
 
 第三步
 
@@ -950,7 +950,7 @@ methods: {
 
 * 已被CORS策略阻止：请求的资源上没有' Access-Control-Allow-Origin'标头（跨域请求失败）
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210423112514.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210423112514.png)
 
 ```
 Access to XMLHttpRequest at 'http://localhost:8080/lagou_edu_home/course? methodName=findCourseList' from origin 'http://localhost:8088' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
@@ -962,7 +962,7 @@ Access to XMLHttpRequest at 'http://localhost:8080/lagou_edu_home/course? method
 
 * 跨域的几种常见情
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210423112637.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210423112637.png)
 
 ### 9.3 解决跨域问题
 

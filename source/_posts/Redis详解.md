@@ -12,14 +12,14 @@ copyright: false
 
   * 数据访问量不大，简单的架构即可搞定！
 
-    ![image-20210518191430690](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518191430690.png)
+    ![image-20210518191430690](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518191430690.png)
 
 * 第2阶段
 
   * 数据访问量大，使用缓存技术来缓解数据库的压力。
   * 不同的业务访问不同的数据库
 
-  ![image-20210518191527810](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518191527810.png)
+  ![image-20210518191527810](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518191527810.png)
 
 * 第3阶段
 
@@ -29,7 +29,7 @@ copyright: false
   * 让master（主数据库）来响应事务性**（增删改）**操作，让slave（从数据库）来响应非事务性**（查询）**操作，然后再采用主从复制来把master上的事务性操作同步到slave数据库中
   * mysql的master/slave就是网站的标配！
 
-  ![image-20210518191620259](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518191620259.png)
+  ![image-20210518191620259](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518191620259.png)
 
 * 第4阶段
 
@@ -38,7 +38,7 @@ copyright: false
   * 分库分表开始流行，mysql也提出了表分区，虽然不稳定，但我们看到了希望
   * 开始吧，mysql集群
 
-![image-20210518191711373](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518191711373.png)
+![image-20210518191711373](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518191711373.png)
 
 
 
@@ -134,9 +134,9 @@ redis：http://www.redis.net.cn/
 
 图形工具：https://redisdesktop.com/download
 
-![image-20210518192921250](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518192921250.png)
+![image-20210518192921250](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518192921250.png)
 
-![image-20210518192937311](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210518192937311.png)
+![image-20210518192937311](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210518192937311.png)
 
 
 
@@ -1522,7 +1522,7 @@ QUEUED
 
 #### 3.5.4 复制原理
 
-![image-20210521111751345](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210521111751345.png)
+![image-20210521111751345](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210521111751345.png)
 
 完成上面几个步骤后就完成了从服务器数据初始化的所有操作，从服务器此时可以接收来自用户的读请求
 

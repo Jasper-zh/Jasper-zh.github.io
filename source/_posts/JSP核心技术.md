@@ -29,7 +29,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
 
 ### 1.3 JSP与Servlet的关系
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210409114444.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210409114444.png)
 
 
 
@@ -394,4 +394,4 @@ isErrorPage 当前页是否可以作为其他页面的错误处理页面
 
 ### 5.2 基本类型
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210409121949.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210409121949.png)

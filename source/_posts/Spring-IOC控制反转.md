@@ -69,7 +69,7 @@ Spring
 
 ### Spring体系结构
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210423114412.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210423114412.png)
 
 
 
@@ -131,7 +131,7 @@ Spring
         <artifactId>junit</artifactId>
         <version>4.12</version>
     </dependency>
-</dependencies
+</dependencies>
 ```
 **2）编写Dao接口和实现类**
 
@@ -169,7 +169,7 @@ public class UserServiceImpl implements UserService {
 
 ```java
 public class UserTest {
-	@Test 
+    @Test 
     public void testSave() throws Exception {
 		UserService userService = new UserServiceImpl();
 		userService.save();
@@ -333,12 +333,12 @@ public class UserDaoImpl implements UserDao {
 
 ```java
 public class UserTest {
-	@Test 
+    @Test 
     public void testSave() throws Exception {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-		UserDao userDao = (UserDao) applicationContext.getBean("userDao");
-		userDao.save();
-	}
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserDao userDao = (UserDao) applicationContext.getBean("userDao");
+        userDao.save();
+    }
 }
 ```
 
@@ -364,7 +364,7 @@ Spring的开发步骤
 
 Spring的API体系异常庞大，我们现在只关注两个BeanFactory和ApplicationContext
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210423120949.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210423120949.png)
 
 ### 4.2 BeanFactory
 

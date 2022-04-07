@@ -28,7 +28,7 @@ copyright: false
 
 **（2）执行流程**
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210411110437.png)
+![](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210411110437.png)
 
 ### 1.4 访问请求参数的数据
 

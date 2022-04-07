@@ -23,9 +23,9 @@ copyright: false
 
 在诞⽣之初，拉勾的⽤户量、数据量规模都⽐较⼩，项目所有的功能模块都放在一个工程中编码、编译、打包并且部署在一个Tomcat容器中的架构模式就是单体应用架构，这样的架构既简单实 ⽤、便于维护，成本⼜低，成为了那个时代的主流架构⽅式。
 
-![image-20220309171818712](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309171818712.png)
+![image-20220309171818712](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309171818712.png)
 
-![image-20210802103712708](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802103712708.png)
+![image-20210802103712708](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802103712708.png)
 
 **优点：**
 
@@ -44,13 +44,13 @@ copyright: false
 
 业务量上涨之后，单体应用架构进一步丰富变化，比如应用集群部署、使用Nginx进行负载均衡、增加缓存服务器、增加文件服务器、数据库集群并做读写分离等，通过以上措施增强应对高并发的能力、应对一定的复杂业务场景，但依然属于单体应用架构。
 
-![image-20210802103956900](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802103956900.png)
+![image-20210802103956900](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802103956900.png)
 
 #### 1.1.2 垂直应用架构
 
 为了避免上⾯提到的那些问题，开始做模块的垂直划分，做垂直划分的原则是基于现有的业务特性来做，核心目标标第⼀个是为了业务之间互不影响，第⼆个是在研发团队的壮⼤后为了提⾼效率，减少组件之间的依赖。
 
-![image-20210802104039404](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802104039404.png)
+![image-20210802104039404](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802104039404.png)
 
 **优点：**
 
@@ -78,7 +78,7 @@ copyright: false
 
 ​	缺点：服务抽取粒度较大、服务调用方和提供方耦合度较高（接口耦合度）
 
-![image-20210802104640560](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802104640560.png)
+![image-20210802104640560](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802104640560.png)
 
 
 
@@ -88,7 +88,7 @@ copyright: false
 
 微服务是在 SOA 上做的升华粒度更加细致，微服务架构强调的⼀个重点是**业务需要彻底的组件化和服务化**
 
-![image-20210802104754079](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210802104754079.png)
+![image-20210802104754079](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210802104754079.png)
 
 **微服务架构和SOA架构相似又不同**
 
@@ -131,29 +131,29 @@ copyright: false
 
   * **服务发现：**服务消费者能够从注册中心获取到较为实时的服务列表，然后根究一定的策略选择一个服务访问
 
-  ![image-20220309171852970](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309171852970.png)
+  ![image-20220309171852970](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309171852970.png)
 
-  ![image-20220309171908943](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309171908943.png)
+  ![image-20220309171908943](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309171908943.png)
 
 * **负载均衡**
 
   负载均衡即将请求压力分配到多个服务器（应用服务器、数据库服务器等），以此来提高服务的性能、可靠性
 
-  ![image-20210803102123540](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803102123540.png)
+  ![image-20210803102123540](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803102123540.png)
 
 * **熔断**
 
   熔断即断路保护。微服务架构中，如果下游服务因访问压力过大而响应变慢或失败，上游服务为了保护系统整体可用性，可以暂时切断对下游服务的调用。这种牺牲局部，保全整体的措施就叫做熔断。
 
-  ![image-20210803102219278](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803102219278.png)
+  ![image-20210803102219278](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803102219278.png)
 
-  ![image-20210803102234092](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803102234092.png)
+  ![image-20210803102234092](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803102234092.png)
 
 * **链路追踪**
 
   微服务架构越发流行，一个项目往往拆分成很多个服务，那么一次请求就需要涉及到很多个服务。不同的微服务可能是由不同的团队开发、可能使用不同的编程语言实现、整个项目也有可能部署在了很多服务器上（甚至百台、千台）横跨多个不同的数据中心。所谓链路追踪，就是对一次请求涉及的很多个服务链路进行日志记录、性能监控
 
-  ![image-20210803102328144](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803102328144.png)
+  ![image-20210803102328144](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803102328144.png)
 
 * **API网关**
 
@@ -178,7 +178,7 @@ copyright: false
 
 
 
-![image-20210803102810160](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803102810160.png)
+![image-20210803102810160](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803102810160.png)
 
 
 
@@ -194,7 +194,7 @@ Spring Cloud是一系列框架的有序集合（Spring Cloud是一个规范）
 
 利用Spring Boot的开发便利性简化了微服务架构的开发（自动装配）
 
-![image-20210803103015056](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803103015056.png)
+![image-20210803103015056](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803103015056.png)
 
 这里，我们需要注意，Spring Cloud其实是一套规范，是一套用于构建微服务架构的规范，而不是一个可以拿来即用的框架（所谓规范就是应该有哪些功能组件，然后组件之间怎么配合，共同完成什么事情）。在这个规范之下第三方的Netflix公司开发了一些组件、Spring官方开发了一些框架/组件，包括第三方的阿里巴巴开发了一套框架/组件集合Spring Cloud Alibaba，这些才是Spring Cloud规范的实现。
 
@@ -285,7 +285,7 @@ Spring Cloud 吸收了Netflix公司的产品基础之上自己也搞了几个组
 
 #### 2.3.2 Spring Cloud体系结构（组件协同工作机制）
 
-![image-20210803104843188](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803104843188.png)
+![image-20210803104843188](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803104843188.png)
 
 Spring Cloud中的各组件协同工作，才能够支持一个完整的微服务架构。比如
 
@@ -300,7 +300,7 @@ Spring Cloud中的各组件协同工作，才能够支持一个完整的微服�
 
 ​	前些年，Dubbo使用率高于SpringCloud，但目前Spring Cloud在服务化/微服务解决方案中已经有了非常好的发展趋势。
 
-![image-20210803105134868](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803105134868.png)
+![image-20210803105134868](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803105134868.png)
 
 ### 2.5 Spring Cloud与Spring Boot的关系
 
@@ -316,15 +316,15 @@ Spring Cloud中的各组件协同工作，才能够支持一个完整的微服�
 
 需求：
 
-![image-20210803105223408](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803105223408.png)
+![image-20210803105223408](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803105223408.png)
 
-![image-20210803105231868](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803105231868.png)
+![image-20210803105231868](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803105231868.png)
 
 完整业务流程图：
 
-![image-20210803105249088](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803105249088.png)
+![image-20210803105249088](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803105249088.png)
 
-![image-20220309172244762](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309172244762.png)
+![image-20220309172244762](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309172244762.png)
 
 ### 3.2 案例数据库环境准备
 
@@ -349,7 +349,7 @@ CREATE TABLE products(
 
 ​	我们基于SpringBoot来构造工程环境，我们的工程模块关系如下所示：
 
-![image-20220310134421779](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310134421779.png)
+![image-20220310134421779](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310134421779.png)
 
 #### 3.3.1 页面静态化微服务
 
@@ -758,11 +758,11 @@ public class PageApplication {
 
 各组件整体结构如下：
 
-![image-20210803112626313](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803112626313.png)
+![image-20210803112626313](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803112626313.png)
 
 从形式上来说，Feign一个顶三，Feign = RestTemplate + Ribbon + Hystrix
 
-![image-20210803112642721](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803112642721.png)
+![image-20210803112642721](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803112642721.png)
 
 ### 4.1 Eureka服务注册中心
 
@@ -782,9 +782,9 @@ public class PageApplication {
 
 ##### （1）注册中心实现原理
 
-![image-20210803112923411](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803112923411.png)
+![image-20210803112923411](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803112923411.png)
 
-![image-20210803112935155](https://gitee.com/Jasper-zh/image_host/raw/master/image-20210803112935155.png)
+![image-20210803112935155](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210803112935155.png)
 
 ​	分布式微服务架构中，服务注册中心用于存储服务提供者地址信息、服务发布相关的属性信息，消费者通过主动查询和被动通知的方式获取服务提供者的地址信息，而不再需要通过硬编码方式得到提供者的地址信息。消费者只需要知道当前系统发布了那些服务，而不需要知道服务具体存在于什么位置，这就是透明化路由。
 
@@ -879,15 +879,15 @@ A：高可用：Reads and writes always succeed
 
 **Eureka基础架构**
 
-![image-20220309172742068](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309172742068.png)
+![image-20220309172742068](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309172742068.png)
 
-![image-20220309172753324](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309172753324.png)
+![image-20220309172753324](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309172753324.png)
 
 **Eureka交互原理**
 
-![image-20220309172839418](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309172839418.png)
+![image-20220309172839418](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309172839418.png)
 
-![image-20220309172855023](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309172855023.png)
+![image-20220309172855023](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309172855023.png)
 
 
 
@@ -982,13 +982,13 @@ public class EurekaApplication {
 
 **5、访问9200端口**
 
-![image-20220309180402488](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309180402488.png)
+![image-20220309180402488](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309180402488.png)
 
 
 
-![image-20220309180411456](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309180411456.png)
+![image-20220309180411456](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309180411456.png)
 
-![image-20220309180423208](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220309180423208.png)
+![image-20220309180423208](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220309180423208.png)
 
 
 
@@ -1298,7 +1298,7 @@ Eureka Server会定时（间隔值是eureka.server.eviction-interval-timer-in-ms
 
 服务中心页面会显示如下提示信息
 
-![image-20220310103358803](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310103358803.png)
+![image-20220310103358803](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310103358803.png)
 
 我们在单机测试的时候很容易满足心跳失败比例在 15 分钟之内低于 85%，这个时候就会触发 Eureka的保护机制，一旦开启了保护机制（**默认开启**），则服务注册中心维护的服务实例就不是那么准确了，此时我们通过修改Eureka Server的配置文件来关闭保护机制，这样可以确保注册中心中不可用的实例被及时的剔除（**不推荐**）。
 
@@ -1322,7 +1322,7 @@ eureka:
 
 Ribbon是Netflix发布的负载均衡器。Eureka一般配合Ribbon进行使用，Ribbon利用从Eureka中读取到服务信息，在调用服务提供者提供的服务时，会根据一定的算法进行负载。
 
-![image-20220310103626139](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310103626139.png)
+![image-20220310103626139](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310103626139.png)
 
 
 
@@ -1330,7 +1330,7 @@ Ribbon是Netflix发布的负载均衡器。Eureka一般配合Ribbon进行使用�
 
 **需求：**复制商品微服务9001，在9000和9001编写Controller，返回服务实例端口。**Page微服务**中通过负载均衡策略调用service-product的controller
 
-![image-20220310103703718](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310103703718.png)
+![image-20220310103703718](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310103703718.png)
 
 在微服务中使用Ribbon不需要额外导入依赖坐标，微服务中引入过eureka-client相关依赖，会自动引入Ribbon相关依赖坐标。
 
@@ -1379,7 +1379,7 @@ public String getProductServerPort(){
 }
 ```
 
-![gif](https://gitee.com/Jasper-zh/image_host/raw/master/gif.gif)
+![gif](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/gif.gif)
 
 测试可以知道默认是一个轮询的负载均衡策略
 
@@ -1401,9 +1401,9 @@ public interface IRule{
 }
 ```
 
-![image-20220310110914782](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310110914782.png)
+![image-20220310110914782](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310110914782.png)
 
-![image-20220310110952631](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310110952631.png)
+![image-20220310110952631](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310110952631.png)
 
 **修改负载均衡策略：**
 
@@ -1427,7 +1427,7 @@ service-product:
 
 **Ribbon工作原理**
 
-![image-20220310111130927](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111130927.png)
+![image-20220310111130927](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111130927.png)
 
 * 老规矩：SpringCloud充分利用了SpringBoot的自动装配特点，找spring.factories配置文件
 
@@ -1435,23 +1435,23 @@ service-product:
   org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.springframework.cloud.netflix.ribbon.RibbonAutoConfiguration
   ```
 
-  ![image-20220310111300665](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111300665.png)
+  ![image-20220310111300665](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111300665.png)
 
 * LoadBalancerAutoConfiguration 类中配置
 
   **装配验证：**
 
-  ![image-20220310111334187](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111334187.png)
+  ![image-20220310111334187](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111334187.png)
 
   **自动注入**
 
-  ![image-20220310111350726](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111350726.png)
+  ![image-20220310111350726](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111350726.png)
 
   **注入RestTemplate定制器**
 
   为restTemplate对象设置loadBalancerInterceptor
 
-  ![image-20220310111430509](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111430509.png)
+  ![image-20220310111430509](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111430509.png)
 
   到这里，我们明白，添加了注解的RestTemplate对象会被添加一个拦截器LoadBalancerInterceptor，该拦截器就是后续拦截请求进行负载处理的。
 
@@ -1469,15 +1469,15 @@ service-product:
 
 **服务雪崩效应：**是一种因“服务提供者的不可用”（原因）导致“服务调用者不可用”（结果），并将不可用逐渐放大的现象。
 
-![image-20220310111744722](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111744722.png)
+![image-20220310111744722](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111744722.png)
 
-![image-20220310111756101](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111756101.png)
+![image-20220310111756101](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111756101.png)
 
-![image-20220310111803904](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111803904.png)
+![image-20220310111803904](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111803904.png)
 
-![image-20220310111809715](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111809715.png)
+![image-20220310111809715](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111809715.png)
 
-![image-20220310111825742](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310111825742.png)
+![image-20220310111825742](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310111825742.png)
 
 扇入：代表着该微服务被调用的次数，扇入大，说明该模块复用性好
 
@@ -1501,7 +1501,7 @@ service-product:
 
 服务雪崩的每个阶段都可能由不同的原因造成：
 
-![image-20220310112018485](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310112018485.png)
+![image-20220310112018485](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310112018485.png)
 
 
 
@@ -1631,7 +1631,7 @@ service-product:
   }
   ```
 
-  ![image-20220310164852493](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310164852493.png)
+  ![image-20220310164852493](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310164852493.png)
 
   对于没有配置HystrixCommand的方法getPort,经过10秒仍然可以最终获取到结果。方法getPort2设置熔断配置的是2秒响应时间超过直接熔断
 
@@ -1678,7 +1678,7 @@ public String myFallBack() {
 }
 ```
 
-![image-20220310165524453](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310165524453.png)
+![image-20220310165524453](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310165524453.png)
 
 
 
@@ -1688,15 +1688,15 @@ public String myFallBack() {
 
 如果不进行任何设置，所有熔断方法使用同一个Hystrix线程池（10个线程），那么这样的话会导致问题，这个问题并不是扇出链路微服务不可用导致的，而是我们的线程机制导致的，如果方法A的请求把10个线程都用了，方法2请求处理的时候压根都没法去访问B，因为没有线程可用，并不是B服务不可用。
 
-![image-20220310114120082](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310114120082.png)
+![image-20220310114120082](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310114120082.png)
 
-![image-20220310114127550](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310114127550.png)
+![image-20220310114127550](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310114127550.png)
 
 为了避免问题服务请求过多导致正常服务无法访问，Hystrix 不是采用增加线程数，而是单独的为每一个控制方法创建一个线程池的方式，这种模式叫做“舱壁模式"，也是线程隔离的手段
 
 #### 4.3.6 Hystrix工作流程与高级应用
 
-  ![image-20220310114144982](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310114144982.png)
+  ![image-20220310114144982](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310114144982.png)
 
 * 当调用出现问题时，开启一个时间窗（10s）
 * 在这个时间窗内，统计调用次数是否达到最小请求数？
@@ -1765,7 +1765,7 @@ management:
 
 在之前的案例中，服务消费者调用服务提供者的时候使用RestTemplate技术。
 
-![image-20220310171310749](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220310171310749.png)
+![image-20220310171310749](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220310171310749.png)
 
 #### 4.4.1 Feign简介
 
@@ -2011,7 +2011,7 @@ Spring Cloud GateWay不仅提供统一的路由方式（反向代理）并且基
 
 **网关在架构中的位置**
 
-![image-20220311093950944](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311093950944.png)
+![image-20220311093950944](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311093950944.png)
 
 #### 4.5.2 GateWay核心概念
 
@@ -2025,7 +2025,7 @@ Spring Cloud GateWay天生就是异步非阻塞的，基于Reactor模型（同�
 
 #### 4.5.3 GateWay如何工作
 
-![image-20220311094158895](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311094158895.png)
+![image-20220311094158895](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311094158895.png)
 
 Spring 官方介绍：
 
@@ -2140,9 +2140,9 @@ Filter在“pre”类型过滤器中可以做参数校验、权限校验、流�
 
 * **测试**
 
-  ![image-20220311105534882](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311105534882.png)
+  ![image-20220311105534882](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311105534882.png)
 
-  ![image-20220311105705744](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311105705744.png)
+  ![image-20220311105705744](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311105705744.png)
 
   
 
@@ -2150,7 +2150,7 @@ Filter在“pre”类型过滤器中可以做参数校验、权限校验、流�
 
 Spring Cloud GateWay 帮我们内置了很多 Predicates功能，实现了各种路由匹配规则（通过Header、请求参数等作为条件）匹配到对应的路由。
 
-![image-20220311105726491](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311105726491.png)
+![image-20220311105726491](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311105726491.png)
 
 **时间点后匹配**
 
@@ -2307,7 +2307,7 @@ GateWay支持自动从注册中心中获取服务列表并访问，即所谓的�
 
 * 动态路由配置
 
-  ![image-20220311111402630](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311111402630.png)
+  ![image-20220311111402630](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311111402630.png)
 
 **注意：动态路由设置时，uri以lb: //开头（lb代表从注册中心获取服务），后面是需要转发到的服务名称**
 
@@ -2319,11 +2319,11 @@ GateWay支持自动从注册中心中获取服务列表并访问，即所谓的�
 
 从过滤器生命周期（影响时机点）的角度来说，主要有两个pre和post：
 
-![image-20220311111542911](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311111542911.png)
+![image-20220311111542911](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311111542911.png)
 
 从过滤器类型的角度，Spring Cloud GateWay的过滤器分为GateWayFilter和GlobalFilter两种
 
-![image-20220311111604835](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311111604835.png)
+![image-20220311111604835](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311111604835.png)
 
 如Gateway Filter可以去掉url中的占位后转发路由，比如
 
@@ -2402,7 +2402,7 @@ public class BlackListFilter  implements GlobalFilter, Ordered {
 }
 ```
 
-![image-20220311123502637](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311123502637.png)
+![image-20220311123502637](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311123502637.png)
 
 #### 4.5.8 GateWay高可用
 
@@ -2450,7 +2450,7 @@ location / {
 
 Spring Cloud Confifig是一个分布式配置管理方案，包含了 Server端和 Client端两个部分。
 
-![image-20220311124155605](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311124155605.png)
+![image-20220311124155605](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311124155605.png)
 
 * Server 端：提供配置文件的存储、以接口的形式将配置文件的内容提供出去，通过使用@EnableConfifigServer注解在 Spring boot 应用中非常简单的嵌入
 * Client 端：通过接口获取配置数据并初始化自己的应用
@@ -2560,7 +2560,7 @@ Spring Cloud Confifig是一个分布式配置管理方案，包含了 Server端�
 
     xx.txt：文件名称
 
-    ![image-20220311140632856](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311140632856.png)
+    ![image-20220311140632856](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311140632856.png)
 
 * **构建Client客户端**（在已有的静态化微服务基础上）
 
@@ -2583,7 +2583,7 @@ Spring Cloud Confifig是一个分布式配置管理方案，包含了 Server端�
 
   它会读取spring.application.name与spring.cloud.config.profile拼接命名的配置，因此往github推送了service-page-dev.yml配置，且添加了两条测试配置person.name、person.age
 
-  ![image-20220311151335374](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311151335374.png)
+  ![image-20220311151335374](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311151335374.png)
 
   **bootstrap.yml**（部分）
 
@@ -2619,7 +2619,7 @@ Spring Cloud Confifig是一个分布式配置管理方案，包含了 Server端�
   }
   ```
 
-  ![image-20220311151311324](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311151311324.png)
+  ![image-20220311151311324](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311151311324.png)
 
   
 
@@ -2670,9 +2670,9 @@ Spring Cloud Confifig是一个分布式配置管理方案，包含了 Server端�
 
 * 手动向Client客户端发起POST请求，http://localhost:9100/actuator/refresh，刷新配置信息
 
-  ![image-20220311154415231](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311154415231.png)
+  ![image-20220311154415231](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311154415231.png)
 
-  ![image-20220311154435590](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311154435590.png)
+  ![image-20220311154435590](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311154435590.png)
 
   
 
@@ -2692,7 +2692,7 @@ Spring Cloud Confifig是一个分布式配置管理方案，包含了 Server端�
 
 Spring Cloud Bus（基于MQ的，支持RabbitMq/Kafka） 是Spring Cloud中的消息总线方案，Spring Cloud Config + Spring Cloud Bus 结合可以实现配置信息的自动更新。
 
-![image-20220311154722103](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311154722103.png)
+![image-20220311154722103](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311154722103.png)
 
 ##### （2）Config + Bus实现自动刷新
 
@@ -2750,7 +2750,7 @@ SpringCloud 是若干个框架的集合，包括 spring-cloud-config、spring-cl
 
 同 Spring Cloud 一样，Spring Cloud Alibaba 也是一套微服务解决方案，包含开发分布式应用微服务的必需组件，方便开发者通过 Spring Cloud 编程模型轻松使用这些组件来开发分布式应用服务。依托Spring Cloud Alibaba，您只需要添加一些注解和少量配置，就可以将 Spring Cloud 应用接入阿里微服务解决方案，通过阿里中间件来迅速搭建分布式应用系统。
 
-![image-20220311155956062](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311155956062.png)
+![image-20220311155956062](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311155956062.png)
 
 #### 5.1.1 阿里开源组件
 
@@ -2813,7 +2813,7 @@ Nacos就是注册中心+配置中心的组合（Nacos=Eureka + Config + Bus）
 
 2. 访问nacos控制台：http://ip:8848/nacos 默认端口8848，默认用户名密码nacos/nacos
 
-   ![image-20220311164405145](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311164405145.png)
+   ![image-20220311164405145](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311164405145.png)
 
 #### 5.2.3 微服务注册到Nacos
 
@@ -2864,9 +2864,9 @@ Nacos就是注册中心+配置中心的组合（Nacos=Eureka + Config + Bus）
 
 4. 启动商品微服务，观察nacos控制台
 
-   ![image-20220311171334957](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311171334957.png)
+   ![image-20220311171334957](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311171334957.png)
 
-   ![image-20220311171426257](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311171426257.png)
+   ![image-20220311171426257](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311171426257.png)
 
    保护阈值：可以设置为0-1之间的浮点数，它其实是一个比例值（当前服务健康实例数/当前服务总实例数）
 
@@ -2898,7 +2898,7 @@ Nacos就是注册中心+配置中心的组合（Nacos=Eureka + Config + Bus）
 
 ​		比如，对于服务来说，不同命名空间中的服务不能够互相访问调用
 
-![image-20220311172032249](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311172032249.png)
+![image-20220311172032249](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311172032249.png)
 
 Namespace：命名空间，对不同的环境进行隔离，比如隔离开发环境、测试环境和生产环境
 
@@ -2916,7 +2916,7 @@ DataId：配置集或者可以认为是一个配置文件
 
 ​		Nacos抽象出了Namespace、Group、Service、DataId等概念，具体代表什么取决于怎么用（非常灵活），推荐用法如下。`上面配置的cloud-alibaba依赖2.1.0.RELEASE的版本是服务是配置不了分组，配置没有group属性，需要高版本的依赖，但高版本会和Mybatis-Plus有冲突导致无法启动,我自己改了提高Mybatis-plus的版本无法解决`
 
-![image-20220311172430835](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311172430835.png)
+![image-20220311172430835](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311172430835.png)
 
 #### 5.2.6 Nacos配置中心
 
@@ -2937,9 +2937,9 @@ Github不需要了（配置信息直接配置在Nacos server中），Bus也不�
 
 ##### （1）Nacos Server添加配置
 
-![image-20220311180438220](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311180438220.png)
+![image-20220311180438220](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311180438220.png)
 
-![image-20220311180908791](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220311180908791.png)
+![image-20220311180908791](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220311180908791.png)
 
 **dataId的完整格式如下（创建时输入名称（DataID）别漏了文件后缀）**
 
@@ -3016,11 +3016,11 @@ Sentinel是一个面向云原生微服务的流量控制、熔断降级组件。
 
 Sentinel主要特性：
 
-![image-20220314100700305](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220314100700305.png)
+![image-20220314100700305](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220314100700305.png)
 
 Sentinel 的开源生态：
 
-![image-20220314100713085](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220314100713085.png)
+![image-20220314100713085](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220314100713085.png)
 
 #### 5.3.2 Sentinel 部署
 
@@ -3032,7 +3032,7 @@ Sentinel 的开源生态：
 
 `不使用-Dserver.port默认控制台端口是8080，我的8080已经占用了，所以指定一个.它连接的客户端端口默认是8719也可以通过-Dcsp.sentinel.dashboard.server指定`
 
-![image-20220314102502849](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220314102502849.png)
+![image-20220314102502849](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220314102502849.png)
 
 
 
@@ -3074,11 +3074,11 @@ Sentinel 的开源生态：
 
 `还有个问题就是它是懒加载，都正常的情况下它也不会显示已注册的服务，你把服务的接口访问一下才可以出现服务，实时监控也是一样`
 
-![image-20220315114004039](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315114004039.png)
+![image-20220315114004039](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315114004039.png)
 
 #### 5.3.4 Sentinel 关键概念
 
-![image-20220314114302832](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220314114302832.png)
+![image-20220314114302832](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220314114302832.png)
 
 
 
@@ -3086,9 +3086,9 @@ Sentinel 的开源生态：
 
 系统并发能力有限，比如系统A的QPS支持1个，如果太多请求过来，那么A就应该进行流量控制了，比如其他请求直接拒绝
 
-![image-20220315120658416](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315120658416.png)
+![image-20220315120658416](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315120658416.png)
 
-![image-20220315115924657](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315115924657.png)
+![image-20220315115924657](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315115924657.png)
 
 进行并发测试5条线程，其中四条被拒绝。
 
@@ -3121,9 +3121,9 @@ Sentinel 的开源生态：
 
 关联的资源调用达到阈值时候限流自己，比如用户注册接口，需要调用身份证校验接口（往往身份证校验接口），如果身份证校验接口请求达到阈值，使用关联，可以对用户注册接口进行限流。
 
-![image-20220315132055158](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315132055158.png)
+![image-20220315132055158](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315132055158.png)
 
-![image-20220315133002723](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315133002723.png)
+![image-20220315133002723](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315133002723.png)
 
 仅仅密集请求test01时，并不会限流。只有test02限流时test01才进行当前的限流配置
 
@@ -3135,13 +3135,13 @@ Sentinel 的开源生态：
 
 一棵典型的调用树如下图所示：
 
-![image-20220314115240017](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220314115240017.png)
+![image-20220314115240017](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220314115240017.png)
 
 上图中来自入口 Entrance1 和 Entrance2 的请求都调用到了资源 NodeA ，Sentinel 允许只根据某个调用入口的统计信息对资源限流。比如链路模式下设置入口资源为 Entrance1 来表示只有从入口Entrance1 的调用才会记录到 NodeA 的限流统计当中，而不关心经 Entrance2 到来的调用。
 
-![image-20220315133314636](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315133314636.png)
+![image-20220315133314636](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315133314636.png)
 
-![image-20220315133404054](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315133404054.png)
+![image-20220315133404054](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315133404054.png)
 
 别的来源并不限流，只有从test02请求test01才限流
 
@@ -3153,7 +3153,7 @@ Sentinel 的开源生态：
 
 Warm Up 模式默认会从设置的 QPS 阈值的 1/3 开始慢慢往上增加至 QPS 设置值。
 
-![image-20220314115351790](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220314115351790.png)
+![image-20220314115351790](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220314115351790.png)
 
 **流控效果之排队等待**
 
@@ -3163,7 +3163,7 @@ Warm Up 模式默认会从设置的 QPS 阈值的 1/3 开始慢慢往上增加�
 
 例如，QPS 配置为 5，则代表请求每 200 ms 才能通过一个，多出的请求将排队等待通过。超时时间代表最大排队时间，超出最大排队时间的请求将会直接被拒绝。排队等待模式下，QPS 设置值不要超过 1000（请求间隔 1 ms）。
 
-![image-20220315133801944](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315133801944.png)
+![image-20220315133801944](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315133801944.png)
 
 #### 5.3.6 Sentinel 降级规则模块
 
@@ -3175,7 +3175,7 @@ Sentinel 降级会在调用链路中某个资源出现不稳定状态时（例�
 
 Sentinel不会像Hystrix那样放过一个请求尝试自我修复，就是明明确确按照时间窗口来，熔断触发后，时间窗口内拒绝请求，时间窗口后就恢复。
 
-![image-20220315141250223](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315141250223.png)
+![image-20220315141250223](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315141250223.png)
 
 在窗口时间(统计时间)里达到了5个以上的请求，且最大的响应时间超过了200ms则记为慢调用，当慢调用的数量达到阈值比例（全部都超过才熔断则比例是1）则进行熔断，在熔断时长里都是处于熔断状态（不会进行重试）
 
@@ -3195,13 +3195,13 @@ Sentinel不会像Hystrix那样放过一个请求尝试自我修复，就是明�
 
 当资源的`统计时间内`请求量 >= `最小请求数`，并且期间异常总数超过阈值数量，资源进入降级状态知道熔断时长走完。
 
-![image-20220315173424207](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315173424207.png)
+![image-20220315173424207](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315173424207.png)
 
 实际测试jmeter线程10循环1次，10次都没有进行熔断。但在下一次调用都已经是属于熔断状态。也就是说并发10的情况下它没有在前5个已经异常的情况下进行熔断，而是都通过了之后才熔断。可能是触发熔断但实际熔断有延迟，但最终确实熔断了。
 
 在这个推论的情况下，降低并发就将线程设置为4进行测试，手动执行两次。在第五次会进行熔断。如果把第5次或者还有6次7次都放到一个线程组直接测试，那么就会都通过产生异常没有熔断，也许确实是在第5条时就熔断了但后面的7、8、9等都在熔断之前就通过了，以至于只有后面再次手动调用的才是在熔断之后的状态当中。
 
-![image-20220315174116323](https://gitee.com/Jasper-zh/image_host/raw/master/image-20220315174116323.png)
+![image-20220315174116323](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20220315174116323.png)
 
 
 
