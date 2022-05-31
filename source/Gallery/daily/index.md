@@ -2,6 +2,25 @@
 title: daily
 date: 2022-03-21 09:38:58
 ---
+## 4月9号
+
+{% gallery %}
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220409/IMG_0728.JPG)
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220409/IMG_0706.JPG)
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220409/IMG_0687.JPG)
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220409/IMG_0678.JPG)
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220409/IMG_0677.JPG)
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220409/IMG_0670.JPG)
+
+{% endgallery %}
+
+## 4月5号
 
 {% gallery %}
 
@@ -22,6 +41,11 @@ date: 2022-03-21 09:38:58
 ![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220405/IMG_0629.JPG)
 
 ![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220405/IMG_0623.JPG)
+
+{% endgallery %}
+
+## 4月20号
+{% gallery %}
 
 ![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220320_fxrm1.jpg)
 
