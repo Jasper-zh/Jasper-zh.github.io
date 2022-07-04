@@ -424,7 +424,7 @@ footer:
   owner:
     enable: true
     since: 2019
-  custom_text: <a href="beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a>
+  custom_text: <a href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a>
   copyright: true # Copyright of theme and framework
 
 # Analysis
@@ -432,7 +432,7 @@ footer:
 
 # Baidu Analytics
 # https://tongji.baidu.com/web/welcome/login
-baidu_analytics:
+baidu_analytics: 43ef74dd386a5adcc7d5e42daaa55700
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/
