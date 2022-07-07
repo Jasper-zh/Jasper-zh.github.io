@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yournotes.cn/Gallery/index.html</loc>
+    
+    <lastmod>2022-07-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yournotes.cn/Gallery/daily/index.html</loc>
     
     <lastmod>2022-07-04</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://yournotes.cn/2021/03/27/hexo%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5/</loc>
     
     <lastmod>2022-05-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yournotes.cn/Gallery/index.html</loc>
-    
-    <lastmod>2022-04-21</lastmod>
     
   </url>
   
