@@ -127,19 +127,19 @@ douban:
   user: 223965594
   builtin: true
   book:
-    title: 'This is my book title'
-    quote: 'This is my book quote'
-    meta: true
-    comments: true
-    top_img: /assets/img/page/4.jpg
-    aside: true
-  movie:
-    title: '看过的电影'
+    title: '阅读'
     quote: '过去、现在、未来'
     meta: true
     comments: true
     top_img: /assets/img/page/4.jpg
     aside: true
+  # movie:
+  #   title: '看过的电影'
+  #   quote: '过去、现在、未来'
+  #   meta: true
+  #   comments: true
+  #   top_img: /assets/img/page/4.jpg
+  #   aside: true
   timeout: 10000
 
 search:

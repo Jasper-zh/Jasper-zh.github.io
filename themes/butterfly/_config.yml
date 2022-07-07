@@ -19,7 +19,8 @@ menu:
   #   Movie: /movies/ || fas fa-video
   空间 || fas fa-list:
     音乐: /music/ || fas fa-music
-    电影: /movies/ || fas fa-video
+    # 电影: /movies/ || fas fa-video
+    书籍: /books/ || fas fa-book
     照片: /Gallery/ || fas fa-images
     说说: /artitalk/ || fas fa-folder-open
   # 友链: /link/ || fas fa-link
