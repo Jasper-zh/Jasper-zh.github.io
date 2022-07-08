@@ -3,7 +3,20 @@ title: daily
 date: 2022-03-21 09:38:58
 ---
 
+
+
+##   7月 06
+
+{% gallery %}
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220706/IMG_20220706_164514_04.jpg)
+
+![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220706/IMG_20220706_164716_01.jpg)
+
+{% endgallery %}
+
 ##   7月 04
+
 {% gallery %}
 
 ![](https://yournotes.oss-cn-beijing.aliyuncs.com/gallery/%E6%97%A5%E5%B8%B8/20220702/IMG_0847.JPG)
