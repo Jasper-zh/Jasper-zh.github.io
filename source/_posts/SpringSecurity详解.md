@@ -304,7 +304,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 原因在于我们设置了对所有请求进行认证，因此访问login.html资源时也需要进行认证而认证页 又是访问login.html因此陷入死循环。它本身的登录不需要额外配就会过滤，但我们自己指定的登录页它不会帮我们去过滤掉，我们需要手动放行。
 
-```
+```java
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
@@ -356,7 +356,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 这个很显然就是这些资源请求被拦截的问题，我们需要在Security配置当中通过WebSecurity去忽略指定的内容不参与安全控制。
 
-```
+```java
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
@@ -593,7 +593,7 @@ public UserDetails getCurrentUser(getCurrentUser(@AuthenticationPrincipal UserDe
 
 下面我们来看下他的原理图：
 
-## 2.3.6.1 简单生成Token方法
+#### 2.3.6.1 简单生成Token方法
 
 ![image-20220624134742201]( https://yournotes.oss-cn-beijing.aliyuncs.com/post/document/springsecurity/image-20220624134742201.png)
 
@@ -857,13 +857,17 @@ public void onAuthenticationFailure(HttpServletRequest request, HttpServletRespo
 }
 ```
 
+
+
 就不一一举例了，实现接口重写好方法，在SecurityConfiguration进行配置即可
 
 
 
 ## 2.4 图形验证码
 
-​	图形验证码一般是防止恶意，人眼看起来都费劲，何况是机器。不少网站为了防止用户利用机器人自动注册、登录、灌水，都采用了验证码技术。所谓验证码，就是将一串随机产生的数字或符号，生成一幅图片， 图片里加上一些干扰,。也有目前需要手动滑动的图形验证码，这种可以有专门去做的第三方平台.：比如极验(https://www.geetest.com/), 这里介绍的主要针对图形验证码。
+```tex
+图形验证码一般是防止恶意，人眼看起来都费劲，何况是机器。不少网站为了防止用户利用机器人自动注册、登录、灌水，都采用了验证码技术。所谓验证码，就是将一串随机产生的数字或符号，生成一幅图片， 图片里加上一些干扰,。也有目前需要手动滑动的图形验证码，这种可以有专门去做的第三方平台.：比如极验(https://www.geetest.com/), 这里介绍的主要针对图形验证码。
+```
 
 Spring Security添加验证码大致可以分为三个步骤：
 
@@ -944,7 +948,7 @@ Spring Security的认证校验是由UsernamePasswordAuthenticationFilter过滤�
           stringRedisTemplate.delete(redisKey);
       }
   }
-  ```
+```
 
 * 自定义异常
 
@@ -954,7 +958,7 @@ Spring Security的认证校验是由UsernamePasswordAuthenticationFilter过滤�
           super(msg);
       }
   }
-  ```
+```
 
 * 验证码生成
 
@@ -1088,6 +1092,7 @@ Spring Security的认证校验是由UsernamePasswordAuthenticationFilter过滤�
 
 
 
+
 ## 2.5 session管理
 
 Spring Security可以与Spring Session库配合使用，只需要做一些简单的配置就可以实现一些功能，如(会话过期、一个账号只能同时在线一个、集群session等)
@@ -1156,11 +1161,11 @@ Spring Security可以与Spring Session库配合使用，只需要做一些简单
 
 ### 2.5.3 集群session
 
-​	实际场景中一个服务会至少有两台服务器在提供服务，在服务器前面会有一个nginx做负载均衡，用户访问nginx，nginx再决定去访问哪一台服务器。当一台服务宕机了之后，另一台服务器也可以继续提供服务，保证服务不中断。如果我们将session保存在Web容器(比如tomcat)中，如果一个用户第一次访问被分配到服务器1上面需要登录，当某些访问突然被分配到服务器二上，因为服务器二上没有用户在服务器一上登录的会话session信息，服务器二还会再次让用户登录，用户已经登录了还让登录就感觉不正常了。
+	实际场景中一个服务会至少有两台服务器在提供服务，在服务器前面会有一个nginx做负载均衡，用户访问nginx，nginx再决定去访问哪一台服务器。当一台服务宕机了之后，另一台服务器也可以继续提供服务，保证服务不中断。如果我们将session保存在Web容器(比如tomcat)中，如果一个用户第一次访问被分配到服务器1上面需要登录，当某些访问突然被分配到服务器二上，因为服务器二上没有用户在服务器一上登录的会话session信息，服务器二还会再次让用户登录，用户已经登录了还让登录就感觉不正常了。
 
 ![image-20220626091915015]( https://yournotes.oss-cn-beijing.aliyuncs.com/post/document/springsecurity/image-20220626091915015.png)
 
-​	解决这个问题的思路是用户登录的会话信息不能再保存到Web服务器中，而是保存到一个单独的库
+	解决这个问题的思路是用户登录的会话信息不能再保存到Web服务器中，而是保存到一个单独的库
 (redis、mongodb、jdbc等)中，所有服务器都访问同一个库，都从同一个库来获取用户的session信
 息，如用户在服务器一上登录，将会话信息保存到库中，用户的下次请求被分配到服务器二，服务器二
 从库中检查session是否已经存在，如果存在就不用再登录了，可以直接访问服务了。

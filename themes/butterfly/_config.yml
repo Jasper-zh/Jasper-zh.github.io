@@ -193,7 +193,8 @@ index_post_content:
 toc:
   enable: true
   number: false
-  style_simple: false
+  expand: true
+  style_simple: true
 
 post_copyright:
   enable: true
