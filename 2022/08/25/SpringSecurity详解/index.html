@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yournotes.cn/assets/img/article/article.jpg">
 <meta property="article:published_time" content="2022-08-25T06:11:53.000Z">
-<meta property="article:modified_time" content="2022-08-25T06:40:20.493Z">
+<meta property="article:modified_time" content="2022-08-26T09:53:23.049Z">
 <meta property="article:author" content="木瓜煲鸡脚">
 <meta property="article:tag" content="总结文档">
 <meta name="twitter:card" content="summary">
@@ -64,7 +64,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-08-25 14:40:20'
+  postUpdate: '2022-08-26 17:53:23'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -235,36 +235,31 @@
 <p><img src= "/img/loading.gif" data-lazy-src="https://yournotes.oss-cn-beijing.aliyuncs.com/post/document/springsecurity/image-20220615170240484.png" alt="image-20220615170240484"></p>
 <p>过滤器是一种典型的AOP思想，下面简单了解下这些过滤器链,后续再源码剖析中在涉及到过滤器链之后再仔细讲解.</p>
 <ol>
-<li>org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter</li>
-</ol>
+<li><p>org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter</p>
 <blockquote>
 <p>根据请求封装获取WebAsyncManager，从WebAsyncManager获取/注册的安全上下文可调用处理拦截器</p>
 </blockquote>
-<ol start="2">
-<li>org.springframework.security.web.context.SecurityContextPersistenceFilter</li>
-</ol>
+</li>
+<li><p>org.springframework.security.web.context.SecurityContextPersistenceFilter</p>
 <blockquote>
 <p>SecurityContextPersistenceFilter主要是使用SecurityContextRepository在session中保存或更新一个SecurityContext，并将SecurityContext给以后的过滤器使用，来为后续fifilter建立所需的上下文。SecurityContext中存储了当前用户的认证以及权限信息。</p>
 </blockquote>
-<ol start="3">
-<li>org.springframework.security.web.header.HeaderWriterFilter</li>
-</ol>
+</li>
+<li><p>org.springframework.security.web.header.HeaderWriterFilter</p>
 <blockquote>
 <p>向请求的Header中添加相应的信息,可在http标签内部使用security:headers来控制</p>
 </blockquote>
-<ol start="4">
-<li>org.springframework.security.web.csrf.CsrfFilter</li>
-</ol>
+</li>
+<li><p>org.springframework.security.web.csrf.CsrfFilter</p>
 <blockquote>
 <p>csrf又称跨域请求伪造，SpringSecurity会对所有post请求验证是否包含系统生成的csrf的token信息，如果不包含，则报错。起到防止csrf攻击的效果。</p>
 </blockquote>
-<ol start="5">
-<li>org.springframework.security.web.authentication.logout.LogoutFilter</li>
-</ol>
+</li>
+<li><p>org.springframework.security.web.authentication.logout.LogoutFilter</p>
 <blockquote>
 <p>匹配URL为/logout的请求，实现用户退出,清除认证信息。</p>
 </blockquote>
-<ol start="6">
+</li>
 <li><p>org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter</p>
 <blockquote>
 <p>表单认证操作全靠这个过滤器，默认匹配URL为/login且必须为POST请求。</p>
