@@ -193,23 +193,23 @@ SpringBoot已经为SpringSecurity提供了默认配置，默认工程中所有�
 
 1. org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter
 
-  > 根据请求封装获取WebAsyncManager，从WebAsyncManager获取/注册的安全上下文可调用处理拦截器
+   > 根据请求封装获取WebAsyncManager，从WebAsyncManager获取/注册的安全上下文可调用处理拦截器
 
 2. org.springframework.security.web.context.SecurityContextPersistenceFilter
 
-  > SecurityContextPersistenceFilter主要是使用SecurityContextRepository在session中保存或更新一个SecurityContext，并将SecurityContext给以后的过滤器使用，来为后续fifilter建立所需的上下文。SecurityContext中存储了当前用户的认证以及权限信息。
+   > SecurityContextPersistenceFilter主要是使用SecurityContextRepository在session中保存或更新一个SecurityContext，并将SecurityContext给以后的过滤器使用，来为后续fifilter建立所需的上下文。SecurityContext中存储了当前用户的认证以及权限信息。
 
 3. org.springframework.security.web.header.HeaderWriterFilter
 
-  > 向请求的Header中添加相应的信息,可在http标签内部使用security:headers来控制
+   > 向请求的Header中添加相应的信息,可在http标签内部使用security:headers来控制
 
 4. org.springframework.security.web.csrf.CsrfFilter
 
-  > csrf又称跨域请求伪造，SpringSecurity会对所有post请求验证是否包含系统生成的csrf的token信息，如果不包含，则报错。起到防止csrf攻击的效果。
+   > csrf又称跨域请求伪造，SpringSecurity会对所有post请求验证是否包含系统生成的csrf的token信息，如果不包含，则报错。起到防止csrf攻击的效果。
 
 5. org.springframework.security.web.authentication.logout.LogoutFilter
 
-  > 匹配URL为/logout的请求，实现用户退出,清除认证信息。
+   > 匹配URL为/logout的请求，实现用户退出,清除认证信息。
 
 6. org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 

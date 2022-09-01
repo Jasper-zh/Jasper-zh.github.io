@@ -23,6 +23,7 @@ menu:
     书籍: /books/ || fas fa-book
     照片: /Gallery/ || fas fa-images
     说说: /artitalk/ || fas fa-folder-open
+    工具: /tools/ || fa fa-wrench
   # 友链: /link/ || fas fa-link
   # 关于: /about/ || fas fa-heart
 
