@@ -109,20 +109,20 @@ index_img: '/assets/img/page/top.jpg'
 default_top_img: '/assets/img/page/4.jpg'
 
 # The banner image of archive page
-archive_img: '/assets/img/page/tags_top.png'
+archive_img: '/assets/img/page/tags/tags_top.png'
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: '/assets/img/page/tags_top.png'
+tag_img: '/assets/img/page/tags/tags_top.png'
 
 # The banner image of tag page
 # format:
 #  - tag name: xxxxx
 tag_per_img:
-  吉他谱: '/assets/img/page/guitar.jpg'
-  LeetCode日常: '/assets/img/page/leetcode.jpg'
-  日常问题: '/assets/img/page/daily.jpg'
-  总结文档: '/assets/img/page/document.jpg'
+  吉他谱: '/assets/img/page/tags/guitar.jpg'
+  LeetCode日常: '/assets/img/page/tags/leetcode.jpg'
+  日常问题: '/assets/img/page/tags/daily.jpg'
+  总结文档: '/assets/img/page/tags/document.jpg'
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)

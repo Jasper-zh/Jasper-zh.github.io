@@ -6,11 +6,11 @@ tags: Hexo
 
 
 
-## hexo安装
+# 前言
 
-很早之前呢也是写过博客系统[（旧版）](www.yournotes.cn)，那时是顺便练习java web基础对于前端也是使用基本的三剑客完成配合一下后端。真正的作为个人的博客使用起来还是不舒服。这次选择直接使用hexo做一个长期日常使<!--more-->用的博客系统[（hexo版）](Jasper-zh.github.io)
+> 很早之前呢也是写过博客系统[（旧版）](www.yournotes.cn)，那时是学生时代练习java web基础对于前端也是使用基本的三剑客完成配合一下后端。真正的作为个人的博客使用起来还是不舒服当时但也懒得写个。这次选择直接使用hexo做一个长期日常使用的博客系统[（hexo版）](Jasper-zh.github.io)
 
-### Hexo是什么
+# Hexo是什么
 
 **Hexo**是基于**nodejs**的，那么我们需要知道**nodejs**是什么
 
@@ -18,7 +18,7 @@ tags: Hexo
 
 **Hexo**是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上
 
-### 获取Hexo
+#  环境准备
 
 首先到官网安装nodejs
 
@@ -33,7 +33,7 @@ npm -v
 
 ![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/02.png)
 
-我们通过包管理器npm来安装hexo,但由于源是国外的访问很慢。在之前先添加国内镜像再安装
+`下面可选：我们通过包管理器npm来安装hexo,但由于源是国外的访问有可能慢。可以添加下国内镜像再安装`
 
 ```shell
 npm install -g cnpm --registry=https://registry.npm.taobao.org
@@ -41,9 +41,11 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 ![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/03.png)
 
-执行完出现如图所示即添加完成，我们再安装时使用cnpm就是使用的国内源
+> 执行完出现如图所示即添加完成，当使用cnpm指令就是使用的国内源，也可以使用原先的npm
 
-安装hexo
+
+
+# 安装hexo
 
 ```shell
 cnpm install -g hexo-cli
@@ -59,13 +61,15 @@ hexo -v
 
 
 
-## hexo使用
+#  hexo使用
 
-### 初始化博客目录
+##  初始化博客目录
 
 在本地创建一个目录比如blog作为博客项目工作区
 
 在你选择的目录下执行初始化命令hexo init,在此之前如果你没有安装git那要先把git安装一下
+
+`之后下面的命令如果识别不了hexo指令，可以在指令前面统一加上npx`
 
 ```shell
 F:\blog>hexo init
@@ -87,7 +91,7 @@ hexo s
 
 
 
-### 添加文章
+## 添加文章
 
 执行语句实际上就是在/source/_posts/目录下添加了md文件。你可以去编辑这个md文件
 
@@ -112,7 +116,7 @@ hexo s //开启服务
     
 ```
 
-重新访问，在Hello World文章上面就是我们刚刚写的文章。基本博客功能完成了，接下来部署到github上面随时访问
+重新访问，在Hello World文章上面就是我们刚刚写的文章。基本博客功能完成了，接下来部署到github上面进行公网访问
 
 ![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/11.png)
 
@@ -120,27 +124,21 @@ hexo s //开启服务
 
 
 
-## 部署到github
+# 部署到github
 
-现在本地可以访问了，由于他只是一个静态项目把它部署在github上就可以做一个公开访问了。或者说码云也可以开在服务器上，这里就用github演示。没有就注册一个然后创建库，作为个人博客部署一定要用  *(你的github用户名).github.io*  来作为库名创建就可以。我的是Jasper-zh.github.io 
+现在本地可以访问了，由于他只是一个静态项目把它部署在github上就可以做一个公开访问了。这里就用github演示。没有就注册一个然后创建库，作为个人博客部署一定要用  *(你的github用户名).github.io*  来作为库名创建就可以。我的是Jasper-zh.github.io 
 
 ![](https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/hexo搭建博客/12.png)
 
-这一步设置username.github.io是为了开启静态服务，页面项目上传到仓库要想直接访问这些静态资源需要开启静态服务。如果是不是github是码云的话仓库名随便取，之后按下面方式开启静态服务
+这一步设置username.github.io是为了开启静态服务，页面项目上传到仓库要想直接访问这些静态资源需要开启静态服务。
 
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628180409.png)
-
-开启后得到网址，通过这个网址访问内容
-
-![](https://gitee.com/Jasper-zh/image_host/raw/master/20210628180640.png)
-
-接下来在blog目录下安装hexo的git部署插件
+接下来在blog目录下安装hexo的git部署插件（作用是一键将环境生成的静态页项目放到github当中）`手动push也是一样的`
 
 ```shell
 cnpm install --save hexo-deployer-git
 ```
 
-安装完在目录中的_config.yml中配置上部署的方式和地址。也就是你刚刚创建的库
+安装完在目录中的_config.yml中配置上部署的方式和地址。比如这里是  git类型、git仓库是github的一个仓库、仓库的分支是master
 
 ```shell
 deploy:
