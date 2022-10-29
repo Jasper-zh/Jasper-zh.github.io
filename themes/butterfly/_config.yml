@@ -1,39 +1,22 @@
 # Main menu navigation (導航目錄)
+# see https://butterfly.js.org/posts/4aa8abbe/#導航菜單
 # --------------------------------------
-
-# format: name: link || icon
-# sub-menu
-# name || icon:
-#   name || link || icon
 
 menu:
   # Home: / || fas fa-home
-  主页: / || fas fa-home
   # Archives: /archives/ || fas fa-archive
-  时间轴: /archives/ || fas fa-archive
   # Tags: /tags/ || fas fa-tags
-  标签: /tags/ || fas fa-tags
   # Categories: /categories/ || fas fa-folder-open
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
-  空间 || fas fa-list:
-    音乐: /music/ || fas fa-music
-    # 电影: /movies/ || fas fa-video
-    书籍: /books/ || fas fa-book
-    照片: /Gallery/ || fas fa-images
-    说说: /artitalk/ || fas fa-folder-open
-    工具: /tools/ || fa fa-wrench
-  # 友链: /link/ || fas fa-link
-  # 关于: /about/ || fas fa-heart
-
-# Hide the child menu items in mobile sidebar
-hide_sidebar_menu_child: false
+  # Link: /link/ || fas fa-link
+  # About: /about/ || fas fa-heart
 
 # Code Blocks (代碼相關)
 # --------------------------------------
 
-highlight_theme: mac #light /  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: light #  darker / pale night / light / ocean / mac / mac light / false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
 highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
@@ -45,7 +28,7 @@ code_word_wrap: false
 copy:
   enable: true
   copyright:
-    enable: true
+    enable: false
     limit_count: 50
 
 # social settings (社交圖標設置)
@@ -54,10 +37,9 @@ copy:
 social:
   # fab fa-github: https://github.com/xxxxx || Github
   # fas fa-envelope: mailto:xxxxxx@gmail.com || Email
-  fab fa-github: https://github.com/jasper-zh || Github
-  fas fa-envelope: mailto:zhanghao9031@outlook.com || Email
 
 # search (搜索)
+# see https://butterfly.js.org/posts/ceeb73f/#搜索系統
 # --------------------------------------
 
 # Algolia search
@@ -68,7 +50,9 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: true
+  enable: false
+  preload: false
+  CDN:
 
 # Math (數學)
 # --------------------------------------
@@ -92,37 +76,33 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /assets/img/favicon64.ico
+favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: /assets/img/hao.jpg
+  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: '/assets/img/page/top.jpg'
+index_img:
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: '/assets/img/page/4.jpg'
+default_top_img:
 
 # The banner image of archive page
-archive_img: '/assets/img/page/tags/tags_top.png'
+archive_img:
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: '/assets/img/page/tags/tags_top.png'
+tag_img:
 
 # The banner image of tag page
 # format:
 #  - tag name: xxxxx
 tag_per_img:
-  吉他谱: '/assets/img/page/tags/guitar.jpg'
-  LeetCode日常: '/assets/img/page/tags/leetcode.jpg'
-  日常问题: '/assets/img/page/tags/daily.jpg'
-  总结文档: '/assets/img/page/tags/document.jpg'
 
 # If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
@@ -143,7 +123,6 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    '/assets/img/article/article.jpg'
     # - https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
 
 # Replace Broken Images (替換無法顯示的圖片)
@@ -153,25 +132,26 @@ error_img:
 
 # A simple 404 page
 error_404:
-  enable: true
-  subtitle: '页面没有找到！'
+  enable: false
+  subtitle: 'Page Not Found'
   background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
 
 post_meta:
   page: # Home Page
     date_type: created # created or updated or both 主頁文章日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
-    categories: false # true or false 主頁是否顯示分類
-    tags: true # true or false 主頁是否顯示標籤
+    categories: true # true or false 主頁是否顯示分類
+    tags: false # true or false 主頁是否顯示標籤
     label: true # true or false 顯示描述性文字
   post:
-    date_type: created # created or updated or both 文章頁日期是創建日或者更新日或都顯示
+    date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
-    categories: false # true or false 文章頁是否顯示分類
-    tags: false # true or false 文章頁是否顯示標籤
+    categories: true # true or false 文章頁是否顯示分類
+    tags: true # true or false 文章頁是否顯示標籤
     label: true # true or false 顯示描述性文字
 
 # wordcount (字數統計)
+# see https://butterfly.js.org/posts/ceeb73f/#字數統計
 wordcount:
   enable: false
   post_wordcount: true
@@ -187,19 +167,29 @@ index_post_content:
   method: 3
   length: 500 # if you set method to 2 or 3, the length need to config
 
+# anchor
+anchor:
+  button:
+    enable: false
+    always_show: false
+    icon: # the unicode value of Font Awesome icon, such as '\3423'
+  auto_update: false # when you scroll in post, the URL will update according to header id.
+
 # Post
 # --------------------------------------
 
 # toc (目錄)
 toc:
-  enable: true
-  number: false
-  expand: true
-  style_simple: true
+  post: true
+  page: false
+  number: true
+  expand: false
+  style_simple: false # for post
 
 post_copyright:
   enable: true
-  decode: true
+  decode: false
+  author_href:
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
@@ -224,7 +214,7 @@ post_edit:
 
 # Related Articles
 related_post:
-  enable: false
+  enable: true
   limit: 6 # Number of posts displayed
   date_type: created # or created or updated 文章日期顯示創建日或者更新日
 
@@ -237,10 +227,6 @@ photofigcaption: false
 # 2: The 'next post' will link to new post
 # false: disable pagination
 post_pagination: 1
-
-# anchor
-# when you scroll in post, the URL will update according to header id.
-anchor: false
 
 # Displays outdated notice for a post (文章過期提醒)
 noticeOutdate:
@@ -277,10 +263,8 @@ addtoany:
 
 comments:
   # Up to two comments system, the first will be shown as default
-  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo
-  use:
-  # - Valine
-  # - Disqus
+  # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
+  use: # Valine,Disqus
   text: true # Display the comment name next to the button
   # lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
@@ -292,18 +276,15 @@ comments:
 # https://disqus.com/
 disqus:
   shortname:
+  apikey: # For newest comments widget
 
 # Alternative Disqus - Render comments with Disqus API
 # DisqusJS 評論系統，可以實現在網路審查地區載入 Disqus 評論列表，兼容原版
 # https://github.com/SukkaW/DisqusJS
 disqusjs:
   shortname:
-  siteName:
   apikey:
-  api:
-  nocomment: # display when a blog post or an article has no comment attached
-  admin:
-  adminLabel:
+  option:
 
 # livere (來必力)
 # https://www.livere.com/
@@ -318,11 +299,6 @@ gitalk:
   repo:
   owner:
   admin:
-  language: en # en, zh-CN, zh-TW, es-ES, fr, ru
-  perPage: 10 # Pagination size, with maximum 100.
-  distractionFreeMode: false # Facebook-like distraction free mode.
-  pagerDirection: last # Comment sorting direction, available values are last and first.
-  createIssueManually: false # Gitalk will create a corresponding github issue for your every single page automatically
   option:
 
 # valine
@@ -330,17 +306,9 @@ gitalk:
 valine:
   appId: # leancloud application app id
   appKey: # leancloud application app key
-  pageSize: 10 # comment list page size
   avatar: monsterid # gravatar style https://valine.js.org/#/avatar
-  lang: zh_CN # i18n: zh-CN/zh-TW/en/ja
-  placeholder: 记得留下你的昵称和邮箱......可以收到快速回复 # valine comment input placeholder (like: Please leave your footprints)
-  guest_info: nick,mail,link # valine comment header info (nick/mail/link)
-  recordIP: false # Record reviewer IP
   serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
   bg: # valine background
-  emojiCDN: # emoji CDN
-  enableQQ: false # enable the Nickname box to automatically get QQ Nickname and QQ Avatar
-  requiredFields: nick,mail # required fields (nick/mail)
   visitor: false
   option:
 
@@ -348,10 +316,8 @@ valine:
 # https://waline.js.org/
 waline:
   serverURL: # Waline server address url
-  avatar: monsterid # gravatar style https://zh-tw.gravatar.com/site/implement/images/#default-image
-  emojiCDN: # emoji CDN
   bg: # waline background
-  visitor: false
+  pageview: false
   option:
 
 # utterances
@@ -371,13 +337,39 @@ facebook_comments:
   user_id: # optional
   pageSize: 10 # The number of comments to show
   order_by: social # social/time/reverse_time
-  lang: en_US # Language en_US/zh_CN/zh_TW and so on
+  lang: zh_TW # Language en_US/zh_CN/zh_TW and so on
 
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
   envId:
   region:
+  visitor: false
+  option:
+
+# Giscus
+# https://giscus.app/
+giscus:
+  repo:
+  repo_id:
+  category_id:
+  theme:
+    light: light
+    dark: dark
+  option:
+
+# Remark42
+# https://remark42.com/docs/configuration/frontend/
+remark42:
+  host: # Your Host URL
+  siteId: # Your Site ID
+  option:
+
+# Artalk
+# https://artalk.js.org/guide/frontend/config.html
+artalk:
+  server:
+  site:
   visitor: false
   option:
 
@@ -421,13 +413,20 @@ crisp:
   enable: false
   website_id:
 
+# messenger
+# https://developers.facebook.com/docs/messenger-platform/discovery/facebook-chat-plugin/
+messenger:
+  enable: false
+  pageID:
+  lang: zh_TW # Language en_US/zh_CN/zh_TW and so on
+
 # Footer Settings
 # --------------------------------------
 footer:
   owner:
     enable: true
-    since: 2019
-  custom_text: <a href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a>
+    since: 2020
+  custom_text:
   copyright: true # Copyright of theme and framework
 
 # Analysis
@@ -435,15 +434,11 @@ footer:
 
 # Baidu Analytics
 # https://tongji.baidu.com/web/welcome/login
-baidu_analytics: 43ef74dd386a5adcc7d5e42daaa55700
+baidu_analytics:
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/
 google_analytics:
-
-# Tencent Analytics ID
-# https://mta.qq.com
-tencent_analytics:
 
 # CNZZ Analytics
 # https://www.umeng.com/
@@ -465,7 +460,7 @@ google_adsense:
   enable: false
   auto_ads: true
   js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client: ca-pub-1918629210609729
+  client:
   enable_page_level_ads: true
 
 # Insert ads manually (手動插入廣告)
@@ -477,25 +472,11 @@ google_adsense:
 # Verification (站長驗證)
 # --------------------------------------
 
-# Google Webmaster tools verification setting
-# See: https://www.google.com/webmasters/
-google_site_verification:
-
-# Bing Webmaster tools verification setting
-# See: https://www.bing.com/webmaster/
-bing_site_verification:
-
-# Baidu Webmaster tools verification setting
-# See: https://ziyuan.baidu.com/site/
-baidu_site_verification:
-
-# 360 Webmaster tools verification setting
-# see http://zhanzhang.so.com/
-qihu_site_verification:
-
-# Yandex Webmaster tools verification setting
-# see https://webmaster.yandex.com/
-yandex_site_verification:
+site_verification:
+  # - name: google-site-verification
+  #   content: xxxxxx
+  # - name: baidu-site-verification
+  #   content: xxxxxxx
 
 # Beautify/Effect (美化/效果)
 # --------------------------------------
@@ -517,6 +498,9 @@ yandex_site_verification:
 #   toc_color: "#00c4b6"
 #   blockquote_padding_color: "#49b1f5"
 #   blockquote_background_color: "#49b1f5"
+#   scrollbar_color: "#49b1f5"
+#   meta_theme_color_light: "ffffff"
+#   meta_theme_color_dark: "#0d0d0d"
 
 # The top_img settings of home page
 # default: top img - full screen, site info - middle (默認top_img全屏，site_info在中間)
@@ -535,18 +519,6 @@ tag_ui: # 留空或 index
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
 background:
-  -webkit-linear-gradient(
-  0deg,
-  rgba(247, 149, 51, 0.1) 0,
-  rgba(243, 112, 85, 0.1) 15%,
-  rgba(239, 78, 123, 0.1) 30%,
-  rgba(161, 102, 171, 0.1) 44%,
-  rgba(80, 115, 184, 0.1) 58%,
-  rgba(16, 152, 173, 0.1) 72%,
-  rgba(7, 179, 155, 0.1) 86%,
-  rgba(109, 186, 130, 0.1) 100%
-  );
-  # url(https://gitee.com/Jasper-zh/image_host/raw/master/c9d3deb2880411ebb6edd017c2d2eca2.jpg)
 
 # Footer Background
 footer_bg: false
@@ -595,9 +567,9 @@ activate_power_mode:
 
 # Mouse click effects: fireworks (鼠標點擊效果: 煙火特效)
 fireworks:
-  enable: true
+  enable: false
   zIndex: 9999 # -1 or 9999
-  mobile: true
+  mobile: false
 
 # Mouse click effects: Heart symbol (鼠標點擊效果: 愛心)
 click_heart:
@@ -621,10 +593,10 @@ display_mode: light
 
 # Beautify (美化頁面顯示)
 beautify:
-  enable: true
-  field: site # site/post
-  title-prefix-icon: '\f0c1'
-  title-prefix-icon-color: '#F47466'
+  enable: false
+  field: post # site/post
+  title-prefix-icon: # '\f0c1'
+  title-prefix-icon-color: # '#F47466'
 
 # Global font settings
 # Don't modify the following settings unless you know how they work (非必要不要修改)
@@ -637,8 +609,8 @@ font:
 # Font settings for the site title and site subtitle
 # 左上角網站名字 主頁居中網站名字
 blog_title_font:
-  font_link: https://fonts.googleapis.com/css?family=Titillium+Web&display=swap
-  font-family: Titillium Web, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif
+  font_link:
+  font-family:
 
 # The setting of divider icon (水平分隔線圖標設置)
 hr_icon:
@@ -648,27 +620,34 @@ hr_icon:
 
 # the subtitle on homepage (主頁subtitle)
 subtitle:
-  enable: true
+  enable: false
   # Typewriter Effect (打字效果)
   effect: true
+  # Effect Speed Options (打字效果速度參數)
+  startDelay: 300 # time before typing starts in milliseconds
+  typeSpeed: 150 # type speed in milliseconds
+  backSpeed: 50 # backspacing speed in milliseconds
   # loop (循環打字)
   loop: true
-  # source調用第三方服務
+  # source 調用第三方服務
   # source: false 關閉調用
-  # source: 1  調用搏天api的隨機語錄（簡體）
-  # source: 2  調用一言網的一句話（簡體）
-  # source: 3  調用一句網（簡體）
-  # source: 4  調用今日詩詞（簡體）
+  # source: 1  調用一言網的一句話（簡體） https://hitokoto.cn/
+  # source: 2  調用一句網（簡體） http://yijuzhan.com/
+  # source: 3  調用今日詩詞（簡體） https://www.jinrishici.com/
   # subtitle 會先顯示 source , 再顯示 sub 的內容
   source: false
-  # 如果有英文逗號' , ',請使用轉義字元 &#44;
-  # 如果有英文雙引號' " ',請使用轉義字元 &quot;
-  # 開頭不允許轉義字元，如需要，請把整個句子用雙引號包住
-  # 如果關閉打字效果，subtitle只會顯示sub的第一行文字
-  sub: Cruel is the beginning of growth
+  # 如果關閉打字效果，subtitle 只會顯示 sub 的第一行文字
+  sub:
 
 # Loading Animation (加載動畫)
-preloader: false
+preloader:
+  enable: false
+  # source
+  # 1. fullpage-loading
+  # 2. pace (progress bar)
+  source: 1
+  # pace theme (see https://codebyzach.github.io/pace/)
+  pace_css_url:
 
 # aside (側邊欄)
 # --------------------------------------
@@ -679,6 +658,10 @@ aside:
   button: true
   mobile: true # display on mobile
   position: right # left or right
+  display:
+    archive: true
+    tag: true
+    category: true
   card_author:
     enable: true
     description:
@@ -686,10 +669,10 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/jasper-zh
+      link: https://github.com/xxxxxx
   card_announcement:
     enable: true
-    content: 广告已关闭，收入1毛4...
+    content: This is my Blog
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
@@ -738,23 +721,9 @@ newest_comments:
   limit: 6
   storage: 10 # unit: mins, save data to localStorage
   avatar: true
-  # You can only choose one, or neither
-  valine: false
-  github_issues:
-    enable: false
-    repo:
-  disqus:
-    enable: false
-    forum:
-    api_key:
-  twikoo: false
-  waline: false
 
 # Bottom right button (右下角按鈕)
 # --------------------------------------
-
-# Change font size
-change_font_size: false
 
 # Conversion between Traditional and Simplified Chinese (簡繁轉換)
 translate:
@@ -784,6 +753,14 @@ darkmode:
   # autoChangeMode: false
   autoChangeMode: false
 
+# Don't modify the following settings unless you know how they work (非必要請不要修改 )
+# Choose: readmode,translate,darkmode,hideAside,toc,chat,comment
+# Don't repeat 不要重複
+rightside_item_order:
+  enable: false
+  hide: # readmode,translate,darkmode,hideAside
+  show: # toc,chat,comment
+
 # Lightbox (圖片大圖查看模式)
 # --------------------------------------
 # You can only choose one, or neither (只能選擇一個 或者 兩個都不選)
@@ -800,11 +777,13 @@ fancybox: true
 # --------------------------------------
 
 # mermaid
-# see https://github.com/knsv/mermaid
+# see https://github.com/mermaid-js/mermaid
 mermaid:
   enable: false
   # built-in themes: default/forest/dark/neutral
-  theme: default
+  theme:
+    light: default
+    dark: dark
 
 # Note (Bootstrap Callout)
 note:
@@ -845,7 +824,7 @@ snackbar:
   enable: false
   position: bottom-left
   bg_light: '#49b1f5' # The background color of Toast Notification in light mode
-  bg_dark: '#121212' # The background color of Toast Notification in dark mode
+  bg_dark: '#1f1f1f' # The background color of Toast Notification in dark mode
 
 # https://instant.page/
 # prefetch (預加載)
@@ -858,10 +837,12 @@ pangu:
   field: site # site/post
 
 # Lazyload (圖片懶加載)
-# https://github.com/verlok/lazyload
+# https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: true
-  post: /img/loading.gif
+  enable: false
+  field: site # site/post
+  placeholder:
+  blur: false
 
 # PWA
 # See https://github.com/JLHwung/hexo-offline
@@ -876,7 +857,16 @@ lazyload:
 
 # Open graph meta tags
 # https://developers.facebook.com/docs/sharing/webmasters/
-Open_Graph_meta: true
+Open_Graph_meta:
+  enable: true
+  option:
+    # twitter_card:
+    # twitter_image:
+    # twitter_id:
+    # twitter_site:
+    # google_plus:
+    # fb_admins:
+    # fb_app_id:
 
 # Add the vendor prefixes to ensure compatibility
 css_prefix: true
@@ -894,87 +884,72 @@ inject:
 # Don't modify the following settings unless you know how they work
 # 非必要請不要修改
 CDN:
-  # main
-  main_css: /css/index.css
-  jquery: https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js
-  main: /js/main.js
-  utils: /js/utils.js
+  # The CDN provider of internal scripts (主題內部 js 的 cdn 配置)
+  # option: local/jsdelivr/unpkg/cdnjs/custom
+  # Dev version can only choose. ( dev版的主題只能設置為 local )
+  internal_provider: local
 
-  # pjax
-  pjax: https://cdn.jsdelivr.net/npm/pjax/pjax.min.js
+  # The CDN provider of third party scripts (第三方 js 的 cdn 配置)
+  # option: local/jsdelivr/unpkg/cdnjs/custom
+  # when set it to local, you need to install hexo-butterfly-extjs
+  third_party_provider: jsdelivr
 
-  # comments
-  gitalk: https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js
-  gitalk_css: https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css
-  valine: https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js
-  disqusjs: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqus.js
-  disqusjs_css: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css
-  utterances: https://utteranc.es/client.js
-  twikoo: https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js
-  waline: https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js
+  # Add version number to CDN, true or false  
+  version: false
 
-  # share
-  addtoany: https://static.addtoany.com/menu/page.js
-  sharejs: https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js
-  sharejs_css: https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css
+  # Custom format
+  # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
+  custom_format:
 
-  # search
-  local_search: /js/search/local-search.js
-  # algolia_js: /js/search/algolia.js
-  # algolia_search: https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js
-  # algolia_search_css: https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css
-
-  # math
-  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  katex: https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
-  katex_copytex: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js
-  katex_copytex_css: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css
-  mermaid: https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
-
-  # count
-  busuanzi: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
-
-  # background effect
-  canvas_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js
-  canvas_fluttering_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js
-  canvas_nest: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js
-
-  lazyload: https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js
-  instantpage: https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js
-  typed: https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js
-  pangu: https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js
-
-  # photo
-  fancybox_css: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css
-  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js
-  medium_zoom: https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js
-
-  # snackbar
-  snackbar_css: https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css
-  snackbar: https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js
-
-  # effect
-  activate_power_mode: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js
-  fireworks: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js
-  click_heart: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js
-  ClickShowText: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js
-
-  # fontawesome
-  fontawesome: https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css
-
-  # Conversion between Traditional and Simplified Chinese
-  translate: /js/tw_cn.js
-
-  # justifiedGallery
-  justifiedGallery_js: https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js
-  justifiedGallery_css: https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css
-
-  # aplayer
-  aplayer_css: https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css
-  aplayer_js: https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js
-  meting_js: https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js
-
-  # Prism.js
-  prismjs_js: https://cdn.jsdelivr.net/npm/prismjs/prism.min.js
-  prismjs_lineNumber_js: https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js
-  prismjs_autoloader: https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js
+  option:
+    # main_css:
+    # main:
+    # utils:
+    # translate:
+    # local_search:
+    # algolia_js:
+    # algolia_search_v4:
+    # instantsearch_v4:
+    # pjax:
+    # gitalk:
+    # gitalk_css:
+    # blueimp_md5:
+    # valine:
+    # disqusjs:
+    # disqusjs_css:
+    # twikoo:
+    # waline_js:
+    # waline_css:
+    # sharejs:
+    # sharejs_css:
+    # mathjax:
+    # katex:
+    # katex_copytex:
+    # mermaid:
+    # canvas_ribbon:
+    # canvas_fluttering_ribbon:
+    # canvas_nest:
+    # lazyload:
+    # instantpage:
+    # typed:
+    # pangu:
+    # fancybox_css_v4:
+    # fancybox_v4:
+    # medium_zoom:
+    # snackbar_css:
+    # snackbar:
+    # activate_power_mode:
+    # fireworks:
+    # click_heart:
+    # ClickShowText:
+    # fontawesomeV6:
+    # flickr_justified_gallery_js:
+    # flickr_justified_gallery_css:
+    # aplayer_css:
+    # aplayer_js:
+    # meting_js:
+    # prismjs_js:
+    # prismjs_lineNumber_js:
+    # prismjs_autoloader:
+    # artalk_js:
+    # artalk_css:
