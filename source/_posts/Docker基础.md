@@ -3,6 +3,8 @@ title: Docker基础
 date: 2021-08-01 18:15:54
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 一、Docker简介

@@ -3,6 +3,8 @@ title: AOP面向切面
 date: 2021-04-18 17:12:04
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. 转账案例

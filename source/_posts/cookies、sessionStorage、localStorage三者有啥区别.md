@@ -1,7 +1,9 @@
 ---
 title: cookies、sessionStorage、localStorage三者有啥区别
 date: 2021-10-18 15:11:58
-tags: 日常问题
+tags: 随笔
+categories: 
+- 日常问题
 ---
 
 ## 前言

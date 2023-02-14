@@ -3,6 +3,8 @@ title: Bootstrap详解
 date: 2020-01-05 18:37:14
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1.bootstrap简介

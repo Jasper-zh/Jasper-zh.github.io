@@ -1,9 +1,10 @@
 ---
-
 title: Dubbo详解
 date: 2021-05-23 15:58:17
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 一、Dubbo概述
