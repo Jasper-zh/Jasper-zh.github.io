@@ -3,6 +3,8 @@ title: Linux系统概述和编程基础
 date: 2020-01-12 12:07:10
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. Linux系统概述（常识）

@@ -3,6 +3,8 @@ title: EL和JSTL核心技术
 date: 2020-01-11 10:54:11
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. EL表达式（熟悉）

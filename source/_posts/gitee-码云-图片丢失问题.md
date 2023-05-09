@@ -2,6 +2,9 @@
 title: gitee(码云)图片丢失问题
 date: 2020-12-13 10:57:49
 tags: 日常问题
+categories: 
+- 日常
+- 问题
 ---
 
 ### gitee(码云)图片丢失

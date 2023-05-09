@@ -3,6 +3,8 @@ title: Redis详解
 date: 2021-06-08 17:41:17
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 一、概述

@@ -3,6 +3,8 @@ title: SpringMVC 进阶
 date: 2021-05-09 15:22:02
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. ajax异步交互

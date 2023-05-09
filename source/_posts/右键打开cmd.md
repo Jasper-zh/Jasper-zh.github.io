@@ -2,6 +2,9 @@
 title: 右键打开cmd
 date: 2021-03-27 13:47:59
 tags: 日常问题
+categories: 
+- 日常
+- 折腾
 ---
 
 

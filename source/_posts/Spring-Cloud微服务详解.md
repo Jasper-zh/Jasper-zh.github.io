@@ -3,6 +3,8 @@ title: Spring Cloud微服务详解
 date: 2021-07-22 11:58:17
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 {% note warning simple %}

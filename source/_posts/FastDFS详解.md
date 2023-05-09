@@ -3,6 +3,8 @@ title: FastDFS详解
 date: 2021-06-15 11:44:21
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. 场景概述

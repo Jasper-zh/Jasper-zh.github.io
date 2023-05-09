@@ -2,6 +2,9 @@
 title: LeetCode初级算法之其他：190.颠倒二进制位
 date: 2021-10-27 09:59:25
 tags: LeetCode日常
+categories: 
+- 算法
+- LeetCode
 ---
 
 ## 题目信息

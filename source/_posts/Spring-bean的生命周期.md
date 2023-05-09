@@ -2,6 +2,9 @@
 title: Spring bean的生命周期
 date: 2020-08-29 16:08:13
 tags: java框架
+categories: 
+- JAVA
+- Spring
 ---
 
 ##### 概述

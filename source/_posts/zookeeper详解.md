@@ -3,6 +3,8 @@ title: zookeeper详解
 date: 2021-06-01 20:39:00
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 一、Zookeeper概述

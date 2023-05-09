@@ -3,6 +3,8 @@ title: XML
 date: 2019-03-03 11:57:54
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ### 1. XML基本介绍

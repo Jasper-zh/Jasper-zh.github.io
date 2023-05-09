@@ -2,6 +2,9 @@
 title: 更新hexo版本
 date: 2021-03-27 10:58:44
 tags: Hexo
+categories: 
+- 博客系统
+- Hexo
 ---
 
 ### 前言

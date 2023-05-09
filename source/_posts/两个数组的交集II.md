@@ -2,6 +2,9 @@
 title: LeetCode初级算法之数组：350.两个数组的交集 II
 date: 2020-09-20 11:32:48
 tags: LeetCode日常
+categories: 
+- 算法
+- LeetCode
 ---
 
 #### 两个数组的交集 II

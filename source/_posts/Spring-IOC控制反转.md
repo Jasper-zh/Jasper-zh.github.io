@@ -3,6 +3,8 @@ title: Spring IOC控制反转
 date: 2021-04-11 11:32:47
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. Spring概述

@@ -3,6 +3,8 @@ title: Mybatis基本应用
 date: 2021-03-20 19:56:53
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. 框架简介

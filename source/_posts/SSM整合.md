@@ -3,6 +3,8 @@ title: SSM整合
 date: 2021-05-16 16:09:22
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. 需求和步骤分析

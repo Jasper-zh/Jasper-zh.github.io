@@ -3,6 +3,8 @@ title: Vue.js
 date: 2021-02-27 12:07:10
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 {% note warning simple %}

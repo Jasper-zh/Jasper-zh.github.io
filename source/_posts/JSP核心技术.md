@@ -3,6 +3,8 @@ title: JSP核心技术
 date: 2020-01-09 11:15:05
 tags: 总结文档
 copyright: false
+categories: 
+- JAVA
 ---
 
 ## 1.JSP的概述（熟悉）

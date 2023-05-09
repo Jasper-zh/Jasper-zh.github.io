@@ -2,6 +2,9 @@
 title: hexo多端同步
 date: 2021-03-27 10:43:51
 tags: Hexo
+categories: 
+- 博客搭建
+- hexo
 ---
 
 ### 前言

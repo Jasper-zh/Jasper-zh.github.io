@@ -3,6 +3,8 @@ title: ECMAScript6详解
 date: 2020-01-05 18:00:26
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1.ECMAScript6 简介

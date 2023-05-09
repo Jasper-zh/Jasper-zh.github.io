@@ -3,6 +3,8 @@ title: 数据库连接池&DBUtils
 date: 2019-12-23 07:31:53
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ### 1. 数据库连接池

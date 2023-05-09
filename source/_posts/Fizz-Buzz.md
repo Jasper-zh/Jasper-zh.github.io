@@ -2,6 +2,9 @@
 title: LeetCode初级算法之数学问题：412.Fizz Buzz
 date: 2021-05-22 11:18:18
 tags: LeetCode日常
+categories: 
+- 算法
+- LeetCode
 ---
 
 #### 题目信息

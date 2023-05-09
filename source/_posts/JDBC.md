@@ -2,7 +2,8 @@
 title: JDBC
 date: 2019-12-22 12:57:36
 tags: 总结文档
-copyright: false
+copyright: falsecategories: 
+- JAVA
 ---
 
 ### 1. JDBC概述

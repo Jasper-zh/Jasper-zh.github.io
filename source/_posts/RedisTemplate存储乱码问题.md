@@ -2,6 +2,9 @@
 title: RedisTemplate存储乱码问题
 date: 2021-08-28 15:14:38
 tags: 日常问题
+categories: 
+- 日常
+- 问题
 ---
 
 ### 前言

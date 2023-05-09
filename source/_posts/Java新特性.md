@@ -3,6 +3,8 @@ title: Java新特性
 date: 2019-08-24 21:06:29
 tags: 总结文档
 copyright: false
+categories: 
+- JAVA
 ---
 
 ### 1 Java8的新特性

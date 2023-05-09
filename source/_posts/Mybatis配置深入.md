@@ -3,6 +3,8 @@ title: Mybatis配置深入
 date: 2021-03-27 11:09:54
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. Mybatis高级查询

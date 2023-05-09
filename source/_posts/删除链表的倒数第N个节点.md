@@ -2,6 +2,9 @@
 title: LeetCode初级算法之链表：19.删除链表的倒数第N个节点
 date: 2020-12-13 17:58:39
 tags: LeetCode日常
+categories: 
+- 算法
+- LeetCode
 ---
 
 ### 删除链表的倒数第N个节点

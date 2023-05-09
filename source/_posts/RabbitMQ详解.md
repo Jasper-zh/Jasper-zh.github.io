@@ -3,6 +3,8 @@ title: RabbitMQ详解
 date: 2021-06-22 15:25:09
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 {% note warning simple %}

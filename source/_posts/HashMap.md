@@ -2,6 +2,8 @@
 title: HashMap
 date: 2020-08-12 08:22:39
 tags: Java
+categories: 
+- JAVA
 ---
 
 #### HashMap概述

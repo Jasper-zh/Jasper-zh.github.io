@@ -2,6 +2,8 @@
 title: SpringSecurity详解
 date: 2022-08-25 14:11:53
 tags: 总结文档
+categories: 
+- 记录文档
 ---
 
 # 一、SpringSecurity入门

@@ -3,7 +3,8 @@ title: Drone+Github搭建自动化流水线
 date: 2021-07-30 10:31:53
 tags: 日常折腾
 categories: 
-- 日常折腾
+- 日常
+- 折腾
 ---
 
 

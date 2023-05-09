@@ -3,6 +3,8 @@ title: JDBC综合案例
 date: 2020-01-04 09:51:59
 tags: 总结文档
 copyright: false
+categories: 
+- JAVA
 ---
 
 ## 1. 商城案例表设计

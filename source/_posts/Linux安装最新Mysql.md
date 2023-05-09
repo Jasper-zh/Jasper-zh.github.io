@@ -2,6 +2,9 @@
 title: Linux安装最新Mysql
 date: 2020-09-12 14:55:39
 tags: 总结文档
+categories: 
+- 日常
+- 记录
 ---
 
 ## 前言 

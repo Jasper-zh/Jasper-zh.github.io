@@ -2,6 +2,9 @@
 title: Spring Initializr加载失败
 date: 2021-08-11 12:14:45
 tags: 日常问题
+categories: 
+- 日常
+- 问题
 ---
 
 ### 前言

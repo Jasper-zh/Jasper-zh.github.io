@@ -3,6 +3,8 @@ title: Vue-cli&ElementUI
 date: 2021-03-06 20:17:44
 tags: 总结文档
 copyright: false
+categories: 
+- 记录文档
 ---
 
 ## 1. 什么是Vue-cli
