@@ -3,7 +3,7 @@ title: hexo搭建博客
 date: 2020-01-13
 tags: Hexo
 categories: 
-- 博客搭建
+- 博客系统
 - hexo
 ---
 
