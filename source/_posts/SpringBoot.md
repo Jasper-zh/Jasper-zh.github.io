@@ -2,7 +2,8 @@
 title: SpringBoot详解
 date: 2021-06-29 14:13:51
 tags: 总结文档
-copyright: falsecategories: 
+copyright: false
+categories: 
 - 记录文档
 ---
 
