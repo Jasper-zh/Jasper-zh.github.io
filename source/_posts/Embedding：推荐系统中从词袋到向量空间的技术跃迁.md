@@ -38,8 +38,6 @@ categories:
 要想实现近似内容推荐首先我们就要理解**特征**和这个**余弦相似度**两个概念
 首先余弦相似度就是判断两个向量的余弦值：完全相同时为1，垂直时为0，相反时为 -1 总之相似度是在[-1,1]范围 
 
-![image-20210905181938236](https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210905181938236.png)
-
 ![[Pasted image 20250313194407.png]]
 
 ![img](20250313194407.png)
