@@ -705,7 +705,7 @@ aside:
       link: https://github.com/jasper-zh
   card_announcement:
     enable: true
-    content: 广告已关闭，收入1毛4...
+    content: 公告区
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
