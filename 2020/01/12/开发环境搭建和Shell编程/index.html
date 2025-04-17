@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>开发环境搭建和Shell编程 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 开发环境搭建（掌握）1.1 Xshell和Xftp工具（1）下载和安装方式  下载地址：https:&amp;#x2F;&amp;#x2F;www.netsarang.com&amp;#x2F;zh&amp;#x2F; 安装方式：直接一路点击下一步即可，安装过程选择免费版。  （2）使用方式 （3）网络模式设置 这里连接的服务器主机是用VM启的虚拟机，所以才需要配"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2020/01/12/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%92%8CShell%E7%BC%96%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '开发环境搭建和Shell编程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">开发环境搭建和Shell编程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-01-12T05:19:43.000Z" title="发表于 2020-01-12 13:19:43">2020-01-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3/">记录文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="开发环境搭建和Shell编程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/01/12/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%92%8CShell%E7%BC%96%E7%A8%8B/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-开发环境搭建（掌握）"><a href="#1-开发环境搭建（掌握）" class="headerlink" title="1. 开发环境搭建（掌握）"></a>1. 开发环境搭建（掌握）</h2><h3 id="1-1-Xshell和Xftp工具"><a href="#1-1-Xshell和Xftp工具" class="headerlink" title="1.1 Xshell和Xftp工具"></a>1.1 Xshell和Xftp工具</h3><p><strong>（1）下载和安装方式</strong></p>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/">https://www.netsarang.com/zh/</a></li>
+<li>安装方式：直接一路点击下一步即可，安装过程选择免费版。</li>
+</ul>
+<p><strong>（2）使用方式</strong><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412132552.png"></p>
+<p><strong>（3）网络模式设置</strong></p>
+<div class="note info no-icon flat"><p>这里连接的服务器主机是用VM启的虚拟机，所以才需要配置下它的主机地址并且调整为静态IP。否则的话就不需要（3）（4）（5）步啦！</p>
+</div>
+
+
+
+<ul>
+<li>设置网络连接模式为NAT模式，步骤如下：</li>
+</ul>
+<div class="note info no-icon flat"><ol>
+<li>打开虚拟机设置</li>
+<li>选择网络适配器，选中NAT模式</li>
+</ol>
+</div>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425195244.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425195328.png"></p>
+<p><strong>（4）修改配置文件</strong></p>
+<ul>
+<li>查看虚拟机网络信息</li>
+</ul>
+<div class="note info no-icon flat"><ol>
+<li>打开编辑中虚拟机网络编辑</li>
+<li>上一步网络模式已调成NAT，因此选中NAT</li>
+<li>打开NAT Settings 可看到子网IP、子网掩码、网关IP</li>
+<li>打开DHCP Settings 看IP范围</li>
+</ol>
+</div>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425195829.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425201458.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425202315.png"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210425202126.png"></p>
+<ul>
+<li>使用root用户打开&#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-eno16777736文件，添加内容如下（根据自己的地址填）：</li>
+</ul>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">BOOTPROTO</span>=static       <span class="comment"># 改成静态IP</span></span><br><span class="line"><span class="attr">ONBOOT</span>=<span class="literal">yes</span>             <span class="comment"># 重启更新</span></span><br><span class="line"><span class="attr">IPADDR</span>=<span class="number">192.168</span>.<span class="number">40.129</span>  <span class="comment"># 我的在192.168.40.128与192.168.40.254之间 </span></span><br><span class="line"><span class="attr">GATEWAY</span>=<span class="number">192.168</span>.<span class="number">40.2</span>   <span class="comment"># 网关IP按照NAT Settings看到的填写</span></span><br><span class="line"><span class="attr">NETMASK</span>=<span class="number">255.255</span>.<span class="number">255.0</span>  <span class="comment"># 子网掩码按照NAT Settings看到的填写</span></span><br><span class="line"><span class="attr">DNS1</span>=<span class="number">114.114</span>.<span class="number">114.114</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（5）配置文件生效</strong></p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用命令使得配置文件生效：service network <span class="built_in">restart</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-JDK的下载和安装"><a href="#1-2-JDK的下载和安装" class="headerlink" title="1.2 JDK的下载和安装"></a>1.2 JDK的下载和安装</h3><p><strong>（1）下载和安装方式</strong></p>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase-downloads.html">https://www.oracle.com/java/technologies/javase-downloads.html</a></li>
+<li>安装方式：将下载好的jdk安装包通过Xftp工具传输到CentOS系统中，使用tar命令解压即可。</li>
+</ul>
+<p><strong>（2）配置环境变量</strong></p>
+<ul>
+<li>使用root用户打开配置文件&#x2F;etc&#x2F;profile，向文件末尾追加内容如下：</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="attribute">JAVA_HOME</span>=/usr/javajdk </span><br><span class="line"><span class="built_in">export</span> <span class="attribute">PATH</span>=<span class="variable">$JAVA_HOME</span>/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>保存退出后让文件生效并验证是否配置成功</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile </span><br><span class="line">javac -version</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-Tomcat的下载和安装"><a href="#1-3-Tomcat的下载和安装" class="headerlink" title="1.3 Tomcat的下载和安装"></a>1.3 Tomcat的下载和安装</h3><p><strong>（1）下载和安装方式</strong></p>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-80.cgi">https://tomcat.apache.org/download-80.cgi</a></li>
+<li>安装方式：将下载好的Tomcat安装包通过Xftp工具传输到CentOS系统中，使用tar命令解压即可。</li>
+</ul>
+<p><strong>（2）启动和关闭方式</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">startup.sh </span><br><span class="line">shutdown.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）开放防火墙端口</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -<span class="selector-tag">I</span> <span class="selector-tag">INPUT</span> -<span class="selector-tag">p</span> tcp <span class="attr">--dport</span> <span class="number">8080</span> -j ACCEPT 开启<span class="number">8080</span>端口（暂时开通）</span><br></pre></td></tr></table></figure>
+
+<p><strong>（4）配置环境变量</strong></p>
+<ul>
+<li>使用root用户打开配置文件&#x2F;etc&#x2F;profile，向文件末尾追加内容。</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="attribute">CATALINA_HOME</span>=/usr/tomcat <span class="built_in">export</span> <span class="attribute">PATH</span>=<span class="variable">$CATALINA_HOME</span>/bin:$PATH</span><br></pre></td></tr></table></figure>
+<ul>
+<li>保存退出后让文件生效并验证是否配置成功</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> /etc/<span class="keyword">profile</span> </span><br><span class="line">startup.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（5）发布Web项目</strong></p>
+<ul>
+<li>将Web项目打成war包，通过Xftp工具将war包放在tomcat&#x2F;webapp目录并启动</li>
+</ul>
+<h3 id="1-4-Mysql的安装和连接"><a href="#1-4-Mysql的安装和连接" class="headerlink" title="1.4 Mysql的安装和连接"></a>1.4 Mysql的安装和连接</h3><p><strong>（1）安装</strong></p>
+<a class="btn-beautify larger" href="https://yournotes.cn/2021/04/12/Linux%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0Mysql/" 
+  title="点击查看"><i class="far fa-hand-point-right"></i><span>点击查看</span></a>
+
+<p><strong>（2）远程连接</strong><br>安装配置完成后使用管理工具去连接我们的远端Mysql可能会遇到如下问题：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412135526.png"></p>
+<p><strong>（3）解决方案</strong></p>
+<ul>
+<li>使用root权限登录数据库后选择mysql库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p </span><br><span class="line">use mysql;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看mysql库中的user表的host值后修改为通配符%或者就自己的地址</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select host from user where user=&#x27;root&#x27;; </span><br><span class="line">update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;; </span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看修改结果并重新测试</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select User,Host from user;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Shell编程（熟悉）"><a href="#2-Shell编程（熟悉）" class="headerlink" title="2. Shell编程（熟悉）"></a>2. Shell编程（熟悉）</h2><h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><ul>
+<li>Shell是一个命令行解释器，可以接收应用程序或用户命令，然后访问操作系统内核。</li>
+<li>Shell是一个功能相当强大的编程语言，易编写、易调试、灵活性强；</li>
+</ul>
+<h3 id="2-2-编写第一个程序"><a href="#2-2-编写第一个程序" class="headerlink" title="2.2 编写第一个程序"></a>2.2 编写第一个程序</h3><ul>
+<li>使用vi工具创建xxx.sh的文件。</li>
+<li>以<code>#!/bin/bash</code>开头并编写代码后保存。</li>
+</ul>
+<h3 id="2-3-执行Shell程序的方式"><a href="#2-3-执行Shell程序的方式" class="headerlink" title="2.3 执行Shell程序的方式"></a>2.3 执行Shell程序的方式</h3><ul>
+<li>方式一：.&#x2F;文件名，此方式需要执行权限。</li>
+<li>方式二：&#x2F;bin&#x2F;bash 文件名，此方式不需要执行权限。</li>
+</ul>
+<h3 id="2-4-变量的定义"><a href="#2-4-变量的定义" class="headerlink" title="2.4 变量的定义"></a>2.4 变量的定义</h3><p><strong>（1）语法格式</strong></p>
+<ul>
+<li>定义变量：变量&#x3D;值</li>
+<li>撤销变量：unset 变量</li>
+</ul>
+<p><strong>（2）定义规则</strong></p>
+<ul>
+<li>变量名称可以由字母、数字和下划线组成，但是不能以数字开头，环境变量名建议大写。</li>
+<li>不能使用bash里的关键字。</li>
+<li>中间不能有空格，可以有下划线。</li>
+<li>在bash中，变量默认类型都是字符串类型，无法直接进行数值运算。</li>
+<li>变量的值如果有空格，需要使用双引号或单引号括起来。</li>
+</ul>
+<h3 id="2-5-常用运算符"><a href="#2-5-常用运算符" class="headerlink" title="2.5 常用运算符"></a>2.5 常用运算符</h3><p><strong>（1）算术运算符</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412141223.png"></p>
+<p><strong>（2）关系运算符</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412141235.png"></p>
+<h3 id="2-6-流程控制语句"><a href="#2-6-流程控制语句" class="headerlink" title="2.6 流程控制语句"></a>2.6 流程控制语句</h3><p><strong>（1）if判断</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [ 条件判断式 ] </span><br><span class="line">    then</span><br><span class="line">	    程序 </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><strong>（2）case语句</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">case $变量名 in </span><br><span class="line">	&quot;值1&quot;） </span><br><span class="line">		如果变量的值等于值1，则执行程序1 </span><br><span class="line">		;; </span><br><span class="line">	&quot;值2&quot;） 如果变量的值等于值2，则执行程序2 </span><br><span class="line">		;;</span><br><span class="line">    …省略其他分支… </span><br><span class="line">    *）如果变量的值都不是以上的值，则执行此程序 </span><br><span class="line">    	;; </span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）for循环</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (( 初始值;循环控制条件;变量变化 )) </span><br><span class="line">do</span><br><span class="line">	程序 </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p><strong>（4）while循环</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while [ 条件判断式 ] </span><br><span class="line">do</span><br><span class="line">    程序 </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-函数"><a href="#2-7-函数" class="headerlink" title="2.7 函数"></a>2.7 函数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[ function ] funname[()] </span><br><span class="line">&#123; </span><br><span class="line">	Action; </span><br><span class="line">	[return int;] </span><br><span class="line">&#125;</span><br><span class="line">funname</span><br></pre></td></tr></table></figure>
+
+</article><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/13/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">hexo搭建博客</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/12/Linux%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%92%8C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux系统概述和编程基础</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%88%E6%8E%8C%E6%8F%A1%EF%BC%89"><span class="toc-text">1. 开发环境搭建（掌握）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Xshell%E5%92%8CXftp%E5%B7%A5%E5%85%B7"><span class="toc-text">1.1 Xshell和Xftp工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-JDK%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-text">1.2 JDK的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Tomcat%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-text">1.3 Tomcat的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Mysql%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E8%BF%9E%E6%8E%A5"><span class="toc-text">1.4 Mysql的安装和连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Shell%E7%BC%96%E7%A8%8B%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">2. Shell编程（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="toc-text">2.2 编写第一个程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%89%A7%E8%A1%8CShell%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">2.3 执行Shell程序的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">2.4 变量的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">2.5 常用运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-text">2.6 流程控制语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E5%87%BD%E6%95%B0"><span class="toc-text">2.7 函数</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

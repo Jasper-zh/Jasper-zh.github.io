@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>LeetCode初级算法之数学：204.计数质数 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="题目信息 题目地址：https:&amp;#x2F;&amp;#x2F;leetcode-cn.com&amp;#x2F;problems&amp;#x2F;count-primes&amp;#x2F;  统计所有小于非负整数 n 的质数的数量。 示例1： 123输入：n &amp;#x3D; 10输出：4解释：小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。  示例2： 12输入：n"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2021/07/06/%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode初级算法之数学：204.计数质数',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LeetCode初级算法之数学：204.计数质数</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-07-06T13:07:07.000Z" title="发表于 2021-07-06 21:07:07">2021-07-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/LeetCode/">LeetCode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LeetCode初级算法之数学：204.计数质数"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/07/06/%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h4><blockquote>
+<p>题目地址：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-primes/">https://leetcode-cn.com/problems/count-primes/</a></p>
+</blockquote>
+<p>统计所有小于非负整数 <em><code>n</code></em> 的质数的数量。</p>
+<p><strong>示例1：</strong></p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 10</span><br><span class="line">输出：4</span><br><span class="line">解释：小于<span class="number"> 10 </span>的质数一共有<span class="number"> 4 </span>个, 它们是 2, 3, 5,<span class="number"> 7 </span>。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例2：</strong></p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">输出：<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例3：</strong></p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">输出：<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="解法一：暴力枚举"><a href="#解法一：暴力枚举" class="headerlink" title="解法一：暴力枚举"></a>解法一：暴力枚举</h4><p>依题意需要统计0至n当中质数的个数，自然的就想的到去<strong>遍历0至n的</strong>每个数字，再<strong>判段每个数字</strong>是否是质数，如果是<strong>计数</strong>加一如果不是则不变，最终返回计数结果。</p>
+<p>对于判断是否是质数，我们都知道是有且只能被自己与1整除的数是质数（1不算），那么判断7是不是质数需要判断它能否被2至6里面的数整除么，其实不需要因为一个数不可能整除<strong>大于自己一半</strong>的数。也就是说判断数字<strong>number</strong>是否为质数看看<strong>2到number&#x2F;2</strong>之间的整数能不能进行整除即可</p>
+<p>了解之后我们先定义一个判断是否是质数的judge方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">judge</span><span class="params">(<span class="type">int</span> number)</span>&#123;</span><br><span class="line">	<span class="comment">// 遍历2到number/2之间的数字,看是否能被number整除</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i&lt;=number/<span class="number">2</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(number%i==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有了judge方法之后，再配合遍历计数，得到结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countPrimes</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">	<span class="comment">// 计数器初始化0</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="comment">// 如果judge判断是质数则计数器加一,否则不变</span></span><br><span class="line">		result = judge(i) ? ++result : result;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>**空间：**一个计数器变量，因此复杂度O(1)，</p>
+<p>**时间：**需要遍历0-n的每个数，而每个数进行判断是不是质数又需要遍历0-i&#x2F;2,复杂度是O(n^2)</p>
+<p><strong>提交结果：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210706214113699.png" alt="image-20210706214113699"></p>
+<p>可以看的到大部分测试用例通过，证明求解结果是没有问题的。但在面对499979这样的大数字计算次数过多导致超时，因此还需看看怎么优化时间复杂度。</p>
+<p>其实可以发现判定一个数number是否可以被2到number-1的里面的数整除，我下意识想的是可以减少一半的规模只用判断2到number&#x2F;2即可。</p>
+<p>但其实可以更缩小规模</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">12 </span>= <span class="number">2</span> * <span class="number">6</span></span><br><span class="line"><span class="symbol">12 </span>= <span class="number">3</span> * <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>比如像这个12，没必要除到6，6与2是重复的。一个数除以一个数得到一个整数number&#x2F;x &#x3D; y，那么它的两个因数x * y是一大一小，我们只需要把小的一边都除以一下判断是否可以整除即可。也就是开根号。<br>$$<br>\sqrt{number}<br>$$<br>像判断23是否是质数，判断2到4.79….<br>$$<br>\sqrt{23}<br>$$<br>也就是只需要判断对2、3、4是否能整除即可，而不是像之前要从2到11。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Boolean <span class="title function_">judge</span><span class="params">(<span class="type">int</span> number)</span>&#123;</span><br><span class="line">	<span class="comment">// 边界条件0和1直接返回</span></span><br><span class="line">	<span class="keyword">if</span>(number == <span class="number">0</span> || number == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="comment">// 遍历2到根号number之间的数字,看是否能被number整除</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i*i&lt;=number; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(number%i==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>i &lt;= number/2</code> 为 <code>i * i &lt;=number</code>,时间复杂度降低一个根号：O（nlogn）,结果依然还是不够，仍然会超时。</p>
+<h4 id="解法二：厄拉多塞筛法"><a href="#解法二：厄拉多塞筛法" class="headerlink" title="解法二：厄拉多塞筛法"></a>解法二：厄拉多塞筛法</h4><p>解法一的时候我们是通过两个遍历求解问题：一是遍历每个数字拿去进行判断，二是当前数字判断它是否是质数的过程需要遍历数字范围内的数进行除运算，时间复杂度很高，好在判断它是否是质数时我们从2到number-1的数字里面缩小了一半（平方）的范围。</p>
+<p>尽管如此但仍然不够，判断质数的过程已经是最优化了。那么能优化的只能是第一个步骤也就是遍历每个数字拿去判断。</p>
+<div class="note info no-icon flat"><ol>
+<li>是否可以不需要每个都遍历去判断？</li>
+<li>在连续的数字里面质数出现是否有规律？</li>
+<li>是否这个数是质数的话那么谁谁谁都是质数？也就不需要都拿去判断了。</li>
+</ol>
+</div>
+
+<p>当时在纸上画了一些，没太找到什么规律可以帮助我解决这个，在网上看了这个厄拉多塞筛法加上数组进行应用确实很妙。</p>
+<p>就是说一个质数的倍数它一定不是质数，比如x是质数但2x、3x、4x这些肯定不是质数，2x起码可以整除2、3x起码可以整除3。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/src=http___www.365biaoqing.com_images_747842_5_iZ1xA.png&refer=http___www.365biaoqing.jpg"></p>
+<p>但确实没想到来解决这个问题。主要的点是当我们从质数2开始一个一个遍历的时候，遍历的速度不会超过排除的速度，因此可以认为遍历到的当前数字没有被排除的话就是质数。下面手动枚举几个就可以看出：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">2<span class="number"> 3 </span>4<span class="number"> 5 </span>6<span class="number"> 7 </span>8 9</span><br><span class="line"></span><br><span class="line">比如现在找2-9的质数：</span><br><span class="line"></span><br><span class="line">从质数2开始，质数计数加一，并排除4、6、8不是质数。</span><br><span class="line">遍历到3质数，质数计数加一，并排除6、9不是质数。</span><br><span class="line">遍历到4，发现已被排除</span><br><span class="line">遍历到5质数，质数计数加一</span><br><span class="line">遍历到6，发现已被排除</span><br><span class="line">遍历到7质数，质数计数加一</span><br><span class="line">遍历到8，发现已被排除</span><br><span class="line">遍历到9，发现已被排除</span><br><span class="line">最终质数计数结果是4</span><br></pre></td></tr></table></figure>
+
+<p>还能看出有一点是需要优化的，每个数从它的两倍开始排除：2倍、3倍、4倍等等。可以发现2排除的数，3也排除了。也就是有些数在前面已经排除了，这边在做排除的时候不应该再去做多余的步骤，这就是优化的点。想想可以知道，3从2倍数走起。肯定在之前就被2的3倍走了。要不重复只能从比自己大的倍数走起，前面的早就被其他小的数字已经排除了。所以就像质数5再去排除不应该去排除2ⅹ5和3ⅹ5，因为它们早就被之前的数排除了。我们排除应该从自己的平方开始。</p>
+<p>这里还是画个动图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://files.yournotes.cn/image/20210827gif.gif"></p>
+<p>实现上其实就是两个循环，一个是遍历每个数字，另一个是对每个数字进行加一倍把得到的数字排除。数据结构上使用字节数组进行标记，是质数标0，被排除就改为1</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countPrimes</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">	<span class="comment">// 计数器初始化0</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 定义数组,标记数字是否被排除</span></span><br><span class="line"><span class="comment">	 * 小于n的数字再排除0和1,共有n-1个需要判断</span></span><br><span class="line"><span class="comment">	 * 初始化数组默认都是0,等待从2开始的一次次标记</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">	<span class="comment">// 遍历每个数</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="comment">// 是质数，进行倍数排除，从平方开始</span></span><br><span class="line">		<span class="keyword">if</span>(arr[i] == <span class="number">0</span>)&#123;</span><br><span class="line">			result++;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i * i; j &lt; n; j+=i)&#123;</span><br><span class="line">				arr[j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就ok，测试一下发现居然在n&#x3D;499979的时候出现数组越界：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721155707622.png" alt="image-20210721155707622"></p>
+<p>看程序没看出问题，毕竟 j &lt; n才能取 arr[ j ]，后来注意到越界的索引是 -2146737495 。是两个int的乘积超过了int也就是j类型的范围，j拿到一个负值进入循环。所以在得到 j 的时候给它升下级给个long类型，确认小于n之后，取值时再强转为int</p>
+<p>这边顺便做一个空间优化，也就是数组只存 0或1，所以用空间小的byte数组来存</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countPrimes</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">byte</span>[] arr = <span class="keyword">new</span> <span class="title class_">byte</span>[n];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] == <span class="number">0</span>)&#123;</span><br><span class="line">            result++;</span><br><span class="line">        	<span class="keyword">for</span>(<span class="type">long</span> <span class="variable">j</span> <span class="operator">=</span> (<span class="type">long</span>)i * i; j &lt; n; j+=i)&#123;</span><br><span class="line">                arr[(<span class="type">int</span>)j] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虽然是两次循环，但实际在内循环处理的数在外循环就没有了，对于时间复杂度来应该是个多少倍的n</p>
+<p>对于空间来说使用了字节数组，占用n个字节。复杂度O(n)</p>
+<p><strong>测试结果</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721160944543.png" alt="image-20210721160944543"></p>
+<h4 id="解法三：线性筛选法"><a href="#解法三：线性筛选法" class="headerlink" title="解法三：线性筛选法"></a>解法三：线性筛选法</h4><p>在处理前面的埃氏筛选法也就是厄拉多的时候，其实就有疑问？我们通过筛选质数的平方之后的倍数得到的合数来避免前面的重复剔除</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">排除质数<span class="attribute">x</span>构成的合数</span><br><span class="line"><span class="attribute">x</span> * <span class="attribute">x</span></span><br><span class="line"><span class="attribute">x</span> * ( <span class="attribute">x</span> + <span class="number">1</span> )</span><br><span class="line"><span class="attribute">x</span> * ( <span class="attribute">x</span> + <span class="number">2</span> )</span><br><span class="line"><span class="attribute">x</span> * ( <span class="attribute">x</span> + <span class="number">3</span> )</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>虽然它是避免了像2排除6，3也排除6的情况。因为3直接从9，12，15开始排除。但12仍然是既被2排除也被3排除。</p>
+<p>解决了平方数之前数字的剔除重复，但之后的数字还是会有冲突会有重复剔除。</p>
+<p>现在就想让每个合数被自己的很多对因数当中其中最小的因数给排除掉，别再被其他因数排除</p>
+<table>
+    <tr>
+    	<th>合数</th>
+        <th>因数</th>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>2、3</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>2、4</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>2、5</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>2、3、4、6</td>
+    </tr>
+</table>
+
+<p>采用线性筛选将每个数都参与排除，每次排除目前最近且和未来不冲突。它的要点是任何的合数它的一个最小因数一定是一个质数，因此将质数取出来对每个数进行乘积来进行排除。那么如何避免重复剔除呢？</p>
+<p>下面列举一些：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">2 </span>排除 <span class="number">4</span></span><br><span class="line"><span class="symbol">3 </span>排除 <span class="number">6</span>、<span class="number">9</span></span><br><span class="line"><span class="symbol">4 </span>排除 <span class="number">8</span> （<span class="number">4</span>由<span class="number">2</span>排除,因此它的<span class="number">3</span>倍<span class="number">5</span>倍都是应该被<span class="number">2</span>解决）</span><br><span class="line"><span class="symbol">5 </span>排除 <span class="number">10</span>、<span class="number">15</span>、<span class="number">25</span></span><br><span class="line"><span class="symbol">6 </span>排除 <span class="number">12</span>（<span class="number">6</span>可以被<span class="number">2</span>排除,不需要解除其他倍）</span><br><span class="line"><span class="symbol">7 </span>排除 <span class="number">14</span>、<span class="number">21</span>、<span class="number">35</span>、<span class="number">49</span></span><br><span class="line"><span class="symbol">8 </span>排除 <span class="number">16</span>（<span class="number">8</span>是由<span class="number">2</span>可以排除）</span><br><span class="line"><span class="symbol">9 </span>排除 <span class="number">18</span>、<span class="number">27</span>（<span class="number">9</span>是被<span class="number">3</span>可排除）</span><br><span class="line"><span class="symbol">10 </span>排除 <span class="number">20</span>（<span class="number">10</span>是被<span class="number">2</span>排除的）</span><br></pre></td></tr></table></figure>
+
+<p>就像4排除8，为啥不排除12呢。因为4它最小因数是2。因此它的3倍或者5倍的数字也有因数2，也就是它后面会有一个数字的两倍是12由这个数字去排除。每次只排除最近的，是前面数字留下的，后面的给后面的数字留下。像9它最小因数是3，他应该把2x9与3x9排除。由2这个最小因数产生的18它的最近的就是9，而2不是9的最小因数它的最小因数是3，构成3排除且离9最近也就是3*9，之后不会有数字可以筛选出它了。</p>
+<p>把最小因数筛选的数字往后传递，每次筛选出最近的一层，即可完成不重复且永远走在前面的筛选</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countPrimes</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">// 标记筛选</span></span><br><span class="line">    <span class="type">byte</span>[] arr = <span class="keyword">new</span> <span class="title class_">byte</span>[n];</span><br><span class="line">    <span class="comment">// 最小因数（质数）</span></span><br><span class="line">    List&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] == <span class="number">0</span>) numbers.add(i);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; numbers.size() &amp;&amp; numbers.get(j) * i &lt; n; j++)&#123;</span><br><span class="line">            arr[numbers.get(j) * i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % numbers.get(j) == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> numbers.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式的话，时间与空间复杂度就都是O(n)了</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210721184038153.png" alt="image-20210721184038153"></p>
+<p>看起来实际是比<strong>埃氏筛选法</strong>好像效率低一些，但这个东西主要是一些运算符的问题。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>本题找到一个数以内的质数的数量，解法一大概就是第一反应也就是依题意的解法，虽然意识到这个解法是走了弯路但没有琢磨出筛选法，在网上看了埃氏筛选法确实是可以用来解题，虽然这个东西应该是每个人都知道的道理，但没有意识到把这个东西进行严格的推理。在这之后也能想到线性筛选，这两种就好似纵向与横向的推演。那么除了实现思路上，对于代码在空间与时间上的优化也是在最终实现思路之后的优化点。像筛选标记这种只需要去存0&#x2F;1也就是只占一位，如果我们只存8个用int数组的话就占用了8x32位。Java里面没有位数组，最小的是字节占8位也就是8x8位。没有位数组那么能不能8个0&#x2F;1只用8位的空间去存呢，我们可以不用数组只用一个字节数字byte它有8位每一位存一个0或1，这是可以考虑的点。第二个是时间上对于线性筛选法对比埃氏筛选法时间复杂度是有提升的只是说在Java里实现这个线性筛选的时候使用了一些像取余这样的运算符等等会影响到执行效率，这个时候我们在处理一些运算的时候可以往位运算上想想，有的可以换成位运算有的不可以。主要就是三点第一思路上在开发的学习与工作当中可能很多想法被束缚了，也许换成高中时期的状态很多东西都可以推理出来，第二就是关于空间对于标记类型的需要考虑到位，第三就是运算可不可以通过位运算达到同样的结果来提升实际效率。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yournotes.cn">木瓜煲鸡脚</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yournotes.cn/2021/07/06/%E8%AE%A1%E6%95%B0%E8%B4%A8%E6%95%B0/">http://yournotes.cn/2021/07/06/计数质数/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yournotes.cn" target="_blank">木瓜煲鸡脚's blog</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/07/22/Spring-Cloud%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AF%A6%E8%A7%A3/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring Cloud微服务详解</div></div></a></div><div class="next-post pull-right"><a href="/2021/06/29/SpringBoot/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringBoot详解</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E4%BF%A1%E6%81%AF"><span class="toc-text">题目信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-text">解法一：暴力枚举</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%8E%84%E6%8B%89%E5%A4%9A%E5%A1%9E%E7%AD%9B%E6%B3%95"><span class="toc-text">解法二：厄拉多塞筛法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89%EF%BC%9A%E7%BA%BF%E6%80%A7%E7%AD%9B%E9%80%89%E6%B3%95"><span class="toc-text">解法三：线性筛选法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Filter+Listener核心技术 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. Filter过滤器（重点）1.1 基本概念 Filter本意为”过滤“的含义，是JavaWeb的三大组件之一，三大组件为：Servlet、Filter、Listener。 过滤器是向 Web 应用程序的请求和响应处理添加功能的 Web 服务组件。 过滤器相当于浏览器与Web资源之间的一道过滤网"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2020/01/12/Filter-Listener%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Filter+Listener核心技术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Filter+Listener核心技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-01-12T02:54:23.000Z" title="发表于 2020-01-12 10:54:23">2020-01-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3/">记录文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Filter+Listener核心技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/01/12/Filter-Listener%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Filter过滤器（重点）"><a href="#1-Filter过滤器（重点）" class="headerlink" title="1. Filter过滤器（重点）"></a>1. Filter过滤器（重点）</h2><h3 id="1-1-基本概念"><a href="#1-1-基本概念" class="headerlink" title="1.1 基本概念"></a>1.1 基本概念</h3><ul>
+<li>Filter本意为”过滤“的含义，是JavaWeb的三大组件之一，三大组件为：Servlet、Filter、Listener。</li>
+<li>过滤器是向 Web 应用程序的请求和响应处理添加功能的 Web 服务组件。</li>
+<li>过滤器相当于浏览器与Web资源之间的一道过滤网，在访问资源之前通过一系列的过滤器对请求进行修改、判断以及拦截等，也可以对响应进行修改、判断以及拦截等。</li>
+</ul>
+<h3 id="1-2-工作方式"><a href="#1-2-工作方式" class="headerlink" title="1.2 工作方式"></a>1.2 工作方式</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412110002.png"></p>
+<h3 id="1-3-使用方式"><a href="#1-3-使用方式" class="headerlink" title="1.3 使用方式"></a>1.3 使用方式</h3><ul>
+<li>自定义类实现Filter接口并重写doFilter方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123; </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, </span></span><br><span class="line"><span class="params">                         FilterChain chain)</span> <span class="keyword">throws</span> </span><br><span class="line">        IOException,ServletException &#123;		</span><br><span class="line">        <span class="comment">//TODO 处理逻辑，必须调用下面的方法 </span></span><br><span class="line">        chain.doFilter(request,response); </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在web.xml文件中配置过滤器。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>LoginFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.lagou.LoginFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>LoginFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-Filter接口"><a href="#1-4-Filter接口" class="headerlink" title="1.4 Filter接口"></a>1.4 Filter接口</h3><p><strong>（1）基本概念</strong></p>
+<ul>
+<li>javax.servlet.Filter接口主要用于描述过滤器对象，可以对资源的请求和资源的响应操作进行筛选操作。</li>
+</ul>
+<p><strong>（2）常用方法</strong></p>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void init(FilterConfig filterConfig)</td>
+        <td>实现过滤器的初始化操作</td>
+    </tr>
+    <tr>
+    	<td>void doFilter(ServletRequest request, ServletResponse response,FilterChain chain)</td>
+        <td>执行过滤操作的功能</td>
+    </tr>
+    <tr>
+    	<td>void destroy()</td>
+        <td>实现过滤器的销毁操作</td>
+    </tr>
+</table>
+
+
+<h3 id="1-5-FilterConfig接口"><a href="#1-5-FilterConfig接口" class="headerlink" title="1.5 FilterConfig接口"></a>1.5 FilterConfig接口</h3><p><strong>（1）基本概念</strong></p>
+<ul>
+<li>javax.servlet.FilterConfifig接口主要用于描述过滤器的配置信息。</li>
+</ul>
+<p><strong>（2）常用方法</strong></p>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>String getFilterName()</td>
+        <td>获取过滤器的名字</td>
+    </tr>
+    <tr>
+    	<td>String getInitParameter(String name)</td>
+        <td>获取指定的初始化参数信息</td>
+    </tr>
+    <tr>
+    	<td>Enumeration getInitParameterNames()</td>
+        <td>获取所有的初始化操作名称</td>
+    </tr>
+    <tr>
+    	<td>ServletContext getServletContext()</td>
+        <td>获取ServletContext对象</td>
+    </tr>
+</table>
+
+<h3 id="1-6-多个过滤器的使用"><a href="#1-6-多个过滤器的使用" class="headerlink" title="1.6 多个过滤器的使用"></a>1.6 多个过滤器的使用</h3><ul>
+<li>如果有多个过滤器都满足过滤的条件，则容器依据映射的先后顺序来调用各个过滤器。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412112508.png"></p>
+<h3 id="1-7-过滤器的优点"><a href="#1-7-过滤器的优点" class="headerlink" title="1.7 过滤器的优点"></a>1.7 过滤器的优点</h3><ul>
+<li>实现代码的“可插拔性”，即增加或减少某个功能模块，不会影响程序的正常执行。</li>
+<li>可以将多个相同处理逻辑的模块集中写在过滤器里面，可实现重复利用、也方便代码的维护。</li>
+</ul>
+<h2 id="2-Listener监听器（重点）"><a href="#2-Listener监听器（重点）" class="headerlink" title="2 Listener监听器（重点）"></a>2 Listener监听器（重点）</h2><h3 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h3><ul>
+<li>Servlet规范中定义的一种特殊的组件，用来监听Servlet容器产生的事件并进行相应的处理。</li>
+<li>容器产生的事件分类如下：<ul>
+<li>生命周期相关的事件。</li>
+<li>属性状态相关的事件。</li>
+<li>存值状态相关的事件。</li>
+</ul>
+</li>
+<li>底层原理是采用接口回调的方式实现。</li>
+</ul>
+<h3 id="2-2-基本分类"><a href="#2-2-基本分类" class="headerlink" title="2.2 基本分类"></a>2.2 基本分类</h3><table>
+    <tr>
+    	<th>监听器类型</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>javax.servlet.ServletRequestListener</td>
+        <td>监听request作用域的创建和销毁</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.ServletRequestAttributeListener</td>
+        <td>监听request作用域的属性状态变化</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.http.HttpSessionListener</td>
+        <td>监听session作用域的创建和销毁</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.http.HttpSessionAttributeListener</td>
+        <td>监听session作用域的属性状态变化</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.ServletContextListener</td>
+        <td>监听application作用域的创建和销毁</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.ServletContextAttributeListener</td>
+        <td>监听application作用域的属性状态变化</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.http.HttpSessionBindingListener</td>
+        <td>监听对象与session的绑定和解除</td>
+    </tr>
+    <tr>
+    	<td>javax.servlet.http.HttpSessionActivationListener</td>
+        <td>监听session数值的钝化和活化</td>
+    </tr>
+</table>
+
+<h3 id="2-3-监听器详解"><a href="#2-3-监听器详解" class="headerlink" title="2.3 监听器详解"></a>2.3 监听器详解</h3><p><strong>（1）ServletRequestListener监听器</strong></p>
+<ul>
+<li>在ServletRequest创建和关闭时都会通知ServletRequestListener监听器。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void requestInitialized(ServletRequestEvent sre)</td>
+        <td>实现ServletRequest对象的初始化</td>
+    </tr>
+    <tr>
+    	<td>void requestDestroyed(ServletRequestEvent sre)</td>
+        <td>实现ServletRequest对象的销毁</td>
+    </tr>
+</table>
+**（2）ServletRequestAttributeListener监听器**
+* 向ServletRequest添加、删除或者替换一个属性的时候，将会通知ServletRequestAttributeListener监听器。
+* 常用方法如下：
+
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void attributeAdded(ServletRequestAttributeEvent srae)</td>
+        <td>增加属性时触发</td>
+    </tr>
+    <tr>
+    	<td>void attributeReplaced(ServletRequestAttributeEvent srae)</td>
+        <td>修改属性时触发</td>
+    </tr>
+    <tr>
+    	<td>void attributeRemoved(ServletRequestAttributeEvent srae)</td>
+        <td>删除属性时触发</td>
+    </tr>
+</table>
+
+<p><strong>（3）HttpSessionListener监听器</strong></p>
+<ul>
+<li>当一个HttpSession刚被创建或者失效（invalidate）的时候，将会通知HttpSessionListener监听器。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void sessionCreated(HttpSessionEvent se)</td>
+        <td>当一个HttpSession对象被创建时会调用这个方法</td>
+    </tr>
+    <tr>
+    	<td>void sessionDestroyed(HttpSessionEvent se)</td>
+        <td>当一个HttpSession超时或者调用HttpSession的invalidate()方法让它销毁时，将会调用这个方法</td>
+    </tr>
+</table>
+
+<p><strong>（4）HttpSessionAttributeListener监听器</strong></p>
+<ul>
+<li>HttpSession中添加、删除或者替换一个属性的时候，将会通知HttpSessionAttributeListener监听器。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void attributeAdded(HttpSessionBindingEvent se)</td>
+        <td>当往会话中加入一个属性的时候会调用这个方法</td>
+    </tr>
+    <tr>
+    	<td>void attributeRemoved(HttpSessionBindingEvent se)</td>
+        <td>当从会话中删除一个属性的时候会调用这个方法</td>
+    </tr>
+    <tr>
+    	<td>void attributeReplaced(HttpSessionBindingEvent se)</td>
+        <td>当改变会话中的属性的时候会调用这个方法</td>
+    </tr>
+</table>
+
+<p><strong>（5）ServletContextListener监听器</strong></p>
+<ul>
+<li>在ServletContext创建和关闭时都会通知ServletContextListener监听器。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void contextInitialized(ServletContextEvent sce)</td>
+        <td>当ServletContext创建的时候，将会调用这个方法</td>
+    </tr>
+    <tr>
+    	<td>void contextDestroyed(ServletContextEvent sce)</td>
+        <td>当ServletContext销毁的时候（例如关闭应用服务器或者重新加载应用），将会调用这个方法</td>
+    </tr>
+</table>
+
+<p><strong>（6）ServletContextAttributeListener监听器</strong></p>
+<ul>
+<li>向ServletContext添加、删除或者替换一个属性的时候，将会通ServletContextAttributesListener监听器</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void attributeAdded(ServletContextAttributeEvent scae)</td>
+        <td>往ServletContext中加入一个属性的时候触发</td>
+    </tr>
+    <tr>
+    	<td>void attributeRemoved(ServletContextAttributeEvent scae)</td>
+        <td>从ServletContext中删除一个属性的时候触发</td>
+    </tr>
+    <tr>
+    	<td>void attributeReplaced(ServletContextAttributeEvent scae)</td>
+        <td>改变ServletContext中属性的时候触发</td>
+    </tr>
+</table>
+
+<p><strong>（7）HttpSessionBindingListener监听器</strong></p>
+<ul>
+<li>HttpSession中绑定和解除绑定时，将会通知HttpSessionListener监听器。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void valueBound(HttpSessionBindingEvent event)</td>
+        <td>有对象绑定时调用该方法</td>
+    </tr>
+    <tr>
+    	<td>void valueUnbound(HttpSessionBindingEvent event)</td>
+        <td>有对象解除绑定时调用该方法</td>
+    </tr>
+</table>
+
+<p><strong>（8）HttpSessionActivationListener监听器</strong></p>
+<ul>
+<li>当有session数值的钝化和活化操作时，将会通知HttpSessionActivationListener监听器。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+    <tr>
+    	<th>方法声明</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>void sessionWillPassivate(HttpSessionEvent se)</td>
+        <td>有钝化操作时调用该方法</td>
+    </tr>
+    <tr>
+    	<td>void sessionDidActivate(HttpSessionEvent se)</td>
+        <td>有活化操作时调用该方法</td>
+    </tr>
+</table>
+* 配置context.xml文件的方式如下：
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Manager</span> <span class="attr">className</span>=<span class="string">&quot;org.apache.catalina.session.PersistentManager&quot;</span> <span class="attr">saveOnRestart</span>=<span class="string">&quot;true&quot;</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!-- 配置文件存放的路径信息，可以自由指定 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">Store</span> <span class="attr">className</span>=<span class="string">&quot;org.apache.catalina.session.FileStore&quot;</span> <span class="attr">directory</span>=<span class="string">&quot;C:\session&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">Manager</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-实战案例"><a href="#2-4-实战案例" class="headerlink" title="2.4 实战案例"></a>2.4 实战案例</h3><ul>
+<li>自定义类实现监听器接口并重写相关的方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OnlineUser</span> <span class="keyword">implements</span> <span class="title class_">HttpSessionListener</span>,ServletContextListener &#123; </span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">ctx</span> <span class="operator">=</span> <span class="literal">null</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    ServletContext <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">contextInitialized</span><span class="params">(ServletContextEvent e)</span> &#123; </span><br><span class="line">        ctx = e.getServletContext();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 销毁</span></span><br><span class="line">    ServletContext <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">contextDestroyed</span><span class="params">(ServletContextEvent e)</span> &#123; </span><br><span class="line">        <span class="comment">//将ServletContext设置成null; </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当新创建一个HttpSession对象时 </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sessionCreated</span><span class="params">(HttpSessionEvent e)</span> &#123; </span><br><span class="line">        <span class="comment">//将当前的在线人数加上1，并且保存到ServletContext(application)中 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当一个HttpSession被销毁时（过期或者调用了invalidate()方法） </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sessionDestroyed</span><span class="params">(HttpSessionEvent e)</span> &#123; </span><br><span class="line">        <span class="comment">//将当前人数减去1，并且保存到ServletContext(application)中 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在web.xml中配置监听器</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span> com.hao.listener.OnlineUser <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/12/Linux%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%92%8C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux系统概述和编程基础</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/11/EL%E5%92%8CJSTL%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">EL和JSTL核心技术</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Filter%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">1. Filter过滤器（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-text">1.2 工作方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">1.3 使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Filter%E6%8E%A5%E5%8F%A3"><span class="toc-text">1.4 Filter接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-FilterConfig%E6%8E%A5%E5%8F%A3"><span class="toc-text">1.5 FilterConfig接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%A4%9A%E4%B8%AA%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">1.6 多个过滤器的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">1.7 过滤器的优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Listener%E7%9B%91%E5%90%AC%E5%99%A8%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">2 Listener监听器（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%9F%BA%E6%9C%AC%E5%88%86%E7%B1%BB"><span class="toc-text">2.2 基本分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%9B%91%E5%90%AC%E5%99%A8%E8%AF%A6%E8%A7%A3"><span class="toc-text">2.3 监听器详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B"><span class="toc-text">2.4 实战案例</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>HashMap | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HashMap概述 基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，特别是它不保证该顺序恒久不变。此实现假定哈希函数将元素适当"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2020/08/12/HashMap/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HashMap',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HashMap</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-08-12T00:22:39.000Z" title="发表于 2020-08-12 08:22:39">2020-08-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JAVA/">JAVA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HashMap"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/08/12/HashMap/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="HashMap概述"><a href="#HashMap概述" class="headerlink" title="HashMap概述"></a>HashMap概述</h4><blockquote>
+<p>基于哈希表的 Map 接口的实现。此实现提供所有可选的映射操作，并允许使用 null 值和 null 键。（除了非同步和允许使用 null 之外，HashMap 类与 Hashtable 大致相同。）此类不保证映射的顺序，<span id="more"></span>特别是它不保证该顺序恒久不变。此实现假定哈希函数将元素适当地分布在各桶之间，可为基本操作（get 和 put）提供稳定的性能。迭代 collection 视图所需的时间与 HashMap 实例的“容量”（桶的数量）及其大小（键-值映射关系数）成比例。所以，如果迭代性能很重要，则不要将初始容量设置得太高（或将加载因子设置得太低）。——百度百科</p>
+</blockquote>
+<p>HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型（键值对集合）。随着JDK版本的更新，JDK1.8对HashMap底层的实现进行了优化，例如引入红黑树的数据结构和扩容的优化等。文章先基于1.7描述，最后再提1.8与之更改的地方。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String,String&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">hashMap.put(<span class="string">&quot;张三&quot;</span>,<span class="string">&quot;男&quot;</span>);</span><br><span class="line">hashMap.get(<span class="string">&quot;张三&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>那么它里面存的元素就key和value么？（它其实里面封装成一个entry可以看到除了key与value之外还有next属性，所以HaspMap里的元素不仅仅含有键值对还有指向下一节点的元素的信息）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Entry</span>&lt;K,V&gt; <span class="keyword">implements</span> <span class="title class_">Map</span>.Entry&lt;K,V&gt; &#123;</span><br><span class="line">      <span class="keyword">final</span> K key;<span class="comment">//Key-value结构的key</span></span><br><span class="line">      V value;<span class="comment">//存储值</span></span><br><span class="line">      Entry&lt;K,V&gt; next;<span class="comment">//指向下一个链表节点</span></span><br><span class="line">      <span class="keyword">final</span> <span class="type">int</span> hash;<span class="comment">//哈希值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h4><p>在Java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap底层就是一个数组结构，数组中的每一项又是一个链表。在1.8之后当链表长度大于等于8时转为红黑树（自平衡的二叉树这里不详细展开，以后有机会再讲）。 </p>
+<p>那么它是如何去存储？（每个元素存进来如何找到内置数组的位置）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hashMap.put(<span class="string">&quot;战三&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;里的&quot;</span>,<span class="string">&quot;energer&quot;</span>);</span><br><span class="line">hashMap.put(<span class="string">&quot;约翰&quot;</span>,<span class="string">&quot;cookie&quot;</span>);</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>假如和ArrayList一样初始化一个index变量值为0作为下标，当arrayList.add(“a”)时将元素存在内置数组array[index]再index自增。即每次往后添加元素。至到数组满了再依次从第一个往后添加链。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap1.png"></p>
+<p>在这种情况下我们去hashMap.get(“约翰”)，怎么去找到。很显然没办法定位。只能从数组第一位开始找比较entry的key值如不同再下一个比较直到找到相同的key。那么数量很多而且对应的entry位置比较偏后查找是及其费时的。虽然添加没毛病速度也快但查找是遍历比较所以是不合理的。</p>
+<p>在HashMap当中实际上存储时它会去给key进行类似hash得到的hashCode与数组的容量取模的得到的就是数组的位置在这样的位置存下。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap2.png"></p>
+<p>在使用key查找时也是对查找的key进行相同的hash直接定位到当初存的位置。这样的一个位置在数组是随机的，不同的code取模有可能会出现相同的位置即形成链表。然后在链表当中找到对应key的entry返回。下面伪代码描述了它的get方法的一个大概意思。直接找到数组所在的entry如果不是就是该entry的next。如果还不是就是next的next直到找到对应key的entry。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">get(key)&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">hashcode</span> <span class="operator">=</span> key.hashCode();</span><br><span class="line">    <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> hashcode%table.length;</span><br><span class="line">    <span class="type">Entry</span> <span class="variable">entry</span> <span class="operator">=</span> table[index];</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> entry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么在这里所谓的链表就是在逻辑上理解为它们在数组同一个位置，实际上就是先找到数组的这个位置得到了一个entry1然后这个entry1里的next属性引用的就是一个entry2，通过这个entry2的next就能找到entry3。这样的一个链表，基于找到第一个（数组中的entry）然后通过next字段一个一个的引用。下图与上图相对应</p>
+<p>![](<a target="_blank" rel="noopener" href="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap3">https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap3</a> .png)</p>
+<p>上图数组存的entry3变量引用堆中的0x003的一个entry对象，这个对象里的next属性引用了地址0x004的entry对象。put时它是去怎样去插入的。当发生碰撞是找到这个链表的最下的entry把它的next&#x3D;null换成当前插入的entry地址，还是把当前插入的entry的next改为第一个就是数组中的table[index]。也就是头插还是尾插。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/HashMap4.png"></p>
+<p>那么怎样去存下面使用伪代码说明大概流程（实际源码还有判断空判断key是否重复先忽略）</p>
+<p>假设是尾插</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">put(key,value)&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">code</span> <span class="operator">=</span> key.hashCode();</span><br><span class="line">    <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> code%table.length;</span><br><span class="line">    <span class="type">Entry</span> <span class="variable">e</span> <span class="operator">=</span> table[index];</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    1.数组当前位置空</span></span><br><span class="line"><span class="comment">    table[index] = new Entry(key,value,null);</span></span><br><span class="line"><span class="comment">    2.当前位置有entry就将它的next设为当前创建的entry</span></span><br><span class="line"><span class="comment">    table[index].next = new Entry(key,value,null);</span></span><br><span class="line"><span class="comment">    3.当前有entry并且next也有</span></span><br><span class="line"><span class="comment">    table[index].next.next = new Entry(key,value,null);</span></span><br><span class="line"><span class="comment">    遍历链表找到最后一个entry也就是next为空的entry,将它的next设成当前创建的entry</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">while</span>(e!=<span class="literal">null</span>)&#123;</span><br><span class="line">		e = e.next;</span><br><span class="line">    &#125;</span><br><span class="line">    e.next = <span class="keyword">new</span> <span class="title class_">Entry</span>(key,value,<span class="literal">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设是头插</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">put(key,value)&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">code</span> <span class="operator">=</span> key.hashCode();</span><br><span class="line">    <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> code%table.length;</span><br><span class="line">    <span class="comment">//1.new当前的entry,并将next设成现在第一个也就是数组上的table[index]</span></span><br><span class="line">    <span class="comment">//2.将当前的entry设成第一个就是放在数组上。</span></span><br><span class="line">    <span class="comment">//它的next就是以前的第一个entry对象,现在把当前对象放数组</span></span><br><span class="line">    table[index] = <span class="keyword">new</span> <span class="title class_">entry</span>(key,value,table[index]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两种方式首先头插法明显要快。直接插然后下移只要一句代码而尾插需要遍历。所以我们在jdk1.7当中是的确使用的头插法，但在1.8之后修改成尾插法下面会提。</p>
+<h4 id="容量问题"><a href="#容量问题" class="headerlink" title="容量问题"></a>容量问题</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashMap</span>&lt;K,V&gt;</span><br><span class="line">    <span class="keyword">extends</span> <span class="title class_">AbstractMap</span>&lt;K,V&gt;</span><br><span class="line">    <span class="keyword">implements</span> <span class="title class_">Map</span>&lt;K,V&gt;, Cloneable, Serializable</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 初始默认容量 16</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEFAULT_INITIAL_CAPACITY</span> <span class="operator">=</span> <span class="number">1</span> &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 最大容量值</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">MAXIMUM_CAPACITY</span> <span class="operator">=</span> <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认加载因子</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">float</span> <span class="variable">DEFAULT_LOAD_FACTOR</span> <span class="operator">=</span> <span class="number">0.75f</span>;</span><br><span class="line"></span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认容量16，加载因子0.75。通过构造方法可以自己传入容量与加载因子。但值得一提的是容量一定是2的指数幂</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Inflates the table.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">inflateTable</span><span class="params">(<span class="type">int</span> toSize)</span> &#123;</span><br><span class="line">    <span class="comment">// Find a power of 2 &gt;= toSize</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">capacity</span> <span class="operator">=</span> roundUpToPowerOf2(toSize);</span><br><span class="line">    threshold = (<span class="type">int</span>) Math.min(capacity * loadFactor, MAXIMUM_CAPACITY+<span class="number">1</span>);</span><br><span class="line">    table = <span class="keyword">new</span> <span class="title class_">Entry</span>[capacity];</span><br><span class="line">    initHashSeedAsNeeded(capacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 为什么它的容量一定要求为2的指数幂呢。桶数组用来去定位存储，hashCode与容量取模定位。确实不管是不是2的指数幂都能进行取模运算，因此这个要求大概是与效率有关。可以看到源码得index的方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//并不是index = h % length</span></span><br><span class="line">indexFor(h,length)&#123;</span><br><span class="line">    index = h &amp; (length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>那么就可能是在容量位2的指数幂的情况下通过这样的运算就能代替取模运算，并且位运算与减运算效率高于除运算。下面可以试一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假如入容量16，一个随机hashCode</span></span><br><span class="line">hashCode <span class="number">1011</span> <span class="number">0010</span> <span class="number">0111</span></span><br><span class="line">length   <span class="number">0000</span> <span class="number">0000</span> <span class="number">1111</span></span><br><span class="line">index    <span class="number">0000</span> <span class="number">0000</span> <span class="number">0111</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假如入容量10，一个随机hashCode</span></span><br><span class="line">hashCode <span class="number">1011</span> <span class="number">0010</span> <span class="number">0111</span></span><br><span class="line">length   <span class="number">0000</span> <span class="number">0000</span> <span class="number">1001</span></span><br><span class="line">index    <span class="number">0000</span> <span class="number">0000</span> <span class="number">0001</span></span><br></pre></td></tr></table></figure>
+
+<p>通过与运算结果肯定是小于的。所以结果不会越界，但如果容量不为2的指数幂有某些下标是永远取不到的，在例子二中比容量1001（10）小的是0-9也就是全部的下标。但111（7），101（5），11（3）永远取不到。所以只有满足2的指数幂减一与运算的结果才是具有全部下标的可能性和取模实际一样。扩容之后所有元素也要遍历重新定位这个时候也要进行大量的这个运算所以采用这个h&amp;(length-1)效率要更高。</p>
+<h4 id="加载因子"><a href="#加载因子" class="headerlink" title="加载因子"></a>加载因子</h4><p>第二就是加载因子为何是0.75，这个大家可能都知道等桶数组满了再扩容哈希碰撞一定挺多的很容易长链1.8会生成红黑树，但装到一半就扩容就空位太多很浪费空间，0.75也就是这样的一个折中的选择。总而言之就是这样规定。也是通过统计出来的比较好的结果。下面这段注释也说明了取0.75发生8次碰撞的概率已经是一亿分之六红黑树并不会那么容易生成那样就够了，其实关于为什么是0.75就把他当做一个折中的选择。这里包括下面注释内容其实上并没有说明，这个东西泊松分布和红黑树为什么在设定在链表到8的时候生成有关系下面会讲</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">* Because TreeNodes are about twice the size of regular nodes, we</span><br><span class="line">* use them only <span class="keyword">when</span> bins contain enough nodes to warrant use</span><br><span class="line">* (see TREEIFY_THRESHOLD). And <span class="keyword">when</span> they become too <span class="title function_">small</span> <span class="params">(due to</span></span><br><span class="line"><span class="params">* removal or resizing)</span> they are converted back to plain bins.  In</span><br><span class="line">* usages with well-distributed user hashCodes, tree bins are</span><br><span class="line">* rarely used.  Ideally, under random hashCodes, the frequency of</span><br><span class="line">* nodes in bins follows a Poisson distribution</span><br><span class="line">* (http:<span class="comment">//en.wikipedia.org/wiki/Poisson_distribution) with a</span></span><br><span class="line">* parameter of about <span class="number">0.5</span> on average <span class="keyword">for</span> the <span class="keyword">default</span> resizing</span><br><span class="line">* threshold of <span class="number">0.75</span>, although with a large variance because of</span><br><span class="line">* resizing granularity. Ignoring variance, the expected</span><br><span class="line">* occurrences of list size k <span class="title function_">are</span> <span class="params">(exp(-<span class="number">0.5</span>)</span> * pow(<span class="number">0.5</span>, k) /</span><br><span class="line">* factorial(k)). The first values are:</span><br><span class="line">*</span><br><span class="line">* <span class="number">0</span>:    <span class="number">0.60653066</span></span><br><span class="line">* <span class="number">1</span>:    <span class="number">0.30326533</span></span><br><span class="line">* <span class="number">2</span>:    <span class="number">0.07581633</span></span><br><span class="line">* <span class="number">3</span>:    <span class="number">0.01263606</span></span><br><span class="line">* <span class="number">4</span>:    <span class="number">0.00157952</span></span><br><span class="line">* <span class="number">5</span>:    <span class="number">0.00015795</span></span><br><span class="line">* <span class="number">6</span>:    <span class="number">0.00001316</span></span><br><span class="line">* <span class="number">7</span>:    <span class="number">0.00000094</span></span><br><span class="line">* <span class="number">8</span>:    <span class="number">0.00000006</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="扩容问题"><a href="#扩容问题" class="headerlink" title="扩容问题"></a>扩容问题</h4><p>扩容源码(1.7)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">resize</span><span class="params">(<span class="type">int</span> newCapacity)</span></span><br><span class="line">&#123;</span><br><span class="line">    Entry[] oldTable = table;</span><br><span class="line">    <span class="type">int</span> <span class="variable">oldCapacity</span> <span class="operator">=</span> oldTable.length;</span><br><span class="line">    ......</span><br><span class="line">    <span class="comment">//创建一个新的Hash Table</span></span><br><span class="line">    Entry[] newTable = <span class="keyword">new</span> <span class="title class_">Entry</span>[newCapacity];</span><br><span class="line">    <span class="comment">//将Old Hash Table上的数据迁移到New Hash Table上</span></span><br><span class="line">    transfer(newTable);</span><br><span class="line">    table = newTable;</span><br><span class="line">    threshold = (<span class="type">int</span>)(newCapacity * loadFactor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//put时当达到容量的0.75，进行扩容resize方法创建新数组后就是调用transfer</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">transfer</span><span class="params">(Entry[] newTable, <span class="type">boolean</span> rehash)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">newCapacity</span> <span class="operator">=</span> newTable.length;<span class="comment">//新数组的长度</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e : table) &#123;<span class="comment">//遍历旧数组</span></span><br><span class="line">            <span class="keyword">while</span>(<span class="literal">null</span> != e) &#123;<span class="comment">//遍历旧数组中的每个链表结点</span></span><br><span class="line">                Entry&lt;K,V&gt; next = e.next;<span class="comment">//next指向当前遍历结点e的下一个结点</span></span><br><span class="line">                <span class="keyword">if</span> (rehash) &#123;<span class="comment">//再hash</span></span><br><span class="line">                    e.hash = <span class="literal">null</span> == e.key ? <span class="number">0</span> : hash(e.key);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> indexFor(e.hash, newCapacity);<span class="comment">//重新计算当前元素在新数组中的位置</span></span><br><span class="line">                <span class="comment">/*********关键的 3行代码（头插法移动元素）*********/</span></span><br><span class="line">                e.next = newTable[i];</span><br><span class="line">                newTable[i] = e;</span><br><span class="line">                e = next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>put时当达到阈值后进行扩容也就是执行resize方法创建新数组，再执行transfer方法里面双循环遍历数组与链表，重新定位放入新桶数组，在1.7的扩容会有死环问题，这里先根据源码的扩容步骤作出了如下的扩容步骤图</p>
+<p><strong>扩容流程</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/1.png"></p>
+<p>假设上图数组正在扩容，首先循环到null !&#x3D; e的时候才能执行while的内容，e是遍历table数组的元素所以e &#x3D; first，next &#x3D; e.next这时代码中的next &#x3D; sec。</p>
+<p>然后求e.hash重新计算使用indexFor得到新数组的下标i（假设为3，第4个位置），让e.next改为newTable[i]的引用，再将newTable[i]改为当前e也就是fist，也就是头插法</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/2.png"></p>
+<p>代码第三步e &#x3D; next 将变量e的引用原先是fist改为next的引用也就是e &#x3D; sec。因此while里面就是遍历链表的元素赋值给e，在判断e是否为空当前e是sec，再进行同样的操作（定位，头插，移位）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/3.png"></p>
+<p>现在新数组就变成图中右下的样子了，可以看到就是sec的next变成first，first的next为空比起原先数组的关系就是反过来的。因为头插嘛第一个先插过去后面的插过去就更靠前第一个就是最下面。接下来e就是sec的next也就是遍历到第三个了然后没有下一个while结束，for循环下一个数组元素。就这样循环往复遍历所有的元素转移到新数组。</p>
+<p><strong>死环</strong>问题就是在并发的情况下做这些扩容步骤出现的问题，通过上述演示单线程的一个扩容流程。假设现在两个线程同时对一个hashmap扩容。那么同时访问resize方法两个线程里面都创建了一个自己线程里的新数组，然后再执行transfer方法共同执行到while里的第一句next &#x3D; e.next时的情况如下图。两个线程里都有自己的e与next还有新数组。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/4.png"></p>
+<p>这时线程1停在这里。线程2继续全部执行完（while循环两次直到e为空），这时线程2的新数组已经移完原来的两个元素</p>
+<p>第一次循环</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/5.png"></p>
+<p>第二次循环</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/6.png"></p>
+<p>这时候线程1又往后开始执行了。其实问题就在于此时堆中的fisrt对象和sec已经被改了。first对象里的next属性现在其实是空，然后sec里的next值为first。按照步骤</p>
+<p>第一步完成后e（first）到新数组，之后e改为next（sec）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/7.png"></p>
+<p>到这一步问题就来了，处理完first之后现在e引用sec，再次while循环 得next &#x3D; e.next。现在e.next &#x3D; first而不是null，就出现循环了。处理完sec到时候e再引用first再循环一遍之后e才为空</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/8.png"></p>
+<p>将sec移过去然后next为first（其实它的next本来就是first了因为开始那个线程已经改了因此前面next就不等于null，而是first）。导致接下来e 不是null，是first。然后再进while循环e &#x3D;first，next&#x3D;null。这时first就要插在sec上就是first的next改为sec。就形成了死循环 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/HashMap/9.png"></p>
+<p>总结这个问题产生就是因为头插法导致从旧数组到新数组的时候链表方向会反过来，再因为并发的问题开始读取的是first并且next是sec。但中途却被别的线程改了因为扩容next反过来。它还拿着之前的循环一次再取就是有问题了本来应该链表结束了为0，结果可以连到fisrt。</p>
+<h4 id="JDK8的优化"><a href="#JDK8的优化" class="headerlink" title="JDK8的优化"></a>JDK8的优化</h4><ol>
+<li>resize 扩容优化</li>
+<li>解决了resize时多线程死循环问题</li>
+<li>引入了红黑树，目的是避免单条链表过长而影响查询效率</li>
+</ol>
+<p>关于resize优化，在1.7上面扩容源码里拿到元素重新类似取模运算h &amp; (length-1)得到位置，实际上在扩容是原来的两倍，这个时候取模结果就是原来的位置或原来的位置加原数组长度就这两种情况。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩容前长度16</span></span><br><span class="line">length-<span class="number">1</span>   <span class="number">0000</span> <span class="number">0000</span> <span class="number">1111</span></span><br><span class="line">hashCode1  <span class="number">1011</span> <span class="number">0010</span> <span class="number">0111</span>  （<span class="number">111</span>）<span class="number">3</span></span><br><span class="line">hashCode2  <span class="number">0001</span> <span class="number">0101</span> <span class="number">0111</span>  （<span class="number">111</span>）<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩容后长度32</span></span><br><span class="line">length-<span class="number">1</span>   <span class="number">0000</span> <span class="number">0001</span> <span class="number">1111</span></span><br><span class="line">hashCode1  <span class="number">1011</span> <span class="number">0010</span> <span class="number">0111</span>  （<span class="number">111</span>）<span class="number">3</span></span><br><span class="line">hashCode2  <span class="number">1101</span> <span class="number">0101</span> <span class="number">0111</span>  （<span class="number">10111</span>）<span class="number">19</span></span><br></pre></td></tr></table></figure>
+
+<p>所以hashcode之前没用到的高一位要么是0要么是1。新数组容量是以前两倍高位多了个1，hashcode如果高一位是0和以前就没有区别，如果是1就多了1 一个原数组大小。从以前的111要么没有要么还是111要么是10111就是看那个高位所以我们只需要判断h &amp; length的结果。就看那一个位就可以判断它的新下标是不变还是加上老数组容量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩容前长度16</span></span><br><span class="line">length     <span class="number">0000</span> <span class="number">0001</span> <span class="number">0000</span></span><br><span class="line">hashCode1  <span class="number">1011</span> <span class="number">0010</span> <span class="number">0111</span>  （<span class="number">0000</span> <span class="number">0000</span>）<span class="number">0</span></span><br><span class="line">hashCode2  <span class="number">0001</span> <span class="number">0101</span> <span class="number">0111</span>  （<span class="number">0001</span> <span class="number">0000</span>）<span class="number">16</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这段代码放在遍历原数组里面</span></span><br><span class="line"><span class="keyword">if</span>((h&amp;length)=<span class="number">0</span>)&#123;</span><br><span class="line">	当前遍历的下标i就是新数组下标</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	当前遍历的i+oldTable.length就是新下标</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.8源码当中也就是这样去确定新的下标位置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Node&lt;K,V&gt; loHead = <span class="literal">null</span>, loTail = <span class="literal">null</span>;</span><br><span class="line">Node&lt;K,V&gt; hiHead = <span class="literal">null</span>, hiTail = <span class="literal">null</span>;</span><br><span class="line">Node&lt;K,V&gt; next;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    next = e.next;</span><br><span class="line">    <span class="comment">//判断是低指针还是高指针</span></span><br><span class="line">    <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (loTail == <span class="literal">null</span>)</span><br><span class="line">            loHead = e;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            loTail.next = e;</span><br><span class="line">        loTail = e;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (hiTail == <span class="literal">null</span>)</span><br><span class="line">            hiHead = e;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            hiTail.next = e;</span><br><span class="line">        hiTail = e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">while</span> ((e = next) != <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">if</span> (loTail != <span class="literal">null</span>) &#123;</span><br><span class="line">    loTail.next = <span class="literal">null</span>;</span><br><span class="line">    newTab[j] = loHead;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (hiTail != <span class="literal">null</span>) &#123;</span><br><span class="line">    hiTail.next = <span class="literal">null</span>;</span><br><span class="line">    newTab[j + oldCap] = hiHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述源码中，除了新坐标的计算外。内部定义的两组共四个指针（低头、低尾、高头、高尾）低高区分新下标是保持原样的还是增加的和上面提的一样不需要rehash，无论是低指针还是高指针都有两个头尾指针head、tail，标记头尾也是解决1.7当中由于体位倒置会出现的死循环问题</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yournotes.cn">木瓜煲鸡脚</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yournotes.cn/2020/08/12/HashMap/">http://yournotes.cn/2020/08/12/HashMap/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yournotes.cn" target="_blank">木瓜煲鸡脚's blog</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/15/%E9%81%87%E8%A7%81/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/music_article.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">遇见</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/10/Volatile%E7%AE%80%E8%BF%B0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Volatile简述</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#HashMap%E6%A6%82%E8%BF%B0"><span class="toc-text">HashMap概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HashMap%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">HashMap的数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%B9%E9%87%8F%E9%97%AE%E9%A2%98"><span class="toc-text">容量问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%9B%A0%E5%AD%90"><span class="toc-text">加载因子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E9%97%AE%E9%A2%98"><span class="toc-text">扩容问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK8%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">JDK8的优化</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

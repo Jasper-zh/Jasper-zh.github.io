@@ -1,0 +1,747 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>zookeeper详解 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、Zookeeper概述1.1 概述 美团，饿了么，淘宝，58同城等等应用都是zookeeper的现实生活版 老孙我开了个饭店，如何才能让大家都能吃到我们的饭菜？需要入驻美团，这样大家就可以在美团 app中看到我的饭店，下订单，从而完成一次交易 Zookeeper是一个开源的分布式（多台服务器干一"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2021/06/01/zookeeper%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'zookeeper详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">zookeeper详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-06-01T12:39:00.000Z" title="发表于 2021-06-01 20:39:00">2021-06-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3/">记录文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="zookeeper详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/06/01/zookeeper%E8%AF%A6%E8%A7%A3/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、Zookeeper概述"><a href="#一、Zookeeper概述" class="headerlink" title="一、Zookeeper概述"></a>一、Zookeeper概述</h2><h3 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h3><ul>
+<li>美团，饿了么，淘宝，58同城等等应用都是zookeeper的现实生活版</li>
+<li>老孙我开了个饭店，如何才能让大家都能吃到我们的饭菜？需要入驻美团，这样大家就可以在美团</li>
+<li>app中看到我的饭店，下订单，从而完成一次交易</li>
+<li>Zookeeper是一个开源的分布式（多台服务器干一件事）的，为分布式应用提供协调服务的<br>Apache项目。</li>
+<li>在大数据技术生态圈中，zookeeper（动物管理员），Hadoop（大象），Hive（蜜蜂），Pig（猪）等技术</li>
+</ul>
+<h3 id="1-2-工作机制"><a href="#1-2-工作机制" class="headerlink" title="1.2 工作机制"></a>1.2 工作机制</h3><ul>
+<li>Zookeeper从设计模式角度来理解：是一个基于观察者模式（一个人干活，有人盯着他）设计的分布式服务管理框架</li>
+<li>它负责 存储 和 管理 大家都关心的数据<ul>
+<li>然后接受观察者的注册，一旦这些数据的发生变化</li>
+<li>Zookeeper就将负责通知已经注册的那些观察者做出相应的反应</li>
+<li>从而实现集群中类似Master&#x2F;Slave管理模式</li>
+</ul>
+</li>
+<li>Zookeeper &#x3D; 文件系统 + 通知机制</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516205429611.png" alt="image-20210516205429611"></p>
+<ol>
+<li>商家营业并入驻</li>
+<li>获取到当前营业的饭店列表</li>
+<li>服务器节点下线</li>
+<li>服务器节点上下线事件通知</li>
+<li>重新再去获取服务器列表，并注册监听</li>
+</ol>
+<h3 id="1-3-特点"><a href="#1-3-特点" class="headerlink" title="1.3 特点"></a>1.3 特点</h3><p>分布式和集群的区别？</p>
+<ul>
+<li>无论分布式和集群，都是很多人在做事情。具体区别如下：</li>
+<li>例如：我有一个饭店，越来越火爆，我得多招聘一些工作人员<ul>
+<li>分布式：招聘1个厨师，1个服务员，1个前台，<strong>三个人负责的工作不一样</strong>，但是最终目的都是为饭店工作</li>
+<li>集群：招聘3个服务员，<strong>3个人的工作一样</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516205643857.png" alt="image-20210516205643857"></p>
+<h3 id="1-4-数据结构"><a href="#1-4-数据结构" class="headerlink" title="1.4  数据结构"></a>1.4  数据结构</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516205730553.png" alt="image-20210516205730553"></p>
+<ul>
+<li>ZooKeeper数据模型的结构与linux文件系统很类似，整体上可以看作是一棵树，每个节点称做一个ZNode（ZookeeperNode）。</li>
+<li>每一个ZNode默认能够存储1MB的数据（元数据），每个ZNode的路径都是唯一的<ul>
+<li>元数据（Metadata），又称中介数据、中继数据，为描述数据的数据（data about data），主要是描述数据属性（property）的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-应用场景"><a href="#1-5-应用场景" class="headerlink" title="1.5 应用场景"></a>1.5 应用场景</h3><ul>
+<li>提供的服务包括：统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下线、软负载均衡等</li>
+</ul>
+<h4 id="1-5-1-统一命名服务"><a href="#1-5-1-统一命名服务" class="headerlink" title="1.5.1 统一命名服务"></a>1.5.1 统一命名服务</h4><ul>
+<li>在分布式环境下，通常需要对应用或服务进行统一的命名，便于识别</li>
+<li>例如：服务器的IP地址不容易记，但域名相比之下却是很容易记住</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516214926425.png" alt="image-20210516214926425"></p>
+<h4 id="1-5-2-统一配置管理"><a href="#1-5-2-统一配置管理" class="headerlink" title="1.5.2 统一配置管理"></a>1.5.2 统一配置管理</h4><ul>
+<li>分布式环境下，配置文件做同步是必经之路</li>
+<li>1000台服务器，如果配置文件作出修改，那一台一台的修改，运维人员肯定会疯，如何做到修改一处就快速同步到每台服务器上</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516215320217.png" alt="image-20210516215320217"></p>
+<ul>
+<li>将配置管理交给Zookeeper<ol>
+<li>将配置信息写入到Zookeeper的某个节点上</li>
+<li>每个客户端都监听这个节点</li>
+<li>一旦节点中的数据文件被修改，Zookeeper这个话匣子就会通知每台客户端服务器</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-5-3-服务器节点动态上下线"><a href="#1-5-3-服务器节点动态上下线" class="headerlink" title="1.5.3 服务器节点动态上下线"></a>1.5.3 服务器节点动态上下线</h4><ul>
+<li>客户端能实时获取服务器上下线的变化</li>
+<li>在美团APP上实时可以看到商家是否正在营业或打样</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220459449.png" alt="image-20210516220459449"></p>
+<h4 id="1-5-4-软负载均衡"><a href="#1-5-4-软负载均衡" class="headerlink" title="1.5.4 软负载均衡"></a>1.5.4 软负载均衡</h4><ul>
+<li>Zookeeper会记录每台服务器的访问数，让访问数最少的服务器去处理最新的客户请求（雨露均沾）</li>
+<li>都是自己的孩子，得一碗水端平</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220552779.png" alt="image-20210516220552779"></p>
+<h3 id="1-6-下载地址"><a href="#1-6-下载地址" class="headerlink" title="1.6 下载地址"></a>1.6 下载地址</h3><p>镜像库地址：<a target="_blank" rel="noopener" href="http://archive.apache.org/dist/zookeeper/">http://archive.apache.org/dist/zookeeper/</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220616483.png" alt="image-20210516220616483"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516220627655.png" alt="image-20210516220627655"></p>
+<ul>
+<li>apache-zookeeper-3.6.0.tar.gz需要安装maven，然后再运行mvn clean install 和mvnjavadoc:aggregate，前一个命令会下载安装好多jar包，不知道要花多长时间</li>
+<li>apache-zookeeper-3.6.0-bin.tar.gz已经自带所需要的各种jar包</li>
+</ul>
+<h2 id="二、Zookeeper本地模式安装"><a href="#二、Zookeeper本地模式安装" class="headerlink" title="二、Zookeeper本地模式安装"></a>二、Zookeeper本地模式安装</h2><h3 id="2-1-本地模式安装"><a href="#2-1-本地模式安装" class="headerlink" title="2.1 本地模式安装"></a>2.1 本地模式安装</h3><h4 id="2-1-1-安装前准备"><a href="#2-1-1-安装前准备" class="headerlink" title="2.1.1 安装前准备"></a>2.1.1 安装前准备</h4><ol>
+<li>安装jdk</li>
+<li>拷贝apache-zookeeper-3.6.0-bin.tar.gz到opt目录</li>
+<li>解压安装包</li>
+</ol>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> opt]<span class="meta"># tar -zxvf apache-zookeeper-3.6.0-bin.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重命名</li>
+</ol>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> opt]<span class="meta"># mv apache-zookeeper-3.6.0-bin zookeeper</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-配置修改"><a href="#2-1-2-配置修改" class="headerlink" title="2.1.2 配置修改"></a>2.1.2 配置修改</h4><p>1、在&#x2F;opt&#x2F;zookeeper&#x2F;这个目录上创建zkData和zkLog目录</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> zookeeper]<span class="meta"># mkdir zkData </span></span><br><span class="line">[root<span class="symbol">@localhost</span> zookeeper]<span class="meta"># mkdir zkLog</span></span><br></pre></td></tr></table></figure>
+
+<p>2、进入&#x2F;opt&#x2F;zookeeper&#x2F;conf这个路径，复制一份 zoo_sample.cfg 文件并命名为 zoo.cfg</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> conf]<span class="meta"># cp zoo_sample.cfg zoo.cfg</span></span><br></pre></td></tr></table></figure>
+
+<p>3、编辑zoo.cfg文件，修改dataDir路径：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dataDir</span><span class="operator">=/</span>opt/zookeeper/zkData</span><br><span class="line"><span class="attribute">dataLogDir</span><span class="operator">=/</span>opt/zookeeper/zkLog</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-3-操作Zookeeper"><a href="#2-1-3-操作Zookeeper" class="headerlink" title="2.1.3 操作Zookeeper"></a>2.1.3 操作Zookeeper</h4><p>1、启动Zookeeper</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># ./zkServer.sh start</span></span><br></pre></td></tr></table></figure>
+
+<p>2、查看进程是否启动</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># jps</span></span><br></pre></td></tr></table></figure>
+
+<p>QuorumPeerMain：是zookeeper集群的启动入口类，是用来加载配置启动QuorumPeer线程的</p>
+<p>3、查看状态：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># ./zkServer.sh status</span></span><br></pre></td></tr></table></figure>
+
+<p>4、启动客户端</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># ./zkCli.sh</span></span><br></pre></td></tr></table></figure>
+
+<p>5、退出客户端</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhos<span class="variable">t:2181</span>(CONNECTED) <span class="number">0</span>] <span class="keyword">quit</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-配置参数解读"><a href="#2-2-配置参数解读" class="headerlink" title="2.2 配置参数解读"></a>2.2 配置参数解读</h3><p>Zookeeper中的配置文件zoo.cfg中参数含义解读如下：</p>
+<ul>
+<li><p>tickTime &#x3D;2000：通信心跳数，Zookeeper服务器与客户端心跳时间，单位毫秒</p>
+</li>
+<li><p>Zookeeper使用的基本时间，服务器之间或客户端与服务器之间维持心跳的时间间隔，也就是每个tickTime时间就会发送一个心跳，时间单位为毫秒。</p>
+</li>
+<li><p><strong>initLimit &#x3D;10</strong>：LF初始通信时限</p>
+<ul>
+<li>集群中的Follower跟随者服务器与Leader领导者服务器之间，<strong>启动时</strong>能容忍的最多心跳数</li>
+<li>10*2000（10个心跳时间）如果领导和跟随者没有发出心跳通信，就视为失效的连接，领导和跟随者彻底断开</li>
+</ul>
+</li>
+<li><p><strong>syncLimit &#x3D;5</strong>：LF同步通信时限</p>
+<ul>
+<li><p>集群<strong>启动后</strong>，Leader与Follower之间的最大响应时间单位，假如响应超过syncLimit *</p>
+<p>tickTime-&gt;10秒，Leader就认为Follwer已经死掉，会将Follwer从服务器列表中删除</p>
+</li>
+</ul>
+</li>
+<li><p><strong>dataDir</strong>：数据文件目录+数据持久化路径</p>
+<ul>
+<li>主要用于保存Zookeeper中的数据。</li>
+</ul>
+</li>
+<li><p><strong>dataLogDir</strong>：日志文件目录</p>
+</li>
+<li><p><strong>clientPort</strong> &#x3D;2181：客户端连接端口</p>
+<ul>
+<li>监听客户端连接的端口</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、Zookeeper内部原理"><a href="#三、Zookeeper内部原理" class="headerlink" title="三、Zookeeper内部原理"></a>三、Zookeeper内部原理</h2><h3 id="3-1-选举机制（面试重点）"><a href="#3-1-选举机制（面试重点）" class="headerlink" title="3.1 选举机制（面试重点）"></a>3.1 选举机制（面试重点）</h3><ul>
+<li>半数机制：集群中半数以上机器存活，集群可用。所以Zookeeper适合安装奇数台服务器</li>
+<li>虽然在配置文件中并没有指定Master和Slave。但是，Zookeeper工作时，是有一个节点为<br>Leader，其他则为Follower，Leader是通过内部的选举机制临时产生的</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516222202025.png" alt="image-20210516222202025"></p>
+<ol>
+<li><p>Server1先投票，<strong>投给自己</strong>，自己为1票，没有超过半数，根本无法成为leader，顺水推舟将票数投给了id比自己大的Server2</p>
+</li>
+<li><p>Server2也把自己的票数投给了自己，再加上Server1给的票数，总票数为2票，没有超过半数，也无法成为leader，也学习Server1，顺水推舟，将自己所有的票数给了id比自己大的Server3</p>
+</li>
+<li><p>Server3得到了Server1和Server2的两票，再加上自己投给自己的一票。3票超过半数，顺利成为leader</p>
+</li>
+<li><p>Server4和Server5都投给自己，但是无法改变Server3的票数，只好听天由命，承认Server3是leader</p>
+</li>
+</ol>
+<h3 id="3-2-节点类型"><a href="#3-2-节点类型" class="headerlink" title="3.2 节点类型"></a>3.2 节点类型</h3><ul>
+<li>持久型（persistent）：<ul>
+<li><strong>持久化目录节点</strong>（persistent）客户端与zookeeper断开连接后，该节点依旧存在</li>
+<li><strong>持久化顺序编号目录节点</strong>（persistent_sequential）客户端与zookeeper断开连接后，该节点依旧存在，创建znode时设置<strong>顺序</strong>标识，znode名称后会附加一个值，顺序号是一个单调递增的计数器，由父节点维护，例如：Znode001，Znode002…</li>
+</ul>
+</li>
+<li>短暂型（ephemeral）：<ul>
+<li><strong>临时目录节点</strong>（ephemeral）客户端和服务器端断开连接后，创建的节点自动删除</li>
+<li><strong>临时顺序编号目录节点</strong>（ephemeral_sequential）客户端与zookeeper断开连接后，该节点被删除，创建znode时设置<strong>顺序</strong>标识，znode名称后会附加一个值，顺序号是一个单调递增的计数器，由父节点维护，例如：Znode001，Znode002…</li>
+</ul>
+</li>
+</ul>
+<p>注意：序号是相当于i++，和数据库中的自增长类似</p>
+<h3 id="3-3-监听器原理（面试重点）"><a href="#3-3-监听器原理（面试重点）" class="headerlink" title="3.3 监听器原理（面试重点）"></a>3.3 监听器原理（面试重点）</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516222523741.png" alt="image-20210516222523741"></p>
+<ol>
+<li>在main方法中创建Zookeeper客户端的同时就会创建两个线程，一个负责网络连接通信，一个负责监听</li>
+<li>监听事件就会通过网络通信发送给zookeeper</li>
+<li>zookeeper获得注册的监听事件后，立刻将监听事件添加到监听列表里</li>
+<li>zookeeper监听到 数据变化 或 路径变化，就会将这个消息发送给监听线程<ul>
+<li>监听节点数据的变化：get path [watch]</li>
+<li>监听子节点增减的变化：ls path [watch]</li>
+</ul>
+</li>
+<li>监听线程就会在内部调用process方法（需要我们实现process方法内容）</li>
+</ol>
+<h3 id="3-4-写数据流程"><a href="#3-4-写数据流程" class="headerlink" title="3.4 写数据流程"></a>3.4 写数据流程</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516222720702.png" alt="image-20210516222720702"></p>
+<ol>
+<li>Client 想向 ZooKeeper 的 Server1 上写数据，必须的先发送一个写的请求</li>
+<li>如果Server1不是Leader，那么Server1 会把接收到的请求进一步转发给Leader。 </li>
+<li>这个Leader 会将写请求广播给各个Server，各个Server写成功后就会通知Leader。 </li>
+<li>当Leader收到半数以上的 Server 数据写成功了，那么就说明数据写成功了。</li>
+<li>随后，Leader会告诉Server1数据写成功了。</li>
+<li>Server1会反馈通知 Client 数据写成功了，整个流程结束</li>
+</ol>
+<h2 id="四、Zookeeper实战（开发重点）"><a href="#四、Zookeeper实战（开发重点）" class="headerlink" title="四、Zookeeper实战（开发重点）"></a>四、Zookeeper实战（开发重点）</h2><p>这里是用虚拟机做的演示</p>
+<h3 id="4-1-分布式安装部署"><a href="#4-1-分布式安装部署" class="headerlink" title="4.1 分布式安装部署"></a>4.1 分布式安装部署</h3><p>集群思路：先搞定一台服务器，再克隆出两台，形成集群！</p>
+<h4 id="4-1-1-安装zookeeper"><a href="#4-1-1-安装zookeeper" class="headerlink" title="4.1.1 安装zookeeper"></a>4.1.1 安装zookeeper</h4><div class="note info no-icon flat"><p>请参考本文 2.1</p>
+</div>
+
+<h4 id="4-1-2-配置服务器编号"><a href="#4-1-2-配置服务器编号" class="headerlink" title="4.1.2 配置服务器编号"></a>4.1.2 配置服务器编号</h4><ul>
+<li>在&#x2F;opt&#x2F;zookeeper&#x2F;zkData创建myid文件</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> zkData]<span class="meta"># vim myid</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在文件中添加与server对应的编号：1</li>
+<li>其余两台服务器分别对应2和3</li>
+</ul>
+<h4 id="4-1-3-配置zoo-cfg文件"><a href="#4-1-3-配置zoo-cfg文件" class="headerlink" title="4.1.3 配置zoo.cfg文件"></a>4.1.3 配置zoo.cfg文件</h4><ul>
+<li>打开zoo.cfg文件，增加如下配置</li>
+</ul>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#######################cluster########################## </span><br><span class="line">server<span class="number">.1</span>=<span class="number">192.168</span><span class="number">.204</span><span class="number">.141</span>:<span class="number">2888</span>:<span class="number">3888</span> </span><br><span class="line">server<span class="number">.2</span>=<span class="number">192.168</span><span class="number">.204</span><span class="number">.142</span>:<span class="number">2888</span>:<span class="number">3888</span> </span><br><span class="line">server<span class="number">.3</span>=<span class="number">192.168</span><span class="number">.204</span><span class="number">.143</span>:<span class="number">2888</span>:<span class="number">3888</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置参数解读 server.A&#x3D;B:C:D<ul>
+<li><p><strong>A</strong>：一个数字，表示第几号服务器</p>
+<ul>
+<li>集群模式下配置的&#x2F;opt&#x2F;zookeeper&#x2F;zkData&#x2F;myid文件里面的数据就是A的值</li>
+</ul>
+</li>
+<li><p><strong>B</strong>：服务器的ip地址</p>
+</li>
+<li><p><strong>C</strong>：与集群中Leader服务器交换信息的端口</p>
+</li>
+<li><p><strong>D</strong>：选举时专用端口，万一集群中的Leader服务器挂了，需要一个端口来重新进行选举选出一个新的Leader，而这个端口就是用来执行选举时服务器相互通信的端口。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-4-配置其余两台服务器"><a href="#4-1-4-配置其余两台服务器" class="headerlink" title="4.1.4 配置其余两台服务器"></a>4.1.4 配置其余两台服务器</h4><ol>
+<li>在虚拟机数据目录vms下，创建zk02</li>
+<li>将本台服务器数据目录下的.vmx文件和所有的.vmdk文件分别拷贝zk02下</li>
+<li>虚拟机-&gt;文件-&gt;打开 （选择zk02下的.vmx文件）</li>
+<li>开启此虚拟机，弹出对话框，选择“我已复制该虚拟机”</li>
+<li>进入系统后，修改linux中的ip，修改&#x2F;opt&#x2F;zookeeper&#x2F;zkData&#x2F;myid中的数值为2</li>
+</ol>
+<p>第三台服务器zk03,重复上面的步骤</p>
+<h4 id="4-1-5-集群操作"><a href="#4-1-5-集群操作" class="headerlink" title="4.1.5 集群操作"></a>4.1.5 集群操作</h4><ul>
+<li>每台服务器的防火墙<strong>必须关闭</strong></li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># systemctl stop firewalld.service</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动第1台</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># ./zkServer.sh start</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看状态</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># ./zkServer.sh status</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ZooKeeper JMX enabled by default </span><br><span class="line">Using config: /opt/zookeeper/bin/../conf/zoo.cfg </span><br><span class="line">Client port found: 2181. Client address: localhost. </span><br><span class="line"><span class="keyword">Error </span>contacting service. It is probably not running.</span><br></pre></td></tr></table></figure>
+
+<p>注意：因为没有超过半数以上的服务器，所以集群失败 （防火墙没有关闭也会导致失败）</p>
+<ul>
+<li>当启动第2台服务器时<ul>
+<li>查看第1台的状态：Mode: <strong>follower</strong></li>
+<li>查看第2台的状态：Mode: <strong>leader</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-客户端命令行操作"><a href="#4-2-客户端命令行操作" class="headerlink" title="4.2 客户端命令行操作"></a>4.2 客户端命令行操作</h3><ul>
+<li>启动客户端</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> bin]<span class="meta"># ./zkCli.sh</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>显示所有操作命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看当前znode中所包含的内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查看当前节点详细信息</p>
+<p>zookeeper老版本使用 ls2 &#x2F; ，现在已经被新命令替代</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -s /</span><br></pre></td></tr></table></figure>
+
+<table>
+    <tr>
+    	<th>信息字段</th>
+        <th>意思</th>
+    </tr>
+    <tr>
+    	<td>cZxid</td>
+        <td>创建节点的事务:每次修改ZooKeeper状态都会收到一个zxid形式的时间戳，也就是ZooKeeper事务ID。事务ID是ZooKeeper中所有修改总的次序。每个修改都有唯一的zxid，如果zxid1小于zxid2，那么zxid1在zxid2之前发生。</td>
+    </tr>
+    <tr>
+    	<td>ctime</td>
+        <td>被创建的毫秒数(从1970年开始)</td>
+    </tr>
+    <tr>
+    	<td>mZxid</td>
+        <td>最后更新的事务zxid</td>
+    </tr>
+    <tr>
+    	<td>mtime</td>
+        <td>最后修改的毫秒数(从1970年开始)</td>
+    </tr>
+    <tr>
+    	<td>pZxid</td>
+        <td>最后更新的子节点zxid</td>
+    </tr>
+    <tr>
+    	<td>cversion</td>
+        <td>创建版本号，子节点修改次数</td>
+    </tr>
+    <tr>
+    	<td>dataVersion</td>
+        <td>数据变化版本号</td>
+    </tr>
+    <tr>
+    	<td>aclVersion</td>
+        <td>权限版本号</td>
+    </tr>
+    <tr>
+    	<td>ephemeralOwner</td>
+        <td>如果是临时节点，这个是znode拥有者的session id。如果不是临时节点则是0。</td>
+    </tr>
+    <tr>
+    	<td>dataLength</td>
+        <td>数据长度</td>
+    </tr>
+    <tr>
+    	<td>numChildren</td>
+        <td>子节点数</td>
+    </tr>
+</table>
+
+
+<ul>
+<li><p>分别创建2个普通节点</p>
+<ul>
+<li>在根目录下，创建中国和美国两个节点</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create /china </span><br><span class="line">create /usa</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在根目录下，创建俄罗斯节点，并保存“普京”数据到节点上</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create /ru <span class="string">&quot;pujing&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多级创建节点<ul>
+<li>在中国节点下，创建武汉”下雨”</li>
+<li>china必须提前创建好，否则会报错“节点不存在”</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create <span class="regexp">/china/</span>wuhan <span class="string">&quot;下雨&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获得节点的值</p>
+</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">get</span> /china/wuhan</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建短暂节点：创建成功之后，quit退出客户端，重新连接，短暂的节点消失</li>
+</ul>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create -e <span class="string">/uk</span> </span><br><span class="line"><span class="keyword">ls</span> / </span><br><span class="line"><span class="keyword">quit</span> </span><br><span class="line"><span class="keyword">ls</span> /</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>创建带序号的节点</p>
+<ul>
+<li>创建带序号的节点</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create -s /ru/city <span class="comment"># 执行三次</span></span><br><span class="line"><span class="built_in">ls</span> /ru</span><br><span class="line">[city0000000000, city0000000001, city0000000002]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果原来没有序号节点，序号从0开始递增。</li>
+<li>如果原节点下已有2个节点，则再排序时从2开始，以此类推</li>
+</ul>
+</li>
+<li><p>修改节点数据值</p>
+</li>
+</ul>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> /china/wuhan <span class="comment">&quot;太阳&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>监听 <strong>节点的值变化</strong> 或 <strong>子节点变化（路径变化）</strong></p>
+<ul>
+<li>在server3主机上注册监听&#x2F;usa节点的数据变化</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addWatch /usa</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在Server1主机上修改&#x2F;usa的数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> /usa <span class="string">&quot;telangpu&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Server3会立刻响应</p>
+<p>WatchedEvent state:SyncConnected type:<strong>NodeDataChanged</strong> path:&#x2F;usa</p>
+</li>
+<li><p>如果在Server1的&#x2F;usa下面创建子节点NewYork</p>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create <span class="regexp">/usa/</span>NewYork</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Server3会立刻响应</p>
+<p>WatchedEvent state:SyncConnected type:<strong>NodeCreated</strong>path:&#x2F;usa&#x2F;NewYork</p>
+</li>
+</ul>
+</li>
+<li><p>删除节点</p>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="regexp">/usa/</span>NewYork</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>递归删除节点 （非空节点，节点下有子节点）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deleteall /ru</span><br></pre></td></tr></table></figure>
+
+<p>不仅删除&#x2F;ru，而且&#x2F;ru下的所有子节点也随之删除</p>
+<h3 id="4-3-API应用"><a href="#4-3-API应用" class="headerlink" title="4.3 API应用"></a>4.3 API应用</h3><h4 id="4-3-1-IDEA环境搭建"><a href="#4-3-1-IDEA环境搭建" class="headerlink" title="4.3.1 IDEA环境搭建"></a>4.3.1 IDEA环境搭建</h4><p><strong>1) 创建一个Maven工程</strong></p>
+<p><strong>2) 添加pom文件</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.logging.log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.zookeeper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>zookeeper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3) 在resources下创建log4j.properties</strong></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">log4j.rootLogger</span>=<span class="string">INFO, stdout </span></span><br><span class="line"><span class="attr">log4j.appender.stdout</span>=<span class="string">org.apache.log4j.ConsoleAppender </span></span><br><span class="line"><span class="attr">log4j.appender.stdout.layout</span>=<span class="string">org.apache.log4j.PatternLayout </span></span><br><span class="line"><span class="attr">log4j.appender.stdout.layout.ConversionPattern</span>=<span class="string">%d %p [%c] - %m%n </span></span><br><span class="line"><span class="attr">log4j.appender.logfile</span>=<span class="string">org.apache.log4j.FileAppender </span></span><br><span class="line"><span class="attr">log4j.appender.logfile.File</span>=<span class="string">target/zk.log </span></span><br><span class="line"><span class="attr">log4j.appender.logfile.layout</span>=<span class="string">org.apache.log4j.PatternLayout </span></span><br><span class="line"><span class="attr">log4j.appender.logfile.layout.ConversionPattern</span>=<span class="string">%d %p [%c] - %m%n</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-2-创建ZooKeeper客户端"><a href="#4-3-2-创建ZooKeeper客户端" class="headerlink" title="4.3.2 创建ZooKeeper客户端"></a>4.3.2 创建ZooKeeper客户端</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestZK</span> &#123;</span><br><span class="line">	<span class="comment">// 集群ip </span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">String</span> <span class="variable">connStr</span> <span class="operator">=</span><span class="string">&quot;192.168.249.81:2181,192.168.249.82:2181,192.168.249.83:2181&quot;</span>;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * session超时 60秒：一定不能太少，因为连接zookeeper和加载集群环境会因为性能原因延迟略高 </span></span><br><span class="line"><span class="comment">	 * 如果时间太少，还没有创建好客户端，就开始操作节点，会报错的 </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> <span class="variable">sessionTimeout</span> <span class="operator">=</span> <span class="number">60000</span>;</span><br><span class="line">	<span class="meta">@Test</span> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">		<span class="comment">// 创建监听器 </span></span><br><span class="line">		<span class="type">Watcher</span> <span class="variable">watcher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Watcher</span>() &#123;</span><br><span class="line">			<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(WatchedEvent watchedEvent)</span> &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="comment">// 创建zookeeper客户端 </span></span><br><span class="line">		<span class="type">ZooKeeper</span> <span class="variable">zk</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ZooKeeper</span>(connStr, sessionTimeout, watcher);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-3-创建节点"><a href="#4-3-3-创建节点" class="headerlink" title="4.3.3 创建节点"></a>4.3.3 创建节点</h4><p>一个ACL对象就是一个<strong>Id和permission对</strong></p>
+<ul>
+<li>表示哪个&#x2F;哪些范围的Id（Who）在通过了怎样的鉴权（How）之后，就允许进行那些操作（What）：Who How What；</li>
+<li>permission（What）就是一个int表示的位码，每一位代表一个对应操作的允许状态。</li>
+<li>类似linux的文件权限，不同的是共有5种操作：CREATE、READ、WRITE、DELETE、ADMIN(对应更改ACL的权限)<ul>
+<li>OPEN_ACL_UNSAFE：创建开放节点，允许任意操作 （用的最少，其余的权限用的很少）</li>
+<li>READ_ACL_UNSAFE：创建只读节点</li>
+<li>CREATOR_ALL_ACL：创建者才有全部权限</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Before</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">	<span class="comment">// 省略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">createNode</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	<span class="type">String</span> <span class="variable">nodeCreated</span> <span class="operator">=</span> zKcli.create(<span class="string">&quot;/lagou&quot;</span>, <span class="string">&quot;laosun&quot;</span>.getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);</span><br><span class="line">	<span class="comment">// 参数1：要创建的节点的路径 </span></span><br><span class="line">    <span class="comment">// 参数2：节点数据 </span></span><br><span class="line">    <span class="comment">// 参数3：节点权限 </span></span><br><span class="line">    <span class="comment">// 参数4：节点的类型 </span></span><br><span class="line">	System.out.println(<span class="string">&quot;nodeCreated = &quot;</span> + nodeCreated);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-4-查询节点的值"><a href="#4-3-4-查询节点的值" class="headerlink" title="4.3.4 查询节点的值"></a>4.3.4 查询节点的值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">find</span><span class="params">()</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">	<span class="type">byte</span>[] bs = zKcli.getData(<span class="string">&quot;/lagou&quot;</span>, <span class="literal">false</span>, <span class="keyword">new</span> <span class="title class_">Stat</span>());</span><br><span class="line">	<span class="comment">// 路径不存在时会报错 </span></span><br><span class="line">	<span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bs);</span><br><span class="line">	System.out.println(<span class="string">&quot;查询到数据：&quot;</span>+data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-5-修改节点的值"><a href="#4-3-5-修改节点的值" class="headerlink" title="4.3.5 修改节点的值"></a>4.3.5 修改节点的值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span><span class="keyword">throws</span> Exception&#123;</span><br><span class="line">	<span class="type">Stat</span> <span class="variable">stat</span> <span class="operator">=</span> zKcli.setData(<span class="string">&quot;/lagou&quot;</span>, <span class="string">&quot;laosunA&quot;</span>.getBytes(), <span class="number">0</span>);</span><br><span class="line">	<span class="comment">//先查看节点详 情，获得dataVersion = 0 </span></span><br><span class="line">    System.out.println(stat);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-6-删除节点"><a href="#4-3-6-删除节点" class="headerlink" title="4.3.6 删除节点"></a>4.3.6 删除节点</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	zKcli.delete(<span class="string">&quot;/lagou&quot;</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="comment">// 先查看节点详情，获得dataVersion = 1 </span></span><br><span class="line">	System.out.println(<span class="string">&quot;删除成功！&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-7-获取子节点"><a href="#4-3-7-获取子节点" class="headerlink" title="4.3.7 获取子节点"></a>4.3.7 获取子节点</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getChildren</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	List&lt;String&gt; children = zKcli.getChildren(<span class="string">&quot;/&quot;</span>,<span class="literal">false</span>);</span><br><span class="line">	<span class="comment">// false:不监听 </span></span><br><span class="line">	<span class="keyword">for</span> (String child : children) &#123;</span><br><span class="line">		System.out.println(child);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3-8-监听子节点的变化"><a href="#4-3-8-监听子节点的变化" class="headerlink" title="4.3.8 监听子节点的变化"></a>4.3.8 监听子节点的变化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getChildren</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	List&lt;String&gt; children = zKcli.getChildren(<span class="string">&quot;/&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">	<span class="comment">// true：注册监听 </span></span><br><span class="line">	<span class="keyword">for</span> (String child : children) &#123;</span><br><span class="line">		System.out.println(child);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 让线程不停止，等待监听的响应 </span></span><br><span class="line">	System.in.read();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>程序在运行的过程中，我们在linux下创建一个节点</li>
+<li>IDEA的控制台就会做出响应：<strong>NodeChildrenChanged–&#x2F;</strong></li>
+</ul>
+<h4 id="4-3-9-判断Znode是否存在"><a href="#4-3-9-判断Znode是否存在" class="headerlink" title="4.3.9 判断Znode是否存在"></a>4.3.9 判断Znode是否存在</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">exist</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">	<span class="type">Stat</span> <span class="variable">stat</span> <span class="operator">=</span> zKcli.exists(<span class="string">&quot;/lagou&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">	System.out.println(stat == <span class="literal">null</span> ? <span class="string">&quot;不存在&quot;</span> : <span class="string">&quot;存在&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-4-案例1：模拟美团商家上下线"><a href="#4-4-案例1：模拟美团商家上下线" class="headerlink" title="4.4 案例1：模拟美团商家上下线"></a>4.4 案例1：模拟美团商家上下线</h3><h4 id="4-4-1-需求"><a href="#4-4-1-需求" class="headerlink" title="4.4.1 需求"></a>4.4.1 需求</h4><ul>
+<li>模拟美团服务平台，商家营业通知，商家打烊通知</li>
+<li>提前在根节点下，创建好 &#x2F;meituan 节点</li>
+</ul>
+<h4 id="4-4-2-商家服务类"><a href="#4-4-2-商家服务类" class="headerlink" title="4.4.2 商家服务类"></a><strong>4.4.2</strong> 商家服务类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShopServer</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">connectString</span> <span class="operator">=</span> <span class="string">&quot;192.168.204.141:2181,192.168.204.142:2181,192.168.204.143:2181&quot;</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">sessionTimeout</span> <span class="operator">=</span> <span class="number">60000</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">ZooKeeper</span> <span class="variable">zk</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">	<span class="comment">// 创建到zk的客户端连接 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getConnect</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">		zk = <span class="keyword">new</span> <span class="title class_">ZooKeeper</span>(connectString, sessionTimeout, <span class="keyword">new</span> <span class="title class_">Watcher</span>() &#123;</span><br><span class="line">			<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(WatchedEvent event)</span> &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 注册到集群 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(String ShopName)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="comment">// 一定是&quot;EPHEMERAL_SEQUENTIAL短暂有序型&quot;的节点，才能给shop编号，shop1， shop2...”</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">create</span> <span class="operator">=</span> zk.create(<span class="string">&quot;/meituan/Shop&quot;</span>, ShopName.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);</span><br><span class="line">		System.out.println(<span class="string">&quot;【&quot;</span>+ShopName+<span class="string">&quot;】 开始营业！ &quot;</span> + create);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 业务功能 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">business</span><span class="params">(String ShopName)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;【&quot;</span>+ShopName+<span class="string">&quot;】 正在营业中 ...&quot;</span>);</span><br><span class="line">		System.in.read();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="type">ShopServer</span> <span class="variable">shop</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShopServer</span>();</span><br><span class="line">		<span class="comment">// 1.连接zookeeper集群（和美团取得联系） </span></span><br><span class="line">		shop.getConnect();</span><br><span class="line">		<span class="comment">// 2.将服务器节点注册（入住美团） </span></span><br><span class="line">		shop.register(args[<span class="number">0</span>]);</span><br><span class="line">		<span class="comment">// 3.业务逻辑处理（做生意） </span></span><br><span class="line">		shop.business(args[<span class="number">0</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-3-客户类"><a href="#4-4-3-客户类" class="headerlink" title="4.4.3 客户类"></a>4.4.3 客户类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Customers</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">connectString</span> <span class="operator">=</span> <span class="string">&quot;192.168.204.141:2181,192.168.204.142:2181,192.168.204.143:2181&quot;</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">sessionTimeout</span> <span class="operator">=</span> <span class="number">60000</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">ZooKeeper</span> <span class="variable">zk</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">	<span class="comment">// 创建到zk的客户端连接 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getConnect</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">		zk = <span class="keyword">new</span> <span class="title class_">ZooKeeper</span>(connectString, sessionTimeout, <span class="keyword">new</span> <span class="title class_">Watcher</span>() &#123;</span><br><span class="line">			<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(WatchedEvent event)</span> &#123;</span><br><span class="line">				<span class="comment">// 再次获取所有商家 </span></span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					getShopList();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 获取服务器列表信息 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getShopList</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="comment">// 1获取服务器子节点信息，并且对父节点进行监听 </span></span><br><span class="line">		List&lt;String&gt; shops = zk.getChildren(<span class="string">&quot;/meituan&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">		<span class="comment">// 2存储服务器信息列表 </span></span><br><span class="line">		ArrayList&lt;String&gt; shoplist = <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">		<span class="comment">// 3遍历所有节点，获取节点中的主机名称信息 </span></span><br><span class="line">		<span class="keyword">for</span> (String shop : shops) &#123;</span><br><span class="line">			<span class="type">byte</span>[] data = zk.getData(<span class="string">&quot;/meituan/&quot;</span> + shop, <span class="literal">false</span>, <span class="keyword">new</span> <span class="title class_">Stat</span>());</span><br><span class="line">			shoplist.add(<span class="keyword">new</span> <span class="title class_">String</span>(data));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 4打印服务器列表信息 </span></span><br><span class="line">		System.out.println(shoplist);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 业务功能 </span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">business</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;客户正在浏览商家 ...&quot;</span>);</span><br><span class="line">		System.in.read();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="comment">// 1.获取zk连接 （客户打开美团）</span></span><br><span class="line">		<span class="type">Customers</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Customers</span>();</span><br><span class="line">		client.getConnect();</span><br><span class="line">		<span class="comment">// 2.获取/meituan的子节点信息，从中获取服务器信息列表（从美团中获取商家列表） </span></span><br><span class="line">		client.getShopList();</span><br><span class="line">		<span class="comment">// 3.业务进程启动 （对比商家，点餐） </span></span><br><span class="line">		client.business();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1）运行客户类，就会得到商家列表</p>
+<p>2）首先在linux中添加一个商家，然后观察客户端的控制台输出（商家列表会立刻更新出最新商家），多添加几个，也会实时输出商家列表</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create <span class="regexp">/meituan/</span>KFC <span class="string">&quot;KFC&quot;</span> </span><br><span class="line">create <span class="regexp">/meituan/</span>BKC <span class="string">&quot;BurgerKing&quot;</span> </span><br><span class="line">create <span class="regexp">/meituan/</span>baozi <span class="string">&quot;baozi&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>3）在linux中删除商家，在客户端的控制台也会实时看到商家移除后的最新商家列表</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="regexp">/meituan/</span>baozi</span><br></pre></td></tr></table></figure>
+
+<p>4）运行商家服务类（以main方法带参数的形式运行）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516233148488.png" alt="image-20210516233148488"></p>
+<h3 id="4-5-案例2：分布式锁-商品秒杀"><a href="#4-5-案例2：分布式锁-商品秒杀" class="headerlink" title="4.5 案例2：分布式锁-商品秒杀"></a>4.5 案例2：分布式锁-商品秒杀</h3><ul>
+<li>锁：我们在多线程中接触过，作用就是让当前的资源不会被其他线程访问！<ul>
+<li>我的日记本，不可以被别人看到。所以要锁在保险柜中</li>
+<li>当我打开锁，将日记本拿走了，别人才能使用这个保险柜</li>
+</ul>
+</li>
+<li>在zookeeper中使用传统的锁引发的 “羊群效应” ：1000个人创建节点，只有一个人能成功，999人需要等待！</li>
+<li>羊群是一种很散乱的组织，平时在一起也是盲目地左冲右撞，但一旦有一只头羊动起来，其他的羊也会不假思索地一哄而上，全然不顾旁边可能有的狼和不远处更好的草。羊群效应就是比喻人都有一种从众心理，从众心理很容易导致盲从，而盲从往往会陷入骗局或遭到失败。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516233343552.png" alt="image-20210516233343552"></p>
+<ul>
+<li>避免“羊群效应”，zookeeper采用分布式锁</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516233403992.png" alt="image-20210516233403992"></p>
+<ol>
+<li>所有请求进来，在&#x2F;lock下创建 <strong>临时顺序节点</strong> ，放心，zookeeper会帮你编号排序</li>
+<li>判断自己是不是&#x2F;lock下<strong>最小的节点</strong><ul>
+<li>是，获得锁（创建节点）</li>
+<li>否，对前面小我一级的节点进行监听</li>
+</ul>
+</li>
+<li>获得锁请求，处理完业务逻辑，释放锁（删除节点），后一个节点得到通知（比你年轻的死了，你成为最嫩的了）</li>
+<li>重复步骤2</li>
+</ol>
+<p><strong>实现步骤</strong></p>
+<h4 id="1）初始化数据库"><a href="#1）初始化数据库" class="headerlink" title="1）初始化数据库"></a>1）初始化数据库</h4><p>创建数据库zkproduct，使用默认的字符集utf8</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 商品表 </span></span><br><span class="line"><span class="keyword">create table</span> product( </span><br><span class="line">    id <span class="type">int</span> <span class="keyword">primary key</span> auto_increment, <span class="comment">-- 商品编号 </span></span><br><span class="line">    product_name <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">not null</span>, <span class="comment">-- 商品名称 </span></span><br><span class="line">    stock <span class="type">int</span> <span class="keyword">not null</span>, <span class="comment">-- 库存 </span></span><br><span class="line">    version <span class="type">int</span> <span class="keyword">not null</span> <span class="comment">-- 版本 </span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">insert into</span> product (product_name,stock,version) <span class="keyword">values</span>(<span class="string">&#x27;锦鲤-清空购物车-大奖&#x27;</span>,<span class="number">5</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 订单表 </span></span><br><span class="line"><span class="keyword">create table</span> `<span class="keyword">order</span>`( </span><br><span class="line">    id <span class="type">varchar</span>(<span class="number">100</span>) <span class="keyword">primary key</span>, <span class="comment">-- 订单编号 </span></span><br><span class="line">    pid <span class="type">int</span> <span class="keyword">not null</span>, <span class="comment">-- 商品编号 </span></span><br><span class="line">    userid <span class="type">int</span> <span class="keyword">not null</span> <span class="comment">-- 用户编号 </span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）搭建工程"><a href="#2）搭建工程" class="headerlink" title="2）搭建工程"></a>2）搭建工程</h4><p>搭建ssm框架，对库存表-1，对订单表+1</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234016596.png" alt="image-20210516234016596"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">spring.version</span>&gt;</span>5.2.7.RELEASE<span class="tag">&lt;/<span class="name">spring.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Spring --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-beans<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Mybatis --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 连接池 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 数据库 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- junit --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- maven内嵌的tomcat插件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 目前apache只提供了tomcat6和tomcat7两个插件 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">port</span>&gt;</span>8001<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">path</span>&gt;</span>/<span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 打包完成后,运行服务 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span> <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 后台的日志输出：针对开发者--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:mvc</span>=<span class="string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tx</span>=<span class="string">&quot;http://www.springframework.org/schema/tx&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans </span></span></span><br><span class="line"><span class="string"><span class="tag">    http://www.springframework.org/schema/beans/spring-beans.xsd </span></span></span><br><span class="line"><span class="string"><span class="tag">    http://www.springframework.org/schema/context </span></span></span><br><span class="line"><span class="string"><span class="tag">    http://www.springframework.org/schema/context/spring-context.xsd </span></span></span><br><span class="line"><span class="string"><span class="tag">    http://www.springframework.org/schema/tx </span></span></span><br><span class="line"><span class="string"><span class="tag">    http://www.springframework.org/schema/tx/spring-tx.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 1.扫描包下的注解 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;controller,service,mapper&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 2.创建数据连接池对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;close&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://192.168.204.131:3306/zkproduct? serverTimezone=GMT&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;123123&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxActive&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;minIdle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;5&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 3.创建SqlSessionFactory，并引入数据源对象 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;sqlSessionFactory&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;configLocation&quot;</span> <span class="attr">value</span>=<span class="string">&quot;classpath:mybatis/mybatis- config.xml&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 4.告诉spring容器，数据库语句代码在哪个文件中--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- mapper.xDao接口对应resources/mapper/xDao.xml--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;basePackage&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mapper&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 5.将数据源关联到事务 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;transactionManager&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 6.开启事务 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tx:annotation-driven</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee </span></span></span><br><span class="line"><span class="string"><span class="tag">    http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</span> <span class="attr">version</span>=<span class="string">&quot;3.1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-</span> <span class="attr">class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet</span><br><span class="line">        <span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:spring/spring.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">async-supported</span>&gt;</span>true<span class="tag">&lt;/<span class="name">async-supported</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span> </span><br><span class="line"><span class="meta">@Component</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">OrderMapper</span> &#123; </span><br><span class="line">    <span class="comment">// 生成订单 </span></span><br><span class="line">    <span class="meta">@Insert(&quot;insert into `order` (id,pid,userid) values (#&#123;id&#125;,#&#123;pid&#125;,# &#123;userid&#125;)&quot;)</span> </span><br><span class="line">    <span class="type">int</span> <span class="title function_">insert</span><span class="params">(Order order)</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span> </span><br><span class="line"><span class="meta">@Component</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ProductMapper</span> &#123; </span><br><span class="line">    <span class="comment">// 查询商品（目的查库存） </span></span><br><span class="line">    <span class="meta">@Select(&quot;select * from product where id = #&#123;id&#125;&quot;)</span> </span><br><span class="line">    Product <span class="title function_">getProduct</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> <span class="type">int</span> id)</span>; </span><br><span class="line">    <span class="comment">// 减库存 </span></span><br><span class="line">    <span class="meta">@Update(&quot;update product set stock = stock-1 where id = #&#123;id&#125;&quot;)</span> </span><br><span class="line">    <span class="type">int</span> <span class="title function_">reduceStock</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> <span class="type">int</span> id)</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">OrderService</span> &#123;</span><br><span class="line">	<span class="meta">@Autowired</span> </span><br><span class="line">	ProductMapper productMapper;</span><br><span class="line">	<span class="meta">@Autowired</span> OrderMapper orderMapper;</span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reduceStock</span><span class="params">(<span class="type">int</span> id)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="comment">// 1.获取库存 </span></span><br><span class="line">		<span class="type">Product</span> <span class="variable">product</span> <span class="operator">=</span> productMapper.getProduct(id);</span><br><span class="line">		<span class="comment">// 模拟网络延迟 </span></span><br><span class="line">		Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">		<span class="keyword">if</span>(product.getStock() &lt;= <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;已抢光！&quot;</span>);</span><br><span class="line">		<span class="comment">// 2.减库存 </span></span><br><span class="line">		<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> productMapper.reduceStock(id);</span><br><span class="line">		<span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="type">Order</span> <span class="variable">order</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Order</span>();</span><br><span class="line">			order.setId(UUID.randomUUID().toString());</span><br><span class="line">			order.setPid(id);</span><br><span class="line">			order.setUserid(<span class="number">101</span>);</span><br><span class="line">			orderMapper.insert(order);</span><br><span class="line">		&#125; elsethrow <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;减库存失败，请重试！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProductAction</span> &#123; </span><br><span class="line">    <span class="meta">@Autowired</span> </span><br><span class="line">    <span class="keyword">private</span> OrderService orderService; </span><br><span class="line">    <span class="meta">@GetMapping(&quot;/product/reduce&quot;)</span> </span><br><span class="line">    <span class="meta">@ResponseBody</span> </span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">reduceStock</span><span class="params">(<span class="type">int</span> id)</span> <span class="keyword">throws</span> Exception&#123; </span><br><span class="line">        orderService.reduceStock(id); <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3）启动测试"><a href="#3）启动测试" class="headerlink" title="3）启动测试"></a>3）启动测试</h4><ul>
+<li>启动两次工程，端口号分别8001和8002</li>
+<li>使用nginx做负载均衡</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">upstream</span> sga&#123; </span><br><span class="line">	<span class="attribute">server</span> <span class="number">192.168.204.1:8001</span>; </span><br><span class="line">	<span class="attribute">server</span> <span class="number">192.168.204.1:8002</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="section">server</span> &#123; </span><br><span class="line">	<span class="attribute">listen</span> <span class="number">80</span>; </span><br><span class="line">	<span class="attribute">server_name</span> localhost; </span><br><span class="line">	<span class="section">location</span> / &#123; </span><br><span class="line">		<span class="attribute">proxy_pass</span> http://sga; </span><br><span class="line">		<span class="attribute">root</span> html; </span><br><span class="line">		<span class="attribute">index</span> index.html index.htm; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 JMeter 模拟1秒内发出10个http请求</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234845489.png" alt="image-20210516234845489"></p>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="http://jmeter.apache.org/download_jmeter.cgi">http://jmeter.apache.org/download_jmeter.cgi</a></li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234905622.png" alt="image-20210516234905622"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/image-20210516234912088.png" alt="image-20210516234912088"></p>
+<ul>
+<li>查看测试结果，10次请求全部成功</li>
+<li>查看数据库，stock库存变成 -5 （并发导致的数据结果错误）</li>
+</ul>
+<h4 id="4）apahce提供的zookeeper客户端"><a href="#4）apahce提供的zookeeper客户端" class="headerlink" title="4）apahce提供的zookeeper客户端"></a>4）apahce提供的zookeeper客户端</h4><p>基于zookeeper原生态的客户端类实现分布式是非常麻烦的，我们使用apahce提供了一个zookeeper客户端来实现</p>
+<p><strong>Curator</strong>：<a target="_blank" rel="noopener" href="http://curator.apache.org/">http://curator.apache.org/</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.curator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>curator-recipes<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- 网友投票最牛逼版本 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>recipes是curator族谱大全，里面包含zookeeper和framework</p>
+<h4 id="5）在控制层中加入分布式锁的逻辑代码"><a href="#5）在控制层中加入分布式锁的逻辑代码" class="headerlink" title="5）在控制层中加入分布式锁的逻辑代码"></a>5）在控制层中加入分布式锁的逻辑代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProductAction</span> &#123;</span><br><span class="line">	<span class="meta">@Autowired</span> </span><br><span class="line">	<span class="keyword">private</span> ProductService productService;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">connectString</span> <span class="operator">=</span> <span class="string">&quot;192.168.204.141:2181,192.168.204.142:2181,192.168.204.143:2181&quot;</span>;</span><br><span class="line">	<span class="meta">@GetMapping(&quot;/product/reduce&quot;)</span> </span><br><span class="line">	<span class="meta">@ResponseBody</span> </span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">reduce</span><span class="params">( <span class="type">int</span> id)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="comment">// 重试策略 （1000毫秒试1次，最多试3次） </span></span><br><span class="line">		<span class="type">RetryPolicy</span> <span class="variable">retryPolicy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExponentialBackoffRetry</span>(<span class="number">1000</span>, <span class="number">3</span>);</span><br><span class="line">		<span class="comment">//1.创建curator工具对象 </span></span><br><span class="line">		<span class="type">CuratorFramework</span> <span class="variable">client</span> <span class="operator">=</span> CuratorFrameworkFactory.newClient(connectString, retryPolicy);</span><br><span class="line">		client.start();</span><br><span class="line">		<span class="comment">//2.根据工具对象创建“内部互斥锁” </span></span><br><span class="line">		<span class="type">InterProcessMutex</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InterProcessMutex</span>(client, <span class="string">&quot;/product_&quot;</span>+id);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//3.加锁 </span></span><br><span class="line">			lock.acquire();</span><br><span class="line">			productService.reduceStock(id);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">			<span class="keyword">if</span>(e <span class="keyword">instanceof</span> RuntimeException)&#123;</span><br><span class="line">				<span class="keyword">throw</span> e;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//4.释放锁 </span></span><br><span class="line">			lock.release();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6）再次测试，并发问题解决！"><a href="#6）再次测试，并发问题解决！" class="headerlink" title="6）再次测试，并发问题解决！"></a>6）再次测试，并发问题解决！</h4></article><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/06/08/Redis%E8%AF%A6%E8%A7%A3/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Redis详解</div></div></a></div><div class="next-post pull-right"><a href="/2021/05/23/Dubbo%E8%AF%A6%E8%A7%A3/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Dubbo详解</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Zookeeper%E6%A6%82%E8%BF%B0"><span class="toc-text">一、Zookeeper概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%A6%82%E8%BF%B0"><span class="toc-text">1.1 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="toc-text">1.2 工作机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%89%B9%E7%82%B9"><span class="toc-text">1.3 特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">1.4  数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">1.5 应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E7%BB%9F%E4%B8%80%E5%91%BD%E5%90%8D%E6%9C%8D%E5%8A%A1"><span class="toc-text">1.5.1 统一命名服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-text">1.5.2 统一配置管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-3-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%8A%82%E7%82%B9%E5%8A%A8%E6%80%81%E4%B8%8A%E4%B8%8B%E7%BA%BF"><span class="toc-text">1.5.3 服务器节点动态上下线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-4-%E8%BD%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">1.5.4 软负载均衡</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80"><span class="toc-text">1.6 下载地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Zookeeper%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-text">二、Zookeeper本地模式安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-text">2.1 本地模式安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E5%AE%89%E8%A3%85%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text">2.1.1 安装前准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="toc-text">2.1.2 配置修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E6%93%8D%E4%BD%9CZookeeper"><span class="toc-text">2.1.3 操作Zookeeper</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E8%A7%A3%E8%AF%BB"><span class="toc-text">2.2 配置参数解读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Zookeeper%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86"><span class="toc-text">三、Zookeeper内部原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E9%80%89%E4%B8%BE%E6%9C%BA%E5%88%B6%EF%BC%88%E9%9D%A2%E8%AF%95%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">3.1 选举机制（面试重点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.2 节点类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%9B%91%E5%90%AC%E5%99%A8%E5%8E%9F%E7%90%86%EF%BC%88%E9%9D%A2%E8%AF%95%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">3.3 监听器原理（面试重点）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%86%99%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B"><span class="toc-text">3.4 写数据流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Zookeeper%E5%AE%9E%E6%88%98%EF%BC%88%E5%BC%80%E5%8F%91%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">四、Zookeeper实战（开发重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="toc-text">4.1 分布式安装部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%AE%89%E8%A3%85zookeeper"><span class="toc-text">4.1.1 安装zookeeper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E5%8F%B7"><span class="toc-text">4.1.2 配置服务器编号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E9%85%8D%E7%BD%AEzoo-cfg%E6%96%87%E4%BB%B6"><span class="toc-text">4.1.3 配置zoo.cfg文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-4-%E9%85%8D%E7%BD%AE%E5%85%B6%E4%BD%99%E4%B8%A4%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">4.1.4 配置其余两台服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-5-%E9%9B%86%E7%BE%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">4.1.5 集群操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="toc-text">4.2 客户端命令行操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-API%E5%BA%94%E7%94%A8"><span class="toc-text">4.3 API应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-IDEA%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">4.3.1 IDEA环境搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-%E5%88%9B%E5%BB%BAZooKeeper%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">4.3.2 创建ZooKeeper客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-3-%E5%88%9B%E5%BB%BA%E8%8A%82%E7%82%B9"><span class="toc-text">4.3.3 创建节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-4-%E6%9F%A5%E8%AF%A2%E8%8A%82%E7%82%B9%E7%9A%84%E5%80%BC"><span class="toc-text">4.3.4 查询节点的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-5-%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9%E7%9A%84%E5%80%BC"><span class="toc-text">4.3.5 修改节点的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-6-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-text">4.3.6 删除节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-7-%E8%8E%B7%E5%8F%96%E5%AD%90%E8%8A%82%E7%82%B9"><span class="toc-text">4.3.7 获取子节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-8-%E7%9B%91%E5%90%AC%E5%AD%90%E8%8A%82%E7%82%B9%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-text">4.3.8 监听子节点的变化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-9-%E5%88%A4%E6%96%ADZnode%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-text">4.3.9 判断Znode是否存在</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%A1%88%E4%BE%8B1%EF%BC%9A%E6%A8%A1%E6%8B%9F%E7%BE%8E%E5%9B%A2%E5%95%86%E5%AE%B6%E4%B8%8A%E4%B8%8B%E7%BA%BF"><span class="toc-text">4.4 案例1：模拟美团商家上下线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E9%9C%80%E6%B1%82"><span class="toc-text">4.4.1 需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2-%E5%95%86%E5%AE%B6%E6%9C%8D%E5%8A%A1%E7%B1%BB"><span class="toc-text">4.4.2 商家服务类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-3-%E5%AE%A2%E6%88%B7%E7%B1%BB"><span class="toc-text">4.4.3 客户类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E6%A1%88%E4%BE%8B2%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-%E5%95%86%E5%93%81%E7%A7%92%E6%9D%80"><span class="toc-text">4.5 案例2：分布式锁-商品秒杀</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">1）初始化数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="toc-text">2）搭建工程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-text">3）启动测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89apahce%E6%8F%90%E4%BE%9B%E7%9A%84zookeeper%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">4）apahce提供的zookeeper客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%B1%82%E4%B8%AD%E5%8A%A0%E5%85%A5%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E9%80%BB%E8%BE%91%E4%BB%A3%E7%A0%81"><span class="toc-text">5）在控制层中加入分布式锁的逻辑代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%EF%BC%89%E5%86%8D%E6%AC%A1%E6%B5%8B%E8%AF%95%EF%BC%8C%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%EF%BC%81"><span class="toc-text">6）再次测试，并发问题解决！</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

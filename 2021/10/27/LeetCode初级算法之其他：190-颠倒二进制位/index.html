@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>LeetCode初级算法之其他：190.颠倒二进制位 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="题目信息 题目地址：https:&amp;#x2F;&amp;#x2F;leetcode-cn.com&amp;#x2F;problems&amp;#x2F;reverse-bits&amp;#x2F;  颠倒给定的 32 位无符号整数的二进制位。 提示：  请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2021/10/27/LeetCode%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E4%B9%8B%E5%85%B6%E4%BB%96%EF%BC%9A190-%E9%A2%A0%E5%80%92%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%BD%8D/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode初级算法之其他：190.颠倒二进制位',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LeetCode初级算法之其他：190.颠倒二进制位</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2021-10-27T01:59:25.000Z" title="发表于 2021-10-27 09:59:25">2021-10-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/LeetCode/">LeetCode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LeetCode初级算法之其他：190.颠倒二进制位"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/10/27/LeetCode%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E4%B9%8B%E5%85%B6%E4%BB%96%EF%BC%9A190-%E9%A2%A0%E5%80%92%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%BD%8D/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="题目信息"><a href="#题目信息" class="headerlink" title="题目信息"></a>题目信息</h2><blockquote>
+<p>题目地址：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-bits/">https://leetcode-cn.com/problems/reverse-bits/</a></p>
+</blockquote>
+<p>颠倒给定的 32 位无符号整数的二进制位。</p>
+<p><strong>提示：</strong></p>
+<ul>
+<li>请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。</li>
+<li>在 Java 中，编译器使用二进制补码记法来表示有符号整数。因此，在 示例 2 中，输入表示有符号整数 -3，输出表示有符号整数 -1073741825。</li>
+</ul>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = <span class="number">00000010100101000001111010011100</span></span><br><span class="line">输出：<span class="number">964176192</span> (<span class="number">00111001011110000010100101000000</span>)</span><br><span class="line">解释：输入的二进制串 <span class="number">00000010100101000001111010011100</span> 表示无符号整数 <span class="number">43261596</span>，因此返回 <span class="number">964176192</span>，其二进制表示形式为 <span class="number">00111001011110000010100101000000</span>。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = <span class="number">11111111111111111111111111111101</span></span><br><span class="line">输出：<span class="number">3221225471</span> (<span class="number">10111111111111111111111111111111</span>)</span><br><span class="line">解释：输入的二进制串 <span class="number">11111111111111111111111111111101</span> 表示无符号整数 <span class="number">4294967293</span>，因此返回 <span class="number">3221225471</span> 其二进制表示形式为 <span class="number">10111111111111111111111111111111</span> 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong><br>输入是一个长度为 32 的二进制字符串</p>
+<h2 id="题解一：挨个移位"><a href="#题解一：挨个移位" class="headerlink" title="题解一：挨个移位"></a>题解一：挨个移位</h2><p>首先嘛肯定是要想出通过某种<strong>组合位运算</strong>的方式来达到目的，通过位运算是直接操作的这个数字在当前语言的二进制串，否则通过循环模拟二进制串对于Java还要分正负最终还转成数字过程就有点笨重了。</p>
+<p><strong>怎么组合位运算达到反转目的呢？草稿纸上试一试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟一个长度为5的二进制串怎么反转</span></span><br><span class="line"><span class="number">10011</span></span><br><span class="line"><span class="comment">// 取个位移到最高位</span></span><br><span class="line"><span class="number">10011</span> &amp; <span class="number">1</span> &lt;&lt; <span class="number">4</span> = <span class="number">10000</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="number">1001</span> &amp; <span class="number">1</span> &lt;&lt; <span class="number">3</span> = <span class="number">1000</span></span><br><span class="line"><span class="number">100</span> &amp; <span class="number">1</span> &lt;&lt; <span class="number">2</span> = <span class="number">0</span></span><br><span class="line"><span class="number">10</span> &amp; <span class="number">1</span> &lt;&lt; <span class="number">1</span> = <span class="number">0</span></span><br><span class="line"><span class="number">1</span> &amp; <span class="number">1</span> &lt;&lt; <span class="number">0</span> = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">result = <span class="number">10000</span> | <span class="number">1000</span> | <span class="number">1</span> = <span class="number">11001</span></span><br></pre></td></tr></table></figure>
+<p>虽然好像没有一次计算解决问题的方式，但可以通过<strong>与运算</strong>、<strong>位移运算</strong>进行取值再移到反转之后的位置，通过循环挨个挨个的反转。最终通过<strong>或运算</strong>合到一起.</p>
+<blockquote>
+<p>注意是或运算变成搞成求和了</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">reverseBits</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">31</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        result |= n &amp; <span class="number">1</span> &lt;&lt; i;</span><br><span class="line">        n = n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这题时间复杂度和空间复杂度就不谈了都是有限的常量,如果二进制串长度假设无限的可以设定为n，时间复杂度就是n，不过这里有优化的余地</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">31</span>; i &gt;= <span class="number">0</span> &amp;&amp; n ！= <span class="number">0</span>; i--)</span><br></pre></td></tr></table></figure>
+<p>。加上n !&#x3D; 0 的条件，固定的32位数字可能实际只有几位，高位之后全都是补0的就没必要管了。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634785721003-image.png"></p>
+<h2 id="题解二：分治法"><a href="#题解二：分治法" class="headerlink" title="题解二：分治法"></a>题解二：分治法</h2><blockquote>
+<p>分治将大问题递归划分成小问题，通过解决小问题最终解决大问题的思想</p>
+</blockquote>
+<p>将32位二进制串反转，可划分为将前16位反转和将后16位反转然后调换两个16位，其中前后16位怎么反转，也可划分为前8和后8位。…..最终划分到两个数的反转。</p>
+<p><strong>问题划分：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634796844228-202110211.png"></p>
+<p><strong>解决问题：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634802301467-gif%20(2).gif"><br>动图偷懒一点，主要是表示如下过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span></span><br><span class="line">-&gt;</span><br><span class="line"><span class="number">21</span> <span class="number">43</span> <span class="number">65</span> <span class="number">87</span></span><br><span class="line">-&gt;</span><br><span class="line"><span class="number">4321</span> <span class="number">8765</span></span><br><span class="line">-&gt;</span><br><span class="line"><span class="number">87654321</span></span><br></pre></td></tr></table></figure>
+
+<p>正常来说需要递归函数传入一组内容，函数进行拆分两组然后分别调用自身之后进行拼接。直到最后传入的是一位数，直接返回。</p>
+<p>在这里由于整数的范围二进制串的长度是32，因此不需要去递归探底判断什么时候结束。我们直接知道有5层<code>log2(32) = 5</code>。直接按照从底求解的顺序写5步操作即可</p>
+<p>先看第一个目标就是把相邻的两两的数反转。怎么通过整数的位运算让它的值的二进制发生这个变化呢？</p>
+<p><strong>打个草稿：</strong></p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">原数：<span class="number">10101101</span></span><br><span class="line">偶位：<span class="number">1 1 1 0</span></span><br><span class="line">奇位： <span class="number">0 0 1 1</span></span><br><span class="line">希望：<span class="number">01011110</span></span><br></pre></td></tr></table></figure>
+<p>懂了，取到奇位与偶位的两组数其他位补0,两组一个左移一个右移之后进行<strong>或运算</strong>达到目的</p>
+<p>怎么取到奇位和偶位就很简单了，分别和10101010、01010101这种进行<strong>与运算</strong>自然就把其他位清零把奇偶位保持它们自己。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10101101</span> &amp; <span class="number">10101010</span> = <span class="number">10101000</span></span><br><span class="line"><span class="number">101011</span> &amp; <span class="number">010101</span> = <span class="number">00000101</span></span><br></pre></td></tr></table></figure>
+<p><strong>第一步反转：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(n &amp; <span class="number">101010</span> &gt;&gt; <span class="number">1</span>) | (n &amp; <span class="number">010101</span> &lt;&lt; <span class="number">1</span>)  </span><br></pre></td></tr></table></figure>
+<p><strong>后面第二步第三步…都差不多了</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(n &amp; <span class="number">11001100</span> &gt;&gt; <span class="number">2</span>) | (n &amp; <span class="number">00110011</span> &lt;&lt; <span class="number">2</span>)</span><br><span class="line">(n &amp; <span class="number">11110000</span> &gt;&gt; <span class="number">4</span>) | (n &amp; <span class="number">00001111</span> &lt;&lt; <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>那对于我们32位的整数来说也是一样了，开始编码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">	  <span class="comment">// 用16进制写得短一点😂</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">g1</span> <span class="operator">=</span> <span class="number">0x55555555</span>; <span class="comment">// 01010101010101010101010101010101</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">g2</span> <span class="operator">=</span> <span class="number">0x33333333</span>; <span class="comment">// 00110011001100110011001100110011</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">g4</span> <span class="operator">=</span> <span class="number">0x0f0f0f0f</span>; <span class="comment">// 00001111000011110000111100001111</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">g8</span> <span class="operator">=</span> <span class="number">0x00ff00ff</span>; <span class="comment">// 00000000111111110000000011111111</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">g16</span> <span class="operator">=</span> <span class="number">0x0000ffff</span>; <span class="comment">//00000000000000001111111111111111 </span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">reverseBits</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        n = (n &amp; ~g1) &gt;&gt;&gt; <span class="number">1</span> | (n &amp; g1) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        n = (n &amp; ~g2) &gt;&gt;&gt; <span class="number">2</span> | (n &amp; g2) &lt;&lt; <span class="number">2</span>;</span><br><span class="line">        n = (n &amp; ~g4) &gt;&gt;&gt; <span class="number">4</span> | (n &amp; g4) &lt;&lt; <span class="number">4</span>;</span><br><span class="line">        n = (n &amp; ~g8) &gt;&gt;&gt; <span class="number">8</span> | (n &amp; g8) &lt;&lt; <span class="number">8</span>;</span><br><span class="line">        n = (n &amp; ~g16) &gt;&gt;&gt; <span class="number">16</span> | (n &amp; g16) &lt;&lt; <span class="number">16</span>;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>两个解法效率差不多因为范围限制在32,一个计算次数小于等于32一个计算次数是log2(32)&#x3D;5.<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/2021-10-21/1634813549636-image.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>题解一还是容易就顺下去就写成了，分治法的也是容易想得到，其实我们在写早期关于字符串反转这些的时候大致的思想都用过，挨个移位还有分治。在这里只是细节不一样从直接操作元素到用运算达到相同效果。在分治编码的时候有两个注意点一个是位移运算的优先级是最高的因此在代码前分析的时候<code>(n &amp; 101010 &gt;&gt; 1) | (n &amp; 010101 &lt;&lt; 1)</code>这样写是有问题的应该是<code>(n &amp; 101010) &gt;&gt; 1 | (n &amp; 010101) &lt;&lt; 1</code> 这样才保证先与运算再位移最后进行或运算。第二个就是右位移按照推理逻辑是左边补0，如果写成<code>&gt;&gt;</code>当值为负数时补的是1就不属于推理的思路了。解题感受还不错。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yournotes.cn">木瓜煲鸡脚</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yournotes.cn/2021/10/27/LeetCode%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E4%B9%8B%E5%85%B6%E4%BB%96%EF%BC%9A190-%E9%A2%A0%E5%80%92%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%BD%8D/">http://yournotes.cn/2021/10/27/LeetCode初级算法之其他：190-颠倒二进制位/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yournotes.cn" target="_blank">木瓜煲鸡脚's blog</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/10/118%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">LeetCode初级算法之其他：118.杨辉三角</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/27/%E8%BD%BB%E6%9D%BE%E7%90%86%E8%A7%A3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%88%9B%E5%BB%BA%E5%9E%8B%EF%BC%89%EF%BC%9A4%E3%80%81%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">轻松理解设计模式（创建型）：4、建造者模式</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E4%BF%A1%E6%81%AF"><span class="toc-text">题目信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3%E4%B8%80%EF%BC%9A%E6%8C%A8%E4%B8%AA%E7%A7%BB%E4%BD%8D"><span class="toc-text">题解一：挨个移位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3%E4%BA%8C%EF%BC%9A%E5%88%86%E6%B2%BB%E6%B3%95"><span class="toc-text">题解二：分治法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

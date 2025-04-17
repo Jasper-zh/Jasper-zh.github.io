@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>网络编程 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1 网络编程的常识 目前主流的网络通讯软件有：微信、QQ、飞信、阿里旺旺、陌陌、探探、…  1.1 七层网络模型 OSI（Open System Interconnect），即开放式系统互联，是ISO（国际标准化组织）组织在1985 年研究的网络互连模型。  OSI七层模型和TCP&amp;#x2F;IP五"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2019/01/23/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络编程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络编程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2019-01-23T14:49:34.000Z" title="发表于 2019-01-23 22:49:34">2019-01-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3/">记录文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络编程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2019/01/23/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="1-网络编程的常识"><a href="#1-网络编程的常识" class="headerlink" title="1 网络编程的常识"></a>1 网络编程的常识</h3><ul>
+<li>目前主流的网络通讯软件有：微信、QQ、飞信、阿里旺旺、陌陌、探探、…<span id="more"></span></li>
+</ul>
+<h4 id="1-1-七层网络模型"><a href="#1-1-七层网络模型" class="headerlink" title="1.1 七层网络模型"></a>1.1 七层网络模型</h4><ul>
+<li><p>OSI（Open System Interconnect），即开放式系统互联，是ISO（国际标准化组织）组织在1985 年研究的网络互连模型。</p>
+</li>
+<li><p>OSI七层模型和TCP&#x2F;IP五层模型的划分如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-blogimage.oss-cn-beijing.aliyuncs.com/blogImage/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/1.jpeg"></p>
+</li>
+<li><p>当发送数据时，需要对发送的内容按照上述七层模型进行层层加包后发送出去。</p>
+</li>
+<li><p>当接收数据时，需要对接收的内容按照上述七层模型相反的次序层层拆包并显示出来。</p>
+</li>
+</ul>
+<h4 id="1-2-相关的协议（笔试题）"><a href="#1-2-相关的协议（笔试题）" class="headerlink" title="1.2 相关的协议（笔试题）"></a>1.2 相关的协议（笔试题）</h4><p><strong>（1）协议的概念</strong></p>
+<ul>
+<li>计算机在网络中实现通信就必须有一些约定或者规则，这种约定和规则就叫做通信协议，通信协议 可以对速率、传输代码、代码结构、传输控制步骤、出错控制等制定统一的标准。</li>
+</ul>
+<p><strong>（2）TCP协议</strong> </p>
+<ul>
+<li>传输控制协议(Transmission Control Protocol)，是一种面向连接的协议，类似于打电话。 <ul>
+<li>建立连接 &#x3D;&gt; 进行通信 &#x3D;&gt; 断开连接 </li>
+<li>在传输前采用”三次握手”方式。 </li>
+<li>在通信的整个过程中全程保持连接，形成数据传输通道。 保证了数据传输的可靠性和有序性。 </li>
+<li>是一种全双工的字节流通信方式，可以进行大数据量的传输。 </li>
+<li>传输完毕后需要释放已建立的连接，发送数据的效率比较低。</li>
+</ul>
+</li>
+</ul>
+<p><strong>（3）UDP协议</strong> </p>
+<ul>
+<li>用户数据报协议(User Datagram Protocol)，是一种非面向连接的协议，类似于写信。 <ul>
+<li>在通信的整个过程中不需要保持连接，其实是不需要建立连接。 </li>
+<li>不保证数据传输的可靠性和有序性。 </li>
+<li>是一种全双工的数据报通信方式，每个数据报的大小限制在64K内。 </li>
+<li>发送数据完毕后无需释放资源，开销小，发送数据的效率比较高，速度快。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-IP地址（重点）"><a href="#1-3-IP地址（重点）" class="headerlink" title="1.3 IP地址（重点）"></a>1.3 IP地址（重点）</h4><ul>
+<li>192.168.1.1 - 是绝大多数路由器的登录地址，主要配置用户名和密码以及Mac过滤。 </li>
+<li>IP地址是互联网中的唯一地址标识，本质上是由32位二进制组成的整数，叫做IPv4，当然也有128 位二进制组成的整数，叫做IPv6，目前主流的还是IPv4。 </li>
+<li>日常生活中采用点分十进制表示法来进行IP地址的描述，将每个字节的二进制转化为一个十进制整 数，不同的整数之间采用小数点隔开。 </li>
+<li>如： 0x01020304 &#x3D;&gt; 1.2.3.4 </li>
+<li>查看IP地址的方式： <ul>
+<li>Windows系统：在dos窗口中使用ipconfig或ipconfig&#x2F;all命令即可 </li>
+<li>Unix&#x2F;linux系统：在终端窗口中使用ifconfig或&#x2F;sbin&#x2F;ifconfig命令即可</li>
+</ul>
+</li>
+<li>特殊的地址 <ul>
+<li>本地回环地址(hostAddress)：127.0.0.1 主机名(hostName)：localhost</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-4-端口号（重点）"><a href="#1-4-端口号（重点）" class="headerlink" title="1.4 端口号（重点）"></a>1.4 端口号（重点）</h4><ul>
+<li>IP地址 - 可以定位到具体某一台设备。 </li>
+<li>端口号 - 可以定位到该设备中具体某一个进程。 </li>
+<li>端口号本质上是16位二进制组成的整数，表示范围是：0 ~ 65535，其中0 ~ 1024之间的端口号通 常被系统占用，建议编程从1025开始使用。 </li>
+<li>特殊的端口： <ul>
+<li>HTTP:80 </li>
+<li>FTP:21 </li>
+<li>Oracle:1521 </li>
+<li>MySQL:3306 </li>
+<li>Tomcat:8080</li>
+</ul>
+</li>
+<li>网络编程需要提供：IP地址 + 端口号，组合在一起叫做网络套接字：Socket。</li>
+</ul>
+<h3 id="2-基于tcp协议的编程模型（重点）"><a href="#2-基于tcp协议的编程模型（重点）" class="headerlink" title="2 基于tcp协议的编程模型（重点）"></a>2 基于tcp协议的编程模型（重点）</h3><h4 id="2-1-C-S架构的简介"><a href="#2-1-C-S架构的简介" class="headerlink" title="2.1 C&#x2F;S架构的简介"></a>2.1 C&#x2F;S架构的简介</h4><ul>
+<li>在C&#x2F;S模式下客户向服务器发出服务请求，服务器接收请求后提供服务。 </li>
+<li>例如：在一个酒店中，顾客找服务员点菜,服务员把点菜单通知厨师，厨师按点菜单做好菜后让服 务员端给客户，这就是一种C&#x2F;S工作方式。如果把酒店看作一个系统，服务员就是客户端，厨师就 是服务器。这种系统分工和协同工作的方式就是C&#x2F;S的工作方式。 </li>
+<li>客户端部分：为每个用户所专有的，负责执行前台功能。 </li>
+<li>服务器部分：由多个用户共享的信息与功能，招待后台服务。</li>
+</ul>
+<h4 id="2-2-编程模型"><a href="#2-2-编程模型" class="headerlink" title="2.2 编程模型"></a>2.2 编程模型</h4><ul>
+<li><p>服务器： </p>
+<p>（1）创建ServerSocket类型的对象并提供端口号； </p>
+<p>（2）等待客户端的连接请求，调用accept()方法； </p>
+<p>（3）使用输入输出流进行通信； </p>
+<p>（4）关闭Socket； </p>
+</li>
+<li><p>客户端： </p>
+<p>（1）创建Socket类型的对象并提供服务器的IP地址和端口号； </p>
+<p>（2）使用输入输出流进行通信； </p>
+<p>（3）关闭Socket；</p>
+</li>
+</ul>
+<h4 id="2-3-相关类和方法的解析"><a href="#2-3-相关类和方法的解析" class="headerlink" title="2.3 相关类和方法的解析"></a>2.3 相关类和方法的解析</h4><p><strong>（1）ServerSocket类</strong></p>
+<ul>
+<li><p>java.net.ServerSocket类主要用于描述服务器套接字信息（大插排）。</p>
+</li>
+<li><p>常用的方法如下：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ServerSocket(int port)</td>
+<td>根据参数指定的端口号来构造对象</td>
+</tr>
+<tr>
+<td>Socket accept()</td>
+<td>侦听并接收到此套接字的连接请求</td>
+</tr>
+<tr>
+<td>void close()</td>
+<td>用于关闭套接字</td>
+</tr>
+</tbody></table>
+<p><strong>（2）Socket类</strong></p>
+<ul>
+<li><p>java.net.Socket类主要用于描述客户端套接字，是两台机器间通信的端点（小插排）。</p>
+</li>
+<li><p>常用的方法如下：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Socket(String host, int port)</td>
+<td>根据指定主机名和端口来构造对象</td>
+</tr>
+<tr>
+<td>InputStream getInputStream()</td>
+<td>用于获取当前套接字的输入流</td>
+</tr>
+<tr>
+<td>OutputStream getOutputStream()</td>
+<td>用于获取当前套接字的输出流</td>
+</tr>
+<tr>
+<td>void close()</td>
+<td>用于关闭套接字</td>
+</tr>
+</tbody></table>
+<p><strong>（3）注意事项</strong></p>
+<ul>
+<li>客户端 Socket 与服务器端 Socket 对应, 都包含输入和输出流。 </li>
+<li>客户端的socket.getInputStream() 连接于服务器socket.getOutputStream()。 </li>
+<li>客户端的socket.getOutputStream()连接于服务器socket.getInputStream()</li>
+</ul>
+<h3 id="3-基于udp协议的编程模型（熟悉）"><a href="#3-基于udp协议的编程模型（熟悉）" class="headerlink" title="3 基于udp协议的编程模型（熟悉）"></a>3 基于udp协议的编程模型（熟悉）</h3><h4 id="3-1-编程模型"><a href="#3-1-编程模型" class="headerlink" title="3.1 编程模型"></a>3.1 编程模型</h4><ul>
+<li><p>接收方： </p>
+<p>（1）创建DatagramSocket类型的对象并提供端口号； </p>
+<p>（2）创建DatagramPacket类型的对象并提供缓冲区； </p>
+<p>（3）通过Socket接收数据内容存放到Packet中，调用receive方法； </p>
+<p>（4）关闭Socket； </p>
+</li>
+<li><p>发送方： </p>
+<p>（1）创建DatagramSocket类型的对象； </p>
+<p>（2）创建DatagramPacket类型的对象并提供接收方的通信地址； </p>
+<p>（3）通过Socket将Packet中的数据内容发送出去，调用send方法； </p>
+<p>（4）关闭Socket；</p>
+</li>
+</ul>
+<h4 id="3-2-相关类和方法的解析"><a href="#3-2-相关类和方法的解析" class="headerlink" title="3.2 相关类和方法的解析"></a>3.2 相关类和方法的解析</h4><p><strong>（1）DatagramSocket类</strong></p>
+<ul>
+<li>java.net.DatagramSocket类主要用于描述发送和接收数据报的套接字(邮局)。 换句话说，该类就是包裹投递服务的发送或接收点。 </li>
+<li>常用的方法如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DatagramSocket()</td>
+<td>使用无参的方式构造对象</td>
+</tr>
+<tr>
+<td>DatagramSocket(int port)</td>
+<td>根据参数指定的端口号来构造对象</td>
+</tr>
+<tr>
+<td>void receive(DatagramPacket p)</td>
+<td>用于接收数据报存放到参数指定的位置</td>
+</tr>
+<tr>
+<td>void send(DatagramPacket p)</td>
+<td>用于将参数指定的数据报发送出去</td>
+</tr>
+<tr>
+<td>void close()</td>
+<td>关闭Socket并释放相关资源</td>
+</tr>
+</tbody></table>
+<p><strong>（2）DatagramPacket类</strong></p>
+<ul>
+<li>java.net.DatagramPacket类主要用于描述数据报，数据报用来实现无连接包裹投递服务。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DatagramPacket(byte[] buf, int length)</td>
+<td>根据参数指定的数组来构造对象，用于接 收长度为length的数据报</td>
+</tr>
+<tr>
+<td>DatagramPacket(byte[] buf, int length, InetAddress address, int port)</td>
+<td>根据参数指定数组来构造对象，将数据报 发送到指定地址和端口</td>
+</tr>
+<tr>
+<td>InetAddress getAddress()</td>
+<td>用于获取发送方或接收方的通信地址</td>
+</tr>
+<tr>
+<td>int getPort()</td>
+<td>用于获取发送方或接收方的端口号</td>
+</tr>
+<tr>
+<td>int getLength()</td>
+<td>用于获取发送数据或接收数据的长度</td>
+</tr>
+</tbody></table>
+<p><strong>（3）InetAddress类</strong></p>
+<ul>
+<li>java.net.InetAddress类主要用于描述互联网通信地址信息。</li>
+<li>常用的方法如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>static InetAddress getLocalHost()</td>
+<td>用于获取当前主机的通信地址</td>
+</tr>
+<tr>
+<td>static InetAddress getByName(String host)</td>
+<td>根据参数指定的主机名获取通信地址</td>
+</tr>
+</tbody></table>
+<h3 id="4-URL类（熟悉）"><a href="#4-URL类（熟悉）" class="headerlink" title="4 URL类（熟悉）"></a>4 URL类（熟悉）</h3><h4 id="4-1-基本概念"><a href="#4-1-基本概念" class="headerlink" title="4.1 基本概念"></a>4.1 基本概念</h4><ul>
+<li>java.net.URL（Uniform Resource Identifier）类主要用于表示统一的资源定位器，也就是指向万 维网上“资源”的指针。这个资源可以是简单的文件或目录，也可以是对复杂对象的引用，例如对数 据库或搜索引擎的查询等。 </li>
+<li>通过URL可以访问万维网上的网络资源，最常见的就是www和ftp站点，浏览器通过解析给定的 URL可以在网络上查找相应的资源。 </li>
+<li>URL的基本结构如下：<code> &lt;传输协议&gt;://&lt;主机名&gt;:&lt;端口号&gt;/&lt;资源地址&gt;</code></li>
+</ul>
+<h4 id="4-2-常用的方法"><a href="#4-2-常用的方法" class="headerlink" title="4.2 常用的方法"></a>4.2 常用的方法</h4><table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URL(String spec)</td>
+<td>根据参数指定的字符串信息构造对象</td>
+</tr>
+<tr>
+<td>String getProtocol()</td>
+<td>获取协议名称</td>
+</tr>
+<tr>
+<td>String getHost()</td>
+<td>获取主机名称</td>
+</tr>
+<tr>
+<td>int getPort()</td>
+<td>获取端口号</td>
+</tr>
+<tr>
+<td>String getPath()</td>
+<td>获取路径信息</td>
+</tr>
+<tr>
+<td>String getFile()</td>
+<td>获取文件名</td>
+</tr>
+<tr>
+<td>URLConnection openConnection()</td>
+<td>获取URLConnection类的实例</td>
+</tr>
+</tbody></table>
+<h4 id="4-3-URLConnection类"><a href="#4-3-URLConnection类" class="headerlink" title="4.3 URLConnection类"></a>4.3 URLConnection类</h4><p><strong>（1）基本概念</strong></p>
+<ul>
+<li>java.net.URLConnection类是个抽象类，该类表示应用程序和URL之间的通信链接的所有类的超 类，主要实现类有支持HTTP特有功能的HttpURLConnection类。</li>
+</ul>
+<p><strong>（2）HttpURLConnection类的常用方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>InputStream getInputStream()</td>
+<td>获取输入流</td>
+</tr>
+<tr>
+<td>void disconnect()</td>
+<td>断开连接</td>
+</tr>
+</tbody></table>
+</article><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/01/24/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">反射机制</div></div></a></div><div class="next-post pull-right"><a href="/2019/01/20/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">多线程</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%9A%84%E5%B8%B8%E8%AF%86"><span class="toc-text">1 网络编程的常识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-text">1.1 七层网络模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E7%9B%B8%E5%85%B3%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%88%E7%AC%94%E8%AF%95%E9%A2%98%EF%BC%89"><span class="toc-text">1.2 相关的协议（笔试题）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-IP%E5%9C%B0%E5%9D%80%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">1.3 IP地址（重点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E7%AB%AF%E5%8F%A3%E5%8F%B7%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">1.4 端口号（重点）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E4%BA%8Etcp%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">2 基于tcp协议的编程模型（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-C-S%E6%9E%B6%E6%9E%84%E7%9A%84%E7%AE%80%E4%BB%8B"><span class="toc-text">2.1 C&#x2F;S架构的简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.2 编程模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E8%A7%A3%E6%9E%90"><span class="toc-text">2.3 相关类和方法的解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9F%BA%E4%BA%8Eudp%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">3 基于udp协议的编程模型（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">3.1 编程模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E8%A7%A3%E6%9E%90"><span class="toc-text">3.2 相关类和方法的解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-URL%E7%B1%BB%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">4 URL类（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">4.1 基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">4.2 常用的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-URLConnection%E7%B1%BB"><span class="toc-text">4.3 URLConnection类</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JSP核心技术 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.JSP的概述（熟悉）1.1 JSP的概念 JSP是Java Server Pages的简称，跟Servlet一样可以动态生成HTML响应， JSP文件命名为xxx.jsp。  与Servlet不同，JSP文件以HTML标记为主，然后内嵌Java代码段，用于处理动态内容。  1.2 JSP的示例1"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2020/01/09/JSP%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JSP核心技术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JSP核心技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-01-09T03:15:05.000Z" title="发表于 2020-01-09 11:15:05">2020-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JAVA/">JAVA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JSP核心技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/01/09/JSP%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-JSP的概述（熟悉）"><a href="#1-JSP的概述（熟悉）" class="headerlink" title="1.JSP的概述（熟悉）"></a>1.JSP的概述（熟悉）</h2><h3 id="1-1-JSP的概念"><a href="#1-1-JSP的概念" class="headerlink" title="1.1 JSP的概念"></a>1.1 JSP的概念</h3><ul>
+<li>JSP是Java Server Pages的简称，跟Servlet一样可以动态生成HTML响应， JSP文件命名为xxx.jsp。 </li>
+<li>与Servlet不同，JSP文件以HTML标记为主，然后内嵌Java代码段，用于处理动态内容。</li>
+</ul>
+<h3 id="1-2-JSP的示例"><a href="#1-2-JSP的示例" class="headerlink" title="1.2 JSP的示例"></a>1.2 JSP的示例</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.Date&quot;</span> %&gt; &lt;%@ page</span><br><span class="line">contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;Hello Time&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    现在的时间是：&lt;%= <span class="keyword">new</span> <span class="title class_">Date</span>()%&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-JSP与Servlet的关系"><a href="#1-3-JSP与Servlet的关系" class="headerlink" title="1.3 JSP与Servlet的关系"></a>1.3 JSP与Servlet的关系</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210409114444.png"></p>
+<h2 id="2-JSP的语法（熟悉）"><a href="#2-JSP的语法（熟悉）" class="headerlink" title="2. JSP的语法（熟悉）"></a>2. JSP的语法（熟悉）</h2><h3 id="2-1-JSP语法结构"><a href="#2-1-JSP语法结构" class="headerlink" title="2.1 JSP语法结构"></a>2.1 JSP语法结构</h3><ul>
+<li>声明区</li>
+<li>程序代码区</li>
+<li>表达式</li>
+<li>注释</li>
+<li>指令和动作</li>
+<li>内置对象</li>
+</ul>
+<h3 id="2-2-声明区"><a href="#2-2-声明区" class="headerlink" title="2.2 声明区"></a>2.2 声明区</h3><ul>
+<li><p>基本语法：<code>&lt;%! %&gt;</code></p>
+</li>
+<li><p>说明：可以定义全局变量、方法、类。</p>
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! </span><br><span class="line">    <span class="type">int</span> i; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">()</span>&#123;… …&#125; </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-程序代码区"><a href="#2-3-程序代码区" class="headerlink" title="2.3 程序代码区"></a>2.3 程序代码区</h3><ul>
+<li><p>基本语法：<code>&lt;% 程序代码区 %&gt;</code></p>
+</li>
+<li><p>说明：可以定义局部变量以及放入任何的Java程序代码</p>
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;% </span><br><span class="line"><span class="type">int</span> j; </span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>; k&lt;<span class="number">10</span>; k++) &#123; </span><br><span class="line">    … … </span><br><span class="line">&#125; </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-表达式"><a href="#2-4-表达式" class="headerlink" title="2.4 表达式"></a>2.4 表达式</h3><ul>
+<li><p>基本语法：<code>&lt;%=… …%&gt;</code></p>
+</li>
+<li><p>说明：可以输出一个变量或一个具体内容，但&#x3D;后面必须是字符串变量或者可以被转换成字符串的表达式。</p>
+</li>
+<li><p>注意：不需要以;结束，只有一行</p>
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%=“hello world”%&gt; </span><br><span class="line">&lt;%=i+<span class="number">1</span>%&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>案例题目</li>
+</ul>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">使用for循环输出一个html语言的表格，具体表头如下： </span><br><span class="line">id name age salary </span><br><span class="line"><span class="number"> 1 </span> <span class="number"> 1 </span> <span class="number"> 1 </span> <span class="number"> 1 </span></span><br><span class="line"><span class="number"> 2 </span> <span class="number"> 2 </span> <span class="number"> 2 </span> <span class="number"> 2 </span></span><br><span class="line">      ... </span><br><span class="line"><span class="number"> 5 </span> <span class="number"> 5 </span> <span class="number"> 5 </span>  5</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-5-注释"><a href="#2-5-注释" class="headerlink" title="2.5 注释"></a>2.5 注释</h3><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">格式： </span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!--… …--&gt;</span> HTML文件的注释，浏览器可以查看到 </span></span><br><span class="line"><span class="language-xml">&lt;%-</span><span class="language-ruby">-… …-</span><span class="language-xml">-%&gt; JSP文件的注释，浏览器看不到 </span></span><br><span class="line"><span class="language-xml">&lt;%</span><span class="language-ruby">/<span class="regexp">/… …</span></span><span class="language-xml">%&gt; Java语言中的单行注释，浏览器看不到 </span></span><br><span class="line"><span class="language-xml">&lt;%</span><span class="language-ruby"><span class="regexp">/</span>*… …*<span class="regexp">/</span></span><span class="language-xml">%&gt; Java语言中的多行注释，浏览器看不到 </span></span><br><span class="line"><span class="language-xml">注释的内容不会被执行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-指令和动作"><a href="#2-6-指令和动作" class="headerlink" title="2.6 指令和动作"></a>2.6 指令和动作</h3><ul>
+<li><p>指令格式：<code>&lt;%@指令 属性=“属性值” %&gt;</code></p>
+</li>
+<li><p>指令的属性可以设定多个。</p>
+</li>
+<li><p>JSP常用指令有：page、taglib、include。</p>
+</li>
+</ul>
+<h4 id="（1）page指令"><a href="#（1）page指令" class="headerlink" title="（1）page指令"></a>（1）page指令</h4><ul>
+<li>page执行用于导包和设置一些页面属性，常用属性如下：</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> 导入相应的包，惟一允许在同一文档中多次出现的属性 </span><br><span class="line">contentType 设置Content-<span class="keyword">Type</span>响应报头，标明即将发送到浏览器的文档类型 </span><br><span class="line">pageEncoding 设置页面的编码 </span><br><span class="line"><span class="keyword">language</span> 指定页面使用的语言 </span><br><span class="line"><span class="keyword">session</span> 控制页面是否参与HTTP会话 </span><br><span class="line">errorPage 处理当前页面中抛出但未被捕获的任何异常 </span><br><span class="line">isErrorPage 当前页是否可以作为其他页面的错误处理页面</span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）-taglib指令"><a href="#（2）-taglib指令" class="headerlink" title="（2） taglib指令"></a>（2） taglib指令</h4><ul>
+<li>taglib指令用来扩展JSP程序的标签元素，引入其他功能的标签库文件。</li>
+</ul>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="comment">&lt;!-- prefix属性用于指定库前缀 --&gt;</span> </span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- uri属性用于指定库的标识 --&gt;</span> </span></span><br><span class="line"><span class="language-xml">&lt;%</span><span class="language-ruby"><span class="variable">@taglib</span> uri=“tagLibary” prefix=“prefix”</span><span class="language-xml">%&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）include指令"><a href="#（3）include指令" class="headerlink" title="（3）include指令"></a>（3）include指令</h4><ul>
+<li>include指令用于引入另一个JSP程序或HTML文件等，格式如下：</li>
+</ul>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@include <span class="keyword">file</span>=“被包含的文件地址%&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JSP引擎会在JSP文件的转换时期先把file属性设定的文件包含进来，然后开始执行转换及编译的工作。</li>
+</ul>
+<h4 id="（4）jsp-include-jsp-param"><a href="#（4）jsp-include-jsp-param" class="headerlink" title="（4）jsp:include&#x2F;jsp:param"></a>（4）jsp:include&#x2F;jsp:param</h4><ul>
+<li><p>jsp:include动作用于引入另一个JSP程序或HTML文件等。</p>
+</li>
+<li><p>执行到include时，被include的文件才会被编译。</p>
+</li>
+<li><p>如果include的是jsp文件，那它不会被转换成Servlet文件。</p>
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:include page=“URLSpec” flush=“<span class="literal">true</span>”/&gt; </span><br><span class="line">&lt;jsp:include page=“URLSpec” flush=“<span class="literal">true</span>”&gt; </span><br><span class="line">    &lt;jsp:param name=“key” value=“value”/&gt; </span><br><span class="line">&lt;/jsp:include&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（5）include指令和include动作的区别"><a href="#（5）include指令和include动作的区别" class="headerlink" title="（5）include指令和include动作的区别"></a>（5）include指令和include动作的区别</h4><ul>
+<li><p>include指令是在JSP程序的转换时期就将file属性所指定的程序内容嵌入再编译执行（静态包含）。</p>
+</li>
+<li><p>include动作在转换时期是不会被编译的，只有在客户端请求时期被执行到才会被动态的编译载入（动态包含，推荐）。</p>
+</li>
+</ul>
+<h4 id="（6）jsp-forward-jsp-param"><a href="#（6）jsp-forward-jsp-param" class="headerlink" title="（6）jsp:forward&#x2F;jsp:param"></a>（6）jsp:forward&#x2F;jsp:param</h4><ul>
+<li>forward动作用于在JSP中实现转发，将请求转发到另一个指定的JSP程序或者Servlet中处理。</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page=“urlSpec” flush=“<span class="literal">true</span>”/&gt; </span><br><span class="line">&lt;jsp:forward page=“urlSpec”&gt; </span><br><span class="line">    &lt;!-- 用于指定参数和其对应的值 --&gt; </span><br><span class="line">    &lt;jsp:param name=“key” value=“value”/&gt; </span><br><span class="line">&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-JSP内置对象（重点）"><a href="#3-JSP内置对象（重点）" class="headerlink" title="3. JSP内置对象（重点）"></a>3. JSP内置对象（重点）</h2><h3 id="3-1-基本感念"><a href="#3-1-基本感念" class="headerlink" title="3.1 基本感念"></a>3.1 基本感念</h3><ul>
+<li><p>在JSP程序中有9个内置对象由容器为用户进行实例化，程序员可以不用定义就直接使用这些变量。</p>
+</li>
+<li><p>在JSP转换成Servlet后，会自动追加这些变量的定义，使用内置对象可以简化JSP的开发。</p>
+</li>
+</ul>
+<h3 id="3-2-对象名称"><a href="#3-2-对象名称" class="headerlink" title="3.2 对象名称"></a>3.2 对象名称</h3><table>
+<thead>
+<tr>
+<th>对象变量</th>
+<th>对象类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>out</td>
+<td>JSPWriter</td>
+<td>输出流</td>
+</tr>
+<tr>
+<td>request</td>
+<td>HttpServletRequest</td>
+<td>请求信息</td>
+</tr>
+<tr>
+<td>response</td>
+<td>HttpServletResponse</td>
+<td>响应信息</td>
+</tr>
+<tr>
+<td>session</td>
+<td>HttpSession</td>
+<td>会话</td>
+</tr>
+<tr>
+<td>application</td>
+<td>ServletContext</td>
+<td>全局的上下文对象</td>
+</tr>
+<tr>
+<td>pageContext</td>
+<td>PageContext</td>
+<td>JSP页面上下文</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Object</td>
+<td>JSP页面本身</td>
+</tr>
+<tr>
+<td>config</td>
+<td>ServletConfig</td>
+<td>Servlet配置对象</td>
+</tr>
+<tr>
+<td>exception</td>
+<td>Throwable</td>
+<td>捕获网页异常</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-out内置对象"><a href="#3-3-out内置对象" class="headerlink" title="3.3 out内置对象"></a>3.3 out内置对象</h3><ul>
+<li>out内置对象是一个缓冲的输出流，用来给客户端输出信息。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void println(String x)</td>
+<td>向客户端输出各种类型数据</td>
+</tr>
+<tr>
+<td>void newLine()</td>
+<td>输出一个换行符</td>
+</tr>
+<tr>
+<td>void close()</td>
+<td>关闭输出流</td>
+</tr>
+<tr>
+<td>int getBufffferSize()</td>
+<td>返回缓冲区的大小</td>
+</tr>
+<tr>
+<td>int getRemaining()</td>
+<td>返回缓冲区中未使用的字节数</td>
+</tr>
+<tr>
+<td>flush()</td>
+<td>输出缓冲区里的数据</td>
+</tr>
+<tr>
+<td>void clearBuffffer()</td>
+<td>清除缓冲区里的数据，同时把数据输出到客户端</td>
+</tr>
+<tr>
+<td>void clear()</td>
+<td>清除缓冲区里的数据，但不把数据输出到客户端</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-request内置对象"><a href="#3-4-request内置对象" class="headerlink" title="3.4 request内置对象"></a>3.4 request内置对象</h3><ul>
+<li><p>request对象封装的是调用JSP页面的请求信息，它是HttpServletRequest接口的一个实例。</p>
+</li>
+<li><p>该对象的属性值只在一个请求中保存。</p>
+</li>
+<li><p>常用方法如下：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String getMethod()</td>
+<td>返回客户端向服务器端传送数据的方式</td>
+</tr>
+<tr>
+<td>String getParameter(String name）</td>
+<td>返回客户端向服务器端传送的参数值</td>
+</tr>
+<tr>
+<td>String[] getParameterValues( String name)</td>
+<td>获得指定参数的所有值</td>
+</tr>
+<tr>
+<td>String getRequestURI()</td>
+<td>获得请求地址</td>
+</tr>
+<tr>
+<td>String getRemoteAddr()</td>
+<td>返回发送请求的客户端或最后一个代理的IP地址</td>
+</tr>
+<tr>
+<td>int getRemotePort()</td>
+<td>返回发送请求的客户端或最后一个代理的端口号</td>
+</tr>
+<tr>
+<td>String getServerName()</td>
+<td>获取服务器的名字</td>
+</tr>
+<tr>
+<td>int getServerPort()</td>
+<td>获取服务器端的端口</td>
+</tr>
+<tr>
+<td>void setAttribute(String name,Object o)</td>
+<td>在此请求中存储属性。属性在请求之间重置</td>
+</tr>
+<tr>
+<td>Object getAttribute(String name)</td>
+<td>将指定属性的值作为对象返回，若不存在则返回空</td>
+</tr>
+</tbody></table>
+<h3 id="3-5-response内置对象"><a href="#3-5-response内置对象" class="headerlink" title="3.5 response内置对象"></a>3.5 response内置对象</h3><ul>
+<li><p>response对象用于给客户端相应输出处理结果，它是HttpServletResponse接口的一个实例。</p>
+</li>
+<li><p>经常用于设置HTTP标题，添加cookie、设置响应内容的类型和状态、发送HTTP重定向和编码URL。</p>
+</li>
+<li><p>常用方法如下：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void addCookie(Cookie cookie)</td>
+<td>添加一个Cookie对象，用于在客户端保存特定的信息</td>
+</tr>
+<tr>
+<td>void addHeader(String name, String value)</td>
+<td>添加HTTP头信息，该Header信息将发送到客户端</td>
+</tr>
+<tr>
+<td>boolean containsHeader(String name)</td>
+<td>判断指定名字的HTTP文件头是否存在</td>
+</tr>
+<tr>
+<td>void sendRedirect(String location)</td>
+<td>重定向JSP文件</td>
+</tr>
+<tr>
+<td>void setContentType(String type)</td>
+<td>设置类型与编码方式</td>
+</tr>
+</tbody></table>
+<h3 id="3-6-session内置对象"><a href="#3-6-session内置对象" class="headerlink" title="3.6 session内置对象"></a>3.6 session内置对象</h3><ul>
+<li><p>session对象表示浏览器和服务器之间的一次会话，一次会话可以包含多次请求，在多次请求之间可以借助session对象存储信息，它是HttpSession类型的一个实例。</p>
+</li>
+<li><p>该对象的属性值在一次会话范围中保存，保存在服务器端，只要不关闭浏览器，默认半个小时内都可以访问。</p>
+</li>
+<li><p>常用方法如下：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void setAttribute(String name,Object value)</td>
+<td>使用指定的名称将对象绑定到此会话</td>
+</tr>
+<tr>
+<td>Object getAttribute(String name)</td>
+<td>返回在此会话中用指定名称绑定的对象，如果没有对象在该名称下绑定则返回空值</td>
+</tr>
+</tbody></table>
+<h3 id="3-7-application内置对象"><a href="#3-7-application内置对象" class="headerlink" title="3.7 application内置对象"></a>3.7 application内置对象</h3><ul>
+<li>application对象是一个web程序的全局变量，它是ServletContext类型的一个实例。</li>
+<li>在整个服务器上保存数据，所有用户共享。</li>
+<li>常用方法如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void setAttribute(String name, Object object)</td>
+<td>将对象绑定到此servlet上下文中的给定属性名</td>
+</tr>
+<tr>
+<td>Object getAttribute(String name)</td>
+<td>返回给定名称的servlet容器属性，若没有该名称的属性返回null</td>
+</tr>
+</tbody></table>
+<h3 id="3-8-pageContext内置对象"><a href="#3-8-pageContext内置对象" class="headerlink" title="3.8 pageContext内置对象"></a>3.8 pageContext内置对象</h3><ul>
+<li><p>pageContext对象是PageContext类型的对象，可以使用这个对象来管理其他的隐含对象。</p>
+</li>
+<li><p>只在一个页面中保存数据。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法声明</th>
+<th>功能介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void setAttribute(String name, Object value, int scope)</td>
+<td>使用适当的作用域设置指定的名称和值</td>
+</tr>
+<tr>
+<td>Object getAttribute(String name, int scope)</td>
+<td>返回指定作用域中名称关联的对象，若找不到则返回null</td>
+</tr>
+<tr>
+<td>ServletRequest getRequest()</td>
+<td>获取请求对象</td>
+</tr>
+<tr>
+<td>ServletResponse getResponse()</td>
+<td>获取响应对象</td>
+</tr>
+<tr>
+<td>HttpSession getSession()</td>
+<td>获取会话对象</td>
+</tr>
+<tr>
+<td>ServletConfig getServletConfifig()</td>
+<td>获取配置对象</td>
+</tr>
+<tr>
+<td>JspWriter getOut()</td>
+<td>获取输出对象</td>
+</tr>
+<tr>
+<td>Object getPage()</td>
+<td>获取页面对象</td>
+</tr>
+<tr>
+<td>Exception getException()</td>
+<td>获取异常对象</td>
+</tr>
+</tbody></table>
+<h3 id="3-9-exception内置对象"><a href="#3-9-exception内置对象" class="headerlink" title="3.9 exception内置对象"></a>3.9 exception内置对象</h3><ul>
+<li><p>exception 对象是Throwable的实例，表示的是JSP的异常信息。</p>
+</li>
+<li><p>如果要使用它，必须将对应页面page指令的isErrorPage属性设置成true。</p>
+</li>
+<li><p>单个页面的处理方式</p>
+</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="meta">@page</span> errorPage=<span class="string">&quot;error.jsp&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在web.xml中配置统一的异常处理页面。</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;error-page&gt;</span><br><span class="line">    &lt;exception-type&gt;java.lang.Throwable&lt;/exception-type&gt; </span><br><span class="line">    &lt;location&gt;/error.jsp&lt;/location&gt; </span><br><span class="line">&lt;/error-page&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-JavaBean组件（熟悉）"><a href="#4-JavaBean组件（熟悉）" class="headerlink" title="4. JavaBean组件（熟悉）"></a>4. JavaBean组件（熟悉）</h2><h3 id="（1）基本概念"><a href="#（1）基本概念" class="headerlink" title="（1）基本概念"></a>（1）基本概念</h3><ul>
+<li><p>JavaBean 是使用 Java 语言开发的一个可重用的组件，在 JSP 开发中可以使用 JavaBean 减少重复代码，使整个 JSP 代码的开发更加简洁。</p>
+</li>
+<li><p>JavaBean本质上就是Java类，通常要求如下：</p>
+<ul>
+<li>属性：全部私有化，通过get和set方法进行访问。</li>
+<li>方法：必须是public关键字修饰。</li>
+<li>构造器 ：必须有无参构造方法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="（2）使用方式"><a href="#（2）使用方式" class="headerlink" title="（2）使用方式"></a>（2）使用方式</h3><ul>
+<li>使用jsp:useBean的方式创建javaBean实例</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id=“对象名” scope=“保存范围 class=“包名.类名” /&gt; </span><br><span class="line">保存范围有：page|request|sessin|application，默认为page范围。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用jsp:setProperty的方式设置javaBean的属性值</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:setProperty name=<span class="string">&quot;对象名&quot;</span> property=<span class="string">&quot;属性名&quot;</span> value=<span class="string">&quot;属性值&quot;</span> param=<span class="string">&quot;参数名&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用jsp:getProperty的方式获取javaBean的属性值</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:getProperty name=<span class="string">&quot;对象名&quot;</span> property=<span class="string">&quot;属性名&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）保存范围"><a href="#（3）保存范围" class="headerlink" title="（3）保存范围"></a>（3）保存范围</h3><ul>
+<li>JavaBean的保存范围有page、request、session以及application，默认是page范围。</li>
+</ul>
+<h3 id="（4）删除方式"><a href="#（4）删除方式" class="headerlink" title="（4）删除方式"></a>（4）删除方式</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% 内置对象.removeAttribute(“JavaBean的名字”); %&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-MVC设计模式（重点）"><a href="#5-MVC设计模式（重点）" class="headerlink" title="5. MVC设计模式（重点）"></a>5. MVC设计模式（重点）</h2><h3 id="5-1-基本概念"><a href="#5-1-基本概念" class="headerlink" title="5.1 基本概念"></a>5.1 基本概念</h3><ul>
+<li><p>MVC是模型(Model)和视图(View)以及控制器(Controller)的简写，是一种将数据、界面显示和业务逻辑进行分离的组织方式，这样在改进界面及用户交互时，不需要重新编写业务逻辑，从而提高了代码的可维护性。</p>
+</li>
+<li><p>M：主要用于封装业务数据的JavaBean(Bean) 和 业务逻辑的JavaBean(Service)及访问数据库的DAO对象。</p>
+</li>
+<li><p>V：主要负责数据收集 和 数据展现，通常由JSP文件完成。</p>
+</li>
+<li><p>C：主要负责流程控制 和 页面跳转，通常由Servlet完成。</p>
+</li>
+</ul>
+<h3 id="5-2-基本类型"><a href="#5-2-基本类型" class="headerlink" title="5.2 基本类型"></a>5.2 基本类型</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210409121949.png"></p>
+</article><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/11/EL%E5%92%8CJSTL%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">EL和JSTL核心技术</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/07/Servlet%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%EF%BC%88%E4%B8%8B%EF%BC%89/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Servlet核心技术（下）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-JSP%E7%9A%84%E6%A6%82%E8%BF%B0%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">1.JSP的概述（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-JSP%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1 JSP的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-JSP%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">1.2 JSP的示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-JSP%E4%B8%8EServlet%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">1.3 JSP与Servlet的关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JSP%E7%9A%84%E8%AF%AD%E6%B3%95%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">2. JSP的语法（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-JSP%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-text">2.1 JSP语法结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%A3%B0%E6%98%8E%E5%8C%BA"><span class="toc-text">2.2 声明区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E5%8C%BA"><span class="toc-text">2.3 程序代码区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">2.4 表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E6%B3%A8%E9%87%8A"><span class="toc-text">2.5 注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E6%8C%87%E4%BB%A4%E5%92%8C%E5%8A%A8%E4%BD%9C"><span class="toc-text">2.6 指令和动作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89page%E6%8C%87%E4%BB%A4"><span class="toc-text">（1）page指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-taglib%E6%8C%87%E4%BB%A4"><span class="toc-text">（2） taglib指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89include%E6%8C%87%E4%BB%A4"><span class="toc-text">（3）include指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%884%EF%BC%89jsp-include-jsp-param"><span class="toc-text">（4）jsp:include&#x2F;jsp:param</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%885%EF%BC%89include%E6%8C%87%E4%BB%A4%E5%92%8Cinclude%E5%8A%A8%E4%BD%9C%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">（5）include指令和include动作的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%886%EF%BC%89jsp-forward-jsp-param"><span class="toc-text">（6）jsp:forward&#x2F;jsp:param</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">3. JSP内置对象（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9F%BA%E6%9C%AC%E6%84%9F%E5%BF%B5"><span class="toc-text">3.1 基本感念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AF%B9%E8%B1%A1%E5%90%8D%E7%A7%B0"><span class="toc-text">3.2 对象名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-out%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.3 out内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-request%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.4 request内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-response%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.5 response内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-session%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.6 session内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-application%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.7 application内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-pageContext%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.8 pageContext内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-exception%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">3.9 exception内置对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-JavaBean%E7%BB%84%E4%BB%B6%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">4. JavaBean组件（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">（1）基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">（2）使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E4%BF%9D%E5%AD%98%E8%8C%83%E5%9B%B4"><span class="toc-text">（3）保存范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%88%A0%E9%99%A4%E6%96%B9%E5%BC%8F"><span class="toc-text">（4）删除方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-MVC%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">5. MVC设计模式（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">5.1 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.2 基本类型</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

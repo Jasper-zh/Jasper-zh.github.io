@@ -1,0 +1,606 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Linux系统概述和编程基础 | 木瓜煲鸡脚's blog</title><meta name="author" content="木瓜煲鸡脚,1839646816@qq.com"><meta name="copyright" content="木瓜煲鸡脚"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. Linux系统概述（常识）1.1 计算机的体系结构 计算机由计算机硬件和计算机软件两个部分组成，其中计算机软件(Computer Software)可分为系统软件和应用软件，系统软件就是操作系统，是其他软件的基础。 目前主流的操作系统有：Windows系列、Unix系列、Linux系列、And"><link rel="shortcut icon" href="/assets/img/favicon64.ico"><link rel="canonical" href="http://yournotes.cn/2020/01/12/Linux%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%92%8C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43ef74dd386a5adcc7d5e42daaa55700";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 木瓜煲鸡脚","link":"链接: ","source":"来源: 木瓜煲鸡脚's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux系统概述和编程基础',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-04-17 16:34:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/hao.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/img/article/article.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">木瓜煲鸡脚's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 空间</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/artitalk/"><i class="fa-fw fas fa-folder-open"></i><span> 说说</span></a></li><li><a class="site-page child" href="/tools/"><i class="fa-fw fa fa-wrench"></i><span> 工具</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux系统概述和编程基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-01-12T04:07:10.000Z" title="发表于 2020-01-12 12:07:10">2020-01-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%B0%E5%BD%95%E6%96%87%E6%A1%A3/">记录文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux系统概述和编程基础"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/01/12/Linux%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%E5%92%8C%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-Linux系统概述（常识）"><a href="#1-Linux系统概述（常识）" class="headerlink" title="1. Linux系统概述（常识）"></a>1. Linux系统概述（常识）</h2><h3 id="1-1-计算机的体系结构"><a href="#1-1-计算机的体系结构" class="headerlink" title="1.1 计算机的体系结构"></a>1.1 计算机的体系结构</h3><ul>
+<li>计算机由计算机硬件和计算机软件两个部分组成，其中计算机软件(Computer Software)可分为系统软件和应用软件，系统软件就是操作系统，是其他软件的基础。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412120843.png"></li>
+<li>目前主流的操作系统有：Windows系列、Unix系列、Linux系列、Android系列、IOS系列、…</li>
+</ul>
+<h3 id="1-2-Linux系统的概述"><a href="#1-2-Linux系统的概述" class="headerlink" title="1.2 Linux系统的概述"></a>1.2 Linux系统的概述</h3><ul>
+<li>Linux系统诞生于1991年，在林纳斯·托瓦兹（Linus Torvalds）上大学期间因不满意教学中使用的MINIX操作系统并出于个人爱好设计和研发的。</li>
+<li>Linux系统是一套免费、自由、开发源代码的类Unix操作系统，是一个基于Posix(Portable Operating System Interface)标准和多用户、多任务、支持多线程的操作系统。</li>
+<li>Linux能运行主要的Unix工具软件、应用程序和网络协议，支持32位和64位硬件。</li>
+</ul>
+<h3 id="1-3-主要发行版本"><a href="#1-3-主要发行版本" class="headerlink" title="1.3 主要发行版本"></a>1.3 主要发行版本</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412121116.png"></p>
+<ul>
+<li>Redhat：目前最大的Linux发行商，功能全面并且稳定，于2018年10月被IBM以340亿美元的价格收购。</li>
+<li>Ubuntu：目前最好的Linux桌面版，拥有很人性化的亮丽的交互界面，强大的软件源支持。</li>
+<li>CentOS：是RHEL的克隆版本，可以认为是免费版本的Redhat系统。</li>
+</ul>
+<h2 id="2-CentOS系统安装（掌握）"><a href="#2-CentOS系统安装（掌握）" class="headerlink" title="2. CentOS系统安装（掌握）"></a>2. CentOS系统安装（掌握）</h2><h3 id="2-1-Vmware的下载和安装"><a href="#2-1-Vmware的下载和安装" class="headerlink" title="2.1 Vmware的下载和安装"></a>2.1 Vmware的下载和安装</h3><ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://www.vmware.com/cn.html">https://www.vmware.com/cn.html</a></li>
+<li>按照安装教程一步步操作即可。</li>
+</ul>
+<h3 id="2-2-CentOS系统的下载和安装"><a href="#2-2-CentOS系统的下载和安装" class="headerlink" title="2.2 CentOS系统的下载和安装"></a>2.2 CentOS系统的下载和安装</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://www.centos.org/">https://www.centos.org/</a><br>按照安装教程通过Vmware软件进行CentOS系统的安装。。</p>
+<h2 id="3-目录结构（熟悉）"><a href="#3-目录结构（熟悉）" class="headerlink" title="3. 目录结构（熟悉）"></a>3. 目录结构（熟悉）</h2><h3 id="3-1-框架结构"><a href="#3-1-框架结构" class="headerlink" title="3.1 框架结构"></a>3.1 框架结构</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412121418.png"></p>
+<h3 id="3-2-目录详解"><a href="#3-2-目录详解" class="headerlink" title="3.2 目录详解"></a>3.2 目录详解</h3><table>
+    <tr>
+    	<th>目录名称</th>
+        <th>功能介绍</th>
+    </tr>
+    <tr>
+    	<td>/bin</td>
+        <td>binarie:存放二进制可执行文件 (例如tomcat的bin目录)</td>
+    </tr>
+    <tr>
+    	<td>/sbin</td>
+        <td>super binaries:存放二进制文件,只有root用户才能访问</td>
+    </tr>
+    <tr>
+    	<td>/boot</td>
+        <td>系统启动核心目录,存放系统启动程序文件，例:查看启动文件的大小</td>
+    </tr>
+    <tr>
+    	<td>/dev</td>
+        <td>devices:用于存放硬件设备文件</td>
+    </tr>
+    <tr>
+    	<td>/etc</td>
+        <td>etcetera:存放系统配置文件(字体文件等)</td>
+    </tr>
+    <tr>
+    	<td>/home</td>
+        <td>家目录,每一个用户都有一个”家”，用户的起始目录,创建用户跟随创建相应的家目录</td>
+    </tr>
+    <tr>
+    	<td>/lib</td>
+        <td>library:系统资源文件类库</td>
+    </tr>
+    <tr>
+    	<td>/proc</td>
+        <td>内存映射目录,可以查看系统相关硬件的信息</td>
+    </tr>
+    <tr>
+    	<td>/var</td>
+        <td>variable:可变的,变量. 部署项目用的</td>
+    </tr>
+    <tr>
+    	<td>/tmp</td>
+        <td>temporary:用来存放临时文件</td>
+    </tr>
+    <tr>
+    	<td>/root</td>
+        <td>超级用户root的家目录</td>
+    </tr>
+    <tr>
+    	<td>/usr</td>
+        <td>unix shared resouce: 存放unix共享系统资源，类似于” C:/ Program Files”,用于安装各种软件</td>
+    </tr>
+</table>
+
+<h2 id="4-常用命令（重点）"><a href="#4-常用命令（重点）" class="headerlink" title="4. 常用命令（重点）"></a>4. 常用命令（重点）</h2><h3 id="4-1-Shell的概念"><a href="#4-1-Shell的概念" class="headerlink" title="4.1 Shell的概念"></a>4.1 Shell的概念</h3><ul>
+<li>Shell俗称外壳，是提供用户使用界面的一种软件，叫做命令解释器。</li>
+<li>主要负责接受用户输入的命令，然后调用相应的应用程序，最后向用户输出程序运行的结果。</li>
+</ul>
+<h3 id="4-2-命令的格式"><a href="#4-2-命令的格式" class="headerlink" title="4.2 命令的格式"></a>4.2 命令的格式</h3><ul>
+<li><code>命令 [-选项] [参数]</code></li>
+<li>命令区分大小写，其中选项和参数是可选的，中间采用空格隔开。</li>
+</ul>
+<h3 id="4-3-常用命令的详解"><a href="#4-3-常用命令的详解" class="headerlink" title="4.3 常用命令的详解"></a>4.3 常用命令的详解</h3><p><strong>（1）查看目录下文件&#x2F;目录</strong></p>
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>ls</td>
+        <td>list显示文件</td>
+    </tr>
+    <tr>
+    	<td>ls -l 或 ll</td>
+        <td>list -list显示详细信息</td>
+    </tr>
+    <tr>
+    	<td>ls -a</td>
+        <td>list -all显示全部(包含隐藏文件)文件</td>
+    </tr>
+    <tr>
+    	<td>ls -al</td>
+        <td>list -all list 上两个合体</td>
+    </tr>
+    <tr>
+    	<td>ls 目录名</td>
+        <td>查看目录下有什么东西</td>
+    </tr>
+</table>
+
+<p><strong>（2）目录切换</strong></p>
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>cd ..</td>
+        <td>上一级目录</td>
+    </tr>
+    <tr>
+    	<td>cd dirname</td>
+        <td>进入目录</td>
+    </tr>
+    <tr>
+    	<td>cd 或 cd ~</td>
+        <td>直接回到用户的家目录</td>
+    </tr>
+    <tr>
+    	<td>cd /</td>
+        <td>回到系统根目录</td>
+    </tr>
+</table>
+
+<ul>
+<li>相对路径和绝对路径的概念。<br><strong>（3）查看完整路径</strong></li>
+</ul>
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>pwd</td>
+        <td>看当前目录所在的位置</td>
+    </tr>
+</table>
+**（4）查看当前用户**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>whoami</td>
+        <td>查看当前用户的名称</td>
+    </tr>
+</table>
+**（5）用户切换**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>su</td>
+        <td>普通用户切换到root用户</td>
+    </tr>
+    <tr>
+    	<td>su root</td>
+        <td>切换到root用户</td>
+    </tr>
+    <tr>
+    	<td>su 用户名</td>
+        <td>切换到普通用户</td>
+    </tr>
+    <tr>
+    	<td>exit</td>
+        <td>退回到原来用户</td>
+    </tr>
+</table>
+* 最好使用su和exit搭配使用，否则多次使用su指令会导致用户的”叠加”。
+**（6）管理用户**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>useradd xxx</td>
+        <td>创建用户</td>
+    </tr>
+    <tr>
+    	<td>passwd xxx</td>
+        <td>为创建的用户设置密码</td>
+    </tr>
+    <tr>
+    	<td>userdel</td>
+        <td>删除用户</td>
+    </tr>
+</table>
+**（7）查看命令的所在目录**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能概述</th>
+    </tr>
+    <tr>
+    	<td>which命令</td>
+        <td>查看指定命令所在的路径信息</td>
+    </tr>
+</table>
+**（8）文件操作**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能描述</th>
+    </tr>
+    <tr>
+    	<td>touch fileName</td>
+        <td>创建名字为fileName的文件</td>
+    </tr>
+    <tr>
+    	<td>touch dir/fileName</td>
+        <td>在dir目录下创建名字为fileName的文件</td>
+    </tr>
+    <tr>
+    	<td>echo 内容 > fileName</td>
+        <td>把内容覆盖写到文件中，若文件不存在则创建</td>
+    </tr>
+    <tr>
+    	<td>echo 内容 >> fileName</td>
+        <td>把内容追加到文件中</td>
+    </tr>
+    <tr>
+    	<td>cat fileName</td>
+        <td>打印文件内容到终端</td>
+    </tr>
+    <tr>
+    	<td>more fileName</td>
+        <td>分屏查看文件各行内容，不支持回看</td>
+    </tr>
+    <tr>
+    	<td>less fileName</td>
+        <td>查看文件各部分内容，支持回看</td>
+    </tr>
+    <tr>
+    	<td>head -n fileName</td>
+        <td>查看文件的前n行内容</td>
+    </tr>
+    <tr>
+    	<td>tail -n fileName</td>
+        <td>查看文件末尾n行内容</td>
+    </tr>
+    <tr>
+    	<td>wc fileName</td>
+        <td>查看文件的行数</td>
+    </tr>
+</table>
+
+<p><strong>（9）目录操作</strong></p>
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能描述</th>
+    </tr>
+    <tr>
+    	<td>mkdir 目录名</td>
+        <td>创建普通文件夹</td>
+    </tr>
+    <tr>
+    	<td>mkdir -p 目录/目录/目录</td>
+        <td>递归方式创建多级父子文件夹</td>
+    </tr>
+    <tr>
+    	<td>mv dir1 dir2</td>
+        <td>将dir1移动到dir2中</td>
+    </tr>
+    <tr>
+    	<td>mv dir1/dir2 ./</td>
+        <td>将dir1中dir2移动到当前目录下</td>
+    </tr>
+    <tr>
+    	<td>mv dir1 name</td>
+        <td>将dir1改名为name</td>
+    </tr>
+    <tr>
+    	<td>cp dir1 name</td>
+        <td>将dir1拷贝为name</td>
+    </tr>
+    <tr>
+    	<td>cp -r dir1 dir2</td>
+        <td>需要设置参数 -r (recursive递归) 无视目录层次</td>
+    </tr>
+    <tr>
+    	<td>rm 文件</td>
+        <td>删除文件</td>
+    </tr>
+    <tr>
+    	<td>rm -r 目录</td>
+        <td>递归删除目录(无视目录层次)</td>
+    </tr>
+    <tr>
+    	<td>rm -rf 文件/目录</td>
+        <td>-r force(强制) 删除文件/目录</td>
+    </tr>
+</table>
+**（10）查找操作**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能描述</th>
+    </tr>
+    <tr>
+    	<td>find / -name passwd[完整名称]</td>
+        <td>查找passwd文件</td>
+    </tr>
+    <tr>
+    	<td>find ./ -name “p*”</td>
+        <td>查找带”p”的文件</td>
+    </tr>
+    <tr>
+    	<td>find ./ -type f</td>
+        <td>查找所有文件</td>
+    </tr>
+    <tr>
+    	<td>grep 内容 fileName</td>
+        <td>从指定文件中查找指定的内容</td>
+    </tr>
+</table> 
+
+<p><strong>（11）权限管理</strong></p>
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能描述</th>
+    </tr>
+    <tr>
+    	<td>chmod 权限 文件/目录名</td>
+        <td>管理指定文件的权限信息，r读:4 w写:2 x执行:1</td>
+    </tr>
+</table>
+**（12）进程管理**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能描述</th>
+    </tr>
+    <tr>
+    	<td>ps</td>
+        <td>查看当前终端窗口里的进程</td>
+    </tr>
+    <tr>
+    	<td>ps -aux</td>
+        <td>查看系统中的所有进程</td>
+    </tr>
+    <tr>
+    	<td>ps -ef</td>
+        <td>查看进程列表</td>
+    </tr>
+    <tr>
+    	<td>kill 进程号</td>
+        <td>杀死指定的进程</td>
+    </tr>
+    <tr>
+    	<td>kill -9 进程号</td>
+        <td>强制杀死指定的进程</td>
+    </tr>
+</table> 
+**（13）其它命令**
+<table>
+    <tr>
+    	<th>命令</th>
+        <th>功能描述</th>
+    </tr>
+    <tr>
+    	<td>ifconfig</td>
+        <td>查看当前系统的IP地址等信息</td>
+    </tr>
+    <tr>
+    	<td>tar zcvf 压缩文件名.tar.gz 路径1 路径2 ...</td>
+        <td>实现一组文件或文件夹的打包</td>
+    </tr>
+    <tr>
+    	<td>tar zxvf 压缩文件名.tar.gz</td>
+        <td>实现解压缩解包</td>
+    </tr>
+    <tr>
+    	<td>man [章节号] 命令/函数名</td>
+        <td>查询指定的命令或函数</td>
+    </tr>
+</table>
+
+<h2 id="5-vi工具的使用（重点）"><a href="#5-vi工具的使用（重点）" class="headerlink" title="5 vi工具的使用（重点）"></a>5 vi工具的使用（重点）</h2><h3 id="5-1-基本概念"><a href="#5-1-基本概念" class="headerlink" title="5.1 基本概念"></a>5.1 基本概念</h3><ul>
+<li>vi和vim是Linux系统命令行下的文本编辑器，通常格式为：vi 文件名 或 vim 文件名。</li>
+</ul>
+<h3 id="5-2-三种模式"><a href="#5-2-三种模式" class="headerlink" title="5.2 三种模式"></a>5.2 三种模式</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210412125737.png"></p>
+<h3 id="5-3-使用方式"><a href="#5-3-使用方式" class="headerlink" title="5.3 使用方式"></a>5.3 使用方式</h3><p><strong>（1）命令模式的编辑命令</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">i</span>：在当前位置之前插入 </span><br><span class="line"><span class="selector-tag">a</span>：在当前位置之后插入 </span><br><span class="line">o：在当前行下插入</span><br></pre></td></tr></table></figure>
+<p><strong>（2）命令行模式的删除命令</strong></p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x 删除一个字符 </span><br><span class="line"><span class="built_in">dw</span> 删除当前词 </span><br><span class="line">3<span class="built_in">dw</span> 删除三个词 </span><br><span class="line"><span class="built_in">dd</span> 删除当前行 </span><br><span class="line">5<span class="built_in">dd</span> 删除五行</span><br></pre></td></tr></table></figure>
+<p><strong>（3）命令行模式的修改命令</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r 替换一个字符 </span><br><span class="line"><span class="keyword">cw</span> 替换一个单词 </span><br><span class="line"><span class="keyword">cc</span> 替换一行 </span><br><span class="line">C 替换从光标至行尾</span><br></pre></td></tr></table></figure>
+<p><strong>（4）命令行模式的拷贝命令</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yw 拷贝词 </span><br><span class="line">yy 拷贝行(或<span class="attribute">Y</span>) </span><br><span class="line"><span class="selector-tag">dd</span> 剪切行 </span><br><span class="line"><span class="selector-tag">p</span> 当前行下粘贴 </span><br><span class="line">u 撤销 </span><br><span class="line">ctrl+<span class="attribute">r</span> 取消撤销</span><br></pre></td></tr></table></figure>
+<p><strong>（5）底行模式的命令</strong></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">:w 存盘 </span><br><span class="line">:w newfile 存成新文件 </span><br><span class="line"><span class="meta">:wq 存盘退出Vi(或ZZ，或:x)</span> </span><br><span class="line">:q! 强行退出不存盘 </span><br><span class="line">:1,2co3 拷贝行1，行2在行3之后 </span><br><span class="line">:4,5mo6 移动行4，行5在行6之后 </span><br><span class="line">:%s /源字符串/目标字符串 </span><br><span class="line">:%s /源字符串/目标字符串/g 替换每一行中的所有</span><br></pre></td></tr></table></figure>
+<p><strong>（6）注意使用</strong></p>
+<ul>
+<li>使用vimtutor 命令用来练习vi命令。</li>
+<li>用户主目录下.vimrc文件可以实现vi的简单设置。</li>
+</ul>
+<p>比如设置开启行号显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+<p>在里面添加上set nu即可开启行号</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> nu</span><br></pre></td></tr></table></figure>
+<p>行号效果<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee-imagehost.oss-cn-beijing.aliyuncs.com/image_host/20210424100221.png"></p>
+</article><div class="tag_share"><div class="post_share"><div class="social-share" data-image="/assets/img/article/article.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/12/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%92%8CShell%E7%BC%96%E7%A8%8B/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">开发环境搭建和Shell编程</div></div></a></div><div class="next-post pull-right"><a href="/2020/01/12/Filter-Listener%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/assets/img/article/article.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Filter+Listener核心技术</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Linux%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0%EF%BC%88%E5%B8%B8%E8%AF%86%EF%BC%89"><span class="toc-text">1. Linux系统概述（常识）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">1.1 计算机的体系结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Linux%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-text">1.2 Linux系统的概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%B8%BB%E8%A6%81%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC"><span class="toc-text">1.3 主要发行版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CentOS%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%EF%BC%88%E6%8E%8C%E6%8F%A1%EF%BC%89"><span class="toc-text">2. CentOS系统安装（掌握）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Vmware%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-text">2.1 Vmware的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-CentOS%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-text">2.2 CentOS系统的下载和安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%88%E7%86%9F%E6%82%89%EF%BC%89"><span class="toc-text">3. 目录结构（熟悉）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84"><span class="toc-text">3.1 框架结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-text">3.2 目录详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">4. 常用命令（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Shell%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">4.1 Shell的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%91%BD%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-text">4.2 命令的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%9A%84%E8%AF%A6%E8%A7%A3"><span class="toc-text">4.3 常用命令的详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-vi%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-text">5 vi工具的使用（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">5.1 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-text">5.2 三种模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">5.3 使用方式</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 木瓜煲鸡脚</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>鄂ICP备19025079号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-2eyc4ddfbbb75e',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
