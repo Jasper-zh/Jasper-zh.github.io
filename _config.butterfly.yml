@@ -391,10 +391,11 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId: cloudbase-prepaid-2eyc4ddfbbb75e
+  envId: https://twikoo-min.vercel.app
   region:
   visitor: false
   option:
+    avatarCDN: ''  # 禁用头像 CDN，直接使用原始图片链接
 
 # Chat Services
 # --------------------------------------
